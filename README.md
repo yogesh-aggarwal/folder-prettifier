@@ -1,6 +1,6 @@
 # FOLDER PRETTIFIER
 
-### Simple to use program to make your messy folder clean good to look.
+### Simple to use program to make your messy folder clean and good to look.
 
 This project *aims* the mid-level user ring to manage their files with ease. Sometimes the folder becomes very messy and it becomes very much `difficult to manage` them or separate them. So, this program can `help` in resolving that.
 
