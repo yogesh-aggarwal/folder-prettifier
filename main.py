@@ -5,7 +5,7 @@ from tkinter.messagebox import *
 
 main = Tk()
 # main.config(bg="white")
-main.title("Folder Preetifier")
+main.title("Folder Prettifier")
 # main.geometry("500x290")
 main.geometry("800x515")
 main.resizable(0, 0)
@@ -42,7 +42,7 @@ def capitalize_files(*awargs):
 
     file = open(".ignore.info", "r")
     files_ignore = file.readlines()
-    if ".ignore.info" not in files_ignore or "preetify.py" not in files_ignore: 
+    if ".ignore.info" not in files_ignore or "Prettify.py" not in files_ignore: 
             files_ignore.extend([".ignore.info", os.path.basename(__file__)])
             file.close()
 
@@ -82,15 +82,17 @@ def handle_casing_mistakes(*awargs):
             if ext in text:
                 try:
                     # print(f"File ---> {files[i]}")
-                    with open(files[i], "r") as f:
-                        wordList = f.read().split(". ")
-                        for i in range(len(wordList)):
+                    puncLst = [". ", "! ", "? "]
+                    for punc in puncLst:
+                        with open(files[i], "r") as f:
+                            wordList = f.read().split(punc)
+                            for i in range(len(wordList)):
+                                print(wordList)
+                                wordList[i] = wordList[i].capitalize()
                             print(wordList)
-                            wordList[i] = wordList[i].capitalize()
-                        print(wordList)
-                    f = open(files[i], "w")
-                    f.write(". ".join(wordList))
-                    f.close()
+                        f = open(files[i], "w")
+                        f.write(". ".join(wordList))
+                        f.close()
                 except Exception as e:
                     print(e)
             
@@ -352,7 +354,7 @@ def start(*awargs):
         if selection:
             print("\nDone!\n")
             # os.remove(f"{folder_location.get()}/.ignore.info")
-            showinfo("Done! ", "Your folder has successfully preetified and looks great now.")
+            showinfo("Done! ", "Your folder has successfully Prettified and looks great now.")
             os.startfile(folder_location.get())
     except: 
         pass
@@ -426,7 +428,7 @@ ttk.Checkbutton(frame_4, style="TCheckbutton", text="Categories files in differe
 
 Label(frame_4, text="\n").pack()
 
-ttk.Button(frame_4, text="Preetify", command=start).pack()
+ttk.Button(frame_4, text="Prettify", command=start).pack()
 
 Label(frame_4, text="\n").pack()
 
