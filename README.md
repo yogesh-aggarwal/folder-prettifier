@@ -11,5 +11,5 @@ This project *aims* the mid-level user ring to manage their files with ease. Som
 * **Categorizes** the files according to their type (extension).
 
 If you face any problem you can <a href="mailto:developeryogesh@gmail.com">contact me</a>
-Or if want to contribute to the project you can do it on the <a href="https://github.com/yogesh-developer/folder-prettifier">GitHub repository</a>.
+Or if want to contribute to the project you can do it on the <a href="https://github.com/yogesh-aggarwal/folder-prettifier">GitHub repository</a>.
 
