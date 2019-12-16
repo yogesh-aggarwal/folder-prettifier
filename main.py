@@ -1,170 +1,133 @@
-from tkinter import *
+from tkinter import Tk, StringVar, IntVar, Frame, Label, Listbox, Scrollbar, X, W, BOTTOM, SUNKEN, MULTIPLE
 from tkinter import ttk
-from tkinter.filedialog import *
-from tkinter.messagebox import *
-import platform
+from tkinter.filedialog import askdirectory
+from tkinter.messagebox import showerror, showinfo
 import os
 
-global d
-d = "/"
+locationFormat = "/"
 
 main = Tk()
-# main.config(bg="white")
 main.title("Folder Prettifier")
-# main.geometry("500x290")
 main.geometry("800x515")
-main.resizable(0, 0)
 
-global selection
 selection = False
 
-files_left = []
+filesLeft = []
 
 
-def get_folder(*awargs):
+def getFolder(*awargs):
+    global selection
     try:
         if awargs[0] == "current":
             folder = os.getcwd()
     except:
         folder = askdirectory()
-    folder_location.set(folder)
+    folderLocation.set(folder)
 
     try:
-        os.chdir(folder_location.get())
-        files_no = len(os.listdir())
-        files = []
-        for i in range(files_no):
+        os.chdir(folderLocation.get())
+        filesNo = len(os.listdir())
+        for i in range(filesNo):
             l.insert(i, os.listdir()[i])
 
-        status_bar.set(f"No.of files = {files_no-1}")
+        statusBar.set(f"No.of files = {filesNo-1}")
         selection = True
     except:
         showerror("Error! ", "Location not found! Please choose a valid location...")
 
 
-def capitalize_files(*awargs):
-    files_no = len(os.listdir())
-    file = open(".ignore.info", "a+")
-    file.close()
+def capitalizeFiles(*awargs):
+    filesNo = len(os.listdir())
 
-    file = open(".ignore.info", "r")
-    files_ignore = file.readlines()
-    if ".ignore.info" not in files_ignore or "Prettify.py" not in files_ignore:
-        files_ignore.extend([".ignore.info", os.path.basename(__file__)])
-        file.close()
-
-    for i in range(len(files_ignore)):
-        files_ignore[i] = files_ignore[i].rstrip()
     files = os.listdir()
     for i in range(len(files)):
-        if files[i] not in files_ignore:
+        try:
+            os.rename(
+                files[i],
+                files[i]
+                .capitalize()
+                .replace("_", " ")
+                .replace("  ", " ")
+                .rstrip()
+                .lstrip(),
+            )
+            filesNo -= 1
+            statusBar.set(
+                f"Capitalizing and removing underscores | Files left = {filesNo}"
+            )
+            status.update()
+            main.update()
+        except:
+            pass
+
+
+def handleCasingMistakes(*awargs):
+    filesNo = len(os.listdir())
+
+    files = os.listdir()
+    for i in range(len(files)):
+        filesNo -= 1
+        statusBar.set(f"Handling casing mistakes | Files left = {filesNo}")
+        text = (".txt", ".rtf", ".info", ".md", ".prn", ".md")
+        ext = "." + files[i].split(".")[-1]
+        if ext in text:
             try:
-                os.rename(
-                    files[i],
-                    files[i]
-                    .capitalize()
-                    .replace("_", " ")
-                    .replace("  ", " ")
-                    .rstrip()
-                    .lstrip(),
+                # print(f"File ---> {files[i]}")
+                puncLst = [". ", "! ", "? "]
+                for punc in puncLst:
+                    with open(files[i], "r") as f:
+                        wordList = f.read().split(punc)
+                        for i in range(len(wordList)):
+                            print(wordList)
+                            wordList[i] = wordList[i].capitalize()
+                        print(wordList)
+                    f = open(files[i], "w")
+                    f.write(". ".join(wordList))
+                    f.close()
+            except Exception as e:
+                print(e)
+
+        status.update()
+        main.update()
+
+
+def handleSpacingMistakes(*awargs):
+    filesNo = len(os.listdir())
+
+    files = os.listdir()
+    text = (".txt", ".rtf", ".info", ".md", ".prn", ".md")
+    for i in range(len(files)):
+        ext = "." + files[i].split(".")[-1]
+        if ext in text:
+            try:
+                file = open(files[i], "r")
+                readData = file.read()
+                file.close()
+                file = open(files[i], "w")
+                file.write(
+                    readData.replace(", ", ", ")
+                    .replace(", ", ", ")
+                    .replace(": ", ": ")
+                    .replace(": ", ": ")
+                    .replace(".", ".")
+                    .replace(".", ".")
+                    .replace("! ", "! ")
+                    .replace("! ", "! ")
+                    .replace("? ", "? ")
+                    .replace("? ", "? ")
                 )
-                files_no -= 1
-                status_bar.set(
-                    f"Capitalizing and removing underscores | Files left = {files_no}"
-                )
-                status.update()
-                main.update()
+                file.close()
             except:
                 pass
-
-
-def handle_casing_mistakes(*awargs):
-    files_no = len(os.listdir())
-    file = open(".ignore.info", "a+")
-    file.close()
-    file = open(".ignore.info", "r")
-    files_ignore = file.readlines()
-    if ".ignore.info" not in files_ignore or __file__ not in files_ignore:
-        files_ignore.extend([".ignore.info", os.path.basename(__file__)])
-        file.close()
-
-    for i in range(len(files_ignore)):
-        files_ignore[i] = files_ignore[i].rstrip()
-    files = os.listdir()
-    for i in range(len(files)):
-        if files[i] not in files_ignore:
-            files_no -= 1
-            status_bar.set(f"Handling casing mistakes | Files left = {files_no}")
-            text = (".txt", ".rtf", ".info", ".md", ".prn", ".md")
-            ext = "." + files[i].split(".")[-1]
-            if ext in text:
-                try:
-                    # print(f"File ---> {files[i]}")
-                    puncLst = [". ", "! ", "? "]
-                    for punc in puncLst:
-                        with open(files[i], "r") as f:
-                            wordList = f.read().split(punc)
-                            for i in range(len(wordList)):
-                                print(wordList)
-                                wordList[i] = wordList[i].capitalize()
-                            print(wordList)
-                        f = open(files[i], "w")
-                        f.write(". ".join(wordList))
-                        f.close()
-                except Exception as e:
-                    print(e)
-
+            filesNo -= 1
+            statusBar.set(f"Handling spacing mistakes | Files left = {filesNo}")
             status.update()
             main.update()
 
 
-def handle_spacing_mistakes(*awargs):
-    files_no = len(os.listdir())
-    file = open(".ignore.info", "a+")
-    file.close()
-    file = open(".ignore.info", "r")
-    files_ignore = file.readlines()
-    if ".ignore.info" not in files_ignore or __file__ not in files_ignore:
-        files_ignore.extend([".ignore.info", os.path.basename(__file__)])
-        file.close()
-
-    for i in range(len(files_ignore)):
-        files_ignore[i] = files_ignore[i].rstrip()
-    files = os.listdir()
-    text = (".txt", ".rtf", ".info", ".md", ".prn", ".md")
-    for i in range(len(files)):
-        if files[i] not in files_ignore:
-            ext = "." + files[i].split(".")[-1]
-            if ext in text:
-                try:
-                    file = open(files[i], "r")
-                    read_data = file.read()
-                    file.close()
-                    file = open(files[i], "w")
-                    file.write(
-                        read_data.replace(", ", ", ")
-                        .replace(", ", ", ")
-                        .replace(": ", ": ")
-                        .replace(": ", ": ")
-                        .replace(".", ".")
-                        .replace(".", ".")
-                        .replace("! ", "! ")
-                        .replace("! ", "! ")
-                        .replace("? ", "? ")
-                        .replace("? ", "? ")
-                    )
-                    file.close()
-                except:
-                    pass
-                files_no -= 1
-                status_bar.set(f"Handling spacing mistakes | Files left = {files_no}")
-                status.update()
-                main.update()
-
-
-def categorise_files_in_folders(*awargs):
-    location = folder_location.get()
-    files_no = len(os.listdir())
+def categoriseFilesInFolders(*awargs):
+    location = folderLocation.get()
+    filesNo = len(os.listdir())
 
     files = os.listdir()
 
@@ -323,7 +286,7 @@ def categorise_files_in_folders(*awargs):
         ".svg"
     )
     text = (".txt", ".rtf", ".info", ".md", ".prn", ".md")
-    compression = (".zip", ".iso", ".rar", ".7z", ".gz")
+    compression = (".zip", ".iso", ".rar", ".7z", ".gz", ".dmg")
     app = (".exe", ".msi")
     script = (
         ".py",
@@ -343,7 +306,7 @@ def categorise_files_in_folders(*awargs):
         ".sql",
         ".dll",
     )
-    other_docs = (
+    otherDocs = (
         ".pdf",
         ".docx",
         ".docm",
@@ -369,340 +332,321 @@ def categorise_files_in_folders(*awargs):
         ".eml",
     )
 
-    file = open(".ignore.info", "a+")
-    file.close()
-    file = open(".ignore.info", "r")
-    files_ignore = file.readlines()
-    if ".ignore.info" not in files_ignore or __file__ not in files_ignore:
-        files_ignore.extend([".ignore.info", os.path.basename(__file__)])
-        file.close()
-
-    for i in range(len(files_ignore)):
-        files_ignore[i] = files_ignore[i].rstrip()
     files = os.listdir()
 
     for i in range(len(files)):
-        if files[i] not in files_ignore:
-            for j in range(len(image)):
-                # Scripts
-                try:
-                    if files[i].lower().endswith(script[j]):
-                        try:
-                            os.mkdir("Documents")
-                        except:
-                            pass
-                        print("Script Found")
-                        # Folder Creation
-                        try:
-                            os.mkdir(f"Documents{d}Scripts")
-                        except:
-                            pass
-                        try:
-                            os.rename(files[i], f"Documents{d}Scripts{d}{d}{files[i]}")
-                        except:
-                            pass
-                        os.chdir(location)
-                except:
-                    pass
+        for j in range(len(image)):
+            # Scripts
+            try:
+                if files[i].lower().endswith(script[j]):
+                    try:
+                        os.mkdir("Documents")
+                    except:
+                        pass
+                    print("Script Found")
+                    # Folder Creation
+                    try:
+                        os.mkdir(f"Documents{locationFormat}Scripts")
+                    except:
+                        pass
+                    try:
+                        os.rename(files[i], f"Documents{locationFormat}Scripts{locationFormat}{locationFormat}{files[i]}")
+                    except:
+                        pass
+                    os.chdir(location)
+            except:
+                pass
 
-                # Video
-                try:
-                    if files[i].lower().endswith(video[j]):
-                        print("Video Found")
-                        # Folder Creation
-                        try:
-                            os.mkdir("Videos")
-                        except:
-                            pass
-                        try:
-                            os.rename(files[i], f"Videos{d}{d}{files[i]}")
-                        except:
-                            pass
-                except:
-                    pass
+            # Video
+            try:
+                if files[i].lower().endswith(video[j]):
+                    print("Video Found")
+                    # Folder Creation
+                    try:
+                        os.mkdir("Videos")
+                    except:
+                        pass
+                    try:
+                        os.rename(files[i], f"Videos{locationFormat}{locationFormat}{files[i]}")
+                    except:
+                        pass
+            except:
+                pass
 
-                # Music
-                try:
-                    if files[i].lower().endswith(music[j]):
-                        print("Music Found")
-                        # Folder Creation
-                        try:
-                            os.mkdir("Music")
-                        except:
-                            pass
-                        try:
-                            os.rename(files[i], f"Music{d}{d}{files[i]}")
-                        except:
-                            pass
-                except:
-                    pass
+            # Music
+            try:
+                if files[i].lower().endswith(music[j]):
+                    print("Music Found")
+                    # Folder Creation
+                    try:
+                        os.mkdir("Music")
+                    except:
+                        pass
+                    try:
+                        os.rename(files[i], f"Music{locationFormat}{locationFormat}{files[i]}")
+                    except:
+                        pass
+            except:
+                pass
 
-                # Image
-                try:
-                    if files[i].lower().endswith(image[j]):
-                        print("Image Found")
-                        # Folder Creation
-                        try:
-                            os.mkdir("Images")
-                        except:
-                            pass
-                        try:
-                            os.rename(files[i], f"Images{d}{d}{files[i]}")
-                        except:
-                            pass
-                except:
-                    pass
+            # Image
+            try:
+                if files[i].lower().endswith(image[j]):
+                    print("Image Found")
+                    # Folder Creation
+                    try:
+                        os.mkdir("Images")
+                    except:
+                        pass
+                    try:
+                        os.rename(files[i], f"Images{locationFormat}{locationFormat}{files[i]}")
+                    except:
+                        pass
+            except:
+                pass
 
-                # Text
-                try:
-                    if files[i].lower().endswith(text[j]):
-                        try:
-                            os.mkdir("Documents")
-                        except:
-                            pass
-                        print("Text Found")
-                        # Folder Creation
-                        try:
-                            os.mkdir(f"Documents{d}text files")
-                        except:
-                            pass
-                        try:
-                            os.rename(files[i], f"Documents{d}text files{d}{d}{files[i]}")
-                        except:
-                            pass
-                        os.chdir(location)
-                except:
-                    pass
+            # Text
+            try:
+                if files[i].lower().endswith(text[j]):
+                    try:
+                        os.mkdir("Documents")
+                    except:
+                        pass
+                    print("Text Found")
+                    # Folder Creation
+                    try:
+                        os.mkdir(f"Documents{locationFormat}text files")
+                    except:
+                        pass
+                    try:
+                        os.rename(files[i], f"Documents{locationFormat}text files{locationFormat}{locationFormat}{files[i]}")
+                    except:
+                        pass
+                    os.chdir(location)
+            except:
+                pass
 
-                # Other docs
-                try:
-                    if files[i].lower().endswith(other_docs[j]):
-                        try:
-                            os.mkdir("Documents")
-                        except:
-                            pass
-                        print("Other doc found Found")
-                        # Folder Creation
-                        try:
-                            os.mkdir(f"Documents{d}Other document")
-                        except:
-                            pass
-                        try:
-                            os.rename(
-                                files[i], f"Documents{d}{d}Other document{d}{d}{files[i]}"
-                            )
-                        except:
-                            pass
-                        os.chdir(location)
-                except:
-                    pass
+            # Other docs
+            try:
+                if files[i].lower().endswith(otherDocs[j]):
+                    try:
+                        os.mkdir("Documents")
+                    except:
+                        pass
+                    print("Other doc found Found")
+                    # Folder Creation
+                    try:
+                        os.mkdir(f"Documents{locationFormat}Other document")
+                    except:
+                        pass
+                    try:
+                        os.rename(
+                            files[i], f"Documents{locationFormat}{locationFormat}Other document{locationFormat}{locationFormat}{files[i]}"
+                        )
+                    except:
+                        pass
+                    os.chdir(location)
+            except:
+                pass
 
-                # Compression
-                try:
-                    if files[i].lower().endswith(compression[j]):
-                        print("Compression Found")
-                        # Folder Creation
-                        try:
-                            os.mkdir("Compressions")
-                        except:
-                            pass
-                        try:
-                            os.rename(files[i], f"Compressions{d}{d}{files[i]}")
-                        except:
-                            pass
-                except:
-                    pass
+            # Compression
+            try:
+                if files[i].lower().endswith(compression[j]):
+                    print("Compression Found")
+                    # Folder Creation
+                    try:
+                        os.mkdir("Compressions")
+                    except:
+                        pass
+                    try:
+                        os.rename(files[i], f"Compressions{locationFormat}{locationFormat}{files[i]}")
+                    except:
+                        pass
+            except:
+                pass
 
-                # Apps
-                try:
-                    if files[i].lower().endswith(app[j]):
-                        print("App Found")
-                        # Folder Creation
-                        try:
-                            os.mkdir("Apps")
-                        except:
-                            pass
-                        try:
-                            os.rename(files[i], f"Apps{d}{d}{files[i]}")
-                        except:
-                            pass
-                except:
-                    pass
-            files_no -= 1
-            status_bar.set(f"Categorising | Files left = {files_no}")
-            status.update()
-            main.update()
+            # Apps
+            try:
+                if files[i].lower().endswith(app[j]):
+                    print("App Found")
+                    # Folder Creation
+                    try:
+                        os.mkdir("Apps")
+                    except:
+                        pass
+                    try:
+                        os.rename(files[i], f"Apps{locationFormat}{locationFormat}{files[i]}")
+                    except:
+                        pass
+            except:
+                pass
+        filesNo -= 1
+        statusBar.set(f"Categorising | Files left = {filesNo}")
+        status.update()
+        main.update()
 
 
-def apply_to_sub_folders(*awargs):
+def applyToSubFolders(*awargs):
     pass
 
 
 def start(*awargs):
     try:
-        os.chdir(folder_location.get())
+        os.chdir(folderLocation.get())
         selection = True
     except:
         showerror("Error! ", "Location not found! Please choose a valid location...")
-    status_bar.set("Working on it...")
+    statusBar.set("Working on it...")
     status.update()
 
     # Extras
-    print(capitalize_files_var.get())
-    print(handle_casing_mistakes_var.get())
-    print(handle_spacing_mistakes_var.get())
-    print(apply_to_sub_folders_var.get())
+    print(capitalizeFilesVar.get())
+    print(handleCasingMistakesVar.get())
+    print(handleSpacingMistakesVar.get())
+    print(applyToSubFoldersVar.get())
 
-    print(files_left)
-    file = open(".ignore.info", "a+")
-    __TEMP__FILES__ = os.listdir(folder_location.get()).remove(".ignore.info")
-    for i in files_left:
-        file.write(f"{__TEMP__FILES__[i]}\n")
-    file.close()
-    del __TEMP__FILES__
+    print(filesLeft)
 
-    if capitalize_files_var.get() == 1:
-        capitalize_files()
-    if handle_casing_mistakes_var.get() == 1:
-        handle_casing_mistakes()
-    if handle_spacing_mistakes_var.get() == 1:
-        handle_spacing_mistakes()
-    if apply_to_sub_folders_var.get() == 1:
-        apply_to_sub_folders()
-    if categorise_files_in_folders_var.get() == 1:
-        categorise_files_in_folders()
+    if capitalizeFilesVar.get() == 1:
+        capitalizeFiles()
+    if handleCasingMistakesVar.get() == 1:
+        handleCasingMistakes()
+    if handleSpacingMistakesVar.get() == 1:
+        handleSpacingMistakes()
+    if applyToSubFoldersVar.get() == 1:
+        applyToSubFolders()
+    if categoriseFilesInFoldersVar.get() == 1:
+        categoriseFilesInFolders()
 
-    status_bar.set("Ready! ")
+    statusBar.set("Ready! ")
     status.update()
 
     try:
         if selection:
             print(f"\nDone!\n")
-            # os.remove(f"{folder_location.get()}/.ignore.info")
             showinfo(
                 "Done! ", "Your folder has successfully Prettified and looks great now."
             )
-            os.startfile(folder_location.get())
+            os.startfile(folderLocation.get())
     except:
         pass
 
 
 # Variables
-folder_location = StringVar()
-status_bar = StringVar()
-files_no_label_label_var = IntVar()
+folderLocation = StringVar()
+statusBar = StringVar()
+filesNoLabelLabelVar = IntVar()
 
-capitalize_files_var = IntVar()
-handle_casing_mistakes_var = IntVar()
-handle_spacing_mistakes_var = IntVar()
-categorise_files_in_folders_var = IntVar()
-apply_to_sub_folders_var = IntVar()
+capitalizeFilesVar = IntVar()
+handleCasingMistakesVar = IntVar()
+handleSpacingMistakesVar = IntVar()
+categoriseFilesInFoldersVar = IntVar()
+applyToSubFoldersVar = IntVar()
 
 style = ttk.Style()
 
-frame_label = Frame(main)
-frame_label.pack()
+frameLabel = Frame(main)
+frameLabel.pack()
 Label(
-    frame_label,
+    frameLabel,
     text="Enter/Choose the folder location",
     font=("google sans bold", 15),
     fg="red",
 ).pack()
 
-frame_1 = Frame(main)
-frame_1.pack()
+frame1 = Frame(main)
+frame1.pack()
 
-ttk.Entry(frame_1, textvariable=folder_location).grid(row=1, column=0)
-Label(frame_1, text=" ").grid(row=1, column=1)
-ttk.Button(frame_1, text="...", command=get_folder).grid(row=1, column=2)
-Label(frame_1, text=" ").grid(row=1, column=3)
+ttk.Entry(frame1, textvariable=folderLocation).grid(row=1, column=0)
+Label(frame1, text=" ").grid(row=1, column=1)
+ttk.Button(frame1, text="...", command=getFolder).grid(row=1, column=2)
+Label(frame1, text=" ").grid(row=1, column=3)
 ttk.Button(
-    frame_1, text="Current location", command=lambda: get_folder("current")
+    frame1, text="Current location", command=lambda: getFolder("current")
 ).grid(row=1, column=4)
-Label(frame_1, text=" ").grid(row=1, column=5)
+Label(frame1, text=" ").grid(row=1, column=5)
 
 Label(main, text=" ").pack()
 
-frame_2 = Frame(main)
-frame_2.pack()
+frame2 = Frame(main)
+frame2.pack()
 
 
 def removeFromList():
     clicked = l.curselection()
     for item in clicked:
-        files_left.append(item)
-    for poss in files_left:
+        filesLeft.append(item)
+    for poss in filesLeft:
         l.delete(poss)
 
 
-l = Listbox(frame_2, width=120, height=10, selectmode=MULTIPLE)
+l = Listbox(frame2, width=120, height=10, selectmode=MULTIPLE)
 l.pack(side="left")
-scrollbar = Scrollbar(frame_2, orient="vertical")
+scrollbar = Scrollbar(frame2, orient="vertical")
 scrollbar.config(command=l.yview)
 scrollbar.pack(side="right", fill="y")
 
 l.config(yscrollcommand=scrollbar.set)
 
-frame_3 = Frame(main)
-frame_3.pack(fill=X)
+frame3 = Frame(main)
+frame3.pack(fill=X)
 
 
-Label(frame_3, text=" ").grid(row=1)
-Label(frame_3, text=f"\t\t\t\t\t\t\t    ").grid(row=2, column=1)
-ttk.Button(frame_3, text="Exclude Files", command=removeFromList).grid(row=2, column=2)
+Label(frame3, text=" ").grid(row=1)
+Label(frame3, text=f"\t\t\t\t\t\t\t    ").grid(row=2, column=1)
+ttk.Button(frame3, text="Exclude Files", command=removeFromList).grid(row=2, column=2)
 
 Label(main, text=" ").pack()
 
-frame_4 = Frame(main)
-frame_4.pack(fill=X)
+frame4 = Frame(main)
+frame4.pack(fill=X)
 
 style.configure("TCheckbutton", font=("google sans regular", 11))
 ttk.Checkbutton(
-    frame_4,
+    frame4,
     style="TCheckbutton",
     text="Capitalize and remove underscores from name of files",
-    variable=capitalize_files_var,
+    variable=capitalizeFilesVar,
     onvalue=1,
     offvalue=0,
 ).pack(anchor=W)
 ttk.Checkbutton(
-    frame_4,
+    frame4,
     style="TCheckbutton",
     text="Handle casing mistakes in all text files",
-    variable=handle_casing_mistakes_var,
+    variable=handleCasingMistakesVar,
     onvalue=1,
     offvalue=0,
 ).pack(anchor=W)
 ttk.Checkbutton(
-    frame_4,
+    frame4,
     style="TCheckbutton",
     text="Handle all the spacing mistakes after fullstops, commas, colons etc...",
-    variable=handle_spacing_mistakes_var,
+    variable=handleSpacingMistakesVar,
     onvalue=1,
     offvalue=0,
 ).pack(anchor=W)
 ttk.Checkbutton(
-    frame_4,
+    frame4,
     style="TCheckbutton",
     text="Categories files in different folders.",
-    variable=categorise_files_in_folders_var,
+    variable=categoriseFilesInFoldersVar,
     onvalue=1,
     offvalue=0,
 ).pack(anchor=W)
-# ttk.Checkbutton(frame_4, style="TCheckbutton", text="Apply changes to all the sub-folders", variable=apply_to_sub_folders_var, onvalue=1, offvalue=0).pack(anchor=W)
+# ttk.Checkbutton(frame4, style="TCheckbutton", text="Apply changes to all the sub-folders", variable=applyToSubFoldersVar, onvalue=1, offvalue=0).pack(anchor=W)
 
-Label(frame_4, text="\n").pack()
+Label(frame4, text="\n").pack()
 
-ttk.Button(frame_4, text="Prettify", command=start).pack()
+ttk.Button(frame4, text="Prettify", command=start).pack()
 
-Label(frame_4, text="\n").pack()
+Label(frame4, text="\n").pack()
 
-status = Label(frame_4, textvariable=status_bar, bd=1, relief=SUNKEN, anchor=W)
+status = Label(frame4, textvariable=statusBar, bd=1, relief=SUNKEN, anchor=W)
 status.pack(fill=X, side=BOTTOM)
 
-status_bar.set("Ready! ")
+statusBar.set("Ready! ")
 
 main.grab_set()
-
 
 main.mainloop()
