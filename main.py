@@ -20,7 +20,6 @@ class Tools:
     def getFolderName(self, location=""):
         if self.platform == "Linux":
             location = self.location.split("/") if not location else location.split("/")
-            print(location)
             return (
                 location[len(location) - 1]
                 if location[len(location) - 1]
@@ -69,6 +68,11 @@ class Tools:
                         for x in [".", ",", ":", "!", "?"]
                     ]
                 )
+
+    def arrangeFiles(self):
+        self.files = self.getItems(self.location)
+        for index, file in enumerate(self.files):
+            os.rename(file, f"{values['_arrangeKeyword_']}{str(index+1)}.{file.split('.')[len(file.split('.'))-1]}")
 
     def categorize(self):
         self.files = self.getItems(self.location)
@@ -448,6 +452,7 @@ class Tools:
             (values["_opSpecificWord_"], self.specificWord),
             (values["_opUnderscore_"], self.underscore),
             (values["_opCapitalize_"], self.capitalize),
+            (values["_opArrange_"], self.arrangeFiles),
             # (values["_opCasing_"], self.casing),
             (values["_opSpacing_"], self.spacing),
             (values["_opCategorize_"], self.categorize),
@@ -459,6 +464,11 @@ class Tools:
         os.chdir(self.location)
         [action[1]() for action in actions if action[0]]
         self.status("Done!")
+        sg.Popup(
+            "Your folder is prettified and looks nice now!",
+            title="Done",
+            keep_on_top=True,
+        )
 
 
 class Window(Tools):
@@ -471,7 +481,10 @@ class Window(Tools):
             [
                 sg.Text("Location"),
                 sg.InputText(
-                    default_text=self.location, change_submits=True, key="_location_", pad=(20, 0, 0, 0)
+                    default_text=self.location,
+                    change_submits=True,
+                    key="_location_",
+                    pad=(20, 0, 0, 0),
                 ),
             ],
             [
@@ -497,10 +510,25 @@ class Window(Tools):
                     change_submits=True,
                 ),
             ],
-            [sg.Text("Replace", pad=(25, 0, 0, 0), text_color="grey", key="_removeWordText_"), sg.Input(key="_removeWord_", disabled=True),],
-            [sg.Text("With", pad=(25, 0, 0, 25), text_color="grey", key="_withWordText_"), sg.Input(key="_withWord_", disabled=True, pad=(26, 0, 0, 0)),],
+            [
+                sg.Text(
+                    "Replace",
+                    pad=(25, 0, 0, 0),
+                    text_color="grey",
+                    key="_removeWordText_",
+                ),
+                sg.Input(key="_removeWord_", disabled=True),
+            ],
+            [
+                sg.Text(
+                    "With", pad=(25, 0, 0, 25), text_color="grey", key="_withWordText_"
+                ),
+                sg.Input(key="_withWord_", disabled=True, pad=(26, 0, 0, 0)),
+            ],
             # [sg.Checkbox("Handle casing mistakes in text files", key="_opCasing_")],
             [sg.Checkbox("Handle spacing mistakes in text files", key="_opSpacing_")],
+            [sg.Checkbox("Arrange files", change_submits=True, key="_opArrange_"),],
+            [sg.Text("Name starts with", text_color="grey", key="_arrangeKeywordText_"), sg.InputText(key="_arrangeKeyword_", disabled=True),],
             [
                 sg.Checkbox(
                     "Categorize files in respective folders", key="_opCategorize_"
@@ -530,9 +558,13 @@ class Window(Tools):
                 self.win.Element("_removeWord_").Update(disabled=False) if values[
                     "_opSpecificWord_"
                 ] else self.win.Element("_removeWord_").Update(disabled=True)
-                self.win.Element("_removeWordText_").Update(text_color="black") if values[
-                    "_opSpecificWord_"
-                ] else self.win.Element("_removeWordText_").Update(text_color="grey")
+                self.win.Element("_removeWordText_").Update(
+                    text_color="black"
+                ) if values["_opSpecificWord_"] else self.win.Element(
+                    "_removeWordText_"
+                ).Update(
+                    text_color="grey"
+                )
 
                 self.win.Element("_withWord_").Update(disabled=False) if values[
                     "_opSpecificWord_"
@@ -545,6 +577,14 @@ class Window(Tools):
                 global win
                 win = self.win
                 self.action(values)
+
+            if event == "_opArrange_":
+                self.win.Element("_arrangeKeyword_").Update(disabled=False) if values[
+                    "_opArrange_"
+                ] else self.win.Element("_arrangeKeyword_").Update(disabled=True)
+                self.win.Element("_arrangeKeywordText_").Update(text_color="black") if values[
+                    "_opArrange_"
+                ] else self.win.Element("_arrangeKeywordText_").Update(text_color="grey")
 
     def close(self):
         self.win.close()
