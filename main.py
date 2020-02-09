@@ -1,11 +1,11 @@
-import PySimpleGUI as sg
 import os
+import platform
+import time
 from pathlib import Path
 
-# from time import sleep
-import platform
+import PySimpleGUI as sg
 
-sg.theme("reddit")
+sg.theme("Reddit")
 values = None
 win = None
 
@@ -35,31 +35,40 @@ class Tools:
 
     def status(self, status):
         win.Element("_status_").Update(status)
+        win.Refresh()
 
     def specificWord(self):
         self.files = self.getItems(self.location)
+        filesNo = len(self.files)
         for file in self.files:
             os.rename(file, file.replace(values["_removeWord_"], values["_withWord_"]))
+            filesNo -= 1
+            self.status(f"Renaming files | Files left = {filesNo}")
 
     def underscore(self):
         self.files = self.getItems(self.location)
+        filesNo = len(self.files)
         for file in self.files:
             os.rename(file, file.replace("_", " "))
+            filesNo -= 1
+            self.status(f"Remove underscores | Files left = {filesNo}")
 
     def capitalize(self):
         self.files = self.getItems(self.location)
-        self.status("capitalizing files")
+        self.status("Capitalizing files")
+        filesNo = len(self.files)
         for file in self.files:
+            filesNo -= 1
             os.rename(file, file.capitalize())
-
-    # def casing(self):
-    #     print("casing")
+            self.status(f"Capitalizing names | Files left = {filesNo}")
 
     def spacing(self):
         self.files = self.getItems(self.location)
+        filesNo = len(self.files)
         for file in self.files:
+            filesNo -= 1
             with open(file, "w+") as file:
-                file.write(
+                file.writelines(
                     [
                         file.read()
                         .replace(f"{x} ", x)
@@ -68,11 +77,24 @@ class Tools:
                         for x in [".", ",", ":", "!", "?"]
                     ]
                 )
+            self.status(f"Spacing files | Files left = {filesNo}")
 
     def arrangeFiles(self):
-        self.files = self.getItems(self.location)
+        self.files = sorted(self.getItems(self.location))
+        filesNo = len(self.files)
         for index, file in enumerate(self.files):
-            os.rename(file, f"{values['_arrangeKeyword_']}{str(index+1)}.{file.split('.')[len(file.split('.'))-1]}")
+            filesNo -= 1
+            os.rename(
+                file, f"{time.time()}.{file.split('.')[len(file.split('.'))-1]}",
+            )
+        self.files = sorted(self.getItems(self.location))
+        for index, file in enumerate(self.files):
+            filesNo -= 1
+            os.rename(
+                file,
+                f"{values['_arrangeKeyword_']}{str(index+1)}.{file.split('.')[len(file.split('.'))-1]}",
+            )
+            self.status(f"Arranging files | Files left = {filesNo}")
 
     def categorize(self):
         self.files = self.getItems(self.location)
@@ -439,9 +461,12 @@ class Tools:
                 except:
                     pass
             filesNo -= 1
-            self.status(f"Categorising | Files left = {filesNo}")
+            self.status(f"Categorizing | Files left = {filesNo}")
 
     def rename(self):
+        self.status(
+            f"Renaming folder '{self.getFolderName()}' -> '{values['_rename_']}'"
+        )
         os.chdir(Path.home())
         new = self.location.replace(self.getFolderName(), values["_rename_"])
         os.rename(self.location, new)
@@ -469,6 +494,7 @@ class Tools:
             title="Done",
             keep_on_top=True,
         )
+        self.status("Ready!")
 
 
 class Window(Tools):
@@ -528,7 +554,12 @@ class Window(Tools):
             # [sg.Checkbox("Handle casing mistakes in text files", key="_opCasing_")],
             [sg.Checkbox("Handle spacing mistakes in text files", key="_opSpacing_")],
             [sg.Checkbox("Arrange files", change_submits=True, key="_opArrange_"),],
-            [sg.Text("Name starts with", text_color="grey", key="_arrangeKeywordText_"), sg.InputText(key="_arrangeKeyword_", disabled=True),],
+            [
+                sg.Text(
+                    "Name starts with", text_color="grey", key="_arrangeKeywordText_"
+                ),
+                sg.InputText(key="_arrangeKeyword_", disabled=True),
+            ],
             [
                 sg.Checkbox(
                     "Categorize files in respective folders", key="_opCategorize_"
@@ -582,9 +613,13 @@ class Window(Tools):
                 self.win.Element("_arrangeKeyword_").Update(disabled=False) if values[
                     "_opArrange_"
                 ] else self.win.Element("_arrangeKeyword_").Update(disabled=True)
-                self.win.Element("_arrangeKeywordText_").Update(text_color="black") if values[
-                    "_opArrange_"
-                ] else self.win.Element("_arrangeKeywordText_").Update(text_color="grey")
+                self.win.Element("_arrangeKeywordText_").Update(
+                    text_color="black"
+                ) if values["_opArrange_"] else self.win.Element(
+                    "_arrangeKeywordText_"
+                ).Update(
+                    text_color="grey"
+                )
 
     def close(self):
         self.win.close()
