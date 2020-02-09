@@ -5,6 +5,7 @@ from pathlib import Path
 
 import PySimpleGUI as sg
 
+# sg.main()
 sg.theme("Reddit")
 values = None
 win = None
@@ -502,7 +503,12 @@ class Window(Tools):
         super().__init__()
         self.win = None
         self.font = "SF UI Text"
+        self.menuLayout = [
+            ["Tools", ["&Update data::_updateData_", "&Settings::_settings_"]],
+            ["Help"]
+        ]
         self.layout = [
+            [sg.MenuBar(self.menuLayout)],
             [sg.Text("Folder", font=(self.font, 18), pad=(0, 5, 0, 0))],
             [
                 sg.Text("Location"),
@@ -608,7 +614,8 @@ class Window(Tools):
                 global win
                 win = self.win
                 self.action(values)
-
+            if event == "_settings_":
+                print("d")
             if event == "_opArrange_":
                 self.win.Element("_arrangeKeyword_").Update(disabled=False) if values[
                     "_opArrange_"
