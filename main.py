@@ -1,12 +1,12 @@
 import os
 import platform
-from json import loads
 import time
-from requests import get
-from tempfile import gettempdir
+from json import loads
 from pathlib import Path
+from tempfile import gettempdir
 
 import PySimpleGUI as sg
+from requests import get
 
 # sg.main()
 sg.theme("Reddit")
@@ -16,14 +16,14 @@ mainWin = None
 
 class Tools:
     def __init__(self):
-        #& Program variables
+        # & Program variables
         self.location = os.getcwd()
         self.platform = platform.system()
         self.files = None
         self.locationFormat = "/" if self.platform == "Linux" else "\\"
         self.progress = False
 
-        #& Program attributes
+        # & Program attributes
         self.version = "v1.0.0"
         self.catalog = {
             "video": (
@@ -508,43 +508,58 @@ class Tools:
         self.status("Ready!")
 
 
-class MenuOptions(Tools):
+class OtherOptions(Tools):
     def __init__(self):
         super().__init__()
 
-    def updateCatalog(self):
+    def updateCatalog(self, user=False):
         if not self.progress:
             try:
                 self.status("Updating catalog...")
                 data = get(
-                    "https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettfier/master/docs/catalog.json"
+                    "https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/docs/catalog.json"
                 ).text
                 with open(f"{gettempdir()}/catalog[folder-prettifier]", "w+") as f:
                     f.write(data)
-                self.catalog = data
-            except:
+                    self.catalog = loads(data)[self.version]
+                self.status("Ready!")
+                sg.Popup("Catalog updated successfully!", title="Success") if user else False
+            except Exception:
                 self.status("No internet using previous cache...")
-                with open(f"{gettempdir()}/catalog[folder-prettifier]", "w+") as f:
-                    self.catalog = f.read(data)
-                self.status("Ready")
+                sg.Popup(
+                    "Unable to retrieve the catalog from the server due to connectiviy issues!",
+                    title="No internet connection",
+                ) if user else False
+                with open(f"{gettempdir()}/catalog[folder-prettifier]", "r+") as f:
+                    try:
+                        self.catalog = loads(f.read())[self.version]
+                    except Exception:
+                        sg.Popup(
+                            "Unable to parse the cache, using built-in catalog",
+                            title="Data incorrect",
+                        ) if user else False
+            self.status("Ready!")
         else:
-            print("You can't make changes while the progress is going on!!!")
-
-    def help(self):
-        pass
+            sg.Popup(
+                "You can't make changes while the progress is going on!",
+                title="Notice",
+            )
 
     def about(self):
-        pass
+        sg.Popup(
+            "Folder prettfier is a program which will help you to organize your folders & files with ease.",
+            f"Version: {self.version}",
+            title="About",
+            keep_on_top=True
+        )
 
 
-class Window(MenuOptions):
+class Window(OtherOptions):
     def __init__(self):
         super().__init__()
         self.mainWin = None
         self.font = "SF UI Text"
-        self.menuLayout = [["Update catalog"], ["Help"], ["About"]]
         self.layout = [
-            [sg.MenuBar(self.menuLayout)],
             [sg.Text("Folder", font=(self.font, 18), pad=(0, 5, 0, 0))],
             [
                 sg.Text("Location"),
@@ -607,13 +622,23 @@ class Window(MenuOptions):
                     "Categorize files in respective folders", key="_opCategorize_"
                 )
             ],
-            [sg.Button("Action", pad=(0, 8, 0, 8), key="_action_")],
-            [sg.Text(f"Ready{' '*100}", pad=(0, 8, 0, 8), key="_status_")],
+            [
+                sg.Button("Action", pad=(0, 8, 0, 8), key="_action_"),
+                sg.Button(
+                    "Update catalog",
+                    tooltip="Update the catalog for better file catagorizing in different folders",
+                    key="_updateCatalog_",
+                ),
+                sg.Button("About", key="_about_",),
+            ],
+            [sg.Text(f"Ready!{' '*100}", pad=(0, 8, 0, 8), key="_status_")],
         ]
 
     def createWin(self):
         global mainWin
-        self.mainWin = sg.Window("Folder Prettfier", self.layout, resizable=0, icon="icon.ico")
+        self.mainWin = sg.Window(
+            "Folder Prettfier", self.layout, resizable=0, icon="icon.ico"
+        )
         mainWin = self.mainWin
         self.updateCatalog()
 
@@ -623,6 +648,8 @@ class Window(MenuOptions):
             event, values = self.mainWin.read()
             if event in (None, "Cancel"):
                 break
+
+            # & For options
             if event == "_location_":
                 self.mainWin.Element("_rename_").Update(
                     self.getFolderName(values["_location_"])
@@ -630,7 +657,7 @@ class Window(MenuOptions):
                 files = self.getItems(values["_location_"])
                 files = len(files) if files != None else "Folder doesn't exists"
                 self.mainWin.Element("_noFiles_").Update(f"Files: {files}")
-            if event == "_opSpecificWord_":
+            elif event == "_opSpecificWord_":
                 self.mainWin.Element("_removeWord_").Update(disabled=False) if values[
                     "_opSpecificWord_"
                 ] else self.mainWin.Element("_removeWord_").Update(disabled=True)
@@ -653,11 +680,16 @@ class Window(MenuOptions):
                     text_color="grey"
                 )
 
-            if event == "_action_":
+            # & For other actions
+            if event == "_updateCatalog_":
+                self.updateCatalog(user=True)
+            elif event == "_about_":
+                self.about()
+            elif event == "_action_":
                 self.action(values)
-            if event == "_settings_":
+            elif event == "_settings_":
                 print("d")
-            if event == "_opArrange_":
+            elif event == "_opArrange_":
                 self.mainWin.Element("_arrangeKeyword_").Update(
                     disabled=False
                 ) if values["_opArrange_"] else self.mainWin.Element(
@@ -675,6 +707,7 @@ class Window(MenuOptions):
 
     def close(self):
         self.mainWin.close()
+
 
 # & Window operations
 main = Window()
