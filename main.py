@@ -1,6 +1,9 @@
 import os
 import platform
+from json import loads
 import time
+from requests import get
+from tempfile import gettempdir
 from pathlib import Path
 
 import PySimpleGUI as sg
@@ -8,98 +11,21 @@ import PySimpleGUI as sg
 # sg.main()
 sg.theme("Reddit")
 values = None
-win = None
+mainWin = None
 
 
 class Tools:
     def __init__(self):
+        #& Program variables
         self.location = os.getcwd()
         self.platform = platform.system()
         self.files = None
         self.locationFormat = "/" if self.platform == "Linux" else "\\"
+        self.progress = False
 
-    def getFolderName(self, location=""):
-        if self.platform == "Linux":
-            location = self.location.split("/") if not location else location.split("/")
-            return (
-                location[len(location) - 1]
-                if location[len(location) - 1]
-                else location[len(location) - 2]
-            )
-
-    def getItems(self, location=""):
-        try:
-            location = location if location else self.location
-            return os.listdir(location)
-        except Exception:
-            return None
-
-    def status(self, status):
-        win.Element("_status_").Update(status)
-        win.Refresh()
-
-    def specificWord(self):
-        self.files = self.getItems(self.location)
-        filesNo = len(self.files)
-        for file in self.files:
-            os.rename(file, file.replace(values["_removeWord_"], values["_withWord_"]))
-            filesNo -= 1
-            self.status(f"Renaming files | Files left = {filesNo}")
-
-    def underscore(self):
-        self.files = self.getItems(self.location)
-        filesNo = len(self.files)
-        for file in self.files:
-            os.rename(file, file.replace("_", " "))
-            filesNo -= 1
-            self.status(f"Remove underscores | Files left = {filesNo}")
-
-    def capitalize(self):
-        self.files = self.getItems(self.location)
-        self.status("Capitalizing files")
-        filesNo = len(self.files)
-        for file in self.files:
-            filesNo -= 1
-            os.rename(file, file.capitalize())
-            self.status(f"Capitalizing names | Files left = {filesNo}")
-
-    def spacing(self):
-        self.files = self.getItems(self.location)
-        filesNo = len(self.files)
-        for file in self.files:
-            filesNo -= 1
-            with open(file, "w+") as file:
-                file.writelines(
-                    [
-                        file.read()
-                        .replace(f"{x} ", x)
-                        .replace(f" {x}", x)
-                        .replace(x, f"{x} ")
-                        for x in [".", ",", ":", "!", "?"]
-                    ]
-                )
-            self.status(f"Spacing files | Files left = {filesNo}")
-
-    def arrangeFiles(self):
-        self.files = sorted(self.getItems(self.location))
-        filesNo = len(self.files)
-        for index, file in enumerate(self.files):
-            filesNo -= 1
-            os.rename(
-                file, f"{time.time()}.{file.split('.')[len(file.split('.'))-1]}",
-            )
-        self.files = sorted(self.getItems(self.location))
-        for index, file in enumerate(self.files):
-            filesNo -= 1
-            os.rename(
-                file,
-                f"{values['_arrangeKeyword_']}{str(index+1)}.{file.split('.')[len(file.split('.'))-1]}",
-            )
-            self.status(f"Arranging files | Files left = {filesNo}")
-
-    def categorize(self):
-        self.files = self.getItems(self.location)
-        extention = {
+        #& Program attributes
+        self.version = "v1.0.0"
+        self.catalog = {
             "video": (
                 ".mp4",
                 ".mkv",
@@ -300,12 +226,95 @@ class Tools:
                 ".eml",
             ),
         }
+
+    def getFolderName(self, location=""):
+        if self.platform == "Linux":
+            location = self.location.split("/") if not location else location.split("/")
+            return (
+                location[len(location) - 1]
+                if location[len(location) - 1]
+                else location[len(location) - 2]
+            )
+
+    def getItems(self, location=""):
+        try:
+            location = location if location else self.location
+            return os.listdir(location)
+        except Exception:
+            return None
+
+    def status(self, status):
+        mainWin.Element("_status_").Update(status)
+        mainWin.Refresh()
+
+    def specificWord(self):
+        self.files = self.getItems(self.location)
+        filesNo = len(self.files)
+        for file in self.files:
+            os.rename(file, file.replace(values["_removeWord_"], values["_withWord_"]))
+            filesNo -= 1
+            self.status(f"Renaming files | Files left = {filesNo}")
+
+    def underscore(self):
+        self.files = self.getItems(self.location)
+        filesNo = len(self.files)
+        for file in self.files:
+            os.rename(file, file.replace("_", " "))
+            filesNo -= 1
+            self.status(f"Remove underscores | Files left = {filesNo}")
+
+    def capitalize(self):
+        self.files = self.getItems(self.location)
+        self.status("Capitalizing files")
+        filesNo = len(self.files)
+        for file in self.files:
+            filesNo -= 1
+            os.rename(file, file.capitalize())
+            self.status(f"Capitalizing names | Files left = {filesNo}")
+
+    def spacing(self):
+        self.files = self.getItems(self.location)
+        filesNo = len(self.files)
+        for file in self.files:
+            filesNo -= 1
+            with open(file, "w+") as file:
+                file.writelines(
+                    [
+                        file.read()
+                        .replace(f"{x} ", x)
+                        .replace(f" {x}", x)
+                        .replace(x, f"{x} ")
+                        for x in [".", ",", ":", "!", "?"]
+                    ]
+                )
+            self.status(f"Spacing files | Files left = {filesNo}")
+
+    def arrangeFiles(self):
+        self.files = sorted(self.getItems(self.location))
+        filesNo = len(self.files)
+        for index, file in enumerate(self.files):
+            filesNo -= 1
+            os.rename(
+                file, f"{time.time()}.{file.split('.')[len(file.split('.'))-1]}",
+            )
+        self.files = sorted(self.getItems(self.location))
+        for index, file in enumerate(self.files):
+            filesNo -= 1
+            os.rename(
+                file,
+                f"{values['_arrangeKeyword_']}{str(index+1)}.{file.split('.')[len(file.split('.'))-1]}",
+            )
+            self.status(f"Arranging files | Files left = {filesNo}")
+
+    def categorize(self):
+        self.files = self.getItems(self.location)
+
         filesNo = len(self.files)
         for i in range(filesNo):
-            for j in range(len(extention["image"])):
+            for j in range(len(self.catalog["image"])):
                 # Scripts
                 try:
-                    if self.files[i].lower().endswith(extention["script"][j]):
+                    if self.files[i].lower().endswith(self.catalog["script"][j]):
                         try:
                             os.mkdir("Documents")
                         except:
@@ -328,7 +337,7 @@ class Tools:
 
                 # Video
                 try:
-                    if self.files[i].lower().endswith(extention["video"][j]):
+                    if self.files[i].lower().endswith(self.catalog["video"][j]):
                         # Folder Creation
                         try:
                             os.mkdir("Videos")
@@ -346,7 +355,7 @@ class Tools:
 
                 # Music
                 try:
-                    if self.files[i].lower().endswith(extention["music"][j]):
+                    if self.files[i].lower().endswith(self.catalog["music"][j]):
                         # Folder Creation
                         try:
                             os.mkdir("Music")
@@ -364,7 +373,7 @@ class Tools:
 
                 # Image
                 try:
-                    if self.files[i].lower().endswith(extention["image"][j]):
+                    if self.files[i].lower().endswith(self.catalog["image"][j]):
                         # Folder Creation
                         try:
                             os.mkdir("Images")
@@ -382,7 +391,7 @@ class Tools:
 
                 # Text
                 try:
-                    if self.files[i].lower().endswith(extention["text"][j]):
+                    if self.files[i].lower().endswith(self.catalog["text"][j]):
                         try:
                             os.mkdir("Documents")
                         except:
@@ -405,7 +414,7 @@ class Tools:
 
                 # Other docs
                 try:
-                    if self.files[i].lower().endswith(extention["otherDocs"][j]):
+                    if self.files[i].lower().endswith(self.catalog["otherDocs"][j]):
                         try:
                             os.mkdir("Documents")
                         except:
@@ -428,7 +437,7 @@ class Tools:
 
                 # Compression
                 try:
-                    if self.files[i].lower().endswith(extention["compression"][j]):
+                    if self.files[i].lower().endswith(self.catalog["compression"][j]):
                         # Folder Creation
                         try:
                             os.mkdir("Compressions")
@@ -446,7 +455,7 @@ class Tools:
 
                 # Apps
                 try:
-                    if self.files[i].lower().endswith(extention["app"][j]):
+                    if self.files[i].lower().endswith(self.catalog["app"][j]):
                         # Folder Creation
                         try:
                             os.mkdir("Apps")
@@ -484,6 +493,7 @@ class Tools:
             (values["_opCategorize_"], self.categorize),
             (True, self.rename),
         )
+        self.progress = True
         self.status("Starting...")
         self.location = values["_location_"]
         self.status("Getting files ready...")
@@ -498,15 +508,41 @@ class Tools:
         self.status("Ready!")
 
 
-class Window(Tools):
+class MenuOptions(Tools):
     def __init__(self):
         super().__init__()
-        self.win = None
+
+    def updateCatalog(self):
+        if not self.progress:
+            try:
+                self.status("Updating catalog...")
+                data = get(
+                    "https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettfier/master/docs/catalog.json"
+                ).text
+                with open(f"{gettempdir()}/catalog[folder-prettifier]", "w+") as f:
+                    f.write(data)
+                self.catalog = data
+            except:
+                self.status("No internet using previous cache...")
+                with open(f"{gettempdir()}/catalog[folder-prettifier]", "w+") as f:
+                    self.catalog = f.read(data)
+                self.status("Ready")
+        else:
+            print("You can't make changes while the progress is going on!!!")
+
+    def help(self):
+        pass
+
+    def about(self):
+        pass
+
+
+class Window(MenuOptions):
+    def __init__(self):
+        super().__init__()
+        self.mainWin = None
         self.font = "SF UI Text"
-        self.menuLayout = [
-            ["Tools", ["&Update data::_updateData_", "&Settings::_settings_"]],
-            ["Help"]
-        ]
+        self.menuLayout = [["Update catalog"], ["Help"], ["About"]]
         self.layout = [
             [sg.MenuBar(self.menuLayout)],
             [sg.Text("Folder", font=(self.font, 18), pad=(0, 5, 0, 0))],
@@ -576,64 +612,75 @@ class Window(Tools):
         ]
 
     def createWin(self):
-        self.win = sg.Window("Folder Prettfier", self.layout, resizable=0)
+        global mainWin
+        self.mainWin = sg.Window("Folder Prettfier", self.layout, resizable=0, icon="icon.ico")
+        mainWin = self.mainWin
+        self.updateCatalog()
 
     def operate(self):
         global values
         while True:
-            event, values = self.win.read()
+            event, values = self.mainWin.read()
             if event in (None, "Cancel"):
                 break
             if event == "_location_":
-                self.win.Element("_rename_").Update(
+                self.mainWin.Element("_rename_").Update(
                     self.getFolderName(values["_location_"])
                 )
                 files = self.getItems(values["_location_"])
                 files = len(files) if files != None else "Folder doesn't exists"
-                self.win.Element("_noFiles_").Update(f"Files: {files}")
+                self.mainWin.Element("_noFiles_").Update(f"Files: {files}")
             if event == "_opSpecificWord_":
-                self.win.Element("_removeWord_").Update(disabled=False) if values[
+                self.mainWin.Element("_removeWord_").Update(disabled=False) if values[
                     "_opSpecificWord_"
-                ] else self.win.Element("_removeWord_").Update(disabled=True)
-                self.win.Element("_removeWordText_").Update(
+                ] else self.mainWin.Element("_removeWord_").Update(disabled=True)
+                self.mainWin.Element("_removeWordText_").Update(
                     text_color="black"
-                ) if values["_opSpecificWord_"] else self.win.Element(
+                ) if values["_opSpecificWord_"] else self.mainWin.Element(
                     "_removeWordText_"
                 ).Update(
                     text_color="grey"
                 )
 
-                self.win.Element("_withWord_").Update(disabled=False) if values[
+                self.mainWin.Element("_withWord_").Update(disabled=False) if values[
                     "_opSpecificWord_"
-                ] else self.win.Element("_withWord_").Update(disabled=True)
-                self.win.Element("_withWordText_").Update(text_color="black") if values[
-                    "_opSpecificWord_"
-                ] else self.win.Element("_withWordText_").Update(text_color="grey")
+                ] else self.mainWin.Element("_withWord_").Update(disabled=True)
+                self.mainWin.Element("_withWordText_").Update(
+                    text_color="black"
+                ) if values["_opSpecificWord_"] else self.mainWin.Element(
+                    "_withWordText_"
+                ).Update(
+                    text_color="grey"
+                )
 
             if event == "_action_":
-                global win
-                win = self.win
                 self.action(values)
             if event == "_settings_":
                 print("d")
             if event == "_opArrange_":
-                self.win.Element("_arrangeKeyword_").Update(disabled=False) if values[
-                    "_opArrange_"
-                ] else self.win.Element("_arrangeKeyword_").Update(disabled=True)
-                self.win.Element("_arrangeKeywordText_").Update(
+                self.mainWin.Element("_arrangeKeyword_").Update(
+                    disabled=False
+                ) if values["_opArrange_"] else self.mainWin.Element(
+                    "_arrangeKeyword_"
+                ).Update(
+                    disabled=True
+                )
+                self.mainWin.Element("_arrangeKeywordText_").Update(
                     text_color="black"
-                ) if values["_opArrange_"] else self.win.Element(
+                ) if values["_opArrange_"] else self.mainWin.Element(
                     "_arrangeKeywordText_"
                 ).Update(
                     text_color="grey"
                 )
 
     def close(self):
-        self.win.close()
+        self.mainWin.close()
 
-
-# Window operations
+# & Window operations
 main = Window()
 main.createWin()
 main.operate()
 main.close()
+
+# & Test
+# MenuOptions().updateCatalog()
