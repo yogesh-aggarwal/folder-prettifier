@@ -585,7 +585,9 @@ class OtherOptions(Tools):
                 try:
                     newVersion.write(
                         get(
-                            f"https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/dist/{version}.exe"
+                            f"https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/dist/{version}/win32.exe"
+                            if platform.system() != "Linux"
+                            else f"https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/dist/{version}/linux"
                         ).text.encode("utf-8")
                     )
                 except Exception:
@@ -593,6 +595,8 @@ class OtherOptions(Tools):
                 instruct.write(f"{os.getcwd()}/{__file__}")
 
             return True
+        else:
+            print("Already on latest version!!!")
 
     def about(self):
         sg.Popup(
