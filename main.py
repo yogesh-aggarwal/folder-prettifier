@@ -1,5 +1,6 @@
 import os
 import platform
+from warnings import filterwarnings
 import time
 from json import loads
 from pathlib import Path
@@ -8,7 +9,8 @@ from tempfile import gettempdir
 import PySimpleGUI as sg
 from requests import get
 
-# sg.main()
+filterwarnings("ignore")
+
 sg.theme("Reddit")
 values = None
 mainWin = None
@@ -244,8 +246,11 @@ class Tools:
             return None
 
     def status(self, status):
-        mainWin.Element("_status_").Update(status)
-        mainWin.Refresh()
+        try:
+            mainWin.Element("_status_").Update(status)
+            mainWin.Refresh()
+        except Exception:
+            pass
 
     def specificWord(self):
         self.files = self.getItems(self.location)
@@ -522,10 +527,12 @@ class OtherOptions(Tools):
                 with open(f"{gettempdir()}/catalog[folder-prettifier]", "w+") as f:
                     f.write(data)
                     self.catalog = loads(data)["extensions"]
-                self.update() if not user else False
                 self.status("Ready!")
-                sg.Popup("Catalog updated successfully!", title="Success") if user else False
-            except Exception:
+                sg.Popup(
+                    "Catalog updated successfully!", title="Success"
+                ) if user else False
+            except Exception as e:
+                raise e
                 self.status("No internet using previous cache...")
                 sg.Popup(
                     "Unable to retrieve the catalog from the server due to connectiviy issues!",
@@ -542,23 +549,39 @@ class OtherOptions(Tools):
             self.status("Ready!")
         else:
             sg.PopupAutoClose(
-                "You can't make changes while the progress is going on!",
-                title="Notice"
+                "You can't make changes while the progress is going on!", title="Notice"
             )
-    
+
     def update(self):
-        sg.Popup("Checking for updates...", "Once done, program will automatically start", title="Update", auto_close=True, auto_close_duration=1)
+        sg.Popup(
+            "Checking for updates...",
+            "Once done, program will automatically start",
+            title="Update",
+            auto_close=True,
+            auto_close_duration=1,
+        )
         data = get(
-            f"https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/docs/{self.version}.json"
+            f"https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/docs/attributes.json"
         ).text
-        print(loads(data)["version"])
+        if loads(data)["latestVersion"] > "v0.1.1":
+            sg.Popup(
+                f'Update to {loads(data)["version"]} (from {self.version}) found!',
+                "Now the program will be updating. It might take a while depending upon your internet connection",
+                title="Update",
+                keep_on_top=True,
+            )
+            
+
+            return True
+        else:
+            print("Already the latest version!!!")
 
     def about(self):
         sg.Popup(
             "Folder prettfier is a program which will help you to organize your folders & files with ease.",
             f"Version: {self.version}",
             title="About",
-            keep_on_top=True
+            keep_on_top=True,
         )
 
 
@@ -648,7 +671,6 @@ class Window(OtherOptions):
             "Folder Prettfier", self.layout, resizable=0, icon="icon.ico"
         )
         mainWin = self.mainWin
-        self.updateCatalog()
 
     def operate(self):
         global values
@@ -719,6 +741,8 @@ class Window(OtherOptions):
 
 # & Window operations
 main = Window()
-main.createWin()
-main.operate()
-main.close()
+if not main.update():
+    main.updateCatalog()
+    main.createWin()
+    main.operate()
+    main.close()
