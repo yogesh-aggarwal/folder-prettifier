@@ -514,6 +514,7 @@ class OtherOptions(Tools):
 
     def updateCatalog(self, user=False):
         if not self.progress:
+            self.update() if not user else False
             try:
                 self.status("Updating catalog...")
                 data = get(
@@ -540,10 +541,17 @@ class OtherOptions(Tools):
                         ) if user else False
             self.status("Ready!")
         else:
-            sg.Popup(
+            sg.PopupAutoClose(
                 "You can't make changes while the progress is going on!",
-                title="Notice",
+                title="Notice"
             )
+    
+    def update(self):
+        sg.Popup("Checking for updates...", "Once done, program will automatically start", title="Update", auto_close=True, auto_close_duration=2)
+        data = get(
+            f"https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/docs/{self.version}.json"
+        ).text
+        print(loads(data)["version"])
 
     def about(self):
         sg.Popup(
@@ -714,6 +722,3 @@ main = Window()
 main.createWin()
 main.operate()
 main.close()
-
-# & Test
-# MenuOptions().updateCatalog()
