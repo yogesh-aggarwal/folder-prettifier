@@ -517,6 +517,13 @@ class OtherOptions(Tools):
     def __init__(self):
         super().__init__()
 
+    def sanitize(self):
+        try:
+            with open(f"{os.getcwd()}/instruct.tmp") as f:
+                os.remove(f.read())
+        except Exception:
+            pass
+
     def updateCatalog(self, user=False):
         if not self.progress:
             try:
@@ -560,21 +567,32 @@ class OtherOptions(Tools):
             auto_close=True,
             auto_close_duration=1,
         )
-        data = get(
-            f"https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/docs/attributes.json"
-        ).text
-        if loads(data)["latestVersion"] > "v0.1.1":
+        version = loads(
+            get(
+                f"https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/docs/attributes.json"
+            ).text
+        )["latestVersion"]
+        if version > self.version:
             sg.Popup(
-                f'Update to {loads(data)["version"]} (from {self.version}) found!',
-                "Now the program will be updating. It might take a while depending upon your internet connection",
+                f"Update to {version} (from {self.version}) found!",
+                "Now the program will start updating. It might take a while depending upon your internet connection",
                 title="Update",
                 keep_on_top=True,
             )
-            
+            with open(f"folder_prettifier_{version}.exe", "wb+") as newVersion, open(
+                f"{gettempdir()}/instruct.tmp", "w"
+            ) as instruct:
+                try:
+                    newVersion.write(
+                        get(
+                            f"https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/dist/{version}.exe"
+                        ).text.encode("utf-8")
+                    )
+                except Exception:
+                    sg.popup("No internet connection", title="Error!")
+                instruct.write(f"{os.getcwd()}/{__file__}")
 
             return True
-        else:
-            print("Already the latest version!!!")
 
     def about(self):
         sg.Popup(
@@ -741,6 +759,7 @@ class Window(OtherOptions):
 
 # & Window operations
 main = Window()
+# main.sanitize()
 if not main.update():
     main.updateCatalog()
     main.createWin()
