@@ -1,5 +1,5 @@
 {
-    "v1.0.0": {
+    "extensions": {
         "video": [
             ".mp4",
             ".mkv",

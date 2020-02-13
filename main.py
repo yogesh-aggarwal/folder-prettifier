@@ -517,11 +517,11 @@ class OtherOptions(Tools):
             try:
                 self.status("Updating catalog...")
                 data = get(
-                    "https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/docs/catalog.json"
+                    f"https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/docs/{self.version}.json"
                 ).text
                 with open(f"{gettempdir()}/catalog[folder-prettifier]", "w+") as f:
                     f.write(data)
-                    self.catalog = loads(data)[self.version]
+                    self.catalog = loads(data)["extensions"]
                 self.status("Ready!")
                 sg.Popup("Catalog updated successfully!", title="Success") if user else False
             except Exception:
@@ -532,7 +532,7 @@ class OtherOptions(Tools):
                 ) if user else False
                 with open(f"{gettempdir()}/catalog[folder-prettifier]", "r+") as f:
                     try:
-                        self.catalog = loads(f.read())[self.version]
+                        self.catalog = loads(f.read())["extensions"]
                     except Exception:
                         sg.Popup(
                             "Unable to parse the cache, using built-in catalog",
