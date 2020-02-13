@@ -514,7 +514,6 @@ class OtherOptions(Tools):
 
     def updateCatalog(self, user=False):
         if not self.progress:
-            self.update() if not user else False
             try:
                 self.status("Updating catalog...")
                 data = get(
@@ -523,6 +522,7 @@ class OtherOptions(Tools):
                 with open(f"{gettempdir()}/catalog[folder-prettifier]", "w+") as f:
                     f.write(data)
                     self.catalog = loads(data)["extensions"]
+                self.update() if not user else False
                 self.status("Ready!")
                 sg.Popup("Catalog updated successfully!", title="Success") if user else False
             except Exception:
@@ -547,7 +547,7 @@ class OtherOptions(Tools):
             )
     
     def update(self):
-        sg.Popup("Checking for updates...", "Once done, program will automatically start", title="Update", auto_close=True, auto_close_duration=2)
+        sg.Popup("Checking for updates...", "Once done, program will automatically start", title="Update", auto_close=True, auto_close_duration=1)
         data = get(
             f"https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/docs/{self.version}.json"
         ).text
