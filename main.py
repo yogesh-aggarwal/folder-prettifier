@@ -560,13 +560,6 @@ class OtherOptions(Tools):
             )
 
     def update(self):
-        sg.Popup(
-            "Checking for updates...",
-            "Once done, program will automatically start",
-            title="Update",
-            auto_close=True,
-            auto_close_duration=1,
-        )
         version = loads(
             get(
                 f"https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/docs/attributes.json"
