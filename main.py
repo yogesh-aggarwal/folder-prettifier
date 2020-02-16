@@ -1,10 +1,10 @@
 import os
 import platform
-from warnings import filterwarnings
 import time
 from json import loads
 from pathlib import Path
 from tempfile import gettempdir
+from warnings import filterwarnings
 
 import PySimpleGUI as sg
 from requests import get
@@ -538,9 +538,8 @@ class OtherOptions(Tools):
                 sg.Popup(
                     "Catalog updated successfully!", title="Success"
                 ) if user else False
-            except Exception as e:
-                raise e
-                self.status("No internet using previous cache...")
+            except Exception:
+                self.status("No internet, using previous cache...")
                 sg.Popup(
                     "Unable to retrieve the catalog from the server due to connectiviy issues!",
                     title="No internet connection",
@@ -556,26 +555,29 @@ class OtherOptions(Tools):
             self.status("Ready!")
         else:
             sg.PopupAutoClose(
-                "You can't make changes while the progress is going on!", title="Notice"
-            )
-
-    def update(self):
-        version = loads(
-            get(
-                f"https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/docs/attributes.json"
-            ).text
-        )["latestVersion"]
-        if version > self.version:
-            sg.Popup(
-                f"Update to {version} (from {self.version}) found!",
-                "Now the program will start updating. It might take a while depending upon your internet connection",
-                title="Update",
+                "You can't make changes while the progress is going on!",
+                title="Notice",
                 keep_on_top=True,
             )
-            with open(f"folder_prettifier_{version}.exe", "wb+") as newVersion, open(
-                f"{gettempdir()}/instruct.tmp", "w"
-            ) as instruct:
-                try:
+
+    def update(self, user=False):
+        try:
+            version = loads(
+                get(
+                    f"https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/docs/attributes.json"
+                ).text
+            )["latestVersion"]
+            if version > "v0.0.0":
+                sg.Popup(
+                    f"Update to {version} (from {self.version}) found!",
+                    "Now the program will start updating. It might take a while depending upon your internet connection",
+                    title="Update",
+                    keep_on_top=True,
+                )
+                sg.PopupNonBlocking("Updating...", title="Wait", button_type=5)
+                with open(
+                    f"folder_prettifier_{version}.exe", "wb+"
+                ) as newVersion, open(f"{gettempdir()}/instruct.tmp", "w") as instruct:
                     newVersion.write(
                         get(
                             f"https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/dist/{version}/win32.exe"
@@ -583,13 +585,12 @@ class OtherOptions(Tools):
                             else f"https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/dist/{version}/linux"
                         ).text.encode("utf-8")
                     )
-                except Exception:
-                    sg.popup("No internet connection", title="Error!")
-                instruct.write(f"{os.getcwd()}/{__file__}")
-
-            return True
-        else:
-            print("Already on latest version!!!")
+                    instruct.write(f"{os.getcwd()}/{__file__}")
+                exit(0)
+            else:
+                print("Already on latest version!!!")
+        except Exception:
+            sg.popup("No internet connection", title="Error!") if user else False
 
     def about(self):
         sg.Popup(
@@ -683,7 +684,7 @@ class Window(OtherOptions):
     def createWin(self):
         global mainWin
         self.mainWin = sg.Window(
-            "Folder Prettfier", self.layout, resizable=0, icon="icon.ico"
+            "Folder Prettfier", self.layout, resizable=0, icon="icon.png"
         )
         mainWin = self.mainWin
 
@@ -757,8 +758,8 @@ class Window(OtherOptions):
 # & Window operations
 main = Window()
 # main.sanitize()
-if not main.update():
-    main.updateCatalog()
-    main.createWin()
-    main.operate()
-    main.close()
+# main.update()
+main.updateCatalog()
+main.createWin()
+main.operate()
+main.close()
