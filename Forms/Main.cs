@@ -16,20 +16,17 @@ namespace FolderPrettifier
         dynamic extensions;
         dynamic folders = new List<string>();
         string userPath;
-        const string InternetCheckUrl = "http://google.com/generate_204";
-        const string CatalogUrl = "https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/catalog.json";
-        string CatalogFilePath = $@"{Path.GetTempPath()}folder_prettifier_catalog.json";
 
         public Main()
         {
             InitializeComponent();
 
-            setCurrentPath();
+            SetCurrentPath();
 
             FetchCatalog();
         }
 
-        private void setCurrentPath()
+        private void SetCurrentPath()
         {
             string path = Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).FullName;
             if (Environment.OSVersion.Version.Major >= 6)
@@ -40,7 +37,6 @@ namespace FolderPrettifier
             userPath = path;
 
             location.Text = path + @"\Downloads";
-            location.Text = @"E:\Compressions - Copy";
             Directory.SetCurrentDirectory(location.Text);
         }
 
@@ -49,7 +45,7 @@ namespace FolderPrettifier
             try
             {
                 using (var client = new WebClient())
-                using (client.OpenRead(InternetCheckUrl))
+                using (client.OpenRead(Data.InternetCheckUrl))
                 {
                     return true;
                 }
@@ -71,19 +67,27 @@ namespace FolderPrettifier
 
             if (CheckInternetConnection())
             {
-                status.Text = "Checking online...";
-                using (HttpClient client = new HttpClient())
-                using (HttpResponseMessage response = await client.GetAsync(CatalogUrl))
-                using (HttpContent content = response.Content)
+                try
                 {
-                    progressBar.Value = 50;
-
-                    status.Text = "Caching latest catalog...";
-                    result = await content.ReadAsStringAsync();
-                    using (StreamWriter sw = File.CreateText($@"{Path.GetTempPath()}folder_prettifier_catalog.json"))
+                    status.Text = "Checking online...";
+                    using (HttpClient client = new HttpClient())
+                    using (HttpResponseMessage response = await client.GetAsync(Data.CatalogUrl))
+                    using (HttpContent content = response.Content)
                     {
-                        sw.WriteLine(result);
+                        progressBar.Value = 50;
+
+                        status.Text = "Caching latest catalog...";
+                        result = await content.ReadAsStringAsync();
+                        using (StreamWriter sw = File.CreateText($@"{Path.GetTempPath()}folder_prettifier_catalog.json"))
+                        {
+                            sw.WriteLine(result);
+                        }
                     }
+
+                }
+                catch
+                {
+
                 }
             }
             else
@@ -91,7 +95,7 @@ namespace FolderPrettifier
                 try
                 {
                     status.Text = "Reading catalog from cache...";
-                    using (StreamReader sr = File.OpenText(CatalogFilePath))
+                    using (StreamReader sr = File.OpenText($@"{Path.GetTempPath()}{Data.CacheFileName}"))
                     {
                         string s = "";
                         while ((s = sr.ReadLine()) != null)
@@ -102,14 +106,14 @@ namespace FolderPrettifier
                 }
                 catch
                 {
-                    Console.WriteLine("No Catalog!!!");
+
                 }
             }
 
             if (result == "")
             {
-                status.Text = "No catalog! Can't proceed";
-                return;
+                status.Text = "Using basic catalog...";
+                result = Data.BasicCatalog;
             }
 
             dynamic obj = JsonConvert.DeserializeObject(result);
@@ -126,7 +130,7 @@ namespace FolderPrettifier
             progressBar.Value = 0;
         }
 
-        private void chooseLocation_Click(object sender, EventArgs e)
+        private void ChooseLocation_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderDialog = new FolderBrowserDialog();
             if (folderDialog.ShowDialog() == DialogResult.OK)
@@ -135,7 +139,7 @@ namespace FolderPrettifier
             }
         }
 
-        private void location_TextChanged(object sender, EventArgs e)
+        private void Location_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -150,7 +154,7 @@ namespace FolderPrettifier
             }
         }
 
-        private void isPrettifyName_CheckedChanged(object sender, EventArgs e)
+        private void IsPrettifyName_CheckedChanged(object sender, EventArgs e)
         {
             isCapitalizeName.Enabled = isPrettifyName.Checked;
 
@@ -167,12 +171,12 @@ namespace FolderPrettifier
             nameEndsWith.Enabled = isPrettifyName.Checked && isNameWith.Checked;
         }
 
-        private void isPrettifyFile_CheckedChanged(object sender, EventArgs e)
+        private void IsPrettifyFile_CheckedChanged(object sender, EventArgs e)
         {
             isHandleSpacing.Enabled = isPrettifyFile.Enabled && isPrettifyFile.Checked;
         }
 
-        private void isReplaceWord_CheckedChanged(object sender, EventArgs e)
+        private void IsReplaceWord_CheckedChanged(object sender, EventArgs e)
         {
             replaceWordLabel.Enabled = isReplaceWord.Checked;
             replaceWord.Enabled = isReplaceWord.Checked;
@@ -181,7 +185,7 @@ namespace FolderPrettifier
             withWord.Enabled = isReplaceWord.Checked;
         }
 
-        private void isNameWith_CheckedChanged(object sender, EventArgs e)
+        private void IsNameWith_CheckedChanged(object sender, EventArgs e)
         {
             nameStartsWithLabel.Enabled = isNameWith.Checked;
             nameStartsWith.Enabled = isNameWith.Checked;
@@ -190,7 +194,7 @@ namespace FolderPrettifier
             nameEndsWith.Enabled = isNameWith.Checked;
         }
 
-        private void showPathError(dynamic element)
+        private void ShowPathError(dynamic element)
         {
             char character = '0';
 
@@ -240,29 +244,29 @@ namespace FolderPrettifier
             }
         }
 
-        private void nameStartsWith_TextChanged(object sender, EventArgs e)
+        private void NameStartsWith_TextChanged(object sender, EventArgs e)
         {
-            showPathError(nameStartsWith);
+            ShowPathError(nameStartsWith);
         }
 
-        private void nameEndsWith_TextChanged(object sender, EventArgs e)
+        private void NameEndsWith_TextChanged(object sender, EventArgs e)
         {
-            showPathError(nameEndsWith);
+            ShowPathError(nameEndsWith);
         }
 
-        private void replaceWord_TextChanged(object sender, EventArgs e)
+        private void ReplaceWord_TextChanged(object sender, EventArgs e)
         {
-            showPathError(replaceWord);
+            ShowPathError(replaceWord);
         }
 
-        private void withWord_TextChanged(object sender, EventArgs e)
+        private void WithWord_TextChanged(object sender, EventArgs e)
         {
-            showPathError(withWord);
+            ShowPathError(withWord);
         }
 
-        private void renameTo_TextChanged(object sender, EventArgs e)
+        private void RenameTo_TextChanged(object sender, EventArgs e)
         {
-            showPathError(renameTo);
+            ShowPathError(renameTo);
         }
 
         private string PrettifyName(string file)
@@ -284,7 +288,6 @@ namespace FolderPrettifier
             {
                 string[] newFileNameWords = newFileName.Split('.');
                 newFileName = nameStartsWith.Text + string.Join(".", newFileNameWords.Take(newFileNameWords.Length - 1)) + nameEndsWith.Text + "." + newFileNameWords.Last();
-                Console.WriteLine(newFileName);
             }
 
             File.Move(file, $@"{backPath}\{newFileName}");
@@ -293,11 +296,19 @@ namespace FolderPrettifier
 
         private void CategorizeFile(string file)
         {
-            int folderIndex = extensions[file.Split('.').Last()];
+            try
+            {
+                int folderIndex = extensions[file.Split('.').Last()];
 
-            string folderName = folders[folderIndex];
-            Directory.CreateDirectory(folderName);
-            File.Move(file, $"{folderName}\\{file.Split('\\').Last()}");
+                string folderName = folders[folderIndex];
+                Directory.CreateDirectory(folderName);
+                File.Move(file, $"{folderName}\\{file.Split('\\').Last()}");
+
+            }
+            catch
+            {
+
+            }
         }
 
         private void PrettifyFileContent(string file)
@@ -361,7 +372,7 @@ namespace FolderPrettifier
             }
         }
 
-        private void startBtn_Click(object sender, EventArgs e)
+        private void StartBtn_Click(object sender, EventArgs e)
         {
             DialogResult proceed = MessageBox.Show("Now, several operations will be performed on your folder. During the process, DON'T CLOSE THE APPLICATION in any manner. If you do so, there're high chances of data corruption. It's also recommeded not to work on this folder/subfolders.\n\nDo you want to proceed?", "ATTENTION!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (proceed == DialogResult.Yes)
@@ -373,17 +384,19 @@ namespace FolderPrettifier
                     Process.Start("explorer.exe", location.Text);
                 }
 
+                Location_TextChanged(sender, e);
+
                 MessageBox.Show("All the prettification is done & your folder looks clean & managed now!", "Enjoy!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
         }
 
-        private void aboutBtn_Click(object sender, EventArgs e)
+        private void AboutBtn_Click(object sender, EventArgs e)
         {
             AboutDialog about = new AboutDialog();
             about.ShowDialog();
         }
 
-        private void updateCatalogBtn_Click(object sender, EventArgs e)
+        private void UpdateCatalogBtn_Click(object sender, EventArgs e)
         {
             FetchCatalog();
         }

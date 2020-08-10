@@ -106,7 +106,7 @@
             this.renameTo.Name = "renameTo";
             this.renameTo.Size = new System.Drawing.Size(286, 20);
             this.renameTo.TabIndex = 2;
-            this.renameTo.TextChanged += new System.EventHandler(this.renameTo_TextChanged);
+            this.renameTo.TextChanged += new System.EventHandler(this.RenameTo_TextChanged);
             // 
             // location
             // 
@@ -114,7 +114,7 @@
             this.location.Name = "location";
             this.location.Size = new System.Drawing.Size(256, 20);
             this.location.TabIndex = 0;
-            this.location.TextChanged += new System.EventHandler(this.location_TextChanged);
+            this.location.TextChanged += new System.EventHandler(this.Location_TextChanged);
             // 
             // renameToLabel
             // 
@@ -142,7 +142,7 @@
             this.chooseLocation.TabIndex = 1;
             this.chooseLocation.Text = "...";
             this.chooseLocation.UseVisualStyleBackColor = true;
-            this.chooseLocation.Click += new System.EventHandler(this.chooseLocation_Click);
+            this.chooseLocation.Click += new System.EventHandler(this.ChooseLocation_Click);
             // 
             // folderActionsGroup
             // 
@@ -185,7 +185,7 @@
             this.nameEndsWith.Name = "nameEndsWith";
             this.nameEndsWith.Size = new System.Drawing.Size(254, 20);
             this.nameEndsWith.TabIndex = 11;
-            this.nameEndsWith.TextChanged += new System.EventHandler(this.nameEndsWith_TextChanged);
+            this.nameEndsWith.TextChanged += new System.EventHandler(this.NameEndsWith_TextChanged);
             // 
             // nameEndsWithLabel
             // 
@@ -204,7 +204,7 @@
             this.nameStartsWith.Name = "nameStartsWith";
             this.nameStartsWith.Size = new System.Drawing.Size(254, 20);
             this.nameStartsWith.TabIndex = 10;
-            this.nameStartsWith.TextChanged += new System.EventHandler(this.nameStartsWith_TextChanged);
+            this.nameStartsWith.TextChanged += new System.EventHandler(this.NameStartsWith_TextChanged);
             // 
             // nameStartsWithLabel
             // 
@@ -226,7 +226,7 @@
             this.isNameWith.TabIndex = 9;
             this.isNameWith.Text = "Name With";
             this.isNameWith.UseVisualStyleBackColor = true;
-            this.isNameWith.CheckedChanged += new System.EventHandler(this.isNameWith_CheckedChanged);
+            this.isNameWith.CheckedChanged += new System.EventHandler(this.IsNameWith_CheckedChanged);
             // 
             // isHandleSpacing
             // 
@@ -248,7 +248,7 @@
             this.isPrettifyFile.TabIndex = 14;
             this.isPrettifyFile.Text = "Pretify File Content";
             this.isPrettifyFile.UseVisualStyleBackColor = true;
-            this.isPrettifyFile.CheckedChanged += new System.EventHandler(this.isPrettifyFile_CheckedChanged);
+            this.isPrettifyFile.CheckedChanged += new System.EventHandler(this.IsPrettifyFile_CheckedChanged);
             // 
             // withWord
             // 
@@ -257,7 +257,7 @@
             this.withWord.Name = "withWord";
             this.withWord.Size = new System.Drawing.Size(265, 20);
             this.withWord.TabIndex = 8;
-            this.withWord.TextChanged += new System.EventHandler(this.withWord_TextChanged);
+            this.withWord.TextChanged += new System.EventHandler(this.WithWord_TextChanged);
             // 
             // withWordLabel
             // 
@@ -276,7 +276,7 @@
             this.replaceWord.Name = "replaceWord";
             this.replaceWord.Size = new System.Drawing.Size(265, 20);
             this.replaceWord.TabIndex = 7;
-            this.replaceWord.TextChanged += new System.EventHandler(this.replaceWord_TextChanged);
+            this.replaceWord.TextChanged += new System.EventHandler(this.ReplaceWord_TextChanged);
             // 
             // replaceWordLabel
             // 
@@ -298,7 +298,7 @@
             this.isReplaceWord.TabIndex = 6;
             this.isReplaceWord.Text = "Replace Specific Word";
             this.isReplaceWord.UseVisualStyleBackColor = true;
-            this.isReplaceWord.CheckedChanged += new System.EventHandler(this.isReplaceWord_CheckedChanged);
+            this.isReplaceWord.CheckedChanged += new System.EventHandler(this.IsReplaceWord_CheckedChanged);
             // 
             // isCapitalizeName
             // 
@@ -320,7 +320,7 @@
             this.isPrettifyName.TabIndex = 3;
             this.isPrettifyName.Text = "Prettify Name";
             this.isPrettifyName.UseVisualStyleBackColor = true;
-            this.isPrettifyName.CheckedChanged += new System.EventHandler(this.isPrettifyName_CheckedChanged);
+            this.isPrettifyName.CheckedChanged += new System.EventHandler(this.IsPrettifyName_CheckedChanged);
             // 
             // startBtn
             // 
@@ -330,7 +330,7 @@
             this.startBtn.TabIndex = 17;
             this.startBtn.Text = "Start";
             this.startBtn.UseVisualStyleBackColor = true;
-            this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
+            this.startBtn.Click += new System.EventHandler(this.StartBtn_Click);
             // 
             // panel1
             // 
@@ -366,7 +366,7 @@
             this.updateCatalogBtn.TabIndex = 18;
             this.updateCatalogBtn.Text = "Update Catalog";
             this.updateCatalogBtn.UseVisualStyleBackColor = true;
-            this.updateCatalogBtn.Click += new System.EventHandler(this.updateCatalogBtn_Click);
+            this.updateCatalogBtn.Click += new System.EventHandler(this.UpdateCatalogBtn_Click);
             // 
             // aboutBtn
             // 
@@ -376,7 +376,7 @@
             this.aboutBtn.TabIndex = 19;
             this.aboutBtn.Text = "About";
             this.aboutBtn.UseVisualStyleBackColor = true;
-            this.aboutBtn.Click += new System.EventHandler(this.aboutBtn_Click);
+            this.aboutBtn.Click += new System.EventHandler(this.AboutBtn_Click);
             // 
             // isOpenFolder
             // 

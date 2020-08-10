@@ -59,14 +59,5 @@ namespace FolderPrettifier.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string basicCatalog {
-            get {
-                return ResourceManager.GetString("basicCatalog", resourceCulture);
-            }
-        }
     }
 }
