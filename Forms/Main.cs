@@ -78,7 +78,7 @@ namespace FolderPrettifier
 
                         status.Text = "Caching latest catalog...";
                         result = await content.ReadAsStringAsync();
-                        using (StreamWriter sw = File.CreateText($@"{Path.GetTempPath()}folder_prettifier_catalog.json"))
+                        using (StreamWriter sw = File.CreateText($@"{Path.GetTempPath()}{Data.CacheFileName}"))
                         {
                             sw.WriteLine(result);
                         }
@@ -116,9 +116,15 @@ namespace FolderPrettifier
                 result = Data.BasicCatalog;
             }
 
-            dynamic obj = JsonConvert.DeserializeObject(result);
-            extensions = obj.extensions;
-            folders = obj.folders;
+            try
+            {
+                extensions = JsonConvert.DeserializeObject(result);
+            }
+            catch
+            {
+                status.Text = "No catalog! Can't proceed";
+                return;
+            }
 
             progressBar.Value = 100;
 
@@ -298,9 +304,7 @@ namespace FolderPrettifier
         {
             try
             {
-                int folderIndex = extensions[file.Split('.').Last().ToLower()];
-
-                string folderName = folders[folderIndex];
+                string folderName = extensions[file.Split('.').Last().ToLower()].folderName;
                 Directory.CreateDirectory(folderName);
                 File.Move(file, $"{folderName}\\{file.Split('\\').Last()}");
 
