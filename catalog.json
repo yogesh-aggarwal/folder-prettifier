@@ -192,8 +192,14 @@
     "ppa": 7,
     "ppam": 7,
     "eml": 7,
-    "apk": 8.
-    "vsix": 9
+    "apk": 8,
+    "vsix": 9,
+    "ttf": 10,
+    "otf": 10,
+    "woff2": 10,
+    "torrent": 11,
+    "ini": 12,
+    "net": 13
   },
   "folders": [
     "Video",
@@ -205,6 +211,10 @@
     "Documents\\Scripts",
     "Documents\\Others",
     "Apps\\Android",
-    "Others"
+    "Others\\Program Files",
+    "Others\\Fonts",
+    "Others\\Torrents",
+    "Others\\Configurations",
+    "Others\\Internet Files"
   ]
 }
