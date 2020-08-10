@@ -119,6 +119,7 @@ namespace FolderPrettifier
             try
             {
                 extensions = JsonConvert.DeserializeObject(result);
+                Console.WriteLine(extensions);
             }
             catch
             {
