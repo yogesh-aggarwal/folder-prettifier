@@ -57,12 +57,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.status = new System.Windows.Forms.Label();
-            this.updateCatalogBtn = new System.Windows.Forms.Button();
-            this.aboutBtn = new System.Windows.Forms.Button();
             this.isOpenFolder = new System.Windows.Forms.CheckBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateCatalogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.folderOptionsGroup.SuspendLayout();
             this.folderActionsGroup.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // folderOptionsGroup
@@ -74,7 +77,7 @@
             this.folderOptionsGroup.Controls.Add(this.renameToLabel);
             this.folderOptionsGroup.Controls.Add(this.locationLabel);
             this.folderOptionsGroup.Controls.Add(this.chooseLocation);
-            this.folderOptionsGroup.Location = new System.Drawing.Point(12, 12);
+            this.folderOptionsGroup.Location = new System.Drawing.Point(12, 32);
             this.folderOptionsGroup.Name = "folderOptionsGroup";
             this.folderOptionsGroup.Size = new System.Drawing.Size(378, 106);
             this.folderOptionsGroup.TabIndex = 0;
@@ -161,7 +164,7 @@
             this.folderActionsGroup.Controls.Add(this.isReplaceWord);
             this.folderActionsGroup.Controls.Add(this.isCapitalizeName);
             this.folderActionsGroup.Controls.Add(this.isPrettifyName);
-            this.folderActionsGroup.Location = new System.Drawing.Point(12, 124);
+            this.folderActionsGroup.Location = new System.Drawing.Point(12, 144);
             this.folderActionsGroup.Name = "folderActionsGroup";
             this.folderActionsGroup.Size = new System.Drawing.Size(378, 292);
             this.folderActionsGroup.TabIndex = 1;
@@ -358,35 +361,49 @@
             this.status.TabIndex = 0;
             this.status.Text = "Ready";
             // 
-            // updateCatalogBtn
-            // 
-            this.updateCatalogBtn.Location = new System.Drawing.Point(90, 478);
-            this.updateCatalogBtn.Name = "updateCatalogBtn";
-            this.updateCatalogBtn.Size = new System.Drawing.Size(114, 28);
-            this.updateCatalogBtn.TabIndex = 18;
-            this.updateCatalogBtn.Text = "Update Catalog";
-            this.updateCatalogBtn.UseVisualStyleBackColor = true;
-            this.updateCatalogBtn.Click += new System.EventHandler(this.UpdateCatalogBtn_Click);
-            // 
-            // aboutBtn
-            // 
-            this.aboutBtn.Location = new System.Drawing.Point(331, 478);
-            this.aboutBtn.Name = "aboutBtn";
-            this.aboutBtn.Size = new System.Drawing.Size(59, 28);
-            this.aboutBtn.TabIndex = 19;
-            this.aboutBtn.Text = "About";
-            this.aboutBtn.UseVisualStyleBackColor = true;
-            this.aboutBtn.Click += new System.EventHandler(this.AboutBtn_Click);
-            // 
             // isOpenFolder
             // 
             this.isOpenFolder.AutoSize = true;
-            this.isOpenFolder.Location = new System.Drawing.Point(12, 432);
+            this.isOpenFolder.Location = new System.Drawing.Point(12, 443);
             this.isOpenFolder.Name = "isOpenFolder";
             this.isOpenFolder.Size = new System.Drawing.Size(165, 17);
             this.isOpenFolder.TabIndex = 20;
             this.isOpenFolder.Text = "Open folder after prettification";
             this.isOpenFolder.UseVisualStyleBackColor = true;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolsToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(401, 24);
+            this.menuStrip1.TabIndex = 21;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.updateCatalogToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // updateCatalogToolStripMenuItem
+            // 
+            this.updateCatalogToolStripMenuItem.Image = global::FolderPrettifier.Data.refresh;
+            this.updateCatalogToolStripMenuItem.Name = "updateCatalogToolStripMenuItem";
+            this.updateCatalogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateCatalogToolStripMenuItem.Text = "Update Catalog";
+            this.updateCatalogToolStripMenuItem.Click += new System.EventHandler(this.updateCatalogToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -395,14 +412,14 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(401, 540);
             this.Controls.Add(this.isOpenFolder);
-            this.Controls.Add(this.aboutBtn);
-            this.Controls.Add(this.updateCatalogBtn);
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.folderActionsGroup);
             this.Controls.Add(this.folderOptionsGroup);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -413,6 +430,8 @@
             this.folderActionsGroup.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -448,9 +467,11 @@
         private System.Windows.Forms.Label status;
         private System.Windows.Forms.Button startBtn;
         private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.Button updateCatalogBtn;
-        private System.Windows.Forms.Button aboutBtn;
         private System.Windows.Forms.CheckBox isOpenFolder;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateCatalogToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 

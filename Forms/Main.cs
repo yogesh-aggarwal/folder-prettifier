@@ -60,10 +60,12 @@ namespace FolderPrettifier
         {
             status.Text = "Fetching Catalog...";
             startBtn.Enabled = false;
-            updateCatalogBtn.Enabled = false;
+            updateCatalogToolStripMenuItem.Enabled = false;
             progressBar.Value = 0;
 
             string result = "";
+
+            progressBar.Value = 30;
 
             if (CheckInternetConnection())
             {
@@ -83,7 +85,6 @@ namespace FolderPrettifier
                             sw.WriteLine(result);
                         }
                     }
-
                 }
                 catch
                 {
@@ -132,7 +133,7 @@ namespace FolderPrettifier
             await Task.Delay(2000);
             status.Text = "Ready";
             startBtn.Enabled = true;
-            updateCatalogBtn.Enabled = true;
+            updateCatalogToolStripMenuItem.Enabled = true;
 
             progressBar.Value = 0;
         }
@@ -396,15 +397,15 @@ namespace FolderPrettifier
             };
         }
 
-        private void AboutBtn_Click(object sender, EventArgs e)
+        private void updateCatalogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FetchCatalog();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutDialog about = new AboutDialog();
             about.ShowDialog();
-        }
-
-        private void UpdateCatalogBtn_Click(object sender, EventArgs e)
-        {
-            FetchCatalog();
         }
     }
 }
