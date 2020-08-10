@@ -191,7 +191,9 @@
     "ppsm": 7,
     "ppa": 7,
     "ppam": 7,
-    "eml": 7
+    "eml": 7,
+    "apk": 8.
+    "vsix": 9
   },
   "folders": [
     "Video",
@@ -199,8 +201,10 @@
     "Images",
     "Documents\\Text",
     "Compressions",
-    "Apps",
+    "Apps\\Windows",
     "Documents\\Scripts",
-    "Documents\\Others"
+    "Documents\\Others",
+    "Apps\\Android",
+    "Others"
   ]
 }
