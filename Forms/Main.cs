@@ -357,11 +357,10 @@ namespace FolderPrettifier
 
         private void StartProcess()
         {
-            int totalFiles = int.Parse(totalFilesCount.Text);
-            int processedFiles = 0;
-
             string[] files = Directory.GetFiles(location.Text);
 
+            int totalFiles = files.Length;
+            int processedFiles = 0;
 
             foreach (string file in files)
             {
@@ -387,6 +386,8 @@ namespace FolderPrettifier
                 Location_TextChanged(sender, e);
 
                 MessageBox.Show("All the prettification is done & your folder looks clean & managed now!", "Enjoy!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                progressBar.Value = 0;
             };
         }
 
