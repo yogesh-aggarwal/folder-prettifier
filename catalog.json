@@ -513,70 +513,70 @@
     "folderName": "Documents\\Scripts"
   },
   "pdf": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\PDF"
   },
   "docx": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Word"
   },
   "docm": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Word"
   },
   "doc": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Word"
   },
   "dotm": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Word"
   },
   "dotx": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Word"
   },
   "dot": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Word"
   },
   "csv": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Excel"
   },
   "xlsm": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Excel"
   },
   "xlm": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Excel"
   },
   "xls": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Excel"
   },
   "pptx": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Presentation"
   },
   "pptm": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Presentation"
   },
   "ppt": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Presentation"
   },
   "pot": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Presentation"
   },
   "potx": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Presentation"
   },
   "potm": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Presentation"
   },
   "pps": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Presentation"
   },
   "ppsm": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Presentation"
   },
   "ppa": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Presentation"
   },
   "ppam": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Presentation"
   },
   "eml": {
-    "folderName": "Documents\\Office"
+    "folderName": "Documents\\Office\\Presentation"
   },
   "vsix": {
     "folderName": "Others\\Program Files"
