@@ -298,7 +298,7 @@ namespace FolderPrettifier
         {
             try
             {
-                int folderIndex = extensions[file.Split('.').Last()];
+                int folderIndex = extensions[file.Split('.').Last().ToLower()];
 
                 string folderName = folders[folderIndex];
                 Directory.CreateDirectory(folderName);

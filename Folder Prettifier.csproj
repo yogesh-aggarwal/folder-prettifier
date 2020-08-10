@@ -28,7 +28,7 @@
     <PublisherName>Yogesh Aggarwal</PublisherName>
     <MinimumRequiredVersion>1.0.0.3</MinimumRequiredVersion>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationRevision>14</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
