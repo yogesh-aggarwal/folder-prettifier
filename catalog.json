@@ -199,7 +199,10 @@
     "woff2": 10,
     "torrent": 11,
     "ini": 12,
-    "net": 13
+    "net": 13,
+    "ai": 14,
+    "eps": 14,
+    "nfo": 15
   },
   "folders": [
     "Video",
@@ -215,6 +218,8 @@
     "Others\\Fonts",
     "Others\\Torrents",
     "Others\\Configurations",
-    "Others\\Internet Files"
+    "Others\\Internet Files",
+    "Others\\Unknown",
+    "Others\\Information"
   ]
 }
