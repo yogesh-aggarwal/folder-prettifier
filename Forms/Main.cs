@@ -17,7 +17,8 @@ namespace FolderPrettifier
         dynamic folders = new List<string>();
         string userPath;
         const string InternetCheckUrl = "http://google.com/generate_204";
-        const string SchemaUrl = "https://firebasestorage.googleapis.com/v0/b/portfolio-projects-200a7.appspot.com/o/catalog.json?alt=media&token=0ed25df6-25c1-4832-8be3-b5aa22f93f83";
+        const string CatalogUrl = "https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/catalog.json";
+        string CatalogFilePath = $@"{Path.GetTempPath()}folder_prettifier_catalog.json";
 
         public Main()
         {
@@ -66,26 +67,54 @@ namespace FolderPrettifier
             updateCatalogBtn.Enabled = false;
             progressBar.Value = 0;
 
+            string result = "";
+
             if (CheckInternetConnection())
             {
-                Console.WriteLine("Internet Available!");
+                status.Text = "Checking online...";
                 using (HttpClient client = new HttpClient())
-                using (HttpResponseMessage response = await client.GetAsync(SchemaUrl))
+                using (HttpResponseMessage response = await client.GetAsync(CatalogUrl))
                 using (HttpContent content = response.Content)
                 {
-                    string result = await content.ReadAsStringAsync();
-                    dynamic obj = JsonConvert.DeserializeObject(result);
-                    extensions = obj.extensions;
-                    folders = obj.folders;
+                    progressBar.Value = 50;
+
+                    status.Text = "Caching latest catalog...";
+                    result = await content.ReadAsStringAsync();
+                    using (StreamWriter sw = File.CreateText($@"{Path.GetTempPath()}folder_prettifier_catalog.json"))
+                    {
+                        sw.WriteLine(result);
+                    }
                 }
             }
             else
             {
-                extensions.Add("zip", 1);
-                folders.Add("");
-                folders.Add("Compressions");
+                try
+                {
+                    status.Text = "Reading catalog from cache...";
+                    using (StreamReader sr = File.OpenText(CatalogFilePath))
+                    {
+                        string s = "";
+                        while ((s = sr.ReadLine()) != null)
+                        {
+                            result += s;
+                        }
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("No Catalog!!!");
+                }
             }
-            await Task.Delay(4000);
+
+            if (result == "")
+            {
+                status.Text = "No catalog! Can't proceed";
+                return;
+            }
+
+            dynamic obj = JsonConvert.DeserializeObject(result);
+            extensions = obj.extensions;
+            folders = obj.folders;
 
             progressBar.Value = 100;
 
@@ -254,7 +283,7 @@ namespace FolderPrettifier
             if (isNameWith.Checked)
             {
                 string[] newFileNameWords = newFileName.Split('.');
-                newFileName = nameStartsWith.Text + string.Join(".", newFileNameWords.Take(newFileNameWords.Length - 1)) + nameEndsWith.Text  + "." + newFileNameWords.Last();
+                newFileName = nameStartsWith.Text + string.Join(".", newFileNameWords.Take(newFileNameWords.Length - 1)) + nameEndsWith.Text + "." + newFileNameWords.Last();
                 Console.WriteLine(newFileName);
             }
 
@@ -352,6 +381,11 @@ namespace FolderPrettifier
         {
             AboutDialog about = new AboutDialog();
             about.ShowDialog();
+        }
+
+        private void updateCatalogBtn_Click(object sender, EventArgs e)
+        {
+            FetchCatalog();
         }
     }
 }

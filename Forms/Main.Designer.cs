@@ -366,6 +366,7 @@
             this.updateCatalogBtn.TabIndex = 18;
             this.updateCatalogBtn.Text = "Update Catalog";
             this.updateCatalogBtn.UseVisualStyleBackColor = true;
+            this.updateCatalogBtn.Click += new System.EventHandler(this.updateCatalogBtn_Click);
             // 
             // aboutBtn
             // 
