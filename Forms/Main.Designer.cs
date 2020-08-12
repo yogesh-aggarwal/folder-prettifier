@@ -44,8 +44,6 @@
             this.nameStartsWith = new System.Windows.Forms.TextBox();
             this.nameStartsWithLabel = new System.Windows.Forms.Label();
             this.isNameWith = new System.Windows.Forms.CheckBox();
-            this.isHandleSpacing = new System.Windows.Forms.CheckBox();
-            this.isPrettifyFile = new System.Windows.Forms.CheckBox();
             this.withWord = new System.Windows.Forms.TextBox();
             this.withWordLabel = new System.Windows.Forms.Label();
             this.replaceWord = new System.Windows.Forms.TextBox();
@@ -155,8 +153,6 @@
             this.folderActionsGroup.Controls.Add(this.nameStartsWith);
             this.folderActionsGroup.Controls.Add(this.nameStartsWithLabel);
             this.folderActionsGroup.Controls.Add(this.isNameWith);
-            this.folderActionsGroup.Controls.Add(this.isHandleSpacing);
-            this.folderActionsGroup.Controls.Add(this.isPrettifyFile);
             this.folderActionsGroup.Controls.Add(this.withWord);
             this.folderActionsGroup.Controls.Add(this.withWordLabel);
             this.folderActionsGroup.Controls.Add(this.replaceWord);
@@ -166,7 +162,7 @@
             this.folderActionsGroup.Controls.Add(this.isPrettifyName);
             this.folderActionsGroup.Location = new System.Drawing.Point(12, 144);
             this.folderActionsGroup.Name = "folderActionsGroup";
-            this.folderActionsGroup.Size = new System.Drawing.Size(378, 292);
+            this.folderActionsGroup.Size = new System.Drawing.Size(378, 242);
             this.folderActionsGroup.TabIndex = 1;
             this.folderActionsGroup.TabStop = false;
             this.folderActionsGroup.Text = "Actions";
@@ -230,28 +226,6 @@
             this.isNameWith.Text = "Name With";
             this.isNameWith.UseVisualStyleBackColor = true;
             this.isNameWith.CheckedChanged += new System.EventHandler(this.IsNameWith_CheckedChanged);
-            // 
-            // isHandleSpacing
-            // 
-            this.isHandleSpacing.AutoSize = true;
-            this.isHandleSpacing.Enabled = false;
-            this.isHandleSpacing.Location = new System.Drawing.Point(29, 265);
-            this.isHandleSpacing.Name = "isHandleSpacing";
-            this.isHandleSpacing.Size = new System.Drawing.Size(272, 17);
-            this.isHandleSpacing.TabIndex = 15;
-            this.isHandleSpacing.Text = "Fix spacing mistakes after punctuations (eg: comma)";
-            this.isHandleSpacing.UseVisualStyleBackColor = true;
-            // 
-            // isPrettifyFile
-            // 
-            this.isPrettifyFile.AutoSize = true;
-            this.isPrettifyFile.Location = new System.Drawing.Point(9, 242);
-            this.isPrettifyFile.Name = "isPrettifyFile";
-            this.isPrettifyFile.Size = new System.Drawing.Size(114, 17);
-            this.isPrettifyFile.TabIndex = 14;
-            this.isPrettifyFile.Text = "Pretify File Content";
-            this.isPrettifyFile.UseVisualStyleBackColor = true;
-            this.isPrettifyFile.CheckedChanged += new System.EventHandler(this.IsPrettifyFile_CheckedChanged);
             // 
             // withWord
             // 
@@ -327,7 +301,7 @@
             // 
             // startBtn
             // 
-            this.startBtn.Location = new System.Drawing.Point(12, 478);
+            this.startBtn.Location = new System.Drawing.Point(12, 437);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(69, 28);
             this.startBtn.TabIndex = 17;
@@ -340,7 +314,7 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.Controls.Add(this.progressBar);
             this.panel1.Controls.Add(this.status);
-            this.panel1.Location = new System.Drawing.Point(1, 516);
+            this.panel1.Location = new System.Drawing.Point(0, 477);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(401, 25);
             this.panel1.TabIndex = 2;
@@ -364,7 +338,7 @@
             // isOpenFolder
             // 
             this.isOpenFolder.AutoSize = true;
-            this.isOpenFolder.Location = new System.Drawing.Point(12, 443);
+            this.isOpenFolder.Location = new System.Drawing.Point(12, 402);
             this.isOpenFolder.Name = "isOpenFolder";
             this.isOpenFolder.Size = new System.Drawing.Size(165, 17);
             this.isOpenFolder.TabIndex = 20;
@@ -410,7 +384,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(401, 540);
+            this.ClientSize = new System.Drawing.Size(401, 502);
             this.Controls.Add(this.isOpenFolder);
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.panel1);
@@ -454,8 +428,6 @@
         private System.Windows.Forms.CheckBox isReplaceWord;
         private System.Windows.Forms.CheckBox isCapitalizeName;
         private System.Windows.Forms.CheckBox isPrettifyName;
-        private System.Windows.Forms.CheckBox isPrettifyFile;
-        private System.Windows.Forms.CheckBox isHandleSpacing;
         private System.Windows.Forms.CheckBox isCategorizeFiles;
         private System.Windows.Forms.TextBox nameEndsWith;
         private System.Windows.Forms.Label nameEndsWithLabel;

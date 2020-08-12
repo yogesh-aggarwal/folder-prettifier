@@ -178,7 +178,6 @@
     </Compile>
     <None Include="catalog.json" />
     <None Include="Folder Prettifier_TemporaryKey.pfx" />
-    <None Include="newCatalog.json" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">

@@ -1,13 +1,14 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System;
 using System.IO;
-using System.Linq;
 using System.Net;
+using System.Linq;
 using System.Net.Http;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Diagnostics;
 using System.Windows.Forms;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace FolderPrettifier
 {
@@ -16,10 +17,13 @@ namespace FolderPrettifier
         dynamic extensions;
         dynamic folders = new List<string>();
         string userPath;
+        string currentFolder = "";
 
-        public Main()
+        public Main(string currentFolder = "")
         {
             InitializeComponent();
+
+            this.currentFolder = currentFolder;
 
             SetCurrentPath();
 
@@ -28,15 +32,26 @@ namespace FolderPrettifier
 
         private void SetCurrentPath()
         {
-            string path = Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).FullName;
-            if (Environment.OSVersion.Version.Major >= 6)
+            if (currentFolder.Length != 0)
             {
-                path = Directory.GetParent(path).ToString();
+                location.Text = currentFolder;
+            }
+            else
+            {
+                string path = Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).FullName;
+                if (Environment.OSVersion.Version.Major >= 6)
+                {
+                    path = Directory.GetParent(path).ToString();
+                }
+
+                userPath = path;
+                location.Text = path + @"\Downloads";
             }
 
-            userPath = path;
-
-            location.Text = path + @"\Downloads";
+            if (!Directory.Exists(location.Text))
+            {
+                Directory.CreateDirectory(location.Text);
+            }
             Directory.SetCurrentDirectory(location.Text);
         }
 
@@ -120,7 +135,6 @@ namespace FolderPrettifier
             try
             {
                 extensions = JsonConvert.DeserializeObject(result);
-                Console.WriteLine(extensions);
             }
             catch
             {
@@ -181,7 +195,7 @@ namespace FolderPrettifier
 
         private void IsPrettifyFile_CheckedChanged(object sender, EventArgs e)
         {
-            isHandleSpacing.Enabled = isPrettifyFile.Enabled && isPrettifyFile.Checked;
+            //isHandleSpacing.Enabled = isPrettifyFile.Enabled && isPrettifyFile.Checked;
         }
 
         private void IsReplaceWord_CheckedChanged(object sender, EventArgs e)
@@ -319,7 +333,8 @@ namespace FolderPrettifier
 
         private void PrettifyFileContent(string file)
         {
-            Console.WriteLine("Prettify File");
+            string[] punctuations = { ",", ".", "?" };
+            string content = File.ReadAllText(file);
         }
 
         private void RenameFolder()
@@ -355,7 +370,7 @@ namespace FolderPrettifier
             {
                 file = PrettifyName(file);
             }
-            if (isPrettifyFile.Checked) PrettifyFileContent(file);
+            //if (isPrettifyFile.Checked) PrettifyFileContent(file);
             if (isCategorizeFiles.Checked) CategorizeFile(file);
 
             RenameFolder();
