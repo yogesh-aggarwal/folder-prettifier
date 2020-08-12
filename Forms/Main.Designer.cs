@@ -394,7 +394,7 @@
             // 
             this.updateCatalogToolStripMenuItem.Image = global::FolderPrettifier.Data.refresh;
             this.updateCatalogToolStripMenuItem.Name = "updateCatalogToolStripMenuItem";
-            this.updateCatalogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateCatalogToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.updateCatalogToolStripMenuItem.Text = "Update Catalog";
             this.updateCatalogToolStripMenuItem.Click += new System.EventHandler(this.updateCatalogToolStripMenuItem_Click);
             // 
