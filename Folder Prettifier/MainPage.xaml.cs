@@ -22,7 +22,8 @@ namespace Folder_Prettifier
         public MainPage()
         {
             this.InitializeComponent();
-            contentFrame.Navigate(Type.GetType("Folder_Prettifier.Pages.Settings"));
+            // Navigate to Manage Folders [1]
+            navigationView.SelectedItem = navigationView.MenuItems[1];
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
