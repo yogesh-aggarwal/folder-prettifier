@@ -1,0 +1,7 @@
+﻿"A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Release\ilc\in\Folder Prettifier.exe"
+/Lib:"A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Release\ilc\in"
+/Lib:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.net.native.compiler\2.2.8-rel-28605-00\tools\x64\ilc\lib\Private"
+/WinMD:"A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Release\ilc\in\WinMetadata\Windows.winmd"
+/VSTelemetrySessionSettings:"{"IsOptedIn":true,"HostName":"Dev14","AppInsightsInstrumentationKey":"f144292e-e3b2-4011-ac90-20e5c03fbce5","AsimovInstrumentationKey":"AIF-312cbd79-9dbb-4c48-a7da-3cc2a931cb70","AppId":1001,"UserId":"721980e6-5cf1-495f-b85b-008fa21fbb96","Id":"d1f95c72-8a50-49bb-8f32-12310888b9ed","ProcessStartTime":637349114943848527}"
+/RdXmlPath:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\microsoft.net.native.compiler\2.2.8-rel-28605-00\tools\LibraryXML"
+/RunOnlyPreDR

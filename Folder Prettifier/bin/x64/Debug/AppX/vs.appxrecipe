@@ -30,13 +30,13 @@
     <AppXManifest Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T11:43:14.470</Modified>
+      <Modified>2020-09-05T16:27:02.405</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Folder Prettifier.exe">
       <PackagePath>entrypoint\Folder Prettifier.exe</PackagePath>
-      <Modified>2020-09-05T11:43:13.605</Modified>
+      <Modified>2020-09-05T16:27:01.731</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x64\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
@@ -306,67 +306,67 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Folder Prettifier.xr.xml">
       <PackagePath>Folder Prettifier.xr.xml</PackagePath>
-      <Modified>2020-09-05T11:43:13.398</Modified>
+      <Modified>2020-09-05T16:09:06.620</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-09-05T11:31:06.940</Modified>
+      <Modified>2020-09-05T16:26:18.336</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\LicenseDialog.xbf">
       <PackagePath>Dialogs\LicenseDialog.xbf</PackagePath>
-      <Modified>2020-09-05T11:43:13.414</Modified>
+      <Modified>2020-09-05T16:26:18.336</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\LoginDialog.xbf">
       <PackagePath>Dialogs\LoginDialog.xbf</PackagePath>
-      <Modified>2020-09-05T11:31:06.940</Modified>
+      <Modified>2020-09-05T16:26:18.336</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\SignupDialog.xbf">
       <PackagePath>Dialogs\SignupDialog.xbf</PackagePath>
-      <Modified>2020-09-05T11:31:06.940</Modified>
+      <Modified>2020-09-05T16:26:18.337</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\UserBenefits.xbf">
       <PackagePath>Dialogs\UserBenefits.xbf</PackagePath>
-      <Modified>2020-09-05T11:31:06.941</Modified>
+      <Modified>2020-09-05T16:26:18.337</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-09-05T11:31:06.941</Modified>
+      <Modified>2020-09-05T16:26:18.337</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\BackupPage.xbf">
       <PackagePath>Pages\BackupPage.xbf</PackagePath>
-      <Modified>2020-09-05T11:31:06.941</Modified>
+      <Modified>2020-09-05T16:26:18.337</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\CloudSyncPage.xbf">
       <PackagePath>Pages\CloudSyncPage.xbf</PackagePath>
-      <Modified>2020-09-05T11:31:06.941</Modified>
+      <Modified>2020-09-05T16:26:18.337</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\FileEncryptionPage.xbf">
       <PackagePath>Pages\FileEncryptionPage.xbf</PackagePath>
-      <Modified>2020-09-05T11:31:06.941</Modified>
+      <Modified>2020-09-05T16:26:18.337</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\FolderEncryptionPage.xbf">
       <PackagePath>Pages\FolderEncryptionPage.xbf</PackagePath>
-      <Modified>2020-09-05T11:31:06.941</Modified>
+      <Modified>2020-09-05T16:26:18.337</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\ManageFoldersPage.xbf">
       <PackagePath>Pages\ManageFoldersPage.xbf</PackagePath>
-      <Modified>2020-09-05T11:31:06.941</Modified>
+      <Modified>2020-09-05T16:26:18.337</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\RedirectPage.xbf">
       <PackagePath>Pages\RedirectPage.xbf</PackagePath>
-      <Modified>2020-09-05T11:31:06.941</Modified>
+      <Modified>2020-09-05T16:26:18.337</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\Settings.xbf">
       <PackagePath>Pages\Settings.xbf</PackagePath>
-      <Modified>2020-09-05T11:31:06.939</Modified>
+      <Modified>2020-09-05T16:26:18.336</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\WatchPage.xbf">
       <PackagePath>Pages\WatchPage.xbf</PackagePath>
-      <Modified>2020-09-05T11:31:06.941</Modified>
+      <Modified>2020-09-05T16:26:18.338</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Theme.xbf">
       <PackagePath>Theme.xbf</PackagePath>
-      <Modified>2020-09-05T11:43:13.413</Modified>
+      <Modified>2020-09-05T16:26:18.309</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -374,11 +374,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-09-05T11:19:36.484</Modified>
+      <Modified>2020-09-05T14:16:36.068</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Core\Folder Prettifier.exe">
       <PackagePath>Folder Prettifier.exe</PackagePath>
-      <Modified>2020-09-05T11:43:14.461</Modified>
+      <Modified>2020-09-05T16:27:02.381</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

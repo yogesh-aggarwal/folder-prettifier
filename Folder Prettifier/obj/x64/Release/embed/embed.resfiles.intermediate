@@ -1,0 +1,15 @@
+App.xbf
+Dialogs\LicenseDialog.xbf
+Dialogs\LoginDialog.xbf
+Dialogs\SignupDialog.xbf
+Dialogs\UserBenefits.xbf
+MainPage.xbf
+Pages\BackupPage.xbf
+Pages\CloudSyncPage.xbf
+Pages\FileEncryptionPage.xbf
+Pages\FolderEncryptionPage.xbf
+Pages\ManageFoldersPage.xbf
+Pages\RedirectPage.xbf
+Pages\Settings.xbf
+Pages\WatchPage.xbf
+Theme.xbf

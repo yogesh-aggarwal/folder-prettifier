@@ -13,6 +13,17 @@ namespace Folder_Prettifier
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            string theme = Tools.Storage.Get("Theme", "System Default");
+
+            if (theme == "Light")
+            {
+                this.RequestedTheme = ApplicationTheme.Light;
+            }
+            else if(theme == "Dark")
+            {
+                this.RequestedTheme = ApplicationTheme.Dark;
+            }
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs e)

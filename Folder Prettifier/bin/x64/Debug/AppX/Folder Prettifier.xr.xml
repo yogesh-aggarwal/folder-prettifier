@@ -122,9 +122,19 @@
       <RootProperty Name="Text" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
+      <RootProperty Name="IsOn" />
       <RootProperty Name="Header" />
       <RootProperty Name="Margin" />
+      <RootEvent Name="Toggled" />
     </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="SelectedItem" />
+      <RootProperty Name="Items" />
+      <RootEvent Name="SelectionChanged" />
+    </RootType>
+    <RootType FullName="System.String" />
     <RootType FullName="Folder_Prettifier.Pages.Settings" />
     <RootType FullName="Folder_Prettifier.Pages.WatchPage" />
     <RootType FullName="Windows.UI.Xaml.ResourceDictionary">

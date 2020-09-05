@@ -1,12 +1,60 @@
-﻿using Folder_Prettifier.Dialogs;
-using System;
+﻿using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Folder_Prettifier.Dialogs;
+using Folder_Prettifier.Tools;
 
 namespace Folder_Prettifier.Pages
 {
     public sealed partial class Settings : Page
     {
+        private bool isThemeChangedFirstTime = false;
+        public string theme = Tools.Storage.Get("Theme", "System Default").ToString();
+        public bool isAddToPath = Tools.Storage.Get("IsAddToPath", false);
+        public bool isInContextMenu = Tools.Storage.Get("IsInContextMenu", false);
+        public bool isAutoStart = Tools.Storage.Get("IsAutoStart", true);
+        public bool isAutoManage = Tools.Storage.Get("IsAutoManage", false);
+
+        async public void ChangeTheme(object sender, SelectionChangedEventArgs e)
+        {
+            Tools.Storage.Set("Theme", ((ComboBox)sender).SelectedValue.ToString());
+
+            if (!isThemeChangedFirstTime)
+            {
+                isThemeChangedFirstTime = true;
+            }
+            else
+            {
+                ContentDialog dialog = new ContentDialog
+                {
+                    Title = "Restart Required",
+                    Content = "New theme has been applied. Please restart the application to continue...",
+                    CloseButtonText = "Okay"
+                };
+                await dialog.ShowAsync();
+            }
+        }
+
+        private void ToggleAddToPath(object sender, RoutedEventArgs e)
+        {
+            Tools.Storage.Set("IsAddToPath", ((ToggleSwitch)sender).IsOn);
+        }
+        
+        private void ToggleInContextMenu(object sender, RoutedEventArgs e)
+        {
+            Tools.Storage.Set("IsInContextMenu", ((ToggleSwitch)sender).IsOn);
+        }
+
+        private void ToggleAutoStart(object sender, RoutedEventArgs e)
+        {
+            Tools.Storage.Set("IsAutoStart", ((ToggleSwitch)sender).IsOn);
+        }
+        
+        private void ToggleAutoManage(object sender, RoutedEventArgs e)
+        {
+            Tools.Storage.Set("IsAutoManage", ((ToggleSwitch)sender).IsOn);
+        }
+
         public Settings()
         {
             this.InitializeComponent();
