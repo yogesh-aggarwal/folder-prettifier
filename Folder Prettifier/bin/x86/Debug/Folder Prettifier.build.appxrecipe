@@ -246,6 +246,12 @@
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x86\Debug\Dialogs\LoginDialog.xbf">
+      <PackagePath>Dialogs\LoginDialog.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x86\Debug\Dialogs\SignupDialog.xbf">
+      <PackagePath>Dialogs\SignupDialog.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>

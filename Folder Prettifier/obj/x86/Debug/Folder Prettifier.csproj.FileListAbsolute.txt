@@ -83,3 +83,13 @@ A:\UWP\Folder Prettifier\Folder Prettifier\obj\x86\Debug\Pages\FileEncryptionPag
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x86\Debug\Pages\FolderEncryptionPage.xbf
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x86\Debug\Pages\Settings.xbf
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x86\Debug\Pages\WatchPage.xbf
+A:\UWP\Folder Prettifier\Folder Prettifier\bin\x86\Debug\Dialogs\LoginDialog.xbf
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x86\Debug\Dialogs\LoginDialog.g.i.cs
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x86\Debug\Dialogs\LoginDialog.g.cs
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x86\Debug\Dialogs\LoginDialog.xaml
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x86\Debug\Dialogs\LoginDialog.xbf
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x86\Debug\Dialogs\SignupDialog.g.i.cs
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x86\Debug\Dialogs\SignupDialog.g.cs
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x86\Debug\Dialogs\SignupDialog.xaml
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x86\Debug\Dialogs\SignupDialog.xbf
+A:\UWP\Folder Prettifier\Folder Prettifier\bin\x86\Debug\Dialogs\SignupDialog.xbf

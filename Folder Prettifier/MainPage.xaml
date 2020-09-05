@@ -21,7 +21,7 @@
         </NavigationView.MenuItems>
 
         <NavigationView.PaneFooter>
-            <NavigationViewItem Icon="OtherUser" Content="Login" Tag="Login" Tapped="Login" />
+            <NavigationViewItem Icon="OtherUser" Content="Login" Tag="Login" Tapped="LoginUser" />
         </NavigationView.PaneFooter>
 
         <NavigationView.Content>

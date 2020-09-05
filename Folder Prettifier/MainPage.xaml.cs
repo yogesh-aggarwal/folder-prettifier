@@ -1,19 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using Folder_Prettifier.Tools;
-
+using Windows.UI.Xaml.Controls;
+using Folder_Prettifier.Dialogs;
 
 namespace Folder_Prettifier
 {
@@ -39,9 +27,10 @@ namespace Folder_Prettifier
             }
         }
 
-        private void Login(object sender, TappedRoutedEventArgs e)
+        async private void LoginUser(object sender, TappedRoutedEventArgs e)
         {
-            Tools.Tools.Login();
+            LoginDialog login = new LoginDialog();
+            await login.ShowAsync();
         }
     }
 }
