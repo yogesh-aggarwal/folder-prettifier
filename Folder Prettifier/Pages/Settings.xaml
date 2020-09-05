@@ -103,7 +103,7 @@
                 <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,5,0,0">Privacy &amp; Policy content</TextBlock>
                 <Button Grid.Row="2" Grid.Column="1" Margin="20,0,0,10">Show Privacy &amp; Policy</Button>
                 <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,5,0,0">Visit Website</TextBlock>
-                <Button Grid.Row="3" Grid.Column="1" Margin="20,0,0,10">Website</Button>
+                <Button Grid.Row="3" Grid.Column="1" Click="OpenWebsite" Margin="20,0,0,10">Website</Button>
             </Grid>
         </StackPanel>
 

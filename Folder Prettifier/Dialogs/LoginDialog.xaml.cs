@@ -28,5 +28,16 @@ namespace Folder_Prettifier.Dialogs
             SignupDialog signup= new SignupDialog();
             await signup.ShowAsync();
         }
+        async private void ReopenLogin()
+        {
+            await this.ShowAsync();
+        }
+
+        async private void UserBenefits(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            this.Hide();
+            UserBenefits userBenefits = new UserBenefits(ReopenLogin);
+            await userBenefits.ShowAsync();
+        }
     }
 }

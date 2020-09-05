@@ -32,20 +32,20 @@
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Margin" />
     </RootType>
-    <RootType FullName="Folder_Prettifier.Dialogs.LoginDialog" />
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="Margin" />
       <RootProperty Name="Inlines" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="FontWeight" />
+      <RootProperty Name="TextWrapping" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.HyperlinkButton">
       <RootProperty Name="Padding" />
       <RootProperty Name="Content" />
       <RootEvent Name="Click" />
     </RootType>
+    <RootType FullName="Folder_Prettifier.Dialogs.LoginDialog" />
     <RootType FullName="Folder_Prettifier.Dialogs.SignupDialog" />
-    <RootType FullName="Windows.UI.Xaml.Controls.ListBox" />
     <RootType FullName="Folder_Prettifier.Dialogs.UserBenefits" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Content" />
@@ -93,14 +93,6 @@
     <RootType FullName="Windows.UI.Xaml.Controls.GridViewHeaderItem">
       <RootProperty Name="Content" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Header" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
-      <RootMethod Name="GetToolTip" />
-      <RootMethod Name="SetToolTip" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Content" />
       <RootProperty Name="Margin" />
@@ -117,12 +109,20 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Flyout" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
+      <RootMethod Name="GetToolTip" />
+      <RootMethod Name="SetToolTip" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyout">
       <RootProperty Name="Placement" />
       <RootProperty Name="Items" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyoutItem">
       <RootProperty Name="Text" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
+      <RootProperty Name="Header" />
+      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Folder_Prettifier.Pages.Settings" />
     <RootType FullName="Folder_Prettifier.Pages.WatchPage" />

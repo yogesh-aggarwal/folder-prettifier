@@ -11,7 +11,37 @@
                                   >
 
     <StackPanel>
-        <ListBox></ListBox>
+        <TextBlock Margin="0,0,0,10">User having authenticated will enjoy the following features of the application</TextBlock>
+
+        <TextBlock FontSize="20" FontWeight="Medium" Margin="0,15,0,5">Cloud services are available to sync</TextBlock>
+        <TextBlock TextWrapping="WrapWholeWords">
+            Access to the cloud services like Google Drive, Microsoft OneDrive, Dropbox &amp; Mega
+            will be unlocked. Having that access you can consume the functionality of folder sync
+            with cloud to sync your files between your service provider	&amp; your windows 10 device.
+        </TextBlock>
+
+        <TextBlock FontSize="20" FontWeight="Medium" Margin="0,15,0,5">Backup settings on cloud</TextBlock>
+        <TextBlock TextWrapping="WrapWholeWords">
+            With your FP account, you can sync your settings with the cloud so that they remain safe &amp;
+            secure throught the time you use this product. They will be stored on the cloud	&amp; you can
+            restore them anytime you want from the settings. This sync will save your time of personalization
+            if you, in future, move to a new machine. This all with a seamless experience.
+        </TextBlock>
+
+        <TextBlock FontSize="20" FontWeight="Medium" Margin="0,15,0,5">Personalized catalog</TextBlock>
+        <TextBlock TextWrapping="WrapWholeWords">
+            Having your FP (Folder Prettifier) account with you, you will be able to personalize your
+            personal folder catalog. A catalog is just a blueprint of your folders. This catalog will
+            be kept on cloud. So, it's persistent.
+        </TextBlock>
+
+        <TextBlock FontSize="20" FontWeight="Medium" Margin="0,15,0,5">Customs icons are saved on cloud</TextBlock>
+        <TextBlock TextWrapping="WrapWholeWords">
+            If you have added custom icons to your folders for the better identification purpose then this will
+            help you keep your folder icons persistent in the future &amp; you don't need to create a dedicated
+            folder just for icons.
+        </TextBlock>
     </StackPanel>
 </ContentDialog>
+ 
 

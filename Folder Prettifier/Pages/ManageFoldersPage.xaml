@@ -9,7 +9,8 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock>Manage Folders</TextBlock> 
+        <TextBlock>Manage Folders</TextBlock>
+
+        
     </Grid>
 </Page>
- 
