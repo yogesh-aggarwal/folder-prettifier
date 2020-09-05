@@ -25,7 +25,9 @@
         </NavigationView.PaneFooter>
 
         <NavigationView.Content>
-            <Frame x:ConnectionId='4' x:Name="contentFrame" Padding="40" />
+            <ScrollViewer>
+                <Frame x:ConnectionId='4' x:Name="contentFrame" Padding="40" />
+            </ScrollViewer>
         </NavigationView.Content>
     </NavigationView>
 

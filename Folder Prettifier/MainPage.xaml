@@ -25,7 +25,9 @@
         </NavigationView.PaneFooter>
 
         <NavigationView.Content>
-            <Frame x:Name="contentFrame" Padding="40" />
+            <ScrollViewer>
+                <Frame x:Name="contentFrame" Padding="40" />
+            </ScrollViewer>
         </NavigationView.Content>
     </NavigationView>
 

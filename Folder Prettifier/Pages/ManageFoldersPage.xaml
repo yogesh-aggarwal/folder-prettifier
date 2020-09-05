@@ -1,4 +1,4 @@
-﻿<Page
+<Page
     x:Class="Folder_Prettifier.Pages.ManageFoldersPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -10,5 +10,24 @@
 
     <Grid>
         <TextBlock>Manage Folders</TextBlock>
+
+        <ContentDialog
+            x:Class="AppUIBasics.ControlPages.ContentDialogExample"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+
+            Title="Save your work?"
+            PrimaryButtonText="Save"
+            SecondaryButtonText="Don't Save"
+            CloseButtonText="Cancel"
+            DefaultButton="Primary">
+
+            <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <CheckBox Content="Upload your content to the cloud."/>
+                <TextBlock Text="Lorem ipsum dolor sit amet, adipisicing elit."
+                    TextWrapping="Wrap" />
+            </StackPanel>
+
+        </ContentDialog>
     </Grid>
 </Page>

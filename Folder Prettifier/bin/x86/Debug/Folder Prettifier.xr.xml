@@ -1,7 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Roots >
   <Roots.RootTypes>
-    <RootType FullName="Windows.UI.Xaml.Application" />
+    <RootType FullName="Windows.UI.Xaml.Application">
+      <RootProperty Name="Resources" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.ResourceDictionary">
+      <RootProperty Name="ThemeDictionaries" />
+      <RootProperty Name="MergedDictionaries" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension">
+      <RootProperty Name="ResourceKey" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
+      <RootProperty Name="Color" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.ColorPaletteResources">
+      <RootProperty Name="Accent" />
+      <RootProperty Name="AltHigh" />
+      <RootProperty Name="AltLow" />
+      <RootProperty Name="AltMedium" />
+      <RootProperty Name="AltMediumHigh" />
+      <RootProperty Name="AltMediumLow" />
+      <RootProperty Name="BaseHigh" />
+      <RootProperty Name="BaseLow" />
+      <RootProperty Name="BaseMedium" />
+      <RootProperty Name="BaseMediumHigh" />
+      <RootProperty Name="BaseMediumLow" />
+      <RootProperty Name="ChromeAltLow" />
+      <RootProperty Name="ChromeBlackHigh" />
+      <RootProperty Name="ChromeBlackLow" />
+      <RootProperty Name="ChromeBlackMedium" />
+      <RootProperty Name="ChromeBlackMediumLow" />
+      <RootProperty Name="ChromeDisabledHigh" />
+      <RootProperty Name="ChromeDisabledLow" />
+      <RootProperty Name="ChromeGray" />
+      <RootProperty Name="ChromeHigh" />
+      <RootProperty Name="ChromeLow" />
+      <RootProperty Name="ChromeMedium" />
+      <RootProperty Name="ChromeMediumLow" />
+      <RootProperty Name="ChromeWhite" />
+      <RootProperty Name="ListLow" />
+      <RootProperty Name="ListMedium" />
+    </RootType>
+    <RootType FullName="Windows.UI.Color" />
+    <RootType FullName="Windows.UI.Xaml.Media.AcrylicBrush">
+      <RootProperty Name="BackgroundSource" />
+      <RootProperty Name="TintColor" />
+      <RootProperty Name="TintOpacity" />
+      <RootProperty Name="FallbackColor" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.CornerRadius" />
+    <RootType FullName="Windows.UI.Xaml.Thickness" />
+    <RootType FullName="System.Double" />
+    <RootType FullName="Windows.UI.Xaml.Media.RevealBackgroundBrush">
+      <RootProperty Name="TargetTheme" />
+      <RootProperty Name="Color" />
+      <RootProperty Name="FallbackColor" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Content" />
       <RootProperty Name="Background" />
@@ -22,11 +78,13 @@
       <RootProperty Name="Tag" />
       <RootEvent Name="Tapped" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
+      <RootProperty Name="Content" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Frame">
       <RootProperty Name="Padding" />
     </RootType>
     <RootType FullName="Folder_Prettifier.MainPage" />
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Children" />
       <RootProperty Name="ColumnDefinitions" />
@@ -54,8 +112,9 @@
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
-      <RootProperty Name="Content" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Header" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
       <RootMethod Name="GetToolTip" />
@@ -63,6 +122,7 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Content" />
+      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.DropDownButton">
       <RootProperty Name="Content" />
