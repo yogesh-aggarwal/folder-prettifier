@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Folder_Prettifier.Dialogs;
+using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -38,6 +39,12 @@ namespace Folder_Prettifier.Pages
             catch { }
         }
 
+        async private void OpenLicense(object sender, RoutedEventArgs e)
+        {
+            LicenseDialog licenseDialog = new LicenseDialog();
+            await licenseDialog.ShowAsync();
+        }
+        
         private void OpenWebsite(object sender, RoutedEventArgs e)
         {
             Tools.Tools.OpenURL("https://folderprettifier.web.app");

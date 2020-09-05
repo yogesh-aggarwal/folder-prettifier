@@ -246,6 +246,9 @@
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\LicenseDialog.xbf">
+      <PackagePath>Dialogs\LicenseDialog.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\LoginDialog.xbf">
       <PackagePath>Dialogs\LoginDialog.xbf</PackagePath>
     </AppxPackagedFile>

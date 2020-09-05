@@ -101,3 +101,8 @@ A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\UserBenefits.g.
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\UserBenefits.xaml
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\UserBenefits.xbf
 A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\UserBenefits.xbf
+A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\LicenseDialog.xbf
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\LicenseDialog.g.i.cs
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\LicenseDialog.g.cs
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\LicenseDialog.xaml
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\LicenseDialog.xbf
