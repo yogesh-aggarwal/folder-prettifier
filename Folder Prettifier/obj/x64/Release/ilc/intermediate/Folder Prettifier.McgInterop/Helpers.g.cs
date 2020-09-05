@@ -798,8 +798,7 @@ namespace __Interop
 		internal static int StdCall__10(
 					global::System.IntPtr pfn, 
 					void* pthis, 
-					void* arg0, 
-					void* arg1)
+					int arg0)
 		{
 			// This method is implemented elsewhere in the toolchain
 			return 0;
@@ -808,13 +807,23 @@ namespace __Interop
 		internal static int StdCall__11(
 					global::System.IntPtr pfn, 
 					void* pthis, 
-					global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken arg0)
+					void* arg0, 
+					void* arg1)
 		{
 			// This method is implemented elsewhere in the toolchain
 			return 0;
 		}
 
 		internal static int StdCall__12(
+					global::System.IntPtr pfn, 
+					void* pthis, 
+					global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken arg0)
+		{
+			// This method is implemented elsewhere in the toolchain
+			return 0;
+		}
+
+		internal static int StdCall__13(
 					global::System.IntPtr pfn, 
 					void* pthis, 
 					uint arg0, 
@@ -825,7 +834,7 @@ namespace __Interop
 			return 0;
 		}
 
-		internal static void HasThisCall__13<TArg0>(
+		internal static void HasThisCall__14<TArg0>(
 					object __this, 
 					global::System.IntPtr pfn, 
 					object arg0, 
@@ -834,7 +843,7 @@ namespace __Interop
 			// This method is implemented elsewhere in the toolchain
 		}
 
-		internal static int StdCall__14(
+		internal static int StdCall__15(
 					global::System.IntPtr pfn, 
 					void* pthis)
 		{
@@ -842,7 +851,7 @@ namespace __Interop
 			return 0;
 		}
 
-		internal static void HasThisCall__15<TArg0, TArg1>(
+		internal static void HasThisCall__16<TArg0, TArg1>(
 					object __this, 
 					global::System.IntPtr pfn, 
 					TArg0 arg0, 
@@ -851,7 +860,7 @@ namespace __Interop
 			// This method is implemented elsewhere in the toolchain
 		}
 
-		internal static int StdCall__16(
+		internal static int StdCall__17(
 					global::System.IntPtr pfn, 
 					void* pthis, 
 					global::Windows.Foundation.Point arg0, 
@@ -862,7 +871,7 @@ namespace __Interop
 			return 0;
 		}
 
-		internal static int StdCall__17(
+		internal static int StdCall__18(
 					global::System.IntPtr pfn, 
 					void* pthis, 
 					int arg0, 
@@ -872,7 +881,7 @@ namespace __Interop
 			return 0;
 		}
 
-		internal static int StdCall__18(
+		internal static int StdCall__19(
 					global::System.IntPtr pfn, 
 					void* pthis, 
 					global::Windows.Foundation.Point arg0, 
@@ -882,20 +891,11 @@ namespace __Interop
 			return 0;
 		}
 
-		internal static int StdCall__19(
+		internal static int StdCall__20(
 					global::System.IntPtr pfn, 
 					void* pthis, 
 					global::System.Runtime.InteropServices.HSTRING arg0, 
 					void* arg1)
-		{
-			// This method is implemented elsewhere in the toolchain
-			return 0;
-		}
-
-		internal static int StdCall__20(
-					global::System.IntPtr pfn, 
-					void* pthis, 
-					int arg0)
 		{
 			// This method is implemented elsewhere in the toolchain
 			return 0;
@@ -2369,36 +2369,6 @@ namespace __Interop
 		[global::Internal.PreInitializedAddrOfDelegate]
 		public delegate void AddrOfTarget85(
 					global::System.__ComObject a0, 
-					object a1, 
-					global::Windows.UI.Xaml.Controls.ScrollViewerViewChangedEventArgs a2);
-
-		#endif
-
-
-		#if false
-		[global::Internal.PreInitializedAddrOfDelegate]
-		public delegate void AddrOfTarget86(
-					global::System.__ComObject a0, 
-					object a1, 
-					global::Windows.UI.Xaml.Controls.ScrollViewerViewChangingEventArgs a2);
-
-		#endif
-
-
-		#if false
-		[global::Internal.PreInitializedAddrOfDelegate]
-		public delegate void AddrOfTarget87(
-					global::System.__ComObject a0, 
-					global::Windows.UI.Xaml.Controls.ScrollViewer a1, 
-					global::Windows.UI.Xaml.Controls.AnchorRequestedEventArgs a2);
-
-		#endif
-
-
-		#if false
-		[global::Internal.PreInitializedAddrOfDelegate]
-		public delegate void AddrOfTarget88(
-					global::System.__ComObject a0, 
 					global::Windows.UI.Xaml.Documents.TextElement a1, 
 					global::Windows.UI.Xaml.Input.AccessKeyDisplayRequestedEventArgs a2);
 
@@ -2407,7 +2377,7 @@ namespace __Interop
 
 		#if false
 		[global::Internal.PreInitializedAddrOfDelegate]
-		public delegate void AddrOfTarget89(
+		public delegate void AddrOfTarget86(
 					global::System.__ComObject a0, 
 					global::Windows.UI.Xaml.Documents.TextElement a1, 
 					global::Windows.UI.Xaml.Input.AccessKeyDisplayDismissedEventArgs a2);
@@ -2417,7 +2387,7 @@ namespace __Interop
 
 		#if false
 		[global::Internal.PreInitializedAddrOfDelegate]
-		public delegate void AddrOfTarget90(
+		public delegate void AddrOfTarget87(
 					global::System.__ComObject a0, 
 					global::Windows.UI.Xaml.Documents.TextElement a1, 
 					global::Windows.UI.Xaml.Input.AccessKeyInvokedEventArgs a2);
@@ -2427,7 +2397,7 @@ namespace __Interop
 
 		#if false
 		[global::Internal.PreInitializedAddrOfDelegate]
-		public delegate void AddrOfTarget91(
+		public delegate void AddrOfTarget88(
 					global::System.__ComObject a0, 
 					object a1, 
 					global::Windows.UI.Xaml.Controls.ContextMenuEventArgs a2);
@@ -2437,10 +2407,40 @@ namespace __Interop
 
 		#if false
 		[global::Internal.PreInitializedAddrOfDelegate]
-		public delegate void AddrOfTarget92(
+		public delegate void AddrOfTarget89(
 					global::System.__ComObject a0, 
 					global::Windows.UI.Xaml.Controls.TextBlock a1, 
 					global::Windows.UI.Xaml.Controls.IsTextTrimmedChangedEventArgs a2);
+
+		#endif
+
+
+		#if false
+		[global::Internal.PreInitializedAddrOfDelegate]
+		public delegate void AddrOfTarget90(
+					global::System.__ComObject a0, 
+					object a1, 
+					global::Windows.UI.Xaml.Controls.ScrollViewerViewChangedEventArgs a2);
+
+		#endif
+
+
+		#if false
+		[global::Internal.PreInitializedAddrOfDelegate]
+		public delegate void AddrOfTarget91(
+					global::System.__ComObject a0, 
+					object a1, 
+					global::Windows.UI.Xaml.Controls.ScrollViewerViewChangingEventArgs a2);
+
+		#endif
+
+
+		#if false
+		[global::Internal.PreInitializedAddrOfDelegate]
+		public delegate void AddrOfTarget92(
+					global::System.__ComObject a0, 
+					global::Windows.UI.Xaml.Controls.ScrollViewer a1, 
+					global::Windows.UI.Xaml.Controls.AnchorRequestedEventArgs a2);
 
 		#endif
 

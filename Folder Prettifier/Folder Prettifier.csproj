@@ -119,11 +119,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\AboutDialog.xaml.cs">
+      <DependentUpon>AboutDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\LicenseDialog.xaml.cs">
       <DependentUpon>LicenseDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\LoginDialog.xaml.cs">
       <DependentUpon>LoginDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\PrivacyPolicyDialog.xaml.cs">
+      <DependentUpon>PrivacyPolicyDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\SignupDialog.xaml.cs">
       <DependentUpon>SignupDialog.xaml</DependentUpon>
@@ -225,11 +231,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Dialogs\AboutDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\LicenseDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\LoginDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\PrivacyPolicyDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

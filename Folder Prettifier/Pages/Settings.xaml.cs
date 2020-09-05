@@ -86,13 +86,25 @@ namespace Folder_Prettifier.Pages
             }
             catch { }
         }
+        
+        async private void OpenAbout(object sender, RoutedEventArgs e)
+        {
+            AboutDialog aboutDialog = new AboutDialog();
+            await aboutDialog.ShowAsync();
+        }
 
         async private void OpenLicense(object sender, RoutedEventArgs e)
         {
             LicenseDialog licenseDialog = new LicenseDialog();
             await licenseDialog.ShowAsync();
         }
-        
+
+        async private void OpenPrivacyPolicy(object sender, RoutedEventArgs e)
+        {
+            PrivacyPolicyDialog privacyPolicyDialog= new PrivacyPolicyDialog();
+            await privacyPolicyDialog.ShowAsync();
+        }
+
         private void OpenWebsite(object sender, RoutedEventArgs e)
         {
             Tools.Tools.OpenURL("https://folderprettifier.web.app");

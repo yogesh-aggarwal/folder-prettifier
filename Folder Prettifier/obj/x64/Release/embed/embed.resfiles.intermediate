@@ -1,6 +1,8 @@
 App.xbf
+Dialogs\AboutDialog.xbf
 Dialogs\LicenseDialog.xbf
 Dialogs\LoginDialog.xbf
+Dialogs\PrivacyPolicyDialog.xbf
 Dialogs\SignupDialog.xbf
 Dialogs\UserBenefits.xbf
 MainPage.xbf

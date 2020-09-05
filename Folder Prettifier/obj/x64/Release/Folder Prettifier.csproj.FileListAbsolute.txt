@@ -637,3 +637,14 @@ A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Release\ilc\intermediate\Reso
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Release\ilc\intermediate\Resources\System.Runtime.WindowsRuntime.UI.Xaml.index.txt
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Release\ilc\intermediate\rhbindargs.Folder Prettifier.rsp
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Release\ilc\intermediate\System.Private.Folder Prettifier.Generated.dll
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Release\Folder Prettifier.csprojAssemblyReference.cache
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Release\Dialogs\AboutDialog.g.i.cs
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Release\Dialogs\AboutDialog.g.cs
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Release\Dialogs\AboutDialog.xaml
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Release\Dialogs\AboutDialog.xbf
+A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Release\Dialogs\AboutDialog.xbf
+A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Release\Dialogs\PrivacyPolicyDialog.xbf
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Release\Dialogs\PrivacyPolicyDialog.g.i.cs
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Release\Dialogs\PrivacyPolicyDialog.g.cs
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Release\Dialogs\PrivacyPolicyDialog.xaml
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Release\Dialogs\PrivacyPolicyDialog.xbf

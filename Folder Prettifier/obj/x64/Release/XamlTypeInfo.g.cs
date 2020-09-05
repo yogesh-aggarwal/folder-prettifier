@@ -199,51 +199,55 @@ namespace Folder_Prettifier.Folder_Prettifier_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[21];
-            _typeNameTable[0] = "Folder_Prettifier.Dialogs.LicenseDialog";
+            _typeNameTable = new string[23];
+            _typeNameTable[0] = "Folder_Prettifier.Dialogs.AboutDialog";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.ContentDialog";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.ContentControl";
-            _typeNameTable[3] = "Folder_Prettifier.Dialogs.LoginDialog";
-            _typeNameTable[4] = "Folder_Prettifier.Dialogs.SignupDialog";
-            _typeNameTable[5] = "Folder_Prettifier.Dialogs.UserBenefits";
-            _typeNameTable[6] = "Folder_Prettifier.MainPage";
-            _typeNameTable[7] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[8] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[9] = "Folder_Prettifier.Pages.BackupPage";
-            _typeNameTable[10] = "Folder_Prettifier.Pages.CloudSyncPage";
-            _typeNameTable[11] = "Folder_Prettifier.Pages.FileEncryptionPage";
-            _typeNameTable[12] = "Folder_Prettifier.Pages.FolderEncryptionPage";
-            _typeNameTable[13] = "Folder_Prettifier.Pages.ManageFoldersPage";
-            _typeNameTable[14] = "Folder_Prettifier.Pages.RedirectPage";
-            _typeNameTable[15] = "Folder_Prettifier.Pages.Settings";
-            _typeNameTable[16] = "Folder_Prettifier.Pages.WatchPage";
-            _typeNameTable[17] = "Windows.UI.Color";
-            _typeNameTable[18] = "System.ValueType";
-            _typeNameTable[19] = "Object";
-            _typeNameTable[20] = "Byte";
+            _typeNameTable[3] = "Folder_Prettifier.Dialogs.LicenseDialog";
+            _typeNameTable[4] = "Folder_Prettifier.Dialogs.LoginDialog";
+            _typeNameTable[5] = "Folder_Prettifier.Dialogs.PrivacyPolicyDialog";
+            _typeNameTable[6] = "Folder_Prettifier.Dialogs.SignupDialog";
+            _typeNameTable[7] = "Folder_Prettifier.Dialogs.UserBenefits";
+            _typeNameTable[8] = "Folder_Prettifier.MainPage";
+            _typeNameTable[9] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[10] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[11] = "Folder_Prettifier.Pages.BackupPage";
+            _typeNameTable[12] = "Folder_Prettifier.Pages.CloudSyncPage";
+            _typeNameTable[13] = "Folder_Prettifier.Pages.FileEncryptionPage";
+            _typeNameTable[14] = "Folder_Prettifier.Pages.FolderEncryptionPage";
+            _typeNameTable[15] = "Folder_Prettifier.Pages.ManageFoldersPage";
+            _typeNameTable[16] = "Folder_Prettifier.Pages.RedirectPage";
+            _typeNameTable[17] = "Folder_Prettifier.Pages.Settings";
+            _typeNameTable[18] = "Folder_Prettifier.Pages.WatchPage";
+            _typeNameTable[19] = "Windows.UI.Color";
+            _typeNameTable[20] = "System.ValueType";
+            _typeNameTable[21] = "Object";
+            _typeNameTable[22] = "Byte";
 
-            _typeTable = new global::System.Type[21];
-            _typeTable[0] = typeof(global::Folder_Prettifier.Dialogs.LicenseDialog);
+            _typeTable = new global::System.Type[23];
+            _typeTable[0] = typeof(global::Folder_Prettifier.Dialogs.AboutDialog);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.ContentDialog);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.ContentControl);
-            _typeTable[3] = typeof(global::Folder_Prettifier.Dialogs.LoginDialog);
-            _typeTable[4] = typeof(global::Folder_Prettifier.Dialogs.SignupDialog);
-            _typeTable[5] = typeof(global::Folder_Prettifier.Dialogs.UserBenefits);
-            _typeTable[6] = typeof(global::Folder_Prettifier.MainPage);
-            _typeTable[7] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[8] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[9] = typeof(global::Folder_Prettifier.Pages.BackupPage);
-            _typeTable[10] = typeof(global::Folder_Prettifier.Pages.CloudSyncPage);
-            _typeTable[11] = typeof(global::Folder_Prettifier.Pages.FileEncryptionPage);
-            _typeTable[12] = typeof(global::Folder_Prettifier.Pages.FolderEncryptionPage);
-            _typeTable[13] = typeof(global::Folder_Prettifier.Pages.ManageFoldersPage);
-            _typeTable[14] = typeof(global::Folder_Prettifier.Pages.RedirectPage);
-            _typeTable[15] = typeof(global::Folder_Prettifier.Pages.Settings);
-            _typeTable[16] = typeof(global::Folder_Prettifier.Pages.WatchPage);
-            _typeTable[17] = typeof(global::Windows.UI.Color);
-            _typeTable[18] = typeof(global::System.ValueType);
-            _typeTable[19] = typeof(global::System.Object);
-            _typeTable[20] = typeof(global::System.Byte);
+            _typeTable[3] = typeof(global::Folder_Prettifier.Dialogs.LicenseDialog);
+            _typeTable[4] = typeof(global::Folder_Prettifier.Dialogs.LoginDialog);
+            _typeTable[5] = typeof(global::Folder_Prettifier.Dialogs.PrivacyPolicyDialog);
+            _typeTable[6] = typeof(global::Folder_Prettifier.Dialogs.SignupDialog);
+            _typeTable[7] = typeof(global::Folder_Prettifier.Dialogs.UserBenefits);
+            _typeTable[8] = typeof(global::Folder_Prettifier.MainPage);
+            _typeTable[9] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[10] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[11] = typeof(global::Folder_Prettifier.Pages.BackupPage);
+            _typeTable[12] = typeof(global::Folder_Prettifier.Pages.CloudSyncPage);
+            _typeTable[13] = typeof(global::Folder_Prettifier.Pages.FileEncryptionPage);
+            _typeTable[14] = typeof(global::Folder_Prettifier.Pages.FolderEncryptionPage);
+            _typeTable[15] = typeof(global::Folder_Prettifier.Pages.ManageFoldersPage);
+            _typeTable[16] = typeof(global::Folder_Prettifier.Pages.RedirectPage);
+            _typeTable[17] = typeof(global::Folder_Prettifier.Pages.Settings);
+            _typeTable[18] = typeof(global::Folder_Prettifier.Pages.WatchPage);
+            _typeTable[19] = typeof(global::Windows.UI.Color);
+            _typeTable[20] = typeof(global::System.ValueType);
+            _typeTable[21] = typeof(global::System.Object);
+            _typeTable[22] = typeof(global::System.Byte);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -278,18 +282,20 @@ namespace Folder_Prettifier.Folder_Prettifier_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_LicenseDialog() { return new global::Folder_Prettifier.Dialogs.LicenseDialog(); }
-        private object Activate_3_LoginDialog() { return new global::Folder_Prettifier.Dialogs.LoginDialog(); }
-        private object Activate_4_SignupDialog() { return new global::Folder_Prettifier.Dialogs.SignupDialog(); }
-        private object Activate_6_MainPage() { return new global::Folder_Prettifier.MainPage(); }
-        private object Activate_9_BackupPage() { return new global::Folder_Prettifier.Pages.BackupPage(); }
-        private object Activate_10_CloudSyncPage() { return new global::Folder_Prettifier.Pages.CloudSyncPage(); }
-        private object Activate_11_FileEncryptionPage() { return new global::Folder_Prettifier.Pages.FileEncryptionPage(); }
-        private object Activate_12_FolderEncryptionPage() { return new global::Folder_Prettifier.Pages.FolderEncryptionPage(); }
-        private object Activate_13_ManageFoldersPage() { return new global::Folder_Prettifier.Pages.ManageFoldersPage(); }
-        private object Activate_14_RedirectPage() { return new global::Folder_Prettifier.Pages.RedirectPage(); }
-        private object Activate_15_Settings() { return new global::Folder_Prettifier.Pages.Settings(); }
-        private object Activate_16_WatchPage() { return new global::Folder_Prettifier.Pages.WatchPage(); }
+        private object Activate_0_AboutDialog() { return new global::Folder_Prettifier.Dialogs.AboutDialog(); }
+        private object Activate_3_LicenseDialog() { return new global::Folder_Prettifier.Dialogs.LicenseDialog(); }
+        private object Activate_4_LoginDialog() { return new global::Folder_Prettifier.Dialogs.LoginDialog(); }
+        private object Activate_5_PrivacyPolicyDialog() { return new global::Folder_Prettifier.Dialogs.PrivacyPolicyDialog(); }
+        private object Activate_6_SignupDialog() { return new global::Folder_Prettifier.Dialogs.SignupDialog(); }
+        private object Activate_8_MainPage() { return new global::Folder_Prettifier.MainPage(); }
+        private object Activate_11_BackupPage() { return new global::Folder_Prettifier.Pages.BackupPage(); }
+        private object Activate_12_CloudSyncPage() { return new global::Folder_Prettifier.Pages.CloudSyncPage(); }
+        private object Activate_13_FileEncryptionPage() { return new global::Folder_Prettifier.Pages.FileEncryptionPage(); }
+        private object Activate_14_FolderEncryptionPage() { return new global::Folder_Prettifier.Pages.FolderEncryptionPage(); }
+        private object Activate_15_ManageFoldersPage() { return new global::Folder_Prettifier.Pages.ManageFoldersPage(); }
+        private object Activate_16_RedirectPage() { return new global::Folder_Prettifier.Pages.RedirectPage(); }
+        private object Activate_17_Settings() { return new global::Folder_Prettifier.Pages.Settings(); }
+        private object Activate_18_WatchPage() { return new global::Folder_Prettifier.Pages.WatchPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -301,9 +307,9 @@ namespace Folder_Prettifier.Folder_Prettifier_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  Folder_Prettifier.Dialogs.LicenseDialog
+            case 0:   //  Folder_Prettifier.Dialogs.AboutDialog
                 userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.ContentDialog"));
-                userType.Activator = Activate_0_LicenseDialog;
+                userType.Activator = Activate_0_AboutDialog;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -316,98 +322,112 @@ namespace Folder_Prettifier.Folder_Prettifier_XamlTypeInfo
                 xamlType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 3:   //  Folder_Prettifier.Dialogs.LoginDialog
+            case 3:   //  Folder_Prettifier.Dialogs.LicenseDialog
                 userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.ContentDialog"));
-                userType.Activator = Activate_3_LoginDialog;
+                userType.Activator = Activate_3_LicenseDialog;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 4:   //  Folder_Prettifier.Dialogs.SignupDialog
+            case 4:   //  Folder_Prettifier.Dialogs.LoginDialog
                 userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.ContentDialog"));
-                userType.Activator = Activate_4_SignupDialog;
+                userType.Activator = Activate_4_LoginDialog;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 5:   //  Folder_Prettifier.Dialogs.UserBenefits
+            case 5:   //  Folder_Prettifier.Dialogs.PrivacyPolicyDialog
+                userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.ContentDialog"));
+                userType.Activator = Activate_5_PrivacyPolicyDialog;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 6:   //  Folder_Prettifier.Dialogs.SignupDialog
+                userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.ContentDialog"));
+                userType.Activator = Activate_6_SignupDialog;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 7:   //  Folder_Prettifier.Dialogs.UserBenefits
                 userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.ContentDialog"));
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 6:   //  Folder_Prettifier.MainPage
+            case 8:   //  Folder_Prettifier.MainPage
                 userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_6_MainPage;
+                userType.Activator = Activate_8_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 7:   //  Windows.UI.Xaml.Controls.Page
+            case 9:   //  Windows.UI.Xaml.Controls.Page
                 xamlType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 8:   //  Windows.UI.Xaml.Controls.UserControl
+            case 10:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 9:   //  Folder_Prettifier.Pages.BackupPage
+            case 11:   //  Folder_Prettifier.Pages.BackupPage
                 userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_9_BackupPage;
+                userType.Activator = Activate_11_BackupPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 10:   //  Folder_Prettifier.Pages.CloudSyncPage
+            case 12:   //  Folder_Prettifier.Pages.CloudSyncPage
                 userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_10_CloudSyncPage;
+                userType.Activator = Activate_12_CloudSyncPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 11:   //  Folder_Prettifier.Pages.FileEncryptionPage
+            case 13:   //  Folder_Prettifier.Pages.FileEncryptionPage
                 userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_11_FileEncryptionPage;
+                userType.Activator = Activate_13_FileEncryptionPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 12:   //  Folder_Prettifier.Pages.FolderEncryptionPage
+            case 14:   //  Folder_Prettifier.Pages.FolderEncryptionPage
                 userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_12_FolderEncryptionPage;
+                userType.Activator = Activate_14_FolderEncryptionPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 13:   //  Folder_Prettifier.Pages.ManageFoldersPage
+            case 15:   //  Folder_Prettifier.Pages.ManageFoldersPage
                 userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_13_ManageFoldersPage;
+                userType.Activator = Activate_15_ManageFoldersPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 14:   //  Folder_Prettifier.Pages.RedirectPage
+            case 16:   //  Folder_Prettifier.Pages.RedirectPage
                 userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_14_RedirectPage;
+                userType.Activator = Activate_16_RedirectPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 15:   //  Folder_Prettifier.Pages.Settings
+            case 17:   //  Folder_Prettifier.Pages.Settings
                 userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_15_Settings;
+                userType.Activator = Activate_17_Settings;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 16:   //  Folder_Prettifier.Pages.WatchPage
+            case 18:   //  Folder_Prettifier.Pages.WatchPage
                 userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_16_WatchPage;
+                userType.Activator = Activate_18_WatchPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 17:   //  Windows.UI.Color
+            case 19:   //  Windows.UI.Color
                 userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.AddMemberName("A");
                 userType.AddMemberName("B");
@@ -416,16 +436,16 @@ namespace Folder_Prettifier.Folder_Prettifier_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 18:   //  System.ValueType
+            case 20:   //  System.ValueType
                 userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 xamlType = userType;
                 break;
 
-            case 19:   //  Object
+            case 21:   //  Object
                 xamlType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 20:   //  Byte
+            case 22:   //  Byte
                 userType = new global::Folder_Prettifier.Folder_Prettifier_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;

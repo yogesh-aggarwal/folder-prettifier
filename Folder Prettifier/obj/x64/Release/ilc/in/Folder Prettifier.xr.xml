@@ -22,15 +22,16 @@
       <RootProperty Name="Orientation" />
       <RootProperty Name="Margin" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
-      <RootProperty Name="Content" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
-      <RootProperty Name="Inlines" />
-      <RootProperty Name="Margin" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="FontWeight" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Inlines" />
       <RootProperty Name="TextWrapping" />
+    </RootType>
+    <RootType FullName="Folder_Prettifier.Dialogs.AboutDialog" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
+      <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="Folder_Prettifier.Dialogs.LicenseDialog" />
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
@@ -49,6 +50,7 @@
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Folder_Prettifier.Dialogs.LoginDialog" />
+    <RootType FullName="Folder_Prettifier.Dialogs.PrivacyPolicyDialog" />
     <RootType FullName="Folder_Prettifier.Dialogs.SignupDialog" />
     <RootType FullName="Folder_Prettifier.Dialogs.UserBenefits" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
@@ -122,9 +124,9 @@
       <RootProperty Name="Text" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
+      <RootProperty Name="IsOn" />
       <RootProperty Name="Header" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="IsOn" />
       <RootEvent Name="Toggled" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension" />

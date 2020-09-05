@@ -30,7 +30,7 @@
     <AppXManifest Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Release\ilc\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T15:21:58.337</Modified>
+      <Modified>2020-09-05T16:49:17.292</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -294,19 +294,19 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Release\ilc\Folder Prettifier.dll">
       <PackagePath>Folder Prettifier.dll</PackagePath>
-      <Modified>2020-09-05T15:21:58.017</Modified>
+      <Modified>2020-09-05T16:49:16.978</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Release\ilc\Folder Prettifier.exe">
       <PackagePath>Folder Prettifier.exe</PackagePath>
-      <Modified>2020-09-05T15:21:58.312</Modified>
+      <Modified>2020-09-05T16:49:17.269</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Release\ilc\Folder Prettifier.pdb">
       <PackagePath>Folder Prettifier.pdb</PackagePath>
-      <Modified>2020-09-05T15:21:58.303</Modified>
+      <Modified>2020-09-05T16:49:17.263</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Release\ilc\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-09-05T15:21:22.837</Modified>
+      <Modified>2020-09-05T16:48:55.190</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

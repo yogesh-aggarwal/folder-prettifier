@@ -13,7 +13,7 @@
         <TextBlock FontSize="25" FontWeight="Medium" Margin="0,40,0,10">General</TextBlock>
         <StackPanel Orientation="Horizontal">
             <TextBlock Margin="0,7,20,0">Application Theme</TextBlock>
-            <ComboBox x:ConnectionId='6' Margin="0,0,40,0" ToolTipService.ToolTip="Choose location"                                                             >
+            <ComboBox x:ConnectionId='11' Margin="0,0,40,0" ToolTipService.ToolTip="Choose location"                                                             >
                 <x:String>System Default</x:String>
                 <x:String>Light</x:String>
                 <x:String>Dark</x:String>
@@ -23,21 +23,21 @@
         <!-- System Modifications -->
         <TextBlock FontSize="25" FontWeight="Medium" Margin="0,40,0,10">System Modifications</TextBlock>
         <StackPanel>
-            <ToggleSwitch x:ConnectionId='5' Margin="0,10,0,0" ToolTipService.ToolTip="Add to environment variables"                                                      >
+            <ToggleSwitch x:ConnectionId='8' Margin="0,10,0,0" ToolTipService.ToolTip="Add to environment variables"                                                      >
                 Add to Path
             </ToggleSwitch>
-            <ToggleSwitch Margin="0,10,0,0" ToolTipService.ToolTip="Add manage shortcut to context menu of folders">
-                Add to folder menu
+            <ToggleSwitch x:ConnectionId='9' Margin="0,10,0,0" ToolTipService.ToolTip="Add manage shortcut to context menu of folders"                                                              >
+                Add to Folder Menu
             </ToggleSwitch>
-            <ToggleSwitch Margin="0,10,0,0" ToolTipService.ToolTip="Automatically run as the system starts">
-                Autostart at startup
+            <ToggleSwitch x:ConnectionId='10' Margin="0,10,0,0" ToolTipService.ToolTip="Automatically run as the system starts"                                                      >
+                Autostart at Startup
             </ToggleSwitch>
         </StackPanel>
 
         <!-- Folder Services -->
         <TextBlock FontSize="25" FontWeight="Medium" Margin="0,40,0,10">Folder Services</TextBlock>
         <StackPanel>
-            <ToggleSwitch ToolTipService.ToolTip="Automatically manage the folders as they change">
+            <ToggleSwitch x:ConnectionId='7' ToolTipService.ToolTip="Automatically manage the folders as they change"                                                        >
                 Auto manage folders
             </ToggleSwitch>
         </StackPanel>
@@ -93,13 +93,13 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,5,0,0">Basic information about the product</TextBlock>
-                <Button Grid.Row="0" Grid.Column="1" Margin="20,0,0,10">Show About</Button>
+                <Button x:ConnectionId='3' Grid.Row="0" Grid.Column="1"                   Margin="20,0,0,10">Show About</Button>
                 <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,5,0,0">License of the product</TextBlock>
-                <Button x:ConnectionId='3' Grid.Row="1" Grid.Column="1"                     Margin="20,0,0,10">Show License</Button>
+                <Button x:ConnectionId='4' Grid.Row="1" Grid.Column="1"                     Margin="20,0,0,10">Show License</Button>
                 <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,5,0,0">Privacy &amp; Policy content</TextBlock>
-                <Button Grid.Row="2" Grid.Column="1" Margin="20,0,0,10">Show Privacy &amp; Policy</Button>
+                <Button x:ConnectionId='5' Grid.Row="2" Grid.Column="1"                           Margin="20,0,0,10">Show Privacy &amp; Policy</Button>
                 <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,5,0,0">Visit Website</TextBlock>
-                <Button x:ConnectionId='4' Grid.Row="3" Grid.Column="1"                     Margin="20,0,0,10">Website</Button>
+                <Button x:ConnectionId='6' Grid.Row="3" Grid.Column="1"                     Margin="20,0,0,10">Website</Button>
             </Grid>
         </StackPanel>
 

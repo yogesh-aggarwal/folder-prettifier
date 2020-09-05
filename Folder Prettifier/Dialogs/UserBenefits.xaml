@@ -22,7 +22,7 @@
 
         <TextBlock FontSize="20" FontWeight="Medium" Margin="0,15,0,5">Backup settings on cloud</TextBlock>
         <TextBlock TextWrapping="WrapWholeWords">
-            With your FP account, you can sync your settings with the cloud so that they remain safe &amp;
+            With your Folder Prettifier account, you can sync your settings with the cloud so that they remain safe &amp;
             secure throught the time you use this product. They will be stored on the cloud	&amp; you can
             restore them anytime you want from the settings. This sync will save your time of personalization
             if you, in future, move to a new machine. This all with a seamless experience.
@@ -30,7 +30,7 @@
 
         <TextBlock FontSize="20" FontWeight="Medium" Margin="0,15,0,5">Personalized catalog</TextBlock>
         <TextBlock TextWrapping="WrapWholeWords">
-            Having your FP (Folder Prettifier) account with you, you will be able to personalize your
+            Having your Folder Prettifier account with you, you will be able to personalize your
             personal folder catalog. A catalog is just a blueprint of your folders. This catalog will
             be kept on cloud. So, it's persistent.
         </TextBlock>

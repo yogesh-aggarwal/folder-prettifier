@@ -93,11 +93,11 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,5,0,0">Basic information about the product</TextBlock>
-                <Button Grid.Row="0" Grid.Column="1" Margin="20,0,0,10">Show About</Button>
+                <Button Grid.Row="0" Grid.Column="1" Click="OpenAbout" Margin="20,0,0,10">Show About</Button>
                 <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,5,0,0">License of the product</TextBlock>
                 <Button Grid.Row="1" Grid.Column="1" Click="OpenLicense" Margin="20,0,0,10">Show License</Button>
                 <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,5,0,0">Privacy &amp; Policy content</TextBlock>
-                <Button Grid.Row="2" Grid.Column="1" Margin="20,0,0,10">Show Privacy &amp; Policy</Button>
+                <Button Grid.Row="2" Grid.Column="1" Click="OpenPrivacyPolicy" Margin="20,0,0,10">Show Privacy &amp; Policy</Button>
                 <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,5,0,0">Visit Website</TextBlock>
                 <Button Grid.Row="3" Grid.Column="1" Click="OpenWebsite" Margin="20,0,0,10">Website</Button>
             </Grid>
