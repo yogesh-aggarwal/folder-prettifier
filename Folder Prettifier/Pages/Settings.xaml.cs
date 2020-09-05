@@ -26,5 +26,32 @@ namespace Folder_Prettifier.Pages
         {
             this.InitializeComponent();
         }
+
+        async private void ResetSettings(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ContentDialog locationPromptDialog = new ContentDialog
+                {
+                    Title = "Reset Settings?",
+                    Content = "Are you willing to remove all your preferred settings?",
+                    CloseButtonText = "No",
+                    PrimaryButtonText = "Yes, Proceed"
+                };
+
+                ContentDialogResult result = await locationPromptDialog.ShowAsync();
+                if (result.Equals(ContentDialogResult.Primary))
+                {
+                    ContentDialog doneDialog = new ContentDialog
+                    {
+                        Title = "Settings Reset Done",
+                        Content = "Settings are reseted successfully, now you can proceed!",
+                        CloseButtonText = "Okay",
+                    };
+                    await doneDialog.ShowAsync();
+                }
+            }
+            catch { }
+        }
     }
 }
