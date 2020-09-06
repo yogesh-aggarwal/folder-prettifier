@@ -119,22 +119,28 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\AboutDialog.xaml.cs">
+    <Compile Include="Dialogs\ManageFolders\CustomizeCatalogDialog.xaml.cs">
+      <DependentUpon>CustomizeCatalogDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ManageFolders\ReplaceTasksDialog.xaml.cs">
+      <DependentUpon>ReplaceTasksDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Settings\AboutDialog.xaml.cs">
       <DependentUpon>AboutDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\LicenseDialog.xaml.cs">
+    <Compile Include="Dialogs\Settings\LicenseDialog.xaml.cs">
       <DependentUpon>LicenseDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\LoginDialog.xaml.cs">
+    <Compile Include="Dialogs\Global\LoginDialog.xaml.cs">
       <DependentUpon>LoginDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\PrivacyPolicyDialog.xaml.cs">
+    <Compile Include="Dialogs\Settings\PrivacyPolicyDialog.xaml.cs">
       <DependentUpon>PrivacyPolicyDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\SignupDialog.xaml.cs">
+    <Compile Include="Dialogs\Global\SignupDialog.xaml.cs">
       <DependentUpon>SignupDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\UserBenefits.xaml.cs">
+    <Compile Include="Dialogs\Global\UserBenefits.xaml.cs">
       <DependentUpon>UserBenefits.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
@@ -231,27 +237,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Dialogs\AboutDialog.xaml">
+    <Page Include="Dialogs\ManageFolders\CustomizeCatalogDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\LicenseDialog.xaml">
+    <Page Include="Dialogs\ManageFolders\ReplaceTasksDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\LoginDialog.xaml">
+    <Page Include="Dialogs\Settings\AboutDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\PrivacyPolicyDialog.xaml">
+    <Page Include="Dialogs\Settings\LicenseDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\SignupDialog.xaml">
+    <Page Include="Dialogs\Global\LoginDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\UserBenefits.xaml">
+    <Page Include="Dialogs\Settings\PrivacyPolicyDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\Global\SignupDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\Global\UserBenefits.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

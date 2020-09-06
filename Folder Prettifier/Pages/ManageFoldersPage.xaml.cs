@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using Folder_Prettifier.Dialogs.ManageFolders;
+using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Folder_Prettifier.Pages
 {
@@ -25,6 +13,18 @@ namespace Folder_Prettifier.Pages
         public ManageFoldersPage()
         {
             this.InitializeComponent();
+        }
+
+        async private void OpenManageTasksDialog(object sender, RoutedEventArgs e)
+        {
+            ReplaceTasksDialog replaceTasksDialog = new ReplaceTasksDialog();
+            await replaceTasksDialog.ShowAsync();
+        }
+
+        async private void OpenCustomizeCatalogDialog(object sender, RoutedEventArgs e)
+        {
+            CustomizeCatalogDialog customizeCatalogDialog = new CustomizeCatalogDialog();
+            await customizeCatalogDialog.ShowAsync();
         }
     }
 }

@@ -6,9 +6,9 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ContentDialog">
       <RootProperty Name="Title" />
+      <RootProperty Name="PrimaryButtonText" />
       <RootProperty Name="CloseButtonText" />
       <RootProperty Name="Content" />
-      <RootProperty Name="PrimaryButtonText" />
       <RootProperty Name="SecondaryButtonText" />
       <RootProperty Name="DefaultButton" />
       <RootEvent Name="PrimaryButtonClick" />
@@ -23,12 +23,14 @@
       <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
+      <RootProperty Name="Inlines" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="Inlines" />
       <RootProperty Name="TextWrapping" />
     </RootType>
+    <RootType FullName="Folder_Prettifier.Dialogs.ManageFolders.CustomizeCatalogDialog" />
+    <RootType FullName="Folder_Prettifier.Dialogs.ManageFolders.ReplaceTasksDialog" />
     <RootType FullName="Windows.UI.Xaml.Documents.Hyperlink">
       <RootProperty Name="NavigateUri" />
       <RootProperty Name="Inlines" />
@@ -90,14 +92,14 @@
     <RootType FullName="Folder_Prettifier.Pages.CloudSyncPage" />
     <RootType FullName="Folder_Prettifier.Pages.FileEncryptionPage" />
     <RootType FullName="Folder_Prettifier.Pages.FolderEncryptionPage" />
-    <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Content" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Content" />
       <RootProperty Name="Margin" />
       <RootEvent Name="Click" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="Folder_Prettifier.Pages.ManageFoldersPage" />
     <RootType FullName="Folder_Prettifier.Pages.RedirectPage" />

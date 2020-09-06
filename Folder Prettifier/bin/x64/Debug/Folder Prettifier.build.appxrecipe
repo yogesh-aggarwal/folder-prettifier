@@ -246,23 +246,29 @@
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\AboutDialog.xbf">
-      <PackagePath>Dialogs\AboutDialog.xbf</PackagePath>
+    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\ManageFolders\CustomizeCatalogDialog.xbf">
+      <PackagePath>Dialogs\ManageFolders\CustomizeCatalogDialog.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\LicenseDialog.xbf">
-      <PackagePath>Dialogs\LicenseDialog.xbf</PackagePath>
+    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\ManageFolders\ReplaceTasksDialog.xbf">
+      <PackagePath>Dialogs\ManageFolders\ReplaceTasksDialog.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\LoginDialog.xbf">
-      <PackagePath>Dialogs\LoginDialog.xbf</PackagePath>
+    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\Settings\AboutDialog.xbf">
+      <PackagePath>Dialogs\Settings\AboutDialog.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\PrivacyPolicyDialog.xbf">
-      <PackagePath>Dialogs\PrivacyPolicyDialog.xbf</PackagePath>
+    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\Settings\LicenseDialog.xbf">
+      <PackagePath>Dialogs\Settings\LicenseDialog.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\SignupDialog.xbf">
-      <PackagePath>Dialogs\SignupDialog.xbf</PackagePath>
+    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\Global\LoginDialog.xbf">
+      <PackagePath>Dialogs\Global\LoginDialog.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\UserBenefits.xbf">
-      <PackagePath>Dialogs\UserBenefits.xbf</PackagePath>
+    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\Settings\PrivacyPolicyDialog.xbf">
+      <PackagePath>Dialogs\Settings\PrivacyPolicyDialog.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\Global\SignupDialog.xbf">
+      <PackagePath>Dialogs\Global\SignupDialog.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\Global\UserBenefits.xbf">
+      <PackagePath>Dialogs\Global\UserBenefits.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>

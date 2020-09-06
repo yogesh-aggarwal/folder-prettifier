@@ -15,11 +15,11 @@ using Windows.UI.Xaml.Navigation;
 
 // The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Folder_Prettifier.Dialogs
+namespace Folder_Prettifier.Dialogs.ManageFolders
 {
-    public sealed partial class AboutDialog : ContentDialog
+    public sealed partial class ReplaceTasksDialog : ContentDialog
     {
-        public AboutDialog()
+        public ReplaceTasksDialog()
         {
             this.InitializeComponent();
         }
