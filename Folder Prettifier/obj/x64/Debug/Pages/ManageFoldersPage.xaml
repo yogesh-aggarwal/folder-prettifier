@@ -26,7 +26,11 @@
 
             <!-- Name Manipulation -->
             <StackPanel Margin="0,0,0,30">
-                <TextBlock FontSize="16" FontWeight="Medium">Name manipulation</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <ToggleSwitch Margin="0,-4,-90,0" OffContent="" OnContent=""></ToggleSwitch>
+                    <TextBlock FontSize="16" FontWeight="Medium">Name manipulation</TextBlock>
+                </StackPanel>
+                
                 <StackPanel>
                     <!-- General -->
                     <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
@@ -34,6 +38,7 @@
                         <RadioButton Margin="0,0,50,0">First letter small, all capital</RadioButton>
                         <RadioButton Margin="0,0,50,0">All capital</RadioButton>
                         <RadioButton Margin="0,0,50,0">All small</RadioButton>
+                        <RadioButton Margin="0,0,50,0">None</RadioButton>
                     </StackPanel>
 
                     <!-- Append -->
@@ -58,7 +63,10 @@
 
             <!-- Categorize -->
             <StackPanel Margin="0,0,0,30">
-                <TextBlock FontSize="16" FontWeight="Medium">Categorize files on the basis of</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <ToggleSwitch Margin="0,-4,-90,0" OffContent="" OnContent=""></ToggleSwitch>
+                    <TextBlock FontSize="16" FontWeight="Medium">Categorize files on the basis of</TextBlock>
+                </StackPanel>
                 <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                     <RadioButton Margin="0,0,50,0">Extensions</RadioButton>
                     <RadioButton Margin="0,0,50,0">Date</RadioButton>

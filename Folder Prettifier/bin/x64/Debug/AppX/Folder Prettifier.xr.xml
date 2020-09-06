@@ -101,6 +101,14 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Content" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="OffContent" />
+      <RootProperty Name="OnContent" />
+      <RootProperty Name="IsOn" />
+      <RootProperty Name="Header" />
+      <RootEvent Name="Toggled" />
+    </RootType>
     <RootType FullName="Folder_Prettifier.Pages.ManageFoldersPage" />
     <RootType FullName="Folder_Prettifier.Pages.RedirectPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
@@ -133,12 +141,6 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyoutItem">
       <RootProperty Name="Text" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
-      <RootProperty Name="IsOn" />
-      <RootProperty Name="Header" />
-      <RootProperty Name="Margin" />
-      <RootEvent Name="Toggled" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
