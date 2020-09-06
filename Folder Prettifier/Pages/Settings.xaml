@@ -85,9 +85,9 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -102,6 +102,8 @@
                 <Button Grid.Row="2" Grid.Column="1" Click="OpenPrivacyPolicy" Margin="20,0,0,10">Show Privacy &amp; Policy</Button>
                 <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,5,0,0">Visit Website</TextBlock>
                 <Button Grid.Row="3" Grid.Column="1" Click="OpenWebsite" Margin="20,0,0,10">Website</Button>
+                <TextBlock Grid.Row="4" Grid.Column="0" Margin="0,5,0,0">Are you a developer? Have a look at</TextBlock>
+                <Button Grid.Row="4" Grid.Column="1" Click="OpenContribute" Margin="20,0,0,10">Contribute</Button>
             </Grid>
         </StackPanel>
 

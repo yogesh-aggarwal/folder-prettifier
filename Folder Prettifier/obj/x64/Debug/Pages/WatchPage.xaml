@@ -8,8 +8,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <TextBlock>Watch Folder</TextBlock>
-    </Grid>
+    <StackPanel>
+        <GridViewHeaderItem>
+            <TextBlock FontSize="30" FontWeight="Medium">Watch Folder</TextBlock>
+        </GridViewHeaderItem>
+    </StackPanel>
 </Page>
 

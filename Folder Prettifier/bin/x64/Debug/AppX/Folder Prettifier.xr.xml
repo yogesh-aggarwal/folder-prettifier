@@ -29,6 +29,10 @@
       <RootProperty Name="Inlines" />
       <RootProperty Name="TextWrapping" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Documents.Hyperlink">
+      <RootProperty Name="NavigateUri" />
+      <RootProperty Name="Inlines" />
+    </RootType>
     <RootType FullName="Folder_Prettifier.Dialogs.AboutDialog" />
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
       <RootProperty Name="Content" />
@@ -78,28 +82,28 @@
     </RootType>
     <RootType FullName="Folder_Prettifier.MainPage" />
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
-    <RootType FullName="Windows.UI.Xaml.Controls.Grid">
-      <RootProperty Name="Children" />
-      <RootProperty Name="ColumnDefinitions" />
-      <RootProperty Name="RowDefinitions" />
-      <RootMethod Name="GetRow" />
-      <RootMethod Name="SetRow" />
-      <RootMethod Name="GetColumn" />
-      <RootMethod Name="SetColumn" />
+    <RootType FullName="Windows.UI.Xaml.Controls.GridViewHeaderItem">
+      <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="Folder_Prettifier.Pages.BackupPage" />
     <RootType FullName="Folder_Prettifier.Pages.CloudSyncPage" />
     <RootType FullName="Folder_Prettifier.Pages.FileEncryptionPage" />
     <RootType FullName="Folder_Prettifier.Pages.FolderEncryptionPage" />
-    <RootType FullName="Windows.UI.Xaml.Controls.GridViewHeaderItem">
-      <RootProperty Name="Content" />
-    </RootType>
     <RootType FullName="Folder_Prettifier.Pages.ManageFoldersPage" />
     <RootType FullName="Folder_Prettifier.Pages.RedirectPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Content" />
       <RootProperty Name="Margin" />
       <RootEvent Name="Click" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Grid">
+      <RootProperty Name="ColumnDefinitions" />
+      <RootProperty Name="RowDefinitions" />
+      <RootProperty Name="Children" />
+      <RootMethod Name="GetRow" />
+      <RootMethod Name="SetRow" />
+      <RootMethod Name="GetColumn" />
+      <RootMethod Name="SetColumn" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
       <RootProperty Name="Width" />

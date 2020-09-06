@@ -17,8 +17,8 @@
             <HyperlinkButton Click="UserBenefits" Padding="0">benifits of being a user</HyperlinkButton>
         </StackPanel>
 
-        <TextBox Header="Name" PlaceholderText="Name" />
-        <TextBox Header="Email Address" PlaceholderText="Email" Margin="0,5,0,0" />
-        <PasswordBox Header="Password" PlaceholderText="Password" Margin="0,5,0,0" />
+        <TextBox x:Name="nameBox" Header="Name" PlaceholderText="Name" />
+        <TextBox x:Name="emailBox" Header="Email Address" PlaceholderText="Email" Margin="0,5,0,0" />
+        <PasswordBox x:Name="passwordBox" Header="Password" PlaceholderText="Password" Margin="0,5,0,0" />
     </StackPanel>
 </ContentDialog>

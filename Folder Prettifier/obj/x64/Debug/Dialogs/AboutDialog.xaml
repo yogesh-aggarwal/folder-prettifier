@@ -36,6 +36,16 @@
             developer's perspective this is made almost stable
             for the end-user.
         </TextBlock>
+
+        <TextBlock FontSize="20" FontWeight="Medium" Margin="0,15,0,5">The Open Source Side</TextBlock>
+        <TextBlock TextWrapping="WrapWholeWords">
+            The application is an Open Source software on
+            <Hyperlink NavigateUri="https://github.com/yogesh-aggarwal/folder-prettifier">GitHub</Hyperlink>
+            &amp; open for the contributions. You can always visit
+            the repository &amp; contribute if you want to support
+            the project. This software adpots GNU GPLv3 license for
+            distribution.
+        </TextBlock>
     </StackPanel>
 </ContentDialog>
 

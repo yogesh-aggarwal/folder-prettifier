@@ -109,5 +109,10 @@ namespace Folder_Prettifier.Pages
         {
             Tools.Tools.OpenURL("https://folderprettifier.web.app");
         }
+
+        private void OpenContribute(object sender, RoutedEventArgs e)
+        {
+            Tools.Tools.OpenURL("https://github.com/yogesh-aggarwal/folder-prettifier");
+        }
     }
 }

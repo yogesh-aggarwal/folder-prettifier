@@ -8,8 +8,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <TextBlock>Backup folders</TextBlock>
-    </Grid>
+    <StackPanel>
+        <GridViewHeaderItem>
+            <TextBlock FontSize="30" FontWeight="Medium">Backup folders</TextBlock>
+        </GridViewHeaderItem>
+    </StackPanel>
 </Page>
 
