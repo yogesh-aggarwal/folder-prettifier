@@ -106,3 +106,13 @@ A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\LicenseDialog.g
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\LicenseDialog.g.cs
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\LicenseDialog.xaml
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\LicenseDialog.xbf
+A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\AboutDialog.xbf
+A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\PrivacyPolicyDialog.xbf
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\AboutDialog.g.i.cs
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\AboutDialog.g.cs
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\PrivacyPolicyDialog.g.i.cs
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\PrivacyPolicyDialog.g.cs
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\PrivacyPolicyDialog.xaml
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\AboutDialog.xaml
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\PrivacyPolicyDialog.xbf
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\AboutDialog.xbf

@@ -22,15 +22,16 @@
       <RootProperty Name="Orientation" />
       <RootProperty Name="Margin" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
-      <RootProperty Name="Content" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
-      <RootProperty Name="Inlines" />
-      <RootProperty Name="Margin" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="FontWeight" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Inlines" />
       <RootProperty Name="TextWrapping" />
+    </RootType>
+    <RootType FullName="Folder_Prettifier.Dialogs.AboutDialog" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
+      <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="Folder_Prettifier.Dialogs.LicenseDialog" />
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
@@ -49,6 +50,7 @@
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Folder_Prettifier.Dialogs.LoginDialog" />
+    <RootType FullName="Folder_Prettifier.Dialogs.PrivacyPolicyDialog" />
     <RootType FullName="Folder_Prettifier.Dialogs.SignupDialog" />
     <RootType FullName="Folder_Prettifier.Dialogs.UserBenefits" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
@@ -89,11 +91,11 @@
     <RootType FullName="Folder_Prettifier.Pages.CloudSyncPage" />
     <RootType FullName="Folder_Prettifier.Pages.FileEncryptionPage" />
     <RootType FullName="Folder_Prettifier.Pages.FolderEncryptionPage" />
-    <RootType FullName="Folder_Prettifier.Pages.ManageFoldersPage" />
-    <RootType FullName="Folder_Prettifier.Pages.RedirectPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.GridViewHeaderItem">
       <RootProperty Name="Content" />
     </RootType>
+    <RootType FullName="Folder_Prettifier.Pages.ManageFoldersPage" />
+    <RootType FullName="Folder_Prettifier.Pages.RedirectPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Content" />
       <RootProperty Name="Margin" />

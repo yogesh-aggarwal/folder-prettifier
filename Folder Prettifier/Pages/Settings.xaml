@@ -7,10 +7,12 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <StackPanel>
-        <GridViewHeaderItem><TextBlock FontSize="35" FontWeight="Medium">Settings</TextBlock></GridViewHeaderItem>
+        <GridViewHeaderItem>
+            <TextBlock FontSize="30" FontWeight="Medium">Settings</TextBlock>
+        </GridViewHeaderItem>
 
         <!-- General -->
-        <TextBlock FontSize="25" FontWeight="Medium" Margin="0,40,0,10">General</TextBlock>
+        <TextBlock FontSize="25" Margin="0,40,0,10">General</TextBlock>
         <StackPanel Orientation="Horizontal">
             <TextBlock Margin="0,7,20,0">Application Theme</TextBlock>
             <ComboBox Margin="0,0,40,0" ToolTipService.ToolTip="Choose location" SelectedItem="{x:Bind theme}" SelectionChanged="ChangeTheme">
@@ -21,7 +23,7 @@
         </StackPanel>
 
         <!-- System Modifications -->
-        <TextBlock FontSize="25" FontWeight="Medium" Margin="0,40,0,10">System Modifications</TextBlock>
+        <TextBlock FontSize="25" Margin="0,40,0,10">System Modifications</TextBlock>
         <StackPanel>
             <ToggleSwitch Margin="0,10,0,0" ToolTipService.ToolTip="Add to environment variables" IsOn="{x:Bind isAddToPath}" Toggled="ToggleAddToPath">
                 Add to Path
@@ -35,7 +37,7 @@
         </StackPanel>
 
         <!-- Folder Services -->
-        <TextBlock FontSize="25" FontWeight="Medium" Margin="0,40,0,10">Folder Services</TextBlock>
+        <TextBlock FontSize="25" Margin="0,40,0,10">Folder Services</TextBlock>
         <StackPanel>
             <ToggleSwitch ToolTipService.ToolTip="Automatically manage the folders as they change" IsOn="{x:Bind isAutoManage}" Toggled="ToggleAutoManage">
                 Auto manage folders
@@ -43,7 +45,7 @@
         </StackPanel>
 
         <!-- Backup Settings -->
-        <TextBlock FontSize="25" FontWeight="Medium" Margin="0,40,0,10">Backup Settings</TextBlock>
+        <TextBlock FontSize="25" Margin="0,40,0,10">Backup Settings</TextBlock>
         <StackPanel>
             <!-- Import -->
             <TextBlock FontSize="15" FontWeight="Bold" Margin="0,5,0,5">Import</TextBlock>
@@ -77,7 +79,7 @@
         </StackPanel>
 
         <!-- About -->
-        <TextBlock FontSize="25" FontWeight="Medium"  Margin="0,40,0,10">About</TextBlock>
+        <TextBlock FontSize="25" Margin="0,40,0,10">About</TextBlock>
         <StackPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -104,7 +106,7 @@
         </StackPanel>
 
         <!-- Danger Zone -->
-        <TextBlock FontSize="25" FontWeight="Medium" Margin="0,40,0,10">Danger Zone</TextBlock>
+        <TextBlock FontSize="25" Margin="0,40,0,10">Danger Zone</TextBlock>
         <StackPanel>
             <Button Click="ResetSettings">Reset all Settings</Button>
         </StackPanel>

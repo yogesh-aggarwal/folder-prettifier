@@ -50,8 +50,10 @@ Assets\Wide310x150Logo.scale-150.png
 Assets\Wide310x150Logo.scale-200.png
 Assets\Wide310x150Logo.scale-400.png
 App.xbf
+Dialogs\AboutDialog.xbf
 Dialogs\LicenseDialog.xbf
 Dialogs\LoginDialog.xbf
+Dialogs\PrivacyPolicyDialog.xbf
 Dialogs\SignupDialog.xbf
 Dialogs\UserBenefits.xbf
 Folder Prettifier.xr.xml

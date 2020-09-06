@@ -8,9 +8,9 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <TextBlock>Manage Folders</TextBlock>
-
-        
-    </Grid>
+    <StackPanel>
+        <GridViewHeaderItem>
+            <TextBlock FontSize="30" FontWeight="Medium">Manage Folders</TextBlock>
+        </GridViewHeaderItem>
+    </StackPanel>
 </Page>

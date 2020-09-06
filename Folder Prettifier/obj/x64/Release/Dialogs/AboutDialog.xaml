@@ -12,9 +12,29 @@
     <StackPanel>
         <TextBlock FontSize="20" FontWeight="Medium" Margin="0,15,0,5">Purpose</TextBlock>
         <TextBlock TextWrapping="WrapWholeWords">
-            Access to the cloud services like Google Drive, Microsoft OneDrive, Dropbox &amp; Mega
-            will be unlocked. Having that access you can consume the functionality of folder sync
-            with cloud to sync your files between your service provider	&amp; your windows 10 device.
+            The application is meant to provide an ease in the management of
+            folders. There're sitautions where we have a huge amount of files
+            in our folders &amp; we want them to be well organised. But if you
+            do it manually then it may hours or even a whole day. This manual
+            task can be achieved with the help of a software like this.
+        </TextBlock>
+
+        <TextBlock FontSize="20" FontWeight="Medium" Margin="0,15,0,5">The History</TextBlock>
+        <TextBlock TextWrapping="WrapWholeWords">
+            At start, this software was meant just for folder management but
+            now it supports a large amount of great features that will surely
+            help a person whose data is very precious. At present, it support
+            cloud sync, auto folder management, backup, file &amp; folder
+            encryption instead of just basic management.
+        </TextBlock>
+
+        <TextBlock FontSize="20" FontWeight="Medium" Margin="0,15,0,5">Role as a developer</TextBlock>
+        <TextBlock TextWrapping="WrapWholeWords">
+            This is software is meant to be used with ease &amp; free. From the
+            developer's perspective this is made almost stable for the end-user.
+            But in case someone finds a bug please report it this is the only
+            way to improve this. Rolling as a developer is a great experience as
+            helping people is a great feeling!
         </TextBlock>
     </StackPanel>
 </ContentDialog>

@@ -30,11 +30,11 @@
 
         <TextBlock FontSize="20" FontWeight="Medium" Margin="0,15,0,5">Role as a developer</TextBlock>
         <TextBlock TextWrapping="WrapWholeWords">
-            This is software is meant to be used with ease &amp; free. From the
-            developer's perspective this is made almost stable for the end-user.
-            But in case someone finds a bug please report it this is the only
-            way to improve this. Rolling as a developer is a great experience as
-            helping people is a great feeling!
+            Rolling as a developer is a great experience as
+            helping people is a great feeling! This is software
+            is meant to be used with ease &amp; free. From the
+            developer's perspective this is made almost stable
+            for the end-user.
         </TextBlock>
     </StackPanel>
 </ContentDialog>
