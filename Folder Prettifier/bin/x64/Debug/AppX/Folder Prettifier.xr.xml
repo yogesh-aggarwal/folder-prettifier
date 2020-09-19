@@ -28,6 +28,7 @@
       <RootProperty Name="FontWeight" />
       <RootProperty Name="Margin" />
       <RootProperty Name="TextWrapping" />
+      <RootEvent Name="Tapped" />
     </RootType>
     <RootType FullName="Folder_Prettifier.Dialogs.ManageFolders.CustomizeCatalogDialog" />
     <RootType FullName="Folder_Prettifier.Dialogs.ManageFolders.ReplaceTasksDialog" />
@@ -100,13 +101,15 @@
     <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
       <RootProperty Name="Margin" />
       <RootProperty Name="Content" />
+      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
-      <RootProperty Name="Margin" />
       <RootProperty Name="OffContent" />
       <RootProperty Name="OnContent" />
+      <RootProperty Name="Width" />
       <RootProperty Name="IsOn" />
       <RootProperty Name="Header" />
+      <RootProperty Name="Margin" />
       <RootEvent Name="Toggled" />
     </RootType>
     <RootType FullName="Folder_Prettifier.Pages.ManageFoldersPage" />
@@ -152,58 +155,5 @@
     <RootType FullName="System.String" />
     <RootType FullName="Folder_Prettifier.Pages.Settings" />
     <RootType FullName="Folder_Prettifier.Pages.WatchPage" />
-    <RootType FullName="Windows.UI.Xaml.ResourceDictionary">
-      <RootProperty Name="ThemeDictionaries" />
-      <RootProperty Name="MergedDictionaries" />
-    </RootType>
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension">
-      <RootProperty Name="ResourceKey" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
-      <RootProperty Name="Color" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.ColorPaletteResources">
-      <RootProperty Name="Accent" />
-      <RootProperty Name="AltHigh" />
-      <RootProperty Name="AltLow" />
-      <RootProperty Name="AltMedium" />
-      <RootProperty Name="AltMediumHigh" />
-      <RootProperty Name="AltMediumLow" />
-      <RootProperty Name="BaseHigh" />
-      <RootProperty Name="BaseLow" />
-      <RootProperty Name="BaseMedium" />
-      <RootProperty Name="BaseMediumHigh" />
-      <RootProperty Name="BaseMediumLow" />
-      <RootProperty Name="ChromeAltLow" />
-      <RootProperty Name="ChromeBlackHigh" />
-      <RootProperty Name="ChromeBlackLow" />
-      <RootProperty Name="ChromeBlackMedium" />
-      <RootProperty Name="ChromeBlackMediumLow" />
-      <RootProperty Name="ChromeDisabledHigh" />
-      <RootProperty Name="ChromeDisabledLow" />
-      <RootProperty Name="ChromeGray" />
-      <RootProperty Name="ChromeHigh" />
-      <RootProperty Name="ChromeLow" />
-      <RootProperty Name="ChromeMedium" />
-      <RootProperty Name="ChromeMediumLow" />
-      <RootProperty Name="ChromeWhite" />
-      <RootProperty Name="ListLow" />
-      <RootProperty Name="ListMedium" />
-    </RootType>
-    <RootType FullName="Windows.UI.Color" />
-    <RootType FullName="Windows.UI.Xaml.Media.AcrylicBrush">
-      <RootProperty Name="BackgroundSource" />
-      <RootProperty Name="TintColor" />
-      <RootProperty Name="TintOpacity" />
-      <RootProperty Name="FallbackColor" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.CornerRadius" />
-    <RootType FullName="Windows.UI.Xaml.Thickness" />
-    <RootType FullName="System.Double" />
-    <RootType FullName="Windows.UI.Xaml.Media.RevealBackgroundBrush">
-      <RootProperty Name="TargetTheme" />
-      <RootProperty Name="Color" />
-      <RootProperty Name="FallbackColor" />
-    </RootType>
   </Roots.RootTypes>
 </Roots>

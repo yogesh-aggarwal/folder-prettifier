@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>EE059A4A7D9C44991C4254214CA9CA172E90CEFC09FABD308893A2702DF4376B</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>FED87CB89CB26CBDBE9BD78DF824BEF36A761A00911D0D86FB62556BFF1B0E3B</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>6a8ef5d0-28ff-45cc-8779-6c8bd31eb6e8_1.0.0.0_x64__2ywam6y8ssr5y</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>6a8ef5d0-28ff-45cc-8779-6c8bd31eb6e8_2ywam6y8ssr5y!App</RegisteredUserModeAppID>
     <RegisteredPackageID>6a8ef5d0-28ff-45cc-8779-6c8bd31eb6e8</RegisteredPackageID>
@@ -30,17 +30,37 @@
     <AppXManifest Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-06T02:44:16.711</Modified>
+      <Modified>2020-09-19T16:08:07.015</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Folder Prettifier.exe">
       <PackagePath>entrypoint\Folder Prettifier.exe</PackagePath>
-      <Modified>2020-09-06T02:44:16.021</Modified>
+      <Modified>2020-09-19T16:07:18.716</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Yogesh Aggarwal\.nuget\packages\microsoft.toolkit\6.1.1\lib\netstandard2.0\Microsoft.Toolkit.dll">
+      <PackagePath>Microsoft.Toolkit.dll</PackagePath>
+      <Modified>2020-08-12T16:59:22.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Yogesh Aggarwal\.nuget\packages\microsoft.toolkit.uwp\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.dll</PackagePath>
+      <Modified>2020-08-12T16:59:36.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Yogesh Aggarwal\.nuget\packages\microsoft.toolkit.uwp.notifications\6.1.1\lib\uap10.0\Microsoft.Toolkit.Uwp.Notifications.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.Notifications.dll</PackagePath>
+      <Modified>2020-08-12T16:59:50.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Yogesh Aggarwal\.nuget\packages\newtonsoft.json\10.0.3\lib\netstandard1.3\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+      <Modified>2017-06-18T08:27:10.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x64\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
       <Modified>2020-02-27T13:47:32.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Yogesh Aggarwal\.nuget\packages\system.runtime.compilerservices.unsafe\4.5.3\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
+      <PackagePath>System.Runtime.CompilerServices.Unsafe.dll</PackagePath>
+      <Modified>2020-02-19T04:35:16.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.19041.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
@@ -49,340 +69,336 @@
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.886</Modified>
+      <Modified>2020-09-06T03:36:23.966</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\LargeTile.scale-125.png">
       <PackagePath>Assets\LargeTile.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.908</Modified>
+      <Modified>2020-09-06T03:36:23.967</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\LargeTile.scale-150.png">
       <PackagePath>Assets\LargeTile.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.937</Modified>
+      <Modified>2020-09-06T03:36:23.967</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\LargeTile.scale-200.png">
       <PackagePath>Assets\LargeTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.986</Modified>
+      <Modified>2020-09-06T03:36:23.967</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\LargeTile.scale-400.png">
       <PackagePath>Assets\LargeTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.166</Modified>
+      <Modified>2020-09-06T03:36:23.967</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\SmallTile.scale-100.png">
       <PackagePath>Assets\SmallTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.577</Modified>
+      <Modified>2020-09-06T03:36:23.968</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\SmallTile.scale-125.png">
       <PackagePath>Assets\SmallTile.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.583</Modified>
+      <Modified>2020-09-06T03:36:23.968</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\SmallTile.scale-150.png">
       <PackagePath>Assets\SmallTile.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.589</Modified>
+      <Modified>2020-09-06T03:36:23.968</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\SmallTile.scale-200.png">
       <PackagePath>Assets\SmallTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.597</Modified>
+      <Modified>2020-09-06T03:36:23.969</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\SmallTile.scale-400.png">
       <PackagePath>Assets\SmallTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.611</Modified>
+      <Modified>2020-09-06T03:36:23.969</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.321</Modified>
+      <Modified>2020-09-06T03:36:23.969</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\SplashScreen.scale-125.png">
       <PackagePath>Assets\SplashScreen.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.360</Modified>
+      <Modified>2020-09-06T03:36:23.969</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\SplashScreen.scale-150.png">
       <PackagePath>Assets\SplashScreen.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.410</Modified>
+      <Modified>2020-09-06T03:36:23.969</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\SplashScreen.scale-400.png">
       <PackagePath>Assets\SplashScreen.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.826</Modified>
+      <Modified>2020-09-06T03:36:23.970</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square150x150Logo.scale-100.png">
       <PackagePath>Assets\Square150x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.622</Modified>
+      <Modified>2020-09-06T03:36:23.970</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square150x150Logo.scale-125.png">
       <PackagePath>Assets\Square150x150Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.631</Modified>
+      <Modified>2020-09-06T03:36:23.970</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square150x150Logo.scale-150.png">
       <PackagePath>Assets\Square150x150Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.646</Modified>
+      <Modified>2020-09-06T03:36:23.970</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square150x150Logo.scale-400.png">
       <PackagePath>Assets\Square150x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.711</Modified>
+      <Modified>2020-09-06T03:36:23.971</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.268</Modified>
+      <Modified>2020-09-06T03:36:23.971</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png">
       <PackagePath>Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.273</Modified>
+      <Modified>2020-09-06T03:36:23.971</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.296</Modified>
+      <Modified>2020-09-06T03:36:23.971</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.altform-lightunplated_targetsize-32.png">
       <PackagePath>Assets\Square44x44Logo.altform-lightunplated_targetsize-32.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.277</Modified>
+      <Modified>2020-09-06T03:36:23.972</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.282</Modified>
+      <Modified>2020-09-06T03:36:23.972</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.altform-unplated_targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.232</Modified>
+      <Modified>2020-09-06T03:36:23.972</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.altform-unplated_targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.264</Modified>
+      <Modified>2020-09-06T03:36:23.972</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.altform-unplated_targetsize-32.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-32.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.241</Modified>
+      <Modified>2020-09-06T03:36:23.973</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.altform-unplated_targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.249</Modified>
+      <Modified>2020-09-06T03:36:23.973</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.scale-100.png">
       <PackagePath>Assets\Square44x44Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.171</Modified>
+      <Modified>2020-09-06T03:36:23.973</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.scale-125.png">
       <PackagePath>Assets\Square44x44Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.176</Modified>
+      <Modified>2020-09-06T03:36:23.973</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.scale-150.png">
       <PackagePath>Assets\Square44x44Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.182</Modified>
+      <Modified>2020-09-06T03:36:23.974</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.scale-400.png">
       <PackagePath>Assets\Square44x44Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.197</Modified>
+      <Modified>2020-09-06T03:36:23.974</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.202</Modified>
+      <Modified>2020-09-06T03:36:23.974</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.targetsize-24.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.206</Modified>
+      <Modified>2020-09-06T03:36:23.974</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.228</Modified>
+      <Modified>2020-09-06T03:36:23.975</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.targetsize-32.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-32.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.210</Modified>
+      <Modified>2020-09-06T03:36:23.975</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.215</Modified>
+      <Modified>2020-09-06T03:36:23.975</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.831</Modified>
+      <Modified>2020-09-06T03:36:23.976</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\StoreLogo.scale-125.png">
       <PackagePath>Assets\StoreLogo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.837</Modified>
+      <Modified>2020-09-06T03:36:23.976</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\StoreLogo.scale-150.png">
       <PackagePath>Assets\StoreLogo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.842</Modified>
+      <Modified>2020-09-06T03:36:23.976</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\StoreLogo.scale-200.png">
       <PackagePath>Assets\StoreLogo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.848</Modified>
+      <Modified>2020-09-06T03:36:23.976</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\StoreLogo.scale-400.png">
       <PackagePath>Assets\StoreLogo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.861</Modified>
+      <Modified>2020-09-06T03:36:23.976</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Wide310x150Logo.scale-100.png">
       <PackagePath>Assets\Wide310x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.722</Modified>
+      <Modified>2020-09-06T03:36:23.977</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Wide310x150Logo.scale-125.png">
       <PackagePath>Assets\Wide310x150Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.736</Modified>
+      <Modified>2020-09-06T03:36:23.977</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Wide310x150Logo.scale-150.png">
       <PackagePath>Assets\Wide310x150Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.755</Modified>
+      <Modified>2020-09-06T03:36:23.977</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Wide310x150Logo.scale-400.png">
       <PackagePath>Assets\Wide310x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.865</Modified>
+      <Modified>2020-09-06T03:36:23.977</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2020-09-04T14:26:29.196</Modified>
+      <Modified>2020-09-06T03:36:23.968</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.494</Modified>
+      <Modified>2020-09-06T03:36:23.970</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.663</Modified>
+      <Modified>2020-09-06T03:36:23.971</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.188</Modified>
+      <Modified>2020-09-06T03:36:23.974</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:01.236</Modified>
+      <Modified>2020-09-06T03:36:23.975</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T03:11:00.780</Modified>
+      <Modified>2020-09-06T03:36:23.977</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2020-09-04T15:39:25.956</Modified>
+      <Modified>2020-09-06T03:36:23.987</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Folder Prettifier.xr.xml">
       <PackagePath>Folder Prettifier.xr.xml</PackagePath>
-      <Modified>2020-09-06T02:44:15.795</Modified>
+      <Modified>2020-09-06T07:07:55.053</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.839</Modified>
+      <Modified>2020-09-19T16:07:18.440</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\ManageFolders\CustomizeCatalogDialog.xbf">
       <PackagePath>Dialogs\ManageFolders\CustomizeCatalogDialog.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.840</Modified>
+      <Modified>2020-09-19T16:07:18.440</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\ManageFolders\ReplaceTasksDialog.xbf">
       <PackagePath>Dialogs\ManageFolders\ReplaceTasksDialog.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.840</Modified>
+      <Modified>2020-09-19T16:07:18.440</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\Settings\AboutDialog.xbf">
       <PackagePath>Dialogs\Settings\AboutDialog.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.840</Modified>
+      <Modified>2020-09-19T16:07:18.440</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\Settings\LicenseDialog.xbf">
       <PackagePath>Dialogs\Settings\LicenseDialog.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.840</Modified>
+      <Modified>2020-09-19T16:07:18.440</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\Global\LoginDialog.xbf">
       <PackagePath>Dialogs\Global\LoginDialog.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.840</Modified>
+      <Modified>2020-09-19T16:07:18.441</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\Settings\PrivacyPolicyDialog.xbf">
       <PackagePath>Dialogs\Settings\PrivacyPolicyDialog.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.840</Modified>
+      <Modified>2020-09-19T16:07:18.441</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\Global\SignupDialog.xbf">
       <PackagePath>Dialogs\Global\SignupDialog.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.840</Modified>
+      <Modified>2020-09-19T16:07:18.441</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\Global\UserBenefits.xbf">
       <PackagePath>Dialogs\Global\UserBenefits.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.840</Modified>
+      <Modified>2020-09-19T16:07:18.441</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.840</Modified>
+      <Modified>2020-09-19T16:07:18.441</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\BackupPage.xbf">
       <PackagePath>Pages\BackupPage.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.840</Modified>
+      <Modified>2020-09-19T16:07:18.441</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\CloudSyncPage.xbf">
       <PackagePath>Pages\CloudSyncPage.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.840</Modified>
+      <Modified>2020-09-19T16:07:18.441</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\FileEncryptionPage.xbf">
       <PackagePath>Pages\FileEncryptionPage.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.840</Modified>
+      <Modified>2020-09-19T16:07:18.442</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\FolderEncryptionPage.xbf">
       <PackagePath>Pages\FolderEncryptionPage.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.840</Modified>
+      <Modified>2020-09-19T16:07:18.442</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\ManageFoldersPage.xbf">
       <PackagePath>Pages\ManageFoldersPage.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.841</Modified>
+      <Modified>2020-09-19T16:07:18.442</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\RedirectPage.xbf">
       <PackagePath>Pages\RedirectPage.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.841</Modified>
+      <Modified>2020-09-19T16:07:18.442</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\Settings.xbf">
       <PackagePath>Pages\Settings.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.839</Modified>
+      <Modified>2020-09-19T16:07:18.439</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\WatchPage.xbf">
       <PackagePath>Pages\WatchPage.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.841</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Theme.xbf">
-      <PackagePath>Theme.xbf</PackagePath>
-      <Modified>2020-09-06T02:44:15.813</Modified>
+      <Modified>2020-09-19T16:07:18.442</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -390,11 +406,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-09-06T02:32:51.768</Modified>
+      <Modified>2020-09-19T16:08:06.287</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Core\Folder Prettifier.exe">
       <PackagePath>Folder Prettifier.exe</PackagePath>
-      <Modified>2020-09-06T02:44:16.693</Modified>
+      <Modified>2020-09-19T16:08:07.010</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

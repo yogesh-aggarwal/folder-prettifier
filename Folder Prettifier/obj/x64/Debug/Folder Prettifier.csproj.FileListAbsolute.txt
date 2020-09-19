@@ -8,7 +8,6 @@ A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\ManageFoldersPage
 A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\RedirectPage.xbf
 A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\Settings.xbf
 A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Pages\WatchPage.xbf
-A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Theme.xbf
 A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Folder Prettifier.xr.xml
 A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Folder Prettifier.exe
 A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Folder Prettifier.pdb
@@ -51,7 +50,6 @@ A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Pages\ManageFoldersPage
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Pages\RedirectPage.xaml
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Pages\Settings.xaml
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Pages\WatchPage.xaml
-A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Theme.xaml
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\App.xbf
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\MainPage.xbf
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Pages\BackupPage.xbf
@@ -62,7 +60,6 @@ A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Pages\ManageFoldersPage
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Pages\RedirectPage.xbf
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Pages\Settings.xbf
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Pages\WatchPage.xbf
-A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Theme.xbf
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\XamlSaveStateFile.xml
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Folder Prettifier.csproj.CoreCompileInputs.cache
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Folder Prettifier.csproj.CopyComplete
@@ -126,3 +123,13 @@ A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\ManageFolders\C
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\ManageFolders\CustomizeCatalogDialog.xaml
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\ManageFolders\CustomizeCatalogDialog.xbf
 A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\ManageFolders\CustomizeCatalogDialog.xbf
+A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Microsoft.Toolkit.dll
+A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Microsoft.Toolkit.pdb
+A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Microsoft.Toolkit.Uwp.dll
+A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Microsoft.Toolkit.Uwp.pdb
+A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Microsoft.Toolkit.Uwp.Notifications.dll
+A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Microsoft.Toolkit.Uwp.Notifications.pdb
+A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Newtonsoft.Json.dll
+A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.dll
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Microsoft.Toolkit.Uwp.pri.xml
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Microsoft.Toolkit.Uwp.Notifications.pri.xml

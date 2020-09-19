@@ -40,6 +40,14 @@
             "Microsoft.NETCore.UniversalWindowsPlatform": {
               "target": "Package",
               "version": "[6.2.10, )"
+            },
+            "Microsoft.Toolkit.Uwp": {
+              "target": "Package",
+              "version": "[6.1.1, )"
+            },
+            "Microsoft.Toolkit.Uwp.Notifications": {
+              "target": "Package",
+              "version": "[6.1.1, )"
             }
           },
           "imports": [
