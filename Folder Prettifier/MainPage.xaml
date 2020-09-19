@@ -7,7 +7,7 @@
     mc:Ignorable="d"
     xmlns:muxc="using:Windows.UI.Xaml.Controls">
 
-    <NavigationView x:Name="navigationView" SelectionChanged="NavigationView_SelectionChanged" PaneDisplayMode="Auto">
+    <NavigationView x:Name="navigationView" SelectionChanged="NavigationView_SelectionChanged" PaneDisplayMode="Auto" IsBackButtonVisible="Collapsed" >
         <NavigationView.MenuItems>
             <NavigationViewItemHeader Content="Actions" />
             <NavigationViewItem Icon="Folder" Content="Manage Folders" Tag="ManageFoldersPage"  />

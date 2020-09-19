@@ -7,7 +7,7 @@
     mc:Ignorable="d"
     xmlns:muxc="using:Windows.UI.Xaml.Controls">
 
-    <NavigationView x:ConnectionId='2' x:Name="navigationView"                                                    PaneDisplayMode="Auto">
+    <NavigationView x:ConnectionId='2' x:Name="navigationView"                                                    PaneDisplayMode="Auto" IsBackButtonVisible="Collapsed" >
         <NavigationView.MenuItems>
             <NavigationViewItemHeader Content="Actions" />
             <NavigationViewItem Icon="Folder" Content="Manage Folders" Tag="ManageFoldersPage"  />

@@ -31,7 +31,7 @@
                     <TextBlock x:ConnectionId='16' FontSize="16" FontWeight="Medium" Margin="10,3,0,0"                                >Name manipulation</TextBlock>
                 </StackPanel>
                 
-                <StackPanel>
+                <StackPanel Margin="30,10">
                     <!-- General -->
                     <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                         <RadioButton x:ConnectionId='10' Margin="0,0,50,0" x:Name="capitalize"                         >First letter capital, all small</RadioButton>
@@ -67,7 +67,7 @@
                     <ToggleSwitch x:ConnectionId='5' x:Name="isCategorize" OffContent="" OnContent=""                            Width="45" />
                     <TextBlock x:ConnectionId='6' FontSize="16" FontWeight="Medium" Margin="10,3,0,0"                          >Categorize files on the basis of</TextBlock>
                 </StackPanel>
-                <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
+                <StackPanel Margin="30,10" Orientation="Horizontal">
                     <RadioButton x:ConnectionId='3' Margin="0,0,50,0" x:Name="extensions"                         >Extensions</RadioButton>
                     <RadioButton x:ConnectionId='4' Margin="0,0,50,0" x:Name="date"                   >Date</RadioButton>
                 </StackPanel>

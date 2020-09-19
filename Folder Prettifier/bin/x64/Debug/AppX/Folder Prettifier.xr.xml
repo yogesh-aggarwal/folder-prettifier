@@ -67,6 +67,7 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.NavigationView">
       <RootProperty Name="PaneDisplayMode" />
+      <RootProperty Name="IsBackButtonVisible" />
       <RootProperty Name="MenuItems" />
       <RootProperty Name="PaneFooter" />
       <RootProperty Name="Content" />
