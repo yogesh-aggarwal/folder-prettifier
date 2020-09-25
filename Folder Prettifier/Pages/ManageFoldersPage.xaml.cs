@@ -81,15 +81,15 @@ namespace Folder_Prettifier.Pages
             ManageFolderManageData.nameAppend.AtStart = nameStartsWith.Text;
             ManageFolderManageData.nameAppend.AtEnd = nameEndsWith.Text;
 
-            try
-            {
+            //try
+            //{
                 await Tools.Manage.Start(ManageFolderManageData.isNameManipulation,
                                    ManageFolderManageData.nameManipulation,
                                    ManageFolderManageData.nameAppend,
                                    ManageFolderManageData.isCategorize,
                                    ManageFolderManageData.categorizeFiles);
-            }
-            catch { }
+            //}
+            //catch { }
 
         }
 

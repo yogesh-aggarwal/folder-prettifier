@@ -43,6 +43,8 @@ namespace Folder_Prettifier.Tools
                 }
             });
 
+            File.WriteAllText(@"A:\hello.txt", "Content is this!");
+
             Notification.WithIconAndAction("Folder Management Done",
                 "Processes successfully ran. Now you can enjoy your well organised folder.",
                 "https://unsplash.it/64?image=1005",
