@@ -10,7 +10,7 @@
         "projectUniqueName": "A:\\UWP\\Folder Prettifier\\Folder Prettifier\\Folder Prettifier.csproj",
         "projectName": "Folder Prettifier",
         "projectPath": "A:\\UWP\\Folder Prettifier\\Folder Prettifier\\Folder Prettifier.csproj",
-        "packagesPath": "C:\\Users\\Yogesh Aggarwal\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Yogesh\\.nuget\\packages\\",
         "outputPath": "A:\\UWP\\Folder Prettifier\\Folder Prettifier\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
@@ -18,7 +18,7 @@
           "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Yogesh Aggarwal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Yogesh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using Windows.Storage;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.System;
@@ -35,16 +36,13 @@ namespace Folder_Prettifier.Tools
                           bool isAutoCategorize,
                           AutoCategorizeFiles autoCategorizeFiles)
         {
-            await Task.Run(() =>
-            {
-                for (int i = 0; i < 50000; i++)
-                {
-                    Console.WriteLine(i);
-                }
-            });
+            // File.WriteAllText(@"A:\hello.txt", "Content is this!");
+            StorageFile file = await StorageFile.GetFileFromPathAsync("file:///A:/hello.txt");
+            await file.MoveAsync(await StorageFolder.GetFolderFromPathAsync("D:"), "hello.txt");
+            
 
-            File.WriteAllText(@"A:\hello.txt", "Content is this!");
-
+            /*
+            return;
             Notification.WithIconAndAction("Folder Management Done",
                 "Processes successfully ran. Now you can enjoy your well organised folder.",
                 "https://unsplash.it/64?image=1005",
@@ -54,6 +52,7 @@ namespace Folder_Prettifier.Tools
                     action = $@"openFolder=C:\",
                     type = ToastActivationType.Background
                 });
+            */
         }
     }
 }

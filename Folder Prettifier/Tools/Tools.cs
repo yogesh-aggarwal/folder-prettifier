@@ -156,8 +156,8 @@ namespace Folder_Prettifier.Tools
         {
             try
             {
-                dynamic value = Storage.localSettings.Values[key];
-                if (value == null) throw new NullReferenceException();
+                //dynamic value = Storage.localSettings.Values[key];
+                //if (value == null) throw new NullReferenceException();
                 return Storage.localSettings.Values[key];
             }
             catch (NullReferenceException)
