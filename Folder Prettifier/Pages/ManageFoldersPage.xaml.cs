@@ -70,6 +70,12 @@ namespace Folder_Prettifier.Pages
             await replaceTasksDialog.ShowAsync();
         }
 
+        async private void OpenManageFolders(object sender, RoutedEventArgs e)
+        {
+            ManageFoldersDialog replaceTasksDialog = new ManageFoldersDialog();
+            await replaceTasksDialog.ShowAsync();
+        }
+
         async private void OpenCustomizeCatalogDialog(object sender, RoutedEventArgs e)
         {
             CustomizeCatalogDialog customizeCatalogDialog = new CustomizeCatalogDialog();

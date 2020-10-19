@@ -19,8 +19,9 @@
                 <StackPanel HorizontalAlignment="Left">
                     <TextBlock FontSize="25">Manage</TextBlock>
                 </StackPanel>
-                <StackPanel HorizontalAlignment="Right" Margin="0,-33,0,0">
-                    <Button x:ConnectionId='17'                        >Start Management</Button>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,-33,0,0">
+                    <Button x:ConnectionId='17'                           Margin="0,0,15,0">Folders</Button>
+                    <Button x:ConnectionId='18'                        >Start Management</Button>
                 </StackPanel>
             </StackPanel>
 

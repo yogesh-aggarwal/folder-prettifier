@@ -134,3 +134,8 @@ A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Core\Folder Prettifier.
 A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Folder Prettifier.build.appxrecipe
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Folder Prettifier.csprojAssemblyReference.cache
 A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636885112160000000.json
+A:\UWP\Folder Prettifier\Folder Prettifier\bin\x64\Debug\Dialogs\ManageFolders\ManageFoldersDialog.xbf
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\ManageFolders\ManageFoldersDialog.g.i.cs
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\ManageFolders\ManageFoldersDialog.g.cs
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\ManageFolders\ManageFoldersDialog.xaml
+A:\UWP\Folder Prettifier\Folder Prettifier\obj\x64\Debug\Dialogs\ManageFolders\ManageFoldersDialog.xbf

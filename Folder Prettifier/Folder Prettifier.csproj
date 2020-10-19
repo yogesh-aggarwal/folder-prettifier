@@ -122,6 +122,9 @@
     <Compile Include="Dialogs\ManageFolders\CustomizeCatalogDialog.xaml.cs">
       <DependentUpon>CustomizeCatalogDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\ManageFolders\ManageFoldersDialog.xaml.cs">
+      <DependentUpon>ManageFoldersDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\ManageFolders\ReplaceTasksDialog.xaml.cs">
       <DependentUpon>ReplaceTasksDialog.xaml</DependentUpon>
     </Compile>
@@ -239,6 +242,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Dialogs\ManageFolders\CustomizeCatalogDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\ManageFolders\ManageFoldersDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

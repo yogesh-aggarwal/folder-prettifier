@@ -54,6 +54,7 @@ Dialogs\Global\LoginDialog.xbf
 Dialogs\Global\SignupDialog.xbf
 Dialogs\Global\UserBenefits.xbf
 Dialogs\ManageFolders\CustomizeCatalogDialog.xbf
+Dialogs\ManageFolders\ManageFoldersDialog.xbf
 Dialogs\ManageFolders\ReplaceTasksDialog.xbf
 Dialogs\Settings\AboutDialog.xbf
 Dialogs\Settings\LicenseDialog.xbf
