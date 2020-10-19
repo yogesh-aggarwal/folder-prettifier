@@ -31,14 +31,11 @@
       <RootEvent Name="Tapped" />
     </RootType>
     <RootType FullName="Folder_Prettifier.Dialogs.ManageFolders.CustomizeCatalogDialog" />
-    <RootType FullName="Windows.UI.Xaml.Controls.Grid">
-      <RootProperty Name="ColumnDefinitions" />
-      <RootProperty Name="RowDefinitions" />
-      <RootProperty Name="Children" />
-      <RootMethod Name="GetRow" />
-      <RootMethod Name="SetRow" />
-      <RootMethod Name="GetColumn" />
-      <RootMethod Name="SetColumn" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
+      <RootProperty Name="Items" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListViewItem">
+      <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="Folder_Prettifier.Dialogs.ManageFolders.ManageFoldersDialog" />
     <RootType FullName="Folder_Prettifier.Dialogs.ManageFolders.ReplaceTasksDialog" />
@@ -125,6 +122,15 @@
     </RootType>
     <RootType FullName="Folder_Prettifier.Pages.ManageFoldersPage" />
     <RootType FullName="Folder_Prettifier.Pages.RedirectPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Grid">
+      <RootProperty Name="ColumnDefinitions" />
+      <RootProperty Name="RowDefinitions" />
+      <RootProperty Name="Children" />
+      <RootMethod Name="GetRow" />
+      <RootMethod Name="SetRow" />
+      <RootMethod Name="GetColumn" />
+      <RootMethod Name="SetColumn" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
       <RootProperty Name="Width" />
     </RootType>

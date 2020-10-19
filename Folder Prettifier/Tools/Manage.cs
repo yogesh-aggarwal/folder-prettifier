@@ -37,8 +37,8 @@ namespace Folder_Prettifier.Tools
                           AutoCategorizeFiles autoCategorizeFiles)
         {
             // File.WriteAllText(@"A:\hello.txt", "Content is this!");
-            StorageFile file = await StorageFile.GetFileFromPathAsync("file:///A:/hello.txt");
-            await file.MoveAsync(await StorageFolder.GetFolderFromPathAsync("D:"), "hello.txt");
+            //StorageFile file = await StorageFile.GetFileFromPathAsync("file:///A:/hello.txt");
+            //await file.MoveAsync(await StorageFolder.GetFolderFromPathAsync("D:"), "hello.txt");
             
 
             /*
