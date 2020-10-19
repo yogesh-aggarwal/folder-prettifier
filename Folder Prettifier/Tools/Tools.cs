@@ -160,9 +160,9 @@ namespace Folder_Prettifier.Tools
                 //if (value == null) throw new NullReferenceException();
                 return Storage.localSettings.Values[key];
             }
-            catch (NullReferenceException)
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException)
             {
-                Set(key, true);
+                Set(key, defaultValue);
                 return defaultValue;
             }
         }

@@ -9,11 +9,16 @@ namespace Folder_Prettifier.Pages
     public sealed partial class Settings : Page
     {
         private bool isThemeChangedFirstTime = false;
-        public string theme = Tools.Storage.Get("Theme", "System Default").ToString();
-        public bool isAddToPath = Tools.Storage.Get("IsAddToPath", false);
-        public bool isInContextMenu = Tools.Storage.Get("IsInContextMenu", false);
-        public bool isAutoStart = Tools.Storage.Get("IsAutoStart", true);
-        public bool isAutoManage = Tools.Storage.Get("IsAutoManage", false);
+        //public string theme = Tools.Storage.Get("Theme", "System Default").ToString();
+        //public bool isAddToPath = Tools.Storage.Get("IsAddToPath", false);
+        //public bool isInContextMenu = Tools.Storage.Get("IsInContextMenu", false);
+        //public bool isAutoStart = Tools.Storage.Get("IsAutoStart", true);
+        //public bool isAutoManage = Tools.Storage.Get("IsAutoManage", false);
+        public string theme = "Light";
+        public bool isAddToPath = false;
+        public bool isInContextMenu = false;
+        public bool isAutoStart = true;
+        public bool isAutoManage = false;
 
         async public void ChangeTheme(object sender, SelectionChangedEventArgs e)
         {
