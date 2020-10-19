@@ -6,14 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Width="400"
     Title="Add/Remove Folders"
     PrimaryButtonText="Save"
     SecondaryButtonText="Cancel"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
 
-    <StackPanel>
+    <StackPanel Width="400">
         <Button HorizontalAlignment="Right">Add Folder</Button>
         <ListView Margin="0,20,0,0" IsMultiSelectCheckBoxEnabled="True">
             <ListView.ContextFlyout>
