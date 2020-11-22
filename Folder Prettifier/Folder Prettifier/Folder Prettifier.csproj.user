@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <None Update="App.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <Page Update="Dialogs\Global\UserBenifits.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dialogs\Global\SignupDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dialogs\Global\LoginDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <None Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <Page Update="Pages\WatchPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\RedirectPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\FolderEncryptionPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\FileEncryptionPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\CloudSyncPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\BackupPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\ManageFoldersPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Settings.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

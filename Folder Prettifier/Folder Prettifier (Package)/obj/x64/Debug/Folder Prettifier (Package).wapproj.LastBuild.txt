@@ -1,0 +1,213 @@
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\App.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\MainWindow.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Global\LoginDialog.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Global\SignupDialog.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Global\UserBenifits.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\ManageFolders\CustomizeCatalogDialog.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\ManageFolders\ManageFoldersDialog.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\ManageFolders\ReplaceTasksDialog.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Settings\AboutDialog.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Settings\LicenseDialog.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Settings\PrivacyPolicyDialog.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\BackupPage.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\CloudSyncPage.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\FileEncryptionPage.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\FolderEncryptionPage.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\ManageFoldersPage.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\RedirectPage.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\Settings.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\WatchPage.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Microsoft.UI.Xaml\Assets\NoiseAsset_256X256_PNG.png
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier (Package)\Images\SplashScreen.scale-200.png
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier (Package)\Images\LockScreenLogo.scale-200.png
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier (Package)\Images\Square150x150Logo.scale-200.png
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier (Package)\Images\Square44x44Logo.scale-200.png
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier (Package)\Images\Square44x44Logo.targetsize-24_altform-unplated.png
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier (Package)\Images\StoreLogo.png
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier (Package)\Images\Wide310x150Logo.scale-200.png
+C:\Program Files (x86)\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.18362.0\\redist\Debug\X64\ucrtbased.dll
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier (Package)\bin\x64\Debug\resources.pri
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\obj\x64\Debug\net5.0-windows10.0.18362.0\Msix\Folder Prettifier.deps.json
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\obj\x64\Debug\net5.0-windows10.0.18362.0\apphost.exe
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\obj\x64\Debug\net5.0-windows10.0.18362.0\Folder Prettifier.dll
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Folder Prettifier.runtimeconfig.json
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\obj\x64\Debug\net5.0-windows10.0.18362.0\Folder Prettifier.pdb
+C:\Users\Yogesh\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.18362.10\lib\Microsoft.Windows.SDK.NET.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.18362.10\lib\WinRT.Runtime.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\lib\net5.0-windows10.0.18362.0\Microsoft.ApplicationModel.Resources.Projection.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\lib\net5.0-windows10.0.18362.0\Microsoft.WinUI.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\debug\concrt140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\debug\msvcp140_1d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\debug\msvcp140_2d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\debug\msvcp140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\debug\vcamp140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\debug\vccorlib140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\debug\vcomp140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\debug\vcruntime140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\release\concrt140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\release\msvcp140_1_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\release\msvcp140_2_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\release\msvcp140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\release\vcamp140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\release\vccorlib140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\release\vcomp140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\release\vcruntime140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\concrt140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\concrt140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\msvcp140_1d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\msvcp140_1d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\msvcp140_2d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\msvcp140_2d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\msvcp140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\msvcp140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vcamp140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vcamp140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vccorlib140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vccorlib140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vcomp140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vcomp140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vcruntime140_1d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vcruntime140_1d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vcruntime140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vcruntime140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\concrt140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\concrt140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\msvcp140_1_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\msvcp140_1_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\msvcp140_2_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\msvcp140_2_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\msvcp140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\msvcp140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vcamp140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vcamp140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vccorlib140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vccorlib140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vcomp140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vcomp140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vcruntime140_1_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vcruntime140_1_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vcruntime140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vcruntime140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\debug\concrt140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\debug\msvcp140_1d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\debug\msvcp140_2d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\debug\msvcp140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\debug\vcamp140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\debug\vccorlib140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\debug\vcomp140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\debug\vcruntime140d_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\release\concrt140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\release\msvcp140_1_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\release\msvcp140_2_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\release\msvcp140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\release\vcamp140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\release\vccorlib140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\release\vcomp140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\release\vcruntime140_app.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\CoreMessagingXP.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\DwmSceneI.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\MRM.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\Microsoft.ApplicationModel.Resources.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\Microsoft.DirectManipulation.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\Microsoft.InputStateManager.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\Microsoft.Internal.FrameworkUdk.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\Microsoft.ProjectReunion.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\Microsoft.UI.Composition.OSSupport.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\Microsoft.UI.Input.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\Microsoft.UI.Xaml.Controls.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\Microsoft.UI.Xaml.Controls.pri
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\Microsoft.UI.Xaml.Internal.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\Microsoft.UI.Xaml.Phone.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\Microsoft.UI.Xaml\Assets\NoiseAsset_256x256_PNG.png
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\Microsoft.Web.WebView2.Core.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\Microsoft.ui.xaml.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\Microsoft.ui.xaml.resources.19h1.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\Microsoft.ui.xaml.resources.common.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\WebView2Loader.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\WinUIEdit.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\dcompi.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\dwmcorei.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\en-us\Microsoft.UI.Xaml.Phone.dll.mui
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\en-us\Microsoft.ui.xaml.dll.mui
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\marshal.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\wuceffectsi.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\CoreMessagingXP.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\CoreMessagingXP.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\DwmSceneI.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\DwmSceneI.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\MRM.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\MRM.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.ApplicationModel.Resources.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.ApplicationModel.Resources.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.DirectManipulation.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.DirectManipulation.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.InputStateManager.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.InputStateManager.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.Internal.FrameworkUdk.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.Internal.FrameworkUdk.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.ProjectReunion.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.ProjectReunion.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.UI.Composition.OSSupport.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.UI.Composition.OSSupport.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.UI.Input.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.UI.Input.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.UI.Xaml.Controls.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.UI.Xaml.Controls.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.UI.Xaml.Controls.pri
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.UI.Xaml.Controls.pri
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.UI.Xaml.Internal.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.UI.Xaml.Internal.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.UI.Xaml.Phone.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.UI.Xaml.Phone.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.UI.Xaml\Assets\NoiseAsset_256x256_PNG.png
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.Web.WebView2.Core.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.Web.WebView2.Core.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.ui.xaml.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.ui.xaml.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.ui.xaml.resources.19h1.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.ui.xaml.resources.19h1.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.ui.xaml.resources.common.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\Microsoft.ui.xaml.resources.common.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\WebView2Loader.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\WebView2Loader.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\WinUIEdit.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\WinUIEdit.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\dcompi.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\dcompi.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\dwmcorei.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\dwmcorei.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\en-us\Microsoft.UI.Xaml.Phone.dll.mui
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\en-us\Microsoft.UI.Xaml.Phone.dll.mui
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\en-us\Microsoft.ui.xaml.dll.mui
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\en-us\Microsoft.ui.xaml.dll.mui
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\marshal.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\marshal.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\wuceffectsi.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x64\native\wuceffectsi.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\CoreMessagingXP.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\DwmSceneI.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\MRM.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\Microsoft.ApplicationModel.Resources.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\Microsoft.DirectManipulation.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\Microsoft.InputStateManager.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\Microsoft.Internal.FrameworkUdk.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\Microsoft.ProjectReunion.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\Microsoft.UI.Composition.OSSupport.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\Microsoft.UI.Input.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\Microsoft.UI.Xaml.Controls.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\Microsoft.UI.Xaml.Controls.pri
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\Microsoft.UI.Xaml.Internal.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\Microsoft.UI.Xaml.Phone.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\Microsoft.UI.Xaml\Assets\NoiseAsset_256x256_PNG.png
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\Microsoft.Web.WebView2.Core.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\Microsoft.ui.xaml.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\Microsoft.ui.xaml.resources.19h1.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\Microsoft.ui.xaml.resources.common.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\WebView2Loader.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\WinUIEdit.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\dcompi.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\dwmcorei.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\en-us\Microsoft.UI.Xaml.Phone.dll.mui
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\en-us\Microsoft.ui.xaml.dll.mui
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\marshal.dll
+C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-x86\native\wuceffectsi.dll

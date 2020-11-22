@@ -1,0 +1,732 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Folder Prettifier/1.0.0": {
+        "dependencies": {
+          "Microsoft.VCRTForwarders.140": "1.0.6",
+          "Microsoft.WinUI": "3.0.0-preview3.201113.0",
+          "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.18362.10"
+        },
+        "runtime": {
+          "Folder Prettifier.dll": {}
+        }
+      },
+      "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.18362.10": {
+        "runtime": {
+          "Microsoft.Windows.SDK.NET.dll": {
+            "assemblyVersion": "10.0.18362.10",
+            "fileVersion": "10.0.18362.10"
+          },
+          "WinRT.Runtime.dll": {
+            "assemblyVersion": "1.0.1.33301",
+            "fileVersion": "1.0.1.33301"
+          }
+        }
+      },
+      "Microsoft.VCRTForwarders.140/1.0.6": {
+        "runtimeTargets": {
+          "runtimes/win10-arm64/native/debug/concrt140d_app.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/debug/msvcp140_1d_app.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/debug/msvcp140_2d_app.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/debug/msvcp140d_app.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/debug/vcamp140d_app.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/debug/vccorlib140d_app.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/debug/vcomp140d_app.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/debug/vcruntime140d_app.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/release/concrt140_app.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/release/msvcp140_1_app.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/release/msvcp140_2_app.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/release/msvcp140_app.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/release/vcamp140_app.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/release/vccorlib140_app.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/release/vcomp140_app.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/release/vcruntime140_app.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/debug/concrt140d_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/debug/msvcp140_1d_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/debug/msvcp140_2d_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/debug/msvcp140d_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/debug/vcamp140d_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/debug/vccorlib140d_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/debug/vcomp140d_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/debug/vcruntime140_1d_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/debug/vcruntime140d_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/release/concrt140_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/release/msvcp140_1_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/release/msvcp140_2_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/release/msvcp140_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/release/vcamp140_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/release/vccorlib140_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/release/vcomp140_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/release/vcruntime140_1_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/release/vcruntime140_app.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/debug/concrt140d_app.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/debug/msvcp140_1d_app.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/debug/msvcp140_2d_app.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/debug/msvcp140d_app.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/debug/vcamp140d_app.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/debug/vccorlib140d_app.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/debug/vcomp140d_app.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/debug/vcruntime140d_app.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/release/concrt140_app.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/release/msvcp140_1_app.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/release/msvcp140_2_app.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/release/msvcp140_app.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/release/vcamp140_app.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/release/vccorlib140_app.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/release/vcomp140_app.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/release/vcruntime140_app.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.WinUI/3.0.0-preview3.201113.0": {
+        "runtime": {
+          "lib/net5.0-windows10.0.18362.0/Microsoft.ApplicationModel.Resources.Projection.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          },
+          "lib/net5.0-windows10.0.18362.0/Microsoft.WinUI.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.2011"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win10-arm64/native/CoreMessagingXP.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-arm64/native/DwmSceneI.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/MRM.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/Microsoft.ApplicationModel.Resources.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/Microsoft.DirectManipulation.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-arm64/native/Microsoft.InputStateManager.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-arm64/native/Microsoft.Internal.FrameworkUdk.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/Microsoft.ProjectReunion.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/Microsoft.UI.Composition.OSSupport.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/Microsoft.UI.Input.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-arm64/native/Microsoft.UI.Xaml.Controls.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-arm64/native/Microsoft.UI.Xaml.Controls.pri": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/Microsoft.UI.Xaml.Internal.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/Microsoft.UI.Xaml.Phone.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-arm64/native/Microsoft.UI.Xaml/Assets/NoiseAsset_256x256_PNG.png": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/Microsoft.Web.WebView2.Core.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "1.0.677.0"
+          },
+          "runtimes/win10-arm64/native/Microsoft.ui.xaml.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-arm64/native/Microsoft.ui.xaml.resources.19h1.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-arm64/native/Microsoft.ui.xaml.resources.common.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-arm64/native/WebView2Loader.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "1.0.677.0"
+          },
+          "runtimes/win10-arm64/native/WinUIEdit.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "10.0.10011.16384"
+          },
+          "runtimes/win10-arm64/native/dcompi.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-arm64/native/dwmcorei.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-arm64/native/en-us/Microsoft.UI.Xaml.Phone.dll.mui": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-arm64/native/en-us/Microsoft.ui.xaml.dll.mui": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-arm64/native/marshal.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-arm64/native/wuceffectsi.dll": {
+            "rid": "win10-arm64",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-x64/native/CoreMessagingXP.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-x64/native/DwmSceneI.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/MRM.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/Microsoft.ApplicationModel.Resources.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/Microsoft.DirectManipulation.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-x64/native/Microsoft.InputStateManager.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-x64/native/Microsoft.Internal.FrameworkUdk.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/Microsoft.ProjectReunion.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/Microsoft.UI.Composition.OSSupport.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/Microsoft.UI.Input.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-x64/native/Microsoft.UI.Xaml.Controls.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-x64/native/Microsoft.UI.Xaml.Controls.pri": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/Microsoft.UI.Xaml.Internal.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/Microsoft.UI.Xaml.Phone.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-x64/native/Microsoft.UI.Xaml/Assets/NoiseAsset_256x256_PNG.png": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/Microsoft.Web.WebView2.Core.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "1.0.677.0"
+          },
+          "runtimes/win10-x64/native/Microsoft.ui.xaml.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-x64/native/Microsoft.ui.xaml.resources.19h1.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-x64/native/Microsoft.ui.xaml.resources.common.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-x64/native/WebView2Loader.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "1.0.677.0"
+          },
+          "runtimes/win10-x64/native/WinUIEdit.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "10.0.10011.16384"
+          },
+          "runtimes/win10-x64/native/dcompi.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-x64/native/dwmcorei.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-x64/native/en-us/Microsoft.UI.Xaml.Phone.dll.mui": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-x64/native/en-us/Microsoft.ui.xaml.dll.mui": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-x64/native/marshal.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x64/native/wuceffectsi.dll": {
+            "rid": "win10-x64",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-x86/native/CoreMessagingXP.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-x86/native/DwmSceneI.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/MRM.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/Microsoft.ApplicationModel.Resources.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/Microsoft.DirectManipulation.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-x86/native/Microsoft.InputStateManager.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-x86/native/Microsoft.Internal.FrameworkUdk.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/Microsoft.ProjectReunion.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/Microsoft.UI.Composition.OSSupport.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/Microsoft.UI.Input.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-x86/native/Microsoft.UI.Xaml.Controls.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-x86/native/Microsoft.UI.Xaml.Controls.pri": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/Microsoft.UI.Xaml.Internal.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/Microsoft.UI.Xaml.Phone.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-x86/native/Microsoft.UI.Xaml/Assets/NoiseAsset_256x256_PNG.png": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/Microsoft.Web.WebView2.Core.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "1.0.677.0"
+          },
+          "runtimes/win10-x86/native/Microsoft.ui.xaml.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-x86/native/Microsoft.ui.xaml.resources.19h1.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-x86/native/Microsoft.ui.xaml.resources.common.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-x86/native/WebView2Loader.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "1.0.677.0"
+          },
+          "runtimes/win10-x86/native/WinUIEdit.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "10.0.10011.16384"
+          },
+          "runtimes/win10-x86/native/dcompi.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-x86/native/dwmcorei.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          },
+          "runtimes/win10-x86/native/en-us/Microsoft.UI.Xaml.Phone.dll.mui": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-x86/native/en-us/Microsoft.ui.xaml.dll.mui": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "3.0.0.2011"
+          },
+          "runtimes/win10-x86/native/marshal.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win10-x86/native/wuceffectsi.dll": {
+            "rid": "win10-x86",
+            "assetType": "native",
+            "fileVersion": "10.0.21243.1008"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Folder Prettifier/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.18362.10": {
+      "type": "runtimepack",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VCRTForwarders.140/1.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CRemcSRRhH5wtdovxqcz3AgjttqgEXJzJuXSCjNStxW/JSm54xM7kSkwVb3tYen/mGCnGv/+PHvpEaliMEUxYA==",
+      "path": "microsoft.vcrtforwarders.140/1.0.6",
+      "hashPath": "microsoft.vcrtforwarders.140.1.0.6.nupkg.sha512"
+    },
+    "Microsoft.WinUI/3.0.0-preview3.201113.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-K7z9yqML9iBx06WcYQluyKYDggFcIJ25nwYUMmur+mZoi8bkuj69VSHOScGu3BHVY4YMxR6jXmulk/ReHc+XvQ==",
+      "path": "microsoft.winui/3.0.0-preview3.201113.0",
+      "hashPath": "microsoft.winui.3.0.0-preview3.201113.0.nupkg.sha512"
+    }
+  }
+}
