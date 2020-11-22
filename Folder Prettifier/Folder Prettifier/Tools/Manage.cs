@@ -70,8 +70,8 @@ namespace Folder_Prettifier.Tools
 
         private static void CategorizeFile(string file)
         {
-            try
-            {
+            //try
+            //{
                 string[] fileNameWords = file.Split('.');
                 string folderName = Data.catalog[fileNameWords[^1].ToLower()].folderName;
 
@@ -94,8 +94,8 @@ namespace Folder_Prettifier.Tools
                     File.Move(file, newFilePath);
                 }
 
-            }
-            catch { }
+            //}
+            //catch { }
         }
 
         private static void PrettifyFileContent(string file)
@@ -151,8 +151,8 @@ namespace Folder_Prettifier.Tools
         {
             foreach (string folderPath in folders)
             {
-                try
-                {
+                //try
+                //{
                     Directory.SetCurrentDirectory(folderPath);
                     currentDirectory = Directory.GetCurrentDirectory();
                     string[] files = Directory.GetFiles(folderPath);
@@ -166,8 +166,8 @@ namespace Folder_Prettifier.Tools
                         ProcessFile(fileName);
                         processedFiles++;
                     }
-                }
-                catch { }
+                //}
+                //catch { }
             }
         }
     }
