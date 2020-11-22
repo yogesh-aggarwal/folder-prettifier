@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Folder_Prettifier.Tools
@@ -58,7 +59,7 @@ namespace Folder_Prettifier.Tools
             */
 
             // Append at Start & End
-            newFileName = ManageFolderManageData.nameAppend.AtStart + newFileName+ ManageFolderManageData.nameAppend.AtEnd;
+            newFileName = ManageFolderManageData.nameAppend.AtStart + newFileName + ManageFolderManageData.nameAppend.AtEnd;
             string newFile = $"{newFileName}.{fileExtension}";
             string newFilePath = $@"{Directory.GetCurrentDirectory()}\{newFile}";
 
@@ -69,16 +70,32 @@ namespace Folder_Prettifier.Tools
 
         private static void CategorizeFile(string file)
         {
-            //try
-            //{
+            try
+            {
                 string[] fileNameWords = file.Split('.');
                 string folderName = Data.catalog[fileNameWords[^1].ToLower()].folderName;
 
                 Directory.CreateDirectory(folderName);
-                string newFilePath = $@"{currentDirectory}\{folderName}\{file}";
-                File.Move(file, newFilePath);
-            //}
-            //catch { }
+                string newFilePath = $@"{folderName}\{file}";
+
+                if (File.Exists(newFilePath))
+                {
+                    byte[] fileB = File.ReadAllBytes(file);
+                    byte[] newfileB = File.ReadAllBytes(newFilePath);
+                    bool equal = fileB.SequenceEqual(newfileB);
+
+                    if (File.ReadAllBytes(file).SequenceEqual(File.ReadAllBytes(newFilePath)))
+                    {
+                        File.Delete(file);
+                    }
+                }
+                else
+                {
+                    File.Move(file, newFilePath);
+                }
+
+            }
+            catch { }
         }
 
         private static void PrettifyFileContent(string file)
@@ -134,8 +151,8 @@ namespace Folder_Prettifier.Tools
         {
             foreach (string folderPath in folders)
             {
-                //try
-                //{
+                try
+                {
                     Directory.SetCurrentDirectory(folderPath);
                     currentDirectory = Directory.GetCurrentDirectory();
                     string[] files = Directory.GetFiles(folderPath);
@@ -149,8 +166,8 @@ namespace Folder_Prettifier.Tools
                         ProcessFile(fileName);
                         processedFiles++;
                     }
-                //}
-                //catch { }
+                }
+                catch { }
             }
         }
     }

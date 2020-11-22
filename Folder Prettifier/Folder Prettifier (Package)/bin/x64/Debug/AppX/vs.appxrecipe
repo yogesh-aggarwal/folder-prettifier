@@ -31,85 +31,85 @@
     <AppXManifest Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier %28Package%29\bin\x64\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-11-22T10:15:28.830</Modified>
+      <Modified>2020-11-22T10:38:46.979</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.633</Modified>
+      <Modified>2020-11-22T10:38:36.850</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\MainWindow.xbf">
       <PackagePath>MainWindow.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.634</Modified>
+      <Modified>2020-11-22T10:38:36.852</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Global\LoginDialog.xbf">
       <PackagePath>Dialogs\Global\LoginDialog.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.633</Modified>
+      <Modified>2020-11-22T10:38:36.850</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Global\SignupDialog.xbf">
       <PackagePath>Dialogs\Global\SignupDialog.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.633</Modified>
+      <Modified>2020-11-22T10:38:36.850</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Global\UserBenifits.xbf">
       <PackagePath>Dialogs\Global\UserBenifits.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.633</Modified>
+      <Modified>2020-11-22T10:38:36.851</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\ManageFolders\CustomizeCatalogDialog.xbf">
       <PackagePath>Dialogs\ManageFolders\CustomizeCatalogDialog.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.633</Modified>
+      <Modified>2020-11-22T10:38:36.851</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\ManageFolders\ManageFoldersDialog.xbf">
       <PackagePath>Dialogs\ManageFolders\ManageFoldersDialog.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.634</Modified>
+      <Modified>2020-11-22T10:38:36.851</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\ManageFolders\ReplaceTasksDialog.xbf">
       <PackagePath>Dialogs\ManageFolders\ReplaceTasksDialog.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.634</Modified>
+      <Modified>2020-11-22T10:38:36.851</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Settings\AboutDialog.xbf">
       <PackagePath>Dialogs\Settings\AboutDialog.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.634</Modified>
+      <Modified>2020-11-22T10:38:36.851</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Settings\LicenseDialog.xbf">
       <PackagePath>Dialogs\Settings\LicenseDialog.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.634</Modified>
+      <Modified>2020-11-22T10:38:36.851</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Settings\PrivacyPolicyDialog.xbf">
       <PackagePath>Dialogs\Settings\PrivacyPolicyDialog.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.634</Modified>
+      <Modified>2020-11-22T10:38:36.852</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\BackupPage.xbf">
       <PackagePath>Pages\BackupPage.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.635</Modified>
+      <Modified>2020-11-22T10:38:36.852</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\CloudSyncPage.xbf">
       <PackagePath>Pages\CloudSyncPage.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.635</Modified>
+      <Modified>2020-11-22T10:38:36.852</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\FileEncryptionPage.xbf">
       <PackagePath>Pages\FileEncryptionPage.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.635</Modified>
+      <Modified>2020-11-22T10:38:36.852</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\FolderEncryptionPage.xbf">
       <PackagePath>Pages\FolderEncryptionPage.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.635</Modified>
+      <Modified>2020-11-22T10:38:36.852</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\ManageFoldersPage.xbf">
       <PackagePath>Pages\ManageFoldersPage.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.635</Modified>
+      <Modified>2020-11-22T10:38:36.853</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\RedirectPage.xbf">
       <PackagePath>Pages\RedirectPage.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.636</Modified>
+      <Modified>2020-11-22T10:38:36.853</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\Settings.xbf">
       <PackagePath>Pages\Settings.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.636</Modified>
+      <Modified>2020-11-22T10:38:36.853</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\WatchPage.xbf">
       <PackagePath>Pages\WatchPage.xbf</PackagePath>
-      <Modified>2020-11-22T10:15:19.636</Modified>
+      <Modified>2020-11-22T10:38:36.853</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Microsoft.UI.Xaml\Assets\NoiseAsset_256X256_PNG.png">
       <PackagePath>Microsoft.UI.Xaml\Assets\NoiseAsset_256X256_PNG.png</PackagePath>
@@ -163,11 +163,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\obj\x64\Debug\net5.0-windows10.0.18362.0\apphost.exe">
       <PackagePath>Folder Prettifier\Folder Prettifier.exe</PackagePath>
-      <Modified>2020-11-22T10:15:19.814</Modified>
+      <Modified>2020-11-22T10:38:37.031</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\obj\x64\Debug\net5.0-windows10.0.18362.0\Folder Prettifier.dll">
       <PackagePath>Folder Prettifier\Folder Prettifier.dll</PackagePath>
-      <Modified>2020-11-22T10:15:19.805</Modified>
+      <Modified>2020-11-22T10:38:37.023</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Folder Prettifier.runtimeconfig.json">
       <PackagePath>Folder Prettifier\Folder Prettifier.runtimeconfig.json</PackagePath>
