@@ -7,6 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Window.Title>
+        Title=Folder Prettifier</Window.Title>
+
     <NavigationView x:ConnectionId='2' x:Name="navigationView"                                                    PaneDisplayMode="Auto" IsBackButtonVisible="Collapsed" >
         <NavigationView.MenuItems>
             <NavigationViewItemHeader Content="Actions" />

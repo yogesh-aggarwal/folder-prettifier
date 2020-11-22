@@ -226,6 +226,6 @@ D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifi
 D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier (Package)\bin\x64\Debug\Pages\RedirectPage.xbf
 D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier (Package)\bin\x64\Debug\Pages\WatchPage.xbf
 D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier (Package)\bin\x64\Debug\Folder Prettifier\Newtonsoft.Json.dll
-D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier (Package)\obj\x64\Debug\z2jmybaz.aau\Microsoft.UI.Xaml.Controls.pri.xml
-D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier (Package)\obj\x64\Debug\sqaeevgd.f4b\Microsoft.UI.Xaml.Controls.pri.xml
-D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier (Package)\obj\x64\Debug\a5sorfq5.dln\Microsoft.UI.Xaml.Controls.pri.xml
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier (Package)\obj\x64\Debug\34to0vtx.gia\Microsoft.UI.Xaml.Controls.pri.xml
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier (Package)\obj\x64\Debug\3mfi01b1.i1t\Microsoft.UI.Xaml.Controls.pri.xml
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier (Package)\obj\x64\Debug\viol1dba.amd\Microsoft.UI.Xaml.Controls.pri.xml
