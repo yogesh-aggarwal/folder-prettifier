@@ -309,3 +309,4 @@ D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifi
 D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\ManageFoldersPage.xbf
 D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\RedirectPage.xbf
 D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\WatchPage.xbf
+D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Newtonsoft.Json.dll

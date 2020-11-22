@@ -3,6 +3,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Controls;
 using Folder_Prettifier.Dialogs;
+using Folder_Prettifier.Tools;
 
 namespace Folder_Prettifier
 {
@@ -12,6 +13,7 @@ namespace Folder_Prettifier
         {
             this.InitializeComponent();
             contentFrame.Navigate(Type.GetType("Folder_Prettifier.Pages.ManageFoldersPage"));
+            Data.FetchCatalog();
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

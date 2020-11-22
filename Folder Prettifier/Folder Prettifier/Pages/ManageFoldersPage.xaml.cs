@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Folder_Prettifier.Tools;
@@ -6,17 +7,6 @@ using Folder_Prettifier.Dialogs.ManageFolders;
 
 namespace Folder_Prettifier.Pages
 {
-    class ManageFolderManageData
-    {
-        public static bool isNameManipulation = true;
-        public static AutoNameManipulation nameManipulation = AutoNameManipulation.Capitalize;
-
-        public static NameAppend nameAppend = new NameAppend();
-
-        public static bool isCategorize = true;
-        public static AutoCategorizeFiles categorizeFiles = AutoCategorizeFiles.Extensions;
-    }
-
     public sealed partial class ManageFoldersPage : Page
     {
         public ManageFoldersPage()
@@ -82,21 +72,20 @@ namespace Folder_Prettifier.Pages
             await customizeCatalogDialog.ShowAsync();
         }
 
-        async private void StartManagement(object sender, RoutedEventArgs e)
+        private void StartManagement(object sender, RoutedEventArgs e)
         {
             ManageFolderManageData.nameAppend.AtStart = nameStartsWith.Text;
             ManageFolderManageData.nameAppend.AtEnd = nameEndsWith.Text;
 
+            // Temporary: Get from user folder entries
+            List<string> folders = new List<string>();
+            folders.Add(@"D:\Downloads\Test\Prettify");
+
             //try
             //{
-            await Tools.Manage.Start(ManageFolderManageData.isNameManipulation,
-                               ManageFolderManageData.nameManipulation,
-                               ManageFolderManageData.nameAppend,
-                               ManageFolderManageData.isCategorize,
-                               ManageFolderManageData.categorizeFiles);
+            Tools.Manage.Start(folders);
             //}
             //catch { }
-
         }
 
         ////////////////////////////////////////////////////////////

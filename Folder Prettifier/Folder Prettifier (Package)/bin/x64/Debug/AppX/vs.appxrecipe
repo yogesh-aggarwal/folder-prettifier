@@ -31,85 +31,85 @@
     <AppXManifest Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier %28Package%29\bin\x64\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-11-22T05:37:57.991</Modified>
+      <Modified>2020-11-22T10:15:28.830</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.633</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\MainWindow.xbf">
       <PackagePath>MainWindow.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.634</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Global\LoginDialog.xbf">
       <PackagePath>Dialogs\Global\LoginDialog.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.633</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Global\SignupDialog.xbf">
       <PackagePath>Dialogs\Global\SignupDialog.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.633</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Global\UserBenifits.xbf">
       <PackagePath>Dialogs\Global\UserBenifits.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.633</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\ManageFolders\CustomizeCatalogDialog.xbf">
       <PackagePath>Dialogs\ManageFolders\CustomizeCatalogDialog.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.633</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\ManageFolders\ManageFoldersDialog.xbf">
       <PackagePath>Dialogs\ManageFolders\ManageFoldersDialog.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.634</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\ManageFolders\ReplaceTasksDialog.xbf">
       <PackagePath>Dialogs\ManageFolders\ReplaceTasksDialog.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.634</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Settings\AboutDialog.xbf">
       <PackagePath>Dialogs\Settings\AboutDialog.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.634</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Settings\LicenseDialog.xbf">
       <PackagePath>Dialogs\Settings\LicenseDialog.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.634</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Dialogs\Settings\PrivacyPolicyDialog.xbf">
       <PackagePath>Dialogs\Settings\PrivacyPolicyDialog.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.634</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\BackupPage.xbf">
       <PackagePath>Pages\BackupPage.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.635</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\CloudSyncPage.xbf">
       <PackagePath>Pages\CloudSyncPage.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.635</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\FileEncryptionPage.xbf">
       <PackagePath>Pages\FileEncryptionPage.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.635</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\FolderEncryptionPage.xbf">
       <PackagePath>Pages\FolderEncryptionPage.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.635</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\ManageFoldersPage.xbf">
       <PackagePath>Pages\ManageFoldersPage.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.635</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\RedirectPage.xbf">
       <PackagePath>Pages\RedirectPage.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.636</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\Settings.xbf">
       <PackagePath>Pages\Settings.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.636</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Pages\WatchPage.xbf">
       <PackagePath>Pages\WatchPage.xbf</PackagePath>
-      <Modified>2020-11-22T05:37:52.927</Modified>
+      <Modified>2020-11-22T10:15:19.636</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Microsoft.UI.Xaml\Assets\NoiseAsset_256X256_PNG.png">
       <PackagePath>Microsoft.UI.Xaml\Assets\NoiseAsset_256X256_PNG.png</PackagePath>
@@ -155,23 +155,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier %28Package%29\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-11-22T05:26:37.851</Modified>
+      <Modified>2020-11-22T08:29:38.074</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\obj\x64\Debug\net5.0-windows10.0.18362.0\Msix\Folder Prettifier.deps.json">
       <PackagePath>Folder Prettifier\Folder Prettifier.deps.json</PackagePath>
-      <Modified>2020-11-22T05:26:33.130</Modified>
+      <Modified>2020-11-22T08:29:33.589</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\obj\x64\Debug\net5.0-windows10.0.18362.0\apphost.exe">
       <PackagePath>Folder Prettifier\Folder Prettifier.exe</PackagePath>
-      <Modified>2020-11-22T05:37:53.099</Modified>
+      <Modified>2020-11-22T10:15:19.814</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\obj\x64\Debug\net5.0-windows10.0.18362.0\Folder Prettifier.dll">
       <PackagePath>Folder Prettifier\Folder Prettifier.dll</PackagePath>
-      <Modified>2020-11-22T05:37:53.083</Modified>
+      <Modified>2020-11-22T10:15:19.805</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\Code Playground\Folder Prettifier\Folder Prettifier\Folder Prettifier\Folder Prettifier\bin\x64\Debug\net5.0-windows10.0.18362.0\Folder Prettifier.runtimeconfig.json">
       <PackagePath>Folder Prettifier\Folder Prettifier.runtimeconfig.json</PackagePath>
-      <Modified>2020-11-22T04:42:23.588</Modified>
+      <Modified>2020-11-22T08:29:19.852</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.18362.10\lib\Microsoft.Windows.SDK.NET.dll">
       <PackagePath>Folder Prettifier\Microsoft.Windows.SDK.NET.dll</PackagePath>
@@ -189,277 +189,281 @@
       <PackagePath>Folder Prettifier\Microsoft.WinUI.dll</PackagePath>
       <Modified>2020-11-13T20:19:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\debug\concrt140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\newtonsoft.json\12.0.3\lib\netstandard2.0\Newtonsoft.Json.dll">
+      <PackagePath>Folder Prettifier\Newtonsoft.Json.dll</PackagePath>
+      <Modified>2019-11-08T19:26:44.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-arm64\native\debug\concrt140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-arm64\native\debug\concrt140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\debug\msvcp140_1d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-arm64\native\debug\msvcp140_1d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-arm64\native\debug\msvcp140_1d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\debug\msvcp140_2d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-arm64\native\debug\msvcp140_2d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-arm64\native\debug\msvcp140_2d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\debug\msvcp140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-arm64\native\debug\msvcp140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-arm64\native\debug\msvcp140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\debug\vcamp140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-arm64\native\debug\vcamp140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-arm64\native\debug\vcamp140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\debug\vccorlib140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-arm64\native\debug\vccorlib140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-arm64\native\debug\vccorlib140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\debug\vcomp140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-arm64\native\debug\vcomp140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-arm64\native\debug\vcomp140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\debug\vcruntime140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-arm64\native\debug\vcruntime140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-arm64\native\debug\vcruntime140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\release\concrt140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-arm64\native\release\concrt140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-arm64\native\release\concrt140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\release\msvcp140_1_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-arm64\native\release\msvcp140_1_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-arm64\native\release\msvcp140_1_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\release\msvcp140_2_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-arm64\native\release\msvcp140_2_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-arm64\native\release\msvcp140_2_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\release\msvcp140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-arm64\native\release\msvcp140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-arm64\native\release\msvcp140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\release\vcamp140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-arm64\native\release\vcamp140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-arm64\native\release\vcamp140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\release\vccorlib140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-arm64\native\release\vccorlib140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-arm64\native\release\vccorlib140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\release\vcomp140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-arm64\native\release\vcomp140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-arm64\native\release\vcomp140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-arm64\native\release\vcruntime140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-arm64\native\release\vcruntime140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-arm64\native\release\vcruntime140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\concrt140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\concrt140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\debug\concrt140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\concrt140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\concrt140d_app.dll">
       <PackagePath>Folder Prettifier\concrt140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\msvcp140_1d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\msvcp140_1d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\debug\msvcp140_1d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\msvcp140_1d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\msvcp140_1d_app.dll">
       <PackagePath>Folder Prettifier\msvcp140_1d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\msvcp140_2d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\msvcp140_2d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\debug\msvcp140_2d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\msvcp140_2d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\msvcp140_2d_app.dll">
       <PackagePath>Folder Prettifier\msvcp140_2d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\msvcp140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\msvcp140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\debug\msvcp140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\msvcp140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\msvcp140d_app.dll">
       <PackagePath>Folder Prettifier\msvcp140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vcamp140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\vcamp140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\debug\vcamp140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vcamp140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\vcamp140d_app.dll">
       <PackagePath>Folder Prettifier\vcamp140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vccorlib140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\vccorlib140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\debug\vccorlib140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vccorlib140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\vccorlib140d_app.dll">
       <PackagePath>Folder Prettifier\vccorlib140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vcomp140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\vcomp140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\debug\vcomp140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vcomp140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\vcomp140d_app.dll">
       <PackagePath>Folder Prettifier\vcomp140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vcruntime140_1d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\vcruntime140_1d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\debug\vcruntime140_1d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vcruntime140_1d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\vcruntime140_1d_app.dll">
       <PackagePath>Folder Prettifier\vcruntime140_1d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vcruntime140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\vcruntime140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\debug\vcruntime140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\debug\vcruntime140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\debug\vcruntime140d_app.dll">
       <PackagePath>Folder Prettifier\vcruntime140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\concrt140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\concrt140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\release\concrt140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\concrt140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\concrt140_app.dll">
       <PackagePath>Folder Prettifier\concrt140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\msvcp140_1_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\msvcp140_1_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\release\msvcp140_1_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\msvcp140_1_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\msvcp140_1_app.dll">
       <PackagePath>Folder Prettifier\msvcp140_1_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\msvcp140_2_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\msvcp140_2_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\release\msvcp140_2_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\msvcp140_2_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\msvcp140_2_app.dll">
       <PackagePath>Folder Prettifier\msvcp140_2_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\msvcp140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\msvcp140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\release\msvcp140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\msvcp140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\msvcp140_app.dll">
       <PackagePath>Folder Prettifier\msvcp140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vcamp140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\vcamp140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\release\vcamp140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vcamp140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\vcamp140_app.dll">
       <PackagePath>Folder Prettifier\vcamp140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vccorlib140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\vccorlib140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\release\vccorlib140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vccorlib140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\vccorlib140_app.dll">
       <PackagePath>Folder Prettifier\vccorlib140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vcomp140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\vcomp140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\release\vcomp140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vcomp140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\vcomp140_app.dll">
       <PackagePath>Folder Prettifier\vcomp140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vcruntime140_1_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\vcruntime140_1_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\release\vcruntime140_1_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vcruntime140_1_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\vcruntime140_1_app.dll">
       <PackagePath>Folder Prettifier\vcruntime140_1_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vcruntime140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\vcruntime140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x64\native\release\vcruntime140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x64\native\release\vcruntime140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x64\native\release\vcruntime140_app.dll">
       <PackagePath>Folder Prettifier\vcruntime140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\debug\concrt140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x86\native\debug\concrt140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x86\native\debug\concrt140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\debug\msvcp140_1d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x86\native\debug\msvcp140_1d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x86\native\debug\msvcp140_1d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\debug\msvcp140_2d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x86\native\debug\msvcp140_2d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x86\native\debug\msvcp140_2d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\debug\msvcp140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x86\native\debug\msvcp140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x86\native\debug\msvcp140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\debug\vcamp140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x86\native\debug\vcamp140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x86\native\debug\vcamp140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\debug\vccorlib140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x86\native\debug\vccorlib140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x86\native\debug\vccorlib140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\debug\vcomp140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x86\native\debug\vcomp140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x86\native\debug\vcomp140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\debug\vcruntime140d_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x86\native\debug\vcruntime140d_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x86\native\debug\vcruntime140d_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\release\concrt140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x86\native\release\concrt140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x86\native\release\concrt140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\release\msvcp140_1_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x86\native\release\msvcp140_1_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x86\native\release\msvcp140_1_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\release\msvcp140_2_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x86\native\release\msvcp140_2_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x86\native\release\msvcp140_2_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\release\msvcp140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x86\native\release\msvcp140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x86\native\release\msvcp140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\release\vcamp140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x86\native\release\vcamp140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x86\native\release\vcamp140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\release\vccorlib140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x86\native\release\vccorlib140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x86\native\release\vccorlib140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\release\vcomp140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x86\native\release\vcomp140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x86\native\release\vcomp140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.6\runtimes\win10-x86\native\release\vcruntime140_app.dll">
+    <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.vcrtforwarders.140\1.0.7\runtimes\win10-x86\native\release\vcruntime140_app.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-x86\native\release\vcruntime140_app.dll</PackagePath>
-      <Modified>2020-04-16T20:31:38.000</Modified>
+      <Modified>2020-10-20T21:01:14.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yogesh\.nuget\packages\microsoft.winui\3.0.0-preview3.201113.0\runtimes\win10-arm64\native\CoreMessagingXP.dll">
       <PackagePath>Folder Prettifier\runtimes\win10-arm64\native\CoreMessagingXP.dll</PackagePath>

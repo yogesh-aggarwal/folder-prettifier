@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net5.0-windows10.0.18362": {
-      "Microsoft.VCRTForwarders.140/1.0.6": {
+      "Microsoft.VCRTForwarders.140/1.0.7": {
         "type": "package",
         "build": {
           "build/netcoreapp2.0/Microsoft.VCRTForwarders.140.targets": {}
@@ -550,10 +550,19 @@
             "rid": "win10-x86"
           }
         }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
       }
     },
     "net5.0-windows10.0.18362/win10-arm64": {
-      "Microsoft.VCRTForwarders.140/1.0.6": {
+      "Microsoft.VCRTForwarders.140/1.0.7": {
         "type": "package",
         "native": {
           "runtimes/win10-arm64/native/debug/concrt140d_app.dll": {},
@@ -620,10 +629,19 @@
           "buildTransitive/Microsoft.WinUI.props": {},
           "buildTransitive/Microsoft.WinUI.targets": {}
         }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
       }
     },
     "net5.0-windows10.0.18362/win10-x64": {
-      "Microsoft.VCRTForwarders.140/1.0.6": {
+      "Microsoft.VCRTForwarders.140/1.0.7": {
         "type": "package",
         "native": {
           "runtimes/win10-x64/native/debug/concrt140d_app.dll": {},
@@ -692,10 +710,19 @@
           "buildTransitive/Microsoft.WinUI.props": {},
           "buildTransitive/Microsoft.WinUI.targets": {}
         }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
       }
     },
     "net5.0-windows10.0.18362/win10-x86": {
-      "Microsoft.VCRTForwarders.140/1.0.6": {
+      "Microsoft.VCRTForwarders.140/1.0.7": {
         "type": "package",
         "native": {
           "runtimes/win10-x86/native/debug/concrt140d_app.dll": {},
@@ -762,14 +789,23 @@
           "buildTransitive/Microsoft.WinUI.props": {},
           "buildTransitive/Microsoft.WinUI.targets": {}
         }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
       }
     }
   },
   "libraries": {
-    "Microsoft.VCRTForwarders.140/1.0.6": {
-      "sha512": "CRemcSRRhH5wtdovxqcz3AgjttqgEXJzJuXSCjNStxW/JSm54xM7kSkwVb3tYen/mGCnGv/+PHvpEaliMEUxYA==",
+    "Microsoft.VCRTForwarders.140/1.0.7": {
+      "sha512": "ihE2cKWZuQjkSrJOVw7p4ppKGLVr2+HEgbS+a79G0YPKvAD3n61Mqitg3DL+X2/kuKD5C3edfP//HyToz+M11A==",
       "type": "package",
-      "path": "microsoft.vcrtforwarders.140/1.0.6",
+      "path": "microsoft.vcrtforwarders.140/1.0.7",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -798,7 +834,7 @@
         "build/native/Microsoft.VCRTForwarders.140.targets",
         "build/net45/Microsoft.VCRTForwarders.140.targets",
         "build/netcoreapp2.0/Microsoft.VCRTForwarders.140.targets",
-        "microsoft.vcrtforwarders.140.1.0.6.nupkg.sha512",
+        "microsoft.vcrtforwarders.140.1.0.7.nupkg.sha512",
         "microsoft.vcrtforwarders.140.nuspec",
         "runtimes/win10-arm64/native/debug/concrt140d_app.dll",
         "runtimes/win10-arm64/native/debug/msvcp140_1d_app.dll",
@@ -1024,12 +1060,44 @@
         "tools/x64/GenXbf.dll",
         "tools/x86/GenXbf.dll"
       ]
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "type": "package",
+      "path": "newtonsoft.json/12.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.12.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net5.0-windows10.0.18362": [
-      "Microsoft.VCRTForwarders.140 >= 1.0.6",
-      "Microsoft.WinUI >= 3.0.0-preview3.201113.0"
+      "Microsoft.VCRTForwarders.140 >= 1.0.7",
+      "Microsoft.WinUI >= 3.0.0-preview3.201113.0",
+      "Newtonsoft.Json >= 12.0.3"
     ]
   },
   "packageFolders": {
@@ -1073,11 +1141,15 @@
         "dependencies": {
           "Microsoft.VCRTForwarders.140": {
             "target": "Package",
-            "version": "[1.0.6, )"
+            "version": "[1.0.7, )"
           },
           "Microsoft.WinUI": {
             "target": "Package",
             "version": "[3.0.0-preview3.201113.0, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[12.0.3, )"
           }
         },
         "imports": [

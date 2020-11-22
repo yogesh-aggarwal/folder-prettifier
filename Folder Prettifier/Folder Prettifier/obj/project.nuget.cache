@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Pw+ZPaHubcPQkv6RRsT/c0s1qQ9rcVF897JXb6Gia1x7yi2vu8njb/riX6SppglZSxiaEk5wuPS1h6xH62q7Bw==",
+  "dgSpecHash": "r0C9IlIf9aYLhFGXEQVzZ/17lZQCQa0IZZArejd3ZJxz0qQp/nRJH9AwuXbGJ/VLRdw73yFpyRdK+KIVCQQbHg==",
   "success": true,
   "projectFilePath": "D:\\Documents\\Code Playground\\Folder Prettifier\\Folder Prettifier\\Folder Prettifier\\Folder Prettifier\\Folder Prettifier.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Yogesh\\.nuget\\packages\\microsoft.vcrtforwarders.140\\1.0.6\\microsoft.vcrtforwarders.140.1.0.6.nupkg.sha512",
+    "C:\\Users\\Yogesh\\.nuget\\packages\\microsoft.vcrtforwarders.140\\1.0.7\\microsoft.vcrtforwarders.140.1.0.7.nupkg.sha512",
     "C:\\Users\\Yogesh\\.nuget\\packages\\microsoft.winui\\3.0.0-preview3.201113.0\\microsoft.winui.3.0.0-preview3.201113.0.nupkg.sha512",
+    "C:\\Users\\Yogesh\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\Yogesh\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\5.0.0\\microsoft.windowsdesktop.app.runtime.win-x86.5.0.0.nupkg.sha512",
     "C:\\Users\\Yogesh\\.nuget\\packages\\microsoft.netcore.app.runtime.win-arm64\\5.0.0\\microsoft.netcore.app.runtime.win-arm64.5.0.0.nupkg.sha512",
     "C:\\Users\\Yogesh\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\5.0.0\\microsoft.windowsdesktop.app.runtime.win-x64.5.0.0.nupkg.sha512",

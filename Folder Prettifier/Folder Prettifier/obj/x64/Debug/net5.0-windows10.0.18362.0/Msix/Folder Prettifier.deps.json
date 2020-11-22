@@ -8,8 +8,9 @@
     ".NETCoreApp,Version=v5.0": {
       "Folder Prettifier/1.0.0": {
         "dependencies": {
-          "Microsoft.VCRTForwarders.140": "1.0.6",
+          "Microsoft.VCRTForwarders.140": "1.0.7",
           "Microsoft.WinUI": "3.0.0-preview3.201113.0",
+          "Newtonsoft.Json": "12.0.3",
           "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.18362.10"
         },
         "runtime": {
@@ -28,7 +29,7 @@
           }
         }
       },
-      "Microsoft.VCRTForwarders.140/1.0.6": {
+      "Microsoft.VCRTForwarders.140/1.0.7": {
         "runtimeTargets": {
           "runtimes/win10-arm64/native/debug/concrt140d_app.dll": {
             "rid": "win10-arm64",
@@ -700,6 +701,14 @@
             "fileVersion": "10.0.21243.1008"
           }
         }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.3.23909"
+          }
+        }
       }
     }
   },
@@ -714,12 +723,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.VCRTForwarders.140/1.0.6": {
+    "Microsoft.VCRTForwarders.140/1.0.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-CRemcSRRhH5wtdovxqcz3AgjttqgEXJzJuXSCjNStxW/JSm54xM7kSkwVb3tYen/mGCnGv/+PHvpEaliMEUxYA==",
-      "path": "microsoft.vcrtforwarders.140/1.0.6",
-      "hashPath": "microsoft.vcrtforwarders.140.1.0.6.nupkg.sha512"
+      "sha512": "sha512-ihE2cKWZuQjkSrJOVw7p4ppKGLVr2+HEgbS+a79G0YPKvAD3n61Mqitg3DL+X2/kuKD5C3edfP//HyToz+M11A==",
+      "path": "microsoft.vcrtforwarders.140/1.0.7",
+      "hashPath": "microsoft.vcrtforwarders.140.1.0.7.nupkg.sha512"
     },
     "Microsoft.WinUI/3.0.0-preview3.201113.0": {
       "type": "package",
@@ -727,6 +736,13 @@
       "sha512": "sha512-K7z9yqML9iBx06WcYQluyKYDggFcIJ25nwYUMmur+mZoi8bkuj69VSHOScGu3BHVY4YMxR6jXmulk/ReHc+XvQ==",
       "path": "microsoft.winui/3.0.0-preview3.201113.0",
       "hashPath": "microsoft.winui.3.0.0-preview3.201113.0.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "path": "newtonsoft.json/12.0.3",
+      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
     }
   }
 }
