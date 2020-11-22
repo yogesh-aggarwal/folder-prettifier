@@ -51,6 +51,21 @@ namespace Folder_Prettifier.Tools
             {
                 newFileName = newFileName[0].ToString().ToUpper() + newFileName.Substring(1).ToLower();
             }
+            // AntiCapitalize
+            if (ManageFolderManageData.nameManipulation == AutoNameManipulation.AntiCapitalize)
+            {
+                newFileName = newFileName[0].ToString().ToLower() + newFileName.Substring(1).ToUpper();
+            }
+            // AllCapital
+            if (ManageFolderManageData.nameManipulation == AutoNameManipulation.AllCapital)
+            {
+                newFileName = newFileName.ToUpper();
+            }
+            // AllSmall
+            if (ManageFolderManageData.nameManipulation == AutoNameManipulation.AllSmall)
+            {
+                newFileName = newFileName.ToLower();
+            }
             /*
             if (isReplaceWord.Checked)
             {
@@ -137,7 +152,7 @@ namespace Folder_Prettifier.Tools
 
         private static void ProcessFile(string file)
         {
-            if (ManageFolderManageData.nameManipulation != AutoNameManipulation.None)
+            if (ManageFolderManageData.isNameManipulation)
             {
                 file = PrettifyName(file);
             }
