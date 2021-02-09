@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{677FCA02-52A2-4E79-9D56-639A5189C0A5}</ProjectGuid>
+    <ProjectGuid>{688C8822-8EC3-491C-8767-1CD6B881EA78}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>FolderPrettifier</RootNamespace>
     <AssemblyName>Folder Prettifier</AssemblyName>
@@ -178,7 +178,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="catalog.json" />
-    <None Include="Folder Prettifier_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
