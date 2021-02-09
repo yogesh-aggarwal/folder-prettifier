@@ -369,9 +369,9 @@
             this.menuStrip1.TabIndex = 21;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // updateCatalog
+            // updateCatalogBtn
             // 
-            this.updateCatalogBtn.Name = "updateCatalog";
+            this.updateCatalogBtn.Name = "updateCatalogBtn";
             this.updateCatalogBtn.Size = new System.Drawing.Size(101, 20);
             this.updateCatalogBtn.Text = "Update Catalog";
             this.updateCatalogBtn.Click += new System.EventHandler(this.updateCatalogBtn_Click);
