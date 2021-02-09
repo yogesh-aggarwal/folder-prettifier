@@ -38,6 +38,7 @@
             this.locationLabel = new System.Windows.Forms.Label();
             this.chooseLocation = new System.Windows.Forms.Button();
             this.folderActionsGroup = new System.Windows.Forms.GroupBox();
+            this.isDeleteFilesWithSameName = new System.Windows.Forms.CheckBox();
             this.isCategorizeFiles = new System.Windows.Forms.CheckBox();
             this.nameEndsWith = new System.Windows.Forms.TextBox();
             this.nameEndsWithLabel = new System.Windows.Forms.Label();
@@ -57,8 +58,7 @@
             this.status = new System.Windows.Forms.Label();
             this.isOpenFolder = new System.Windows.Forms.CheckBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.updateCatalogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateCatalogBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.folderOptionsGroup.SuspendLayout();
             this.folderActionsGroup.SuspendLayout();
@@ -147,6 +147,7 @@
             // 
             // folderActionsGroup
             // 
+            this.folderActionsGroup.Controls.Add(this.isDeleteFilesWithSameName);
             this.folderActionsGroup.Controls.Add(this.isCategorizeFiles);
             this.folderActionsGroup.Controls.Add(this.nameEndsWith);
             this.folderActionsGroup.Controls.Add(this.nameEndsWithLabel);
@@ -162,15 +163,27 @@
             this.folderActionsGroup.Controls.Add(this.isPrettifyName);
             this.folderActionsGroup.Location = new System.Drawing.Point(12, 144);
             this.folderActionsGroup.Name = "folderActionsGroup";
-            this.folderActionsGroup.Size = new System.Drawing.Size(378, 242);
+            this.folderActionsGroup.Size = new System.Drawing.Size(378, 266);
             this.folderActionsGroup.TabIndex = 1;
             this.folderActionsGroup.TabStop = false;
             this.folderActionsGroup.Text = "Actions";
             // 
+            // isDeleteFilesWithSameName
+            // 
+            this.isDeleteFilesWithSameName.AutoSize = true;
+            this.isDeleteFilesWithSameName.Location = new System.Drawing.Point(9, 219);
+            this.isDeleteFilesWithSameName.Name = "isDeleteFilesWithSameName";
+            this.isDeleteFilesWithSameName.Size = new System.Drawing.Size(167, 17);
+            this.isDeleteFilesWithSameName.TabIndex = 17;
+            this.isDeleteFilesWithSameName.Text = "Delete Files With Same Name";
+            this.isDeleteFilesWithSameName.UseVisualStyleBackColor = true;
+            // 
             // isCategorizeFiles
             // 
             this.isCategorizeFiles.AutoSize = true;
-            this.isCategorizeFiles.Location = new System.Drawing.Point(9, 219);
+            this.isCategorizeFiles.Checked = true;
+            this.isCategorizeFiles.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.isCategorizeFiles.Location = new System.Drawing.Point(9, 243);
             this.isCategorizeFiles.Name = "isCategorizeFiles";
             this.isCategorizeFiles.Size = new System.Drawing.Size(100, 17);
             this.isCategorizeFiles.TabIndex = 16;
@@ -301,7 +314,7 @@
             // 
             // startBtn
             // 
-            this.startBtn.Location = new System.Drawing.Point(12, 437);
+            this.startBtn.Location = new System.Drawing.Point(12, 476);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(69, 28);
             this.startBtn.TabIndex = 17;
@@ -314,7 +327,7 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.Controls.Add(this.progressBar);
             this.panel1.Controls.Add(this.status);
-            this.panel1.Location = new System.Drawing.Point(0, 477);
+            this.panel1.Location = new System.Drawing.Point(0, 517);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(401, 25);
             this.panel1.TabIndex = 2;
@@ -338,7 +351,7 @@
             // isOpenFolder
             // 
             this.isOpenFolder.AutoSize = true;
-            this.isOpenFolder.Location = new System.Drawing.Point(12, 402);
+            this.isOpenFolder.Location = new System.Drawing.Point(12, 441);
             this.isOpenFolder.Name = "isOpenFolder";
             this.isOpenFolder.Size = new System.Drawing.Size(165, 17);
             this.isOpenFolder.TabIndex = 20;
@@ -348,7 +361,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolsToolStripMenuItem,
+            this.updateCatalogBtn,
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -356,21 +369,12 @@
             this.menuStrip1.TabIndex = 21;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // toolsToolStripMenuItem
+            // updateCatalog
             // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.updateCatalogToolStripMenuItem});
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.toolsToolStripMenuItem.Text = "Tools";
-            // 
-            // updateCatalogToolStripMenuItem
-            // 
-            this.updateCatalogToolStripMenuItem.Image = global::FolderPrettifier.Data.refresh;
-            this.updateCatalogToolStripMenuItem.Name = "updateCatalogToolStripMenuItem";
-            this.updateCatalogToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.updateCatalogToolStripMenuItem.Text = "Update Catalog";
-            this.updateCatalogToolStripMenuItem.Click += new System.EventHandler(this.updateCatalogToolStripMenuItem_Click);
+            this.updateCatalogBtn.Name = "updateCatalog";
+            this.updateCatalogBtn.Size = new System.Drawing.Size(101, 20);
+            this.updateCatalogBtn.Text = "Update Catalog";
+            this.updateCatalogBtn.Click += new System.EventHandler(this.updateCatalogBtn_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -384,7 +388,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(401, 502);
+            this.ClientSize = new System.Drawing.Size(401, 541);
             this.Controls.Add(this.isOpenFolder);
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.panel1);
@@ -441,9 +445,9 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.CheckBox isOpenFolder;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem updateCatalogToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateCatalogBtn;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.CheckBox isDeleteFilesWithSameName;
     }
 }
 

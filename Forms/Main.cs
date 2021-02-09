@@ -75,7 +75,7 @@ namespace FolderPrettifier
         {
             status.Text = "Fetching Catalog...";
             startBtn.Enabled = false;
-            updateCatalogToolStripMenuItem.Enabled = false;
+            updateCatalogBtn.Enabled = false;
             progressBar.Value = 0;
 
             string result = "";
@@ -91,14 +91,15 @@ namespace FolderPrettifier
                     using (HttpResponseMessage response = await client.GetAsync(Data.CatalogUrl))
                     using (HttpContent content = response.Content)
                     {
-                        progressBar.Value = 50;
 
+                        progressBar.Value = 50;
                         status.Text = "Caching latest catalog...";
                         result = await content.ReadAsStringAsync();
                         using (StreamWriter sw = File.CreateText($@"{Path.GetTempPath()}{Data.CacheFileName}"))
                         {
                             sw.WriteLine(result);
                         }
+                        Console.WriteLine(result);
                     }
                 }
                 catch
@@ -144,10 +145,10 @@ namespace FolderPrettifier
 
             progressBar.Value = 100;
 
-            await Task.Delay(2000);
+            await Task.Delay(500);
             status.Text = "Ready";
             startBtn.Enabled = true;
-            updateCatalogToolStripMenuItem.Enabled = true;
+            updateCatalogBtn.Enabled = true;
 
             progressBar.Value = 0;
         }
@@ -320,10 +321,19 @@ namespace FolderPrettifier
         {
             try
             {
-                string folderName = extensions[file.Split('.').Last().ToLower()].folderName;
+                string folderName = extensions["folders"][
+                extensions["extensions"][file.Split('.').Last().ToLower()].ToObject<int>()
+            ];
+                string newFileName = $"{folderName}\\{file.Split('\\').Last()}";
                 Directory.CreateDirectory(folderName);
-                File.Move(file, $"{folderName}\\{file.Split('\\').Last()}");
-
+                if (File.Exists(newFileName) && isDeleteFilesWithSameName.Checked)
+                {
+                    File.Delete(file);
+                }
+                else
+                {
+                    File.Move(file, $"{folderName}\\{file.Split('\\').Last()}");
+                }
             }
             catch
             {
@@ -412,15 +422,15 @@ namespace FolderPrettifier
             };
         }
 
-        private void updateCatalogToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FetchCatalog();
-        }
-
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutDialog about = new AboutDialog();
             about.ShowDialog();
+        }
+
+        private void updateCatalogBtn_Click(object sender, EventArgs e)
+        {
+            FetchCatalog();
         }
     }
 }
