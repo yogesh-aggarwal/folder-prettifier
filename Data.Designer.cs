@@ -62,40 +62,25 @@ namespace FolderPrettifier {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;extensions&quot;: {
-        ///    &quot;mp4&quot;: 0,
-        ///    &quot;mkv&quot;: 0,
-        ///    &quot;m4a&quot;: 0,
-        ///    &quot;m4v&quot;: 0,
-        ///    &quot;f4v&quot;: 0,
-        ///    &quot;f4a&quot;: 0,
-        ///    &quot;m4b&quot;: 0,
-        ///    &quot;m4r&quot;: 0,
-        ///    &quot;f4b&quot;: 0,
-        ///    &quot;mov&quot;: 0,
-        ///    &quot;3gp&quot;: 0,
-        ///    &quot;3gp2&quot;: 0,
-        ///    &quot;3g2&quot;: 0,
-        ///    &quot;3gpp&quot;: 0,
-        ///    &quot;3gpp2&quot;: 0,
-        ///    &quot;ogv&quot;: 0,
-        ///    &quot;ogx&quot;: 0,
-        ///    &quot;wmv&quot;: 0,
-        ///    &quot;asf&quot;: 0,
-        ///    &quot;webm&quot;: 0,
-        ///    &quot;flv&quot;: 0,
-        ///    &quot;avi&quot;: 0,
-        ///    &quot;OP1a&quot;: 0,
-        ///    &quot;OP-Atom&quot;: 0,
-        ///    &quot;ts&quot;: 0,
-        ///    &quot;lxf&quot;: 0,
-        ///    &quot;gxf&quot;: 0,
-        ///    &quot;vob&quot;: 0,
-        ///    &quot;mp3&quot;: 1,
-        ///    &quot;aa&quot;: 1,
-        ///    &quot;aac&quot;: 1,
-        ///    &quot;aax&quot;: 1,
-        ///   [rest of string was truncated]&quot;;.
+        ///    &quot;folders&quot;: [
+        ///        &quot;Videos&quot;,
+        ///        &quot;Music&quot;,
+        ///        &quot;Images&quot;,
+        ///        &quot;Documents\\Text&quot;,
+        ///        &quot;Compressions&quot;,
+        ///        &quot;Apps\\Windows&quot;,
+        ///        &quot;Apps\\Android&quot;,
+        ///        &quot;Documents\\Scripts&quot;,
+        ///        &quot;Documents\\Office\\PDF&quot;,
+        ///        &quot;Documents\\Office\\Word&quot;,
+        ///        &quot;Documents\\Office\\Excel&quot;,
+        ///        &quot;Documents\\Office\\Presentation&quot;,
+        ///        &quot;Others\\Program Files&quot;,
+        ///        &quot;Fonts\\ttf&quot;,
+        ///        &quot;Fonts\\otf&quot;,
+        ///        &quot;Fonts\\woff2&quot;,
+        ///        &quot;Others\\Torrents&quot;,
+        ///        &quot;Othe [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string BasicCatalog {
             get {
@@ -104,7 +89,7 @@ namespace FolderPrettifier {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to folder_prettifier_catalog.json.
+        ///   Looks up a localized string similar to cat.fpc.
         /// </summary>
         internal static string CacheFileName {
             get {

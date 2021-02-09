@@ -314,7 +314,7 @@
             // 
             // startBtn
             // 
-            this.startBtn.Location = new System.Drawing.Point(12, 476);
+            this.startBtn.Location = new System.Drawing.Point(12, 457);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(69, 28);
             this.startBtn.TabIndex = 17;
@@ -327,7 +327,7 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.Controls.Add(this.progressBar);
             this.panel1.Controls.Add(this.status);
-            this.panel1.Location = new System.Drawing.Point(0, 517);
+            this.panel1.Location = new System.Drawing.Point(0, 498);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(401, 25);
             this.panel1.TabIndex = 2;
@@ -351,7 +351,7 @@
             // isOpenFolder
             // 
             this.isOpenFolder.AutoSize = true;
-            this.isOpenFolder.Location = new System.Drawing.Point(12, 441);
+            this.isOpenFolder.Location = new System.Drawing.Point(12, 422);
             this.isOpenFolder.Name = "isOpenFolder";
             this.isOpenFolder.Size = new System.Drawing.Size(165, 17);
             this.isOpenFolder.TabIndex = 20;
@@ -388,7 +388,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(401, 541);
+            this.ClientSize = new System.Drawing.Size(401, 522);
             this.Controls.Add(this.isOpenFolder);
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.panel1);
