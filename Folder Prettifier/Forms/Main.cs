@@ -376,6 +376,7 @@ namespace FolderPrettifier
 
         private void ProcessFile(string file)
         {
+            status.Text = file;
             if (isPrettifyName.Checked)
             {
                 file = PrettifyName(file);
@@ -400,6 +401,8 @@ namespace FolderPrettifier
 
                 progressBar.Value = processedFiles / totalFiles * 100;
             }
+
+            status.Text = "Ready";
         }
 
         private void StartBtn_Click(object sender, EventArgs e)
