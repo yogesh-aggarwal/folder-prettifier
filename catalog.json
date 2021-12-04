@@ -438,22 +438,22 @@
         "folderName": "Documents\\Text"
     },
     "zip": {
-        "folderName": "Compressions"
+        "folderName": "Compressed"
     },
     "iso": {
-        "folderName": "Compressions"
+        "folderName": "Compressed"
     },
     "rar": {
-        "folderName": "Compressions"
+        "folderName": "Compressed"
     },
     "7z": {
-        "folderName": "Compressions"
+        "folderName": "Compressed"
     },
     "gz": {
-        "folderName": "Compressions"
+        "folderName": "Compressed"
     },
     "dmg": {
-        "folderName": "Compressions"
+        "folderName": "Compressed"
     },
     "exe": {
         "folderName": "Programs"
