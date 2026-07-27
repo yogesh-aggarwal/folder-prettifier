@@ -56,3 +56,7 @@ Yell at us at [https://yogeshaggarwal.in](https://yogeshaggarwal.in)
 MIT License — see [LICENSE](LICENSE)
 
 Copyright © 2026 Yogesh Aggarwal
+
+## Privacy
+
+See [PRIVACY.md](PRIVACY.md)
