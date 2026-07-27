@@ -1,5 +1,5 @@
 param(
-  [string]$BuildRoot = (Join-Path (Split-Path $PSScriptRoot -Parent) "Folder Prettifier\Build\Release"),
+  [string]$BuildRoot = (Join-Path (Split-Path $PSScriptRoot -Parent) "src\Build\Release"),
   [string]$Version = "2.0.0"
 )
 

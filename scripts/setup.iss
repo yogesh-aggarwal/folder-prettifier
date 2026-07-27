@@ -24,7 +24,7 @@ Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
 PrivilegesRequired=admin
-SetupIconFile=..\Folder Prettifier\Icons\icon.ico
+SetupIconFile=..\src\Icons\icon.ico
 WizardImageFile=..\assets\WizardImage.bmp
 WizardSmallImageFile=..\assets\WizardSmallImage.bmp
 UninstallDisplayIcon={app}\{#MyAppExeName}
@@ -47,12 +47,12 @@ Root: "HKCR"; Subkey: "Directory\Background\shell\FolderPrettifier\command"; Val
 
 [Files]
 ; x86 (32-bit) files - installed on 32-bit Windows
-Source: "..\Folder Prettifier\Build\Release\x86\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
-Source: "..\Folder Prettifier\Build\Release\x86\{#MyAppExeName}.config"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
+Source: "..\src\Build\Release\x86\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
+Source: "..\src\Build\Release\x86\{#MyAppExeName}.config"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
 
 ; x64 (64-bit) files - installed on 64-bit Windows
-Source: "..\Folder Prettifier\Build\Release\x64\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
-Source: "..\Folder Prettifier\Build\Release\x64\{#MyAppExeName}.config"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
+Source: "..\src\Build\Release\x64\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
+Source: "..\src\Build\Release\x64\{#MyAppExeName}.config"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
 
 ; Shared files
 Source: "..\catalog.json"; DestDir: "{app}"; Flags: ignoreversion

@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 set VERSION=2.0.0
 
-set PROJ=%~dp0..\Folder Prettifier\Folder Prettifier.csproj
+set PROJ=%~dp0..\src\App.csproj
 set ISS=%~dp0setup.iss
 set ISCC="C:\Program Files\Inno Setup 7\ISCC.exe"
 set OUT=%~dp0..\dist
