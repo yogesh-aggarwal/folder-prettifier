@@ -1,0 +1,17 @@
+Windows Registry Editor Version 5.00
+
+; Replace C:\PATH\TO\Folder Prettifier.exe with the actual path before running
+
+[HKEY_CLASSES_ROOT\Directory\shell\FolderPrettifier]
+@="Folder Prettifier"
+"Icon"="C:\\PATH\\TO\\Folder Prettifier.exe"
+
+[HKEY_CLASSES_ROOT\Directory\shell\FolderPrettifier\command]
+@="\"C:\\PATH\\TO\\Folder Prettifier.exe\" \"%V\""
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\FolderPrettifier]
+@="Folder Prettifier"
+"Icon"="C:\\PATH\\TO\\Folder Prettifier.exe"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\FolderPrettifier\command]
+@="\"C:\\PATH\\TO\\Folder Prettifier.exe\" \"%V\""

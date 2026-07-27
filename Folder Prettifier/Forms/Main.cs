@@ -1,22 +1,22 @@
 ﻿using System;
 using System.IO;
-using System.Net;
 using System.Linq;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Threading;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using Microsoft.VisualBasic;
 
 namespace FolderPrettifier
 {
     public partial class Main : Form
     {
+        private static readonly HttpClient _httpClient = new HttpClient();
+
         dynamic extensions;
-        dynamic folders = new List<string>();
-        string userPath;
+        bool _catalogLoaded;
         string currentFolder = "";
 
         public Main(string currentFolder = "")
@@ -25,6 +25,8 @@ namespace FolderPrettifier
 
             this.currentFolder = currentFolder;
 
+            startBtn.Enabled = false;
+
             SetCurrentPath();
 
             FetchCatalog();
@@ -32,37 +34,43 @@ namespace FolderPrettifier
 
         private void SetCurrentPath()
         {
-            if (currentFolder.Length != 0)
+            try
             {
-                location.Text = currentFolder;
-            }
-            else
-            {
-                string path = Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).FullName;
-                if (Environment.OSVersion.Version.Major >= 6)
+                if (currentFolder.Length != 0)
                 {
-                    path = Directory.GetParent(path).ToString();
+                    location.Text = currentFolder;
+                }
+                else
+                {
+                    string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                    location.Text = Path.Combine(userProfile, "Downloads");
                 }
 
-                userPath = path;
-                location.Text = path + @"\Downloads";
+                if (!Directory.Exists(location.Text))
+                {
+                    Directory.CreateDirectory(location.Text);
+                }
             }
-
-            if (!Directory.Exists(location.Text))
+            catch
             {
-                Directory.CreateDirectory(location.Text);
+                string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                location.Text = Path.Combine(userProfile, "Downloads");
+
+                if (!Directory.Exists(location.Text))
+                {
+                    Directory.CreateDirectory(location.Text);
+                }
             }
-            Directory.SetCurrentDirectory(location.Text);
         }
 
-        public static bool CheckInternetConnection()
+        private async Task<bool> CheckInternetConnectionAsync()
         {
             try
             {
-                using (var client = new WebClient())
-                using (client.OpenRead(Data.InternetCheckUrl))
+                using (var cts = new CancellationTokenSource(TimeSpan.FromSeconds(3)))
+                using (var response = await _httpClient.GetAsync(Data.InternetCheckUrl, cts.Token))
                 {
-                    return true;
+                    return response.IsSuccessStatusCode;
                 }
             }
             catch
@@ -82,29 +90,27 @@ namespace FolderPrettifier
 
             progressBar.Value = 30;
 
-            if (CheckInternetConnection())
+            if (await CheckInternetConnectionAsync())
             {
                 try
                 {
                     status.Text = "Checking online...";
-                    using (HttpClient client = new HttpClient())
-                    using (HttpResponseMessage response = await client.GetAsync(Data.CatalogUrl))
+                    using (HttpResponseMessage response = await _httpClient.GetAsync(Data.CatalogUrl))
                     using (HttpContent content = response.Content)
                     {
 
                         progressBar.Value = 50;
                         status.Text = "Caching latest catalog...";
                         result = await content.ReadAsStringAsync();
-                        using (StreamWriter sw = File.CreateText($@"{Path.GetTempPath()}{Data.CacheFileName}"))
+                        using (StreamWriter sw = File.CreateText(Path.Combine(Path.GetTempPath(), Data.CacheFileName)))
                         {
                             sw.WriteLine(result);
                         }
-                        Console.WriteLine(result);
                     }
                 }
                 catch
                 {
-
+                    status.Text = "Failed to fetch online catalog, trying cache...";
                 }
             }
             else
@@ -112,7 +118,7 @@ namespace FolderPrettifier
                 try
                 {
                     status.Text = "Reading catalog from cache...";
-                    using (StreamReader sr = File.OpenText($@"{Path.GetTempPath()}{Data.CacheFileName}"))
+                    using (StreamReader sr = File.OpenText(Path.Combine(Path.GetTempPath(), Data.CacheFileName)))
                     {
                         string s = "";
                         while ((s = sr.ReadLine()) != null)
@@ -123,7 +129,7 @@ namespace FolderPrettifier
                 }
                 catch
                 {
-
+                    status.Text = "No cached catalog found, using embedded...";
                 }
             }
 
@@ -136,12 +142,15 @@ namespace FolderPrettifier
             try
             {
                 extensions = JsonConvert.DeserializeObject(result);
+                _catalogLoaded = true;
             }
             catch
             {
                 status.Text = "No catalog! Can't proceed";
                 return;
             }
+
+            startBtn.Enabled = true;
 
             progressBar.Value = 100;
 
@@ -167,8 +176,7 @@ namespace FolderPrettifier
             try
             {
                 totalFilesCount.Text = Directory.GetFiles(location.Text).Length.ToString();
-                renameTo.Text = location.Text.Split('\\').Last();
-                Directory.SetCurrentDirectory(location.Text);
+                renameTo.Text = Path.GetFileName(location.Text);
             }
             catch
             {
@@ -194,11 +202,6 @@ namespace FolderPrettifier
             nameEndsWith.Enabled = isPrettifyName.Checked && isNameWith.Checked;
         }
 
-        private void IsPrettifyFile_CheckedChanged(object sender, EventArgs e)
-        {
-            //isHandleSpacing.Enabled = isPrettifyFile.Enabled && isPrettifyFile.Checked;
-        }
-
         private void IsReplaceWord_CheckedChanged(object sender, EventArgs e)
         {
             replaceWordLabel.Enabled = isReplaceWord.Checked;
@@ -219,51 +222,14 @@ namespace FolderPrettifier
 
         private void ShowPathError(dynamic element)
         {
-            char character = '0';
+            char[] invalidChars = Path.GetInvalidFileNameChars();
+            string original = element.Text;
+            string cleaned = new string(original.Where(c => !invalidChars.Contains(c)).ToArray());
 
-            if (element.Text.Contains(@"\"))
+            if (cleaned != original)
             {
-                character = '\\';
-            }
-
-            if (element.Text.Contains(@"/"))
-            {
-                character = '/';
-            }
-            if (element.Text.Contains(@"|"))
-            {
-                character = '|';
-            }
-            if (element.Text.Contains(@"?"))
-            {
-                character = '?';
-            }
-            if (element.Text.Contains(@"*"))
-            {
-                character = '*';
-
-            }
-            if (element.Text.Contains(@"<"))
-            {
-                character = '<';
-            }
-            if (element.Text.Contains(@">"))
-            {
-                character = '>';
-            }
-            if (element.Text.Contains(@":"))
-            {
-                character = ':';
-            }
-            if (element.Text.Contains("\""))
-            {
-                character = '"';
-            }
-
-            if (character != '0')
-            {
-                MessageBox.Show($"Remove \"{character}\" from the name as it's not a valid file name in Windows.", "Invalid name", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                element.Text = element.Text.Replace(character.ToString(), "");
+                MessageBox.Show("Some invalid characters have been removed from the name.", "Invalid name", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                element.Text = cleaned;
             }
         }
 
@@ -294,14 +260,13 @@ namespace FolderPrettifier
 
         private string PrettifyName(string file)
         {
-            string[] fileNameWords = file.Split('\\');
-            string backPath = string.Join(@"\", fileNameWords.Take(fileNameWords.Length - 1));
-            string fileName = fileNameWords[fileNameWords.Length - 1];
+            string backPath = Path.GetDirectoryName(file);
+            string fileName = Path.GetFileName(file);
             string newFileName = fileName;
 
-            if (isCapitalizeName.Checked)
+            if (isCapitalizeName.Checked && newFileName.Length > 0)
             {
-                newFileName = newFileName.First().ToString().ToUpper() + newFileName.Substring(1);
+                newFileName = char.ToUpper(newFileName[0]) + newFileName.Substring(1);
             }
             if (isReplaceWord.Checked)
             {
@@ -309,58 +274,72 @@ namespace FolderPrettifier
             }
             if (isNameWith.Checked)
             {
-                string[] newFileNameWords = newFileName.Split('.');
-                newFileName = nameStartsWith.Text + string.Join(".", newFileNameWords.Take(newFileNameWords.Length - 1)) + nameEndsWith.Text + "." + newFileNameWords.Last();
+                int dotIndex = newFileName.LastIndexOf('.');
+                if (dotIndex > 0)
+                {
+                    string namePart = newFileName.Substring(0, dotIndex);
+                    string extPart = newFileName.Substring(dotIndex);
+                    newFileName = nameStartsWith.Text + namePart + nameEndsWith.Text + extPart;
+                }
+                else
+                {
+                    newFileName = nameStartsWith.Text + newFileName + nameEndsWith.Text;
+                }
             }
 
-            File.Move(file, $@"{backPath}\{newFileName}");
-            return $@"{backPath}\{newFileName}";
+            string dest = Path.Combine(backPath, newFileName);
+            File.Move(file, dest);
+            return dest;
         }
 
         private void CategorizeFile(string file)
         {
             try
             {
-                string folderName = extensions["folders"][
-                extensions["extensions"][file.Split('.').Last().ToLower()].ToObject<int>()
-            ];
-                string newFileName = $"{folderName}\\{file.Split('\\').Last()}";
-                Directory.CreateDirectory(folderName);
-                if (File.Exists(newFileName) && isDeleteFilesWithSameName.Checked)
+                string ext = Path.GetExtension(file).TrimStart('.').ToLower();
+                if (string.IsNullOrEmpty(ext) || extensions[ext] == null) return;
+
+                string folderName = extensions[ext]["folderName"].ToString();
+                string fileName = Path.GetFileName(file);
+                string destDir = Path.Combine(location.Text, folderName);
+                Directory.CreateDirectory(destDir);
+
+                string destPath = Path.Combine(destDir, fileName);
+                if (File.Exists(destPath))
                 {
-                    File.Delete(file);
+                    string nameNoExt = Path.GetFileNameWithoutExtension(fileName);
+                    string extOnly = Path.GetExtension(fileName);
+                    int suffix = 1;
+                    do
+                    {
+                        destPath = Path.Combine(destDir, $"{nameNoExt} ({suffix}){extOnly}");
+                        suffix++;
+                    } while (File.Exists(destPath));
                 }
-                else
-                {
-                    File.Move(file, $"{folderName}\\{file.Split('\\').Last()}");
-                }
+
+                File.Move(file, destPath);
             }
             catch
             {
-
+                status.Text = $"Failed to categorize: {Path.GetFileName(file)}";
             }
-        }
-
-        private void PrettifyFileContent(string file)
-        {
-            string[] punctuations = { ",", ".", "?" };
-            string content = File.ReadAllText(file);
         }
 
         private void RenameFolder()
         {
-            string newName = location.Text.Replace(location.Text.Split('\\').Last(), renameTo.Text);
+            string parentDir = Path.GetDirectoryName(location.Text);
+            string newName = Path.Combine(parentDir, renameTo.Text);
 
             if (location.Text != newName)
             {
-                Directory.SetCurrentDirectory(userPath);
-
                 if (Directory.Exists(newName))
                 {
                     DialogResult resut = MessageBox.Show("Folder cannot be renamed as another folder with the new name found. If you proceed, the contents of the new folder will be deleted & files from the current folder will be moved to the new folder!\n\nDo you want to proceed?", "Folder Conflict!", MessageBoxButtons.YesNo);
                     if (resut == DialogResult.Yes)
                     {
-                        Directory.Delete(newName);
+                        Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectory(newName,
+                            Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs,
+                            Microsoft.VisualBasic.FileIO.RecycleOption.SendToRecycleBin);
                     }
                     else
                     {
@@ -369,7 +348,6 @@ namespace FolderPrettifier
                 }
 
                 Directory.Move(location.Text, newName);
-                Directory.SetCurrentDirectory(newName);
                 location.Text = newName;
             }
         }
@@ -381,14 +359,18 @@ namespace FolderPrettifier
             {
                 file = PrettifyName(file);
             }
-            //if (isPrettifyFile.Checked) PrettifyFileContent(file);
             if (isCategorizeFiles.Checked) CategorizeFile(file);
-
-            RenameFolder();
         }
 
         private void StartProcess()
         {
+            string folderName = Path.GetFileName(location.Text);
+            string timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+            string backupDir = Path.Combine(Path.GetTempPath(), "FolderPrettifier_Backup", $"{folderName}_{timestamp}");
+            status.Text = "Creating backup...";
+            Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(location.Text, backupDir, true);
+            status.Text = $"Backup saved to {backupDir}";
+
             string[] files = Directory.GetFiles(location.Text);
 
             int totalFiles = files.Length;
@@ -399,7 +381,12 @@ namespace FolderPrettifier
                 ProcessFile(file);
                 processedFiles++;
 
-                progressBar.Value = processedFiles / totalFiles * 100;
+                progressBar.Value = totalFiles > 0 ? processedFiles * 100 / totalFiles : 0;
+            }
+
+            if (renameTo.Text.Length > 0)
+            {
+                RenameFolder();
             }
 
             status.Text = "Ready";
@@ -407,6 +394,12 @@ namespace FolderPrettifier
 
         private void StartBtn_Click(object sender, EventArgs e)
         {
+            if (!_catalogLoaded)
+            {
+                MessageBox.Show("Catalog is still loading. Please wait.", "Not Ready", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             DialogResult proceed = MessageBox.Show("Now, several operations will be performed on your folder. During the process, DON'T CLOSE THE APPLICATION in any manner. If you do so, there're high chances of data corruption. It's also recommeded not to work on this folder/subfolders.\n\nDo you want to proceed?", "ATTENTION!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (proceed == DialogResult.Yes)
             {

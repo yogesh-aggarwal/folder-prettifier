@@ -38,7 +38,6 @@
             this.locationLabel = new System.Windows.Forms.Label();
             this.chooseLocation = new System.Windows.Forms.Button();
             this.folderActionsGroup = new System.Windows.Forms.GroupBox();
-            this.isDeleteFilesWithSameName = new System.Windows.Forms.CheckBox();
             this.isCategorizeFiles = new System.Windows.Forms.CheckBox();
             this.nameEndsWith = new System.Windows.Forms.TextBox();
             this.nameEndsWithLabel = new System.Windows.Forms.Label();
@@ -147,7 +146,6 @@
             // 
             // folderActionsGroup
             // 
-            this.folderActionsGroup.Controls.Add(this.isDeleteFilesWithSameName);
             this.folderActionsGroup.Controls.Add(this.isCategorizeFiles);
             this.folderActionsGroup.Controls.Add(this.nameEndsWith);
             this.folderActionsGroup.Controls.Add(this.nameEndsWithLabel);
@@ -168,22 +166,12 @@
             this.folderActionsGroup.TabStop = false;
             this.folderActionsGroup.Text = "Actions";
             // 
-            // isDeleteFilesWithSameName
-            // 
-            this.isDeleteFilesWithSameName.AutoSize = true;
-            this.isDeleteFilesWithSameName.Location = new System.Drawing.Point(9, 219);
-            this.isDeleteFilesWithSameName.Name = "isDeleteFilesWithSameName";
-            this.isDeleteFilesWithSameName.Size = new System.Drawing.Size(167, 17);
-            this.isDeleteFilesWithSameName.TabIndex = 17;
-            this.isDeleteFilesWithSameName.Text = "Delete Files With Same Name";
-            this.isDeleteFilesWithSameName.UseVisualStyleBackColor = true;
-            // 
             // isCategorizeFiles
             // 
             this.isCategorizeFiles.AutoSize = true;
             this.isCategorizeFiles.Checked = true;
             this.isCategorizeFiles.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.isCategorizeFiles.Location = new System.Drawing.Point(9, 243);
+            this.isCategorizeFiles.Location = new System.Drawing.Point(9, 219);
             this.isCategorizeFiles.Name = "isCategorizeFiles";
             this.isCategorizeFiles.Size = new System.Drawing.Size(100, 17);
             this.isCategorizeFiles.TabIndex = 16;
@@ -447,7 +435,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem updateCatalogBtn;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.CheckBox isDeleteFilesWithSameName;
     }
 }
 

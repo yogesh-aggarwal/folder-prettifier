@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?define ProductName = "Folder Prettifier" ?>
+<?define ProductVersion = "2.0.0" ?>
+<?define ProductManufacturer = "Yogesh Aggarwal" ?>
+<?define ProductUpgradeCode = "688C8822-8EC3-491C-8767-1CD6B881EA78" ?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <?if $(var.Platform) = x64 ?>
+    <?define ProductCode = "E8E74C33-2F0A-4B5C-9B7A-1D8F4E2C6A0B" ?>
+    <?define Win64 = "yes" ?>
+    <?define ProgramFilesFolder = "ProgramFiles64Folder" ?>
+  <?else ?>
+    <?define ProductCode = "D7D63B22-1E09-4A4B-8A6C-0C7E3D1B590A" ?>
+    <?define Win64 = "no" ?>
+    <?define ProgramFilesFolder = "ProgramFilesFolder" ?>
+  <?endif ?>
+
+  <Product Id="$(var.ProductCode)"
+           Name="$(var.ProductName)"
+           Language="1033"
+           Version="$(var.ProductVersion)"
+           Manufacturer="$(var.ProductManufacturer)"
+           UpgradeCode="$(var.ProductUpgradeCode)">
+
+    <Package InstallerVersion="200"
+             Compressed="yes"
+             InstallScope="perMachine"
+             Platform="$(var.Platform)" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <!-- Directory structure -->
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="$(var.ProgramFilesFolder)">
+        <Directory Id="APPLICATIONFOLDER" Name="Folder Prettifier" />
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="Folder Prettifier" />
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+
+    <!-- Files -->
+    <DirectoryRef Id="APPLICATIONFOLDER">
+      <Component Id="MainExecutable" Guid="A1B2C3D4-E5F6-7890-ABCD-EF1234567890" Win64="$(var.Win64)">
+        <File Id="FolderPrettifierExe"
+              Name="Folder Prettifier.exe"
+              Source="..\Folder Prettifier\Build\Release\$(var.Platform)\Folder Prettifier.exe"
+              KeyPath="yes" />
+      </Component>
+      <Component Id="NewtonsoftJson" Guid="B2C3D4E5-F6A7-8901-BCDE-F12345678901" Win64="$(var.Win64)">
+        <File Id="NewtonsoftJsonDll"
+              Name="Newtonsoft.Json.dll"
+              Source="..\Folder Prettifier\Build\Release\$(var.Platform)\Newtonsoft.Json.dll"
+              KeyPath="yes" />
+      </Component>
+      <Component Id="AppConfig" Guid="C3D4E5F6-A7B8-9012-CDEF-123456789012" Win64="$(var.Win64)">
+        <File Id="FolderPrettifierExeConfig"
+              Name="Folder Prettifier.exe.config"
+              Source="..\Folder Prettifier\Build\Release\$(var.Platform)\Folder Prettifier.exe.config"
+              KeyPath="yes" />
+      </Component>
+      <Component Id="CatalogJson" Guid="D4E5F6A7-B8C9-0123-DEF1-234567890123">
+        <File Id="CatalogJsonFile"
+              Name="catalog.json"
+              Source="..\catalog.json"
+              KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <!-- Shortcuts -->
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="StartMenuShortcut" Guid="E5F6A7B8-C9D0-1234-EF12-345678901234">
+        <Shortcut Id="StartMenuAppShortcut"
+                  Name="Folder Prettifier"
+                  Description="Organize files into folders by type"
+                  Target="[APPLICATIONFOLDER]Folder Prettifier.exe"
+                  WorkingDirectory="APPLICATIONFOLDER" />
+        <Shortcut Id="UninstallShortcut"
+                  Name="Uninstall Folder Prettifier"
+                  Target="[System64Folder]msiexec.exe"
+                  Arguments="/x [ProductCode]" />
+        <RemoveFolder Id="RemoveApplicationProgramsFolder" On="uninstall" />
+        <RegistryValue Root="HKCU"
+                       Key="Software\Microsoft\FolderPrettifier"
+                       Name="installed"
+                       Type="integer"
+                       Value="1"
+                       KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="DesktopShortcut" Guid="F6A7B8C9-D0E1-2345-EF12-345678901235">
+        <Shortcut Id="DesktopAppShortcut"
+                  Name="Folder Prettifier"
+                  Description="Organize files into folders by type"
+                  Target="[APPLICATIONFOLDER]Folder Prettifier.exe"
+                  WorkingDirectory="APPLICATIONFOLDER" />
+        <RegistryValue Root="HKCU"
+                       Key="Software\Microsoft\FolderPrettifier"
+                       Name="desktop_shortcut"
+                       Type="integer"
+                       Value="1"
+                       KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <!-- Features -->
+    <Feature Id="ProductFeature" Title="Folder Prettifier" Level="1">
+      <ComponentRef Id="MainExecutable" />
+      <ComponentRef Id="NewtonsoftJson" />
+      <ComponentRef Id="AppConfig" />
+      <ComponentRef Id="CatalogJson" />
+      <ComponentRef Id="StartMenuShortcut" />
+      <ComponentRef Id="DesktopShortcut" />
+    </Feature>
+
+    <!-- .NET Framework check -->
+    <PropertyRef Id="NETFRAMEWORK45" />
+    <Condition Message="This application requires .NET Framework 4.8.1 or higher. Please install it and run this setup again.">
+      Installed OR NETFRAMEWORK45
+    </Condition>
+
+    <!-- UI -->
+    <UI>
+      <UIRef Id="WixUI_Minimal" />
+      <Property Id="WIXUI_INSTALLDIR" Value="APPLICATIONFOLDER" />
+    </UI>
+
+    <!-- Launch after install -->
+    <CustomAction Id="LaunchApplication"
+                  FileKey="FolderPrettifierExe"
+                  ExeCommand=""
+                  Execute="immediate"
+                  Return="asyncNoWait" />
+    <InstallExecuteSequence>
+      <Custom Action="LaunchApplication" After="InstallFinalize">NOT Installed</Custom>
+    </InstallExecuteSequence>
+
+  </Product>
+</Wix>
