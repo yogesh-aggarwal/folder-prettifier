@@ -1,12 +1,70 @@
-# Building
+# Contributing
 
-## Prerequisites
+## Project structure
+
+```
+Folder Prettifier.sln
+├── Folder Prettifier/              # WinForms app
+│   ├── Program.cs                  # Entry point (accepts folder path as CLI arg)
+│   ├── Forms/
+│   │   ├── Main.cs                 # Core logic & main form (categorize, prettify, backup)
+│   │   └── AboutDialog.cs          # About / feedback dialog
+│   ├── Data.resx                   # Embedded resources:
+│   │   │                           #   BasicCatalog     — fallback JSON when offline
+│   │   │                           #   CatalogUrl       — GitHub URL for latest catalog
+│   │   │                           #   CacheFileName    — local cache filename (cat.fpc)
+│   │   │                           #   InternetCheckUrl — URL pinged to test connectivity
+│   │   └── Data.Designer.cs        # Auto-generated accessors for Data.resx
+│   ├── Icons/                      # App icons (icon.ico, icon.png, refresh.ico)
+│   ├── Properties/
+│   │   ├── AssemblyInfo.cs         # Assembly metadata (v1.0.0.0)
+│   │   └── app.manifest            # UAC manifest (asInvoker)
+│   ├── FodyWeavers.xml             # Costura.Fody config (embeds Newtonsoft.Json.dll)
+│   ├── App.config                  # .NET Framework version binding
+│   └── packages.config             # NuGet package references
+├── catalog.json                    # Extension → folder mappings (source of truth)
+├── packages/                       # NuGet packages (gitignored, restored on build)
+├── scripts/                        # Build & packaging scripts
+├── nuget.config                    # NuGet source config
+└── dist/                           # Build output (gitignored)
+```
+
+## How it works
+
+### Startup flow
+
+1. `Program.cs` parses the optional command-line folder path, then opens `Main` form.
+2. `Main` form constructor calls `CheckForCatalogUpdate()`:
+   - Pings `InternetCheckUrl` to test connectivity.
+   - If online: downloads `catalog.json` from `CatalogUrl` and caches it to `%TEMP%\cat.fpc`.
+   - If offline: loads from `%TEMP%\cat.fpc` (cache), then falls back to the embedded `BasicCatalog`.
+3. UI is populated. The user selects options and clicks **Process**.
+
+### Categorization
+
+Each file is matched against the catalog dictionary. The catalog supports nested folders via `/` in the folder name (e.g. `Documents/Office/PDF`). Unmatched extensions go into an `Others` folder.
+
+### Prettification
+
+Applied as a second pass (if enabled):
+- **Capitalize** — title-cases each filename
+- **Replace** — regex-based word substitution
+- **Prefix / Suffix** — prepended/appended before the extension
+
+### Backup
+
+Before any file operation, the entire source folder is copied to `%TEMP%\FolderPrettifier_Backup\<FolderName>_<timestamp>\`.
+
+## Building
+
+### Prerequisites
 
 - **Visual Studio 2022** (or Build Tools) with .NET desktop workload
 - **.NET Framework 4.8.1 Developer Pack** (or newer)
 - **Inno Setup 7** — https://jrsoftware.org/isdl.php
+- **WiX Toolset v3.14** — https://wixtoolset.org/ (optional, only needed for MSI)
 
-## Quick build
+### Quick build
 
 Open **Developer Command Prompt for VS 2022** and run:
 
@@ -17,15 +75,17 @@ build-all.bat
 
 NuGet packages restore automatically. All outputs go to `dist\`.
 
-## What each script produces
+### What each script produces
 
 | Script / File | Output |
 |--------|--------|
 | `build-all.bat` | Everything below |
 | `setup.iss` → compiled with ISCC | `FolderPrettifier-Setup-2.0.0.exe` — full installer with right-click menu |
 | `build-portable.ps1` | `FolderPrettifier-Portable-x86/x64-2.0.0.exe` — single-file portable |
+| `assets/register-contextmenu.reg` | Registry script to add "Folder Prettifier" to the folder right-click menu |
+| `assets/unregister-contextmenu.reg` | Registry script to remove the right-click entry |
 
-## Manual build
+### Manual build
 
 ```cmd
 msbuild "Folder Prettifier\Folder Prettifier.csproj" /t:Restore /p:RestorePackagesConfig=true
@@ -38,18 +98,39 @@ Build outputs go to `Folder Prettifier\Build\Release\x86` and `\x64`. The `packa
 
 ## Single-file portable
 
-The EXE embeds `Newtonsoft.Json.dll` via **Costura.Fody** (NuGet package). No extra DLLs needed — just ship the `.exe`.
+The EXE embeds `Newtonsoft.Json.dll` via **Costura.Fody** (configured in `FodyWeavers.xml`). No extra DLLs needed — just ship the `.exe`.
 
-## Solution structure
+## The catalog
 
+`catalog.json` maps file extensions to destination folder names:
+
+```json
+{
+  "mp4":   { "folderName": "Videos" },
+  "jpg":   { "folderName": "Images" },
+  "pdf":   { "folderName": "Documents/Office/PDF" },
+  "zip":   { "folderName": "Compressed" },
+  "exe":   { "folderName": "Programs" }
+}
 ```
-Folder Prettifier.sln
-├── Folder Prettifier/          # WinForms app
-│   ├── Forms/                  # UI forms
-│   ├── Icons/                  # App icons
-│   ├── Program.cs              # Entry point, accepts folder path as arg
-│   └── Data.Designer.cs        # Embedded resources (catalog URLs, etc.)
-├── catalog.json                # File extension → folder mappings
-├── packages/                   # NuGet packages
-└── scripts/                    # Build & packaging scripts
-```
+
+- Keys are lowercase extensions (without the dot).
+- Forward slashes in `folderName` create nested subfolders.
+- Extensions not present in the catalog go into an `Others` folder.
+
+The catalog is hosted at `https://github.com/yogesh-aggarwal/folder-prettifier/raw/master/catalog.json`. To add or change mappings, edit `catalog.json` at the repository root — the app pulls it dynamically.
+
+## Key NuGet packages
+
+| Package | Purpose |
+|---|---|
+| `Newtonsoft.Json` 12.0.3 | JSON deserialization for the catalog |
+| `Costura.Fody` 5.7.0 | Embeds Newtonsoft.Json.dll into the EXE |
+| `Fody` 6.5.5 | IL-weaving framework (required by Costura) |
+
+## Notes
+
+- The app targets **.NET Framework 4.8.1** (Windows-only). No cross-platform support planned.
+- There are no automated tests — testing is manual.
+- The `packages\` directory and `dist\` are gitignored. Run `build-all.bat` to regenerate them.
+- To quickly test a build, run the portable EXE from `dist\` with a test folder path.
