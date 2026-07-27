@@ -30,10 +30,29 @@ Perfect for that Downloads folder you've been ignoring for three years.
    - Give the whole folder a new name if you're feeling fancy
 4. Hit **Process** — stand back and watch the magic
 
+## Building from source
+
+You'll need **Visual Studio 2022 Build Tools** (or full VS) with the **.NET desktop build workload**.
+
+```sh
+make          # builds everything
+make bump 2.1.0   # bump version across all files
+```
+
+Or manually:
+
+```sh
+powershell -File scripts\build.ps1
+```
+
+The project also ships with a **GitHub Actions release pipeline** — tag a commit with `v*` and it builds, packages, and publishes the release automatically.
+
 ## Still have questions?
 
 Yell at us at [https://yogeshaggarwal.in](https://yogeshaggarwal.in)
 
 ## License
 
-Copyright © 2020 Yogesh Aggarwal. All rights reserved.
+MIT License — see [LICENSE](LICENSE)
+
+Copyright © 2026 Yogesh Aggarwal

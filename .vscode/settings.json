@@ -7,7 +7,7 @@
     },
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
-        "README.md": "CONTRIBUTING.md, .gitignore, *.json",
+        "README.md": "LICENSE, *.md, .gitignore, *.json",
         "*.ps1": "$(capture)-*.ps1",
         "*.sln": "*.suo, *.user",
         "*.csproj": "*.config, *.xml, *.xsd, .gitignore, .gitattributes",
