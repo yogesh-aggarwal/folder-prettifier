@@ -18,7 +18,7 @@ namespace FolderPrettifier
 
         private void feedbackButton_Click(object sender, EventArgs e)
         {
-            ProcessStartInfo sInfo = new ProcessStartInfo("https://programmingwithyogesh.live/report/folder-prettifier");
+            ProcessStartInfo sInfo = new ProcessStartInfo("https://yogeshaggarwal.in");
             Process.Start(sInfo);
         }
     }

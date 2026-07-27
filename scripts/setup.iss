@@ -5,7 +5,7 @@
 #define MyAppName "Folder Prettifier"
 #define MyAppVersion "2.0.0"
 #define MyAppPublisher "Yogesh Aggarwal"
-#define MyAppURL "https://programmingwithyogesh.live"
+#define MyAppURL "https://yogeshaggarwal.in"
 #define MyAppExeName "Folder Prettifier.exe"
 
 [Setup]
@@ -25,8 +25,8 @@ SolidCompression=yes
 WizardStyle=modern
 PrivilegesRequired=admin
 SetupIconFile=..\Folder Prettifier\Icons\icon.ico
-WizardImageFile=.\WizardImage.bmp
-WizardSmallImageFile=.\WizardSmallImage.bmp
+WizardImageFile=..\assets\WizardImage.bmp
+WizardSmallImageFile=..\assets\WizardSmallImage.bmp
 UninstallDisplayIcon={app}\{#MyAppExeName}
 ArchitecturesInstallIn64BitMode=x64compatible
 
