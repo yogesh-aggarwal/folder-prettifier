@@ -16,7 +16,7 @@ build-x64:
 	@$(MSBUILD) src/App.csproj /p:Configuration=Release /p:Platform=x64 /t:Rebuild "/p:OutputPath=Build\Release\x64"
 
 installer:
-	@iscc scripts/setup.iss 2>nul || echo WARNING: Inno Setup not found, skipping installer.
+	@powershell -NoProfile -ExecutionPolicy Bypass -File scripts/iscc.ps1 scripts/setup.iss || echo WARNING: Inno Setup not found, skipping installer.
 
 portable:
 	@powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-portable.ps1
