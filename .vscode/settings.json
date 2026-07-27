@@ -1,6 +1,8 @@
 {
     "files.exclude": {
         "**/.git": true,
+        "**/.svn": true,
+        "**/obj": true,
         "packages": true
     },
     "explorer.fileNesting.enabled": true,
