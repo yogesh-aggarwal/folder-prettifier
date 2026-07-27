@@ -5,7 +5,7 @@ set VERSION=2.0.0
 set PROJ=%~dp0..\Folder Prettifier\Folder Prettifier.csproj
 set ISS=%~dp0setup.iss
 set ISCC="C:\Program Files\Inno Setup 7\ISCC.exe"
-set OUT=%~dp0Output
+set OUT=%~dp0..\dist
 
 REM === Step 0: Restore NuGet packages ===
 echo === Restoring NuGet packages ===

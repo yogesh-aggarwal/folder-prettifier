@@ -1,2 +1,3 @@
 packages/
-Scripts/Output/
+dist/
+.vscode/

@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 set PROJECT=%~dp0..\Folder Prettifier\Folder Prettifier.csproj
 set WXS=%~dp0setup.wxs
 set WIX="C:\Program Files (x86)\WiX Toolset v3.14\bin\"
-set OUT=%~dp0Output
+set OUT=%~dp0..\dist
 
 echo === Building x86 MSI ===
 msbuild "%PROJECT%" /p:Configuration=Release /p:Platform=x86 /t:Rebuild /p:OutputPath="Build\Release\x86"

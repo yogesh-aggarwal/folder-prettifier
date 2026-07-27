@@ -26,7 +26,7 @@ if (Test-Path $IsccPath) {
     Write-Host "=== Compiling installer ===" -ForegroundColor Cyan
     & $IsccPath $IssFile
     if ($?) {
-        Write-Host "=== Done! Installer is at: $PSScriptRoot\Output ===" -ForegroundColor Green
+        Write-Host "=== Done! Installer is at: $((Split-Path $PSScriptRoot -Parent))\dist ===" -ForegroundColor Green
     }
 } else {
     Write-Host "=== Build complete. Install Inno Setup from https://jrsoftware.org/isdl.php" -ForegroundColor Yellow

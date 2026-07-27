@@ -3,7 +3,7 @@ param(
   [string]$Version = "2.0.0"
 )
 
-$OutDir = Join-Path $PSScriptRoot "Output"
+$OutDir = Join-Path (Split-Path $PSScriptRoot -Parent) "dist"
 
 $x86Path = Join-Path $BuildRoot "x86\Folder Prettifier.exe"
 if (Test-Path $x86Path) {

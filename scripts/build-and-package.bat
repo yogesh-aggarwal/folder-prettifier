@@ -21,7 +21,7 @@ if exist %ISCC% (
     echo === Compiling installer ===
     %ISCC% "%ISS%"
     if !errorlevel! equ 0 (
-        echo === Done! Check Scripts\Output\ ===
+        echo === Done! Check dist\ ===
     )
 ) else (
     echo === Build complete. Install Inno Setup from https://jrsoftware.org/isdl.php
