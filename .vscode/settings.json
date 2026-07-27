@@ -8,6 +8,7 @@
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
         "README.md": "CONTRIBUTING.md, .gitignore, *.json",
+        "*.ps1": "$(capture)-*.ps1",
         "*.sln": "*.suo, *.user",
         "*.csproj": "*.config, *.xml, *.xsd, .gitignore, .gitattributes",
         "*.cs": "$(capture).Designer.cs, $(capture).resx",

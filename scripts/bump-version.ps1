@@ -5,7 +5,7 @@ param(
 
 $root = Split-Path $PSScriptRoot -Parent
 $files = @(
-  @{ Path = "$root\scripts\build-all.bat"; Pattern = '(set VERSION=).*'; Replacement = "`${1}$NewVersion" }
+  @{ Path = "$root\scripts\build.ps1"; Pattern = '(\$Version = ").*(")'; Replacement = "`${1}$NewVersion`${2}" }
   @{ Path = "$root\scripts\setup.iss"; Pattern = '(#define MyAppVersion ").*(")'; Replacement = "`${1}$NewVersion`${2}" }
   @{ Path = "$root\scripts\build-portable.ps1"; Pattern = '(\$Version = ").*(")'; Replacement = "`${1}$NewVersion`${2}" }
   @{ Path = "$root\src\Properties\AssemblyInfo.cs"; Pattern = '(AssemblyVersion\(").*("\))'; Replacement = "`${1}$NewVersion.0`${2}" }

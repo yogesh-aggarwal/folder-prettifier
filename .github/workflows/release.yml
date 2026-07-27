@@ -21,7 +21,7 @@ jobs:
           $tag = "${{ github.ref_name }}" -replace '^v', ''
           $errors = @()
           $checks = @(
-            @{ File = 'scripts\build-all.bat'; Pattern = 'set VERSION=(.*)'; Label = 'build-all.bat' },
+            @{ File = 'scripts\build.ps1'; Pattern = '\$Version = "(.*)"'; Label = 'build.ps1' },
             @{ File = 'scripts\setup.iss'; Pattern = '#define MyAppVersion "(.*)"'; Label = 'setup.iss' },
             @{ File = 'scripts\build-portable.ps1'; Pattern = '\$Version = "(.*)"'; Label = 'build-portable.ps1' },
             @{ File = 'src\Properties\AssemblyInfo.cs'; Pattern = 'AssemblyVersion\("(.*)"\)'; Label = 'AssemblyInfo.cs (AssemblyVersion)' },
@@ -49,7 +49,8 @@ jobs:
         run: choco install innosetup --confirm --no-progress
 
       - name: Build all (NuGet restore, x86, x64, Inno Setup installer, portable)
-        run: scripts\build-all.bat
+        shell: pwsh
+        run: scripts\build.ps1
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
