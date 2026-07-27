@@ -1,6 +1,6 @@
 param(
   [string]$BuildRoot = (Join-Path (Split-Path $PSScriptRoot -Parent) "src\Build\Release"),
-  [string]$Version = "2.0.0"
+  [string]$Version = "2.1.0"
 )
 
 $OutDir = Join-Path (Split-Path $PSScriptRoot -Parent) "dist"
