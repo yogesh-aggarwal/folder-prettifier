@@ -6,6 +6,7 @@ $ScriptDir = Split-Path $PSScriptRoot -Parent
 $Proj = Join-Path -Path $ScriptDir -ChildPath "src\App.csproj"
 $Iss = Join-Path -Path $PSScriptRoot -ChildPath "setup.iss"
 $Out = Join-Path -Path $ScriptDir -ChildPath "dist"
+$Msbuild = Join-Path -Path $PSScriptRoot -ChildPath "msbuild.ps1"
 $ErrorActionPreference = "Stop"
 
 function exec {
@@ -27,13 +28,13 @@ if (-not $iscc) {
 if (-not (Test-Path $Out)) { New-Item -ItemType Directory -Path $Out -Force | Out-Null }
 
 Write-Host "=== Restoring NuGet packages ==="
-exec { msbuild $Proj /t:Restore /p:RestorePackagesConfig=true }
+exec { & $Msbuild $Proj /t:Restore /p:RestorePackagesConfig=true }
 
 Write-Host "=== Building x86 (32-bit) Release ==="
-exec { msbuild $Proj /p:Configuration=Release /p:Platform=x86 /t:Rebuild "/p:OutputPath=Build\Release\x86" }
+exec { & $Msbuild $Proj /p:Configuration=Release /p:Platform=x86 /t:Rebuild "/p:OutputPath=Build\Release\x86" }
 
 Write-Host "=== Building x64 (64-bit) Release ==="
-exec { msbuild $Proj /p:Configuration=Release /p:Platform=x64 /t:Rebuild "/p:OutputPath=Build\Release\x64" }
+exec { & $Msbuild $Proj /p:Configuration=Release /p:Platform=x64 /t:Rebuild "/p:OutputPath=Build\Release\x64" }
 
 Write-Host "=== Building Inno Setup installer ==="
 if ($iscc) {
