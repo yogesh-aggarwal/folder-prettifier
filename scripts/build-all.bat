@@ -4,8 +4,12 @@ set VERSION=2.0.0
 
 set PROJ=%~dp0..\src\App.csproj
 set ISS=%~dp0setup.iss
-set ISCC="C:\Program Files\Inno Setup 7\ISCC.exe"
+set ISCC=
+where ISCC.exe >nul 2>&1 && set ISCC=ISCC.exe
+if not defined ISCC if exist "C:\Program Files (x86)\Inno Setup 7\ISCC.exe" set ISCC="C:\Program Files (x86)\Inno Setup 7\ISCC.exe"
+if not defined ISCC if exist "C:\Program Files\Inno Setup 7\ISCC.exe" set ISCC="C:\Program Files\Inno Setup 7\ISCC.exe"
 set OUT=%~dp0..\dist
+if not exist "%OUT%" mkdir "%OUT%"
 
 REM === Step 0: Restore NuGet packages ===
 echo === Restoring NuGet packages ===
@@ -24,7 +28,7 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 
 REM === Step 3: Inno Setup Installer ===
 echo === Building Inno Setup installer ===
-if exist %ISCC% (
+if defined ISCC (
     %ISCC% "%ISS%"
     if !errorlevel! equ 0 (
         echo Created: %OUT%\FolderPrettifier-Setup-%VERSION%.exe

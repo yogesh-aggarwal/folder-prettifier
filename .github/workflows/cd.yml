@@ -1,0 +1,38 @@
+name: CD
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Install Inno Setup
+        run: choco install innosetup --confirm --no-progress
+
+      - name: Build all (NuGet restore, x86, x64, Inno Setup installer, portable)
+        run: scripts\build-all.bat
+
+      - name: Upload installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: FolderPrettifier-Setup
+          path: dist\FolderPrettifier-Setup-*.exe
+
+      - name: Upload portable x86
+        uses: actions/upload-artifact@v4
+        with:
+          name: FolderPrettifier-Portable-x86
+          path: dist\FolderPrettifier-Portable-x86-*.exe
+
+      - name: Upload portable x64
+        uses: actions/upload-artifact@v4
+        with:
+          name: FolderPrettifier-Portable-x64
+          path: dist\FolderPrettifier-Portable-x64-*.exe
