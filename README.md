@@ -49,7 +49,7 @@ The project also ships with a **GitHub Actions release pipeline** — tag a comm
 
 ## Still have questions?
 
-Yell at us at [https://yogeshaggarwal.in](https://yogeshaggarwal.in)
+Yell at us at [yogeshaggarwal.in](https://yogeshaggarwal.in)
 
 ## License
 
