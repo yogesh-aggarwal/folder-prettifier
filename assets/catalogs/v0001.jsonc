@@ -1,0 +1,149 @@
+{
+    // Version of this catalog. Bump this whenever the content changes.
+    "version": 1,
+    // Minimum app version this catalog is compatible with.
+    // A running app older than this will discard this catalog.
+    "min-app-version": "2.0.1",
+    // Folder used for extensions that are not listed in any category.
+    "default": "Others/Unknown",
+    "categories": [
+        {
+            "name": "Videos",
+            "folder": "Videos",
+            "extensions": [
+                "mp4", "mkv", "m4a", "m4v", "f4v", "f4a", "m4b", "m4r", "f4b",
+                "mov", "3gp", "3gp2", "3g2", "3gpp", "3gpp2", "ogv", "ogx",
+                "wmv", "asf", "webm", "flv", "avi", "OP1a", "OP-Atom", "ts",
+                "lxf", "gxf", "vob"
+            ]
+        },
+        {
+            "name": "Music",
+            "folder": "Music",
+            "extensions": [
+                "mp3", "aa", "aac", "aax", "act", "aiff", "amr", "ape", "au",
+                "awb", "dct", "dss", "dvf", "flac", "gsm", "iklax", "ivs",
+                "m4p", "mmf", "mpc", "msv", "nmf", "nsf", "ogg", "oga", "mogg",
+                "opus", "ra", "rm", "raw", "tta", "vox", "wav", "wma", "wv",
+                "8svx"
+            ]
+        },
+        {
+            "name": "Images",
+            "folder": "Images",
+            "extensions": [
+                "jfif", "bmp", "gif", "jpeg", "jpg", "png", "bpg", "deep",
+                "drw", "ecw", "fits", "flif", "ico", "ilbm", "img", "nrrd",
+                "pam", "pcx", "pgf", "sgi", "sid", "tga", "cd5", "cpt", "psd",
+                "xcf", "pdn", "cgm", "afdesign", "al", "cdr", "gem", "hpgl",
+                "hvif", "athml", "naplps", "odg", "qcc", "regis", "vml", "xar",
+                "xps", "amf", "blend", "dgn", "dwg", "dxf", "flt", "fvrml",
+                "hsf", "iges", "imml", "ipa", "webp", "jt", "ma", "mb", "ob",
+                "ply", "prc", "step", "skp", "stl", "u3d", "vrml", "xaml",
+                "xgl", "xvl", "xvrml", "x3d", "3d", "3df", "3ds", "3dxml",
+                "jps", "svg"
+            ]
+        },
+        {
+            "name": "Text Documents",
+            "folder": "Documents/Text",
+            "extensions": ["txt", "rtf", "info", "prn", "md"]
+        },
+        {
+            "name": "Compressed",
+            "folder": "Compressed",
+            "extensions": ["zip", "iso", "rar", "7z", "gz", "dmg"]
+        },
+        {
+            "name": "Programs",
+            "folder": "Programs",
+            "extensions": ["exe", "msi"]
+        },
+        {
+            "name": "Apps",
+            "folder": "Apps",
+            "extensions": ["apk"]
+        },
+        {
+            "name": "Scripts",
+            "folder": "Documents/Scripts",
+            "extensions": [
+                "py", "pyc", "js", "json", "html", "xml", "css", "c", "cs",
+                "r", "java", "cmd", "bat", "db", "sql", "dll"
+            ]
+        },
+        {
+            "name": "PDF",
+            "folder": "Documents/Office/PDF",
+            "extensions": ["pdf"]
+        },
+        {
+            "name": "Word Documents",
+            "folder": "Documents/Office/Word",
+            "extensions": ["docx", "docm", "doc", "dotm", "dotx", "dot"]
+        },
+        {
+            "name": "Excel Spreadsheets",
+            "folder": "Documents/Office/Excel",
+            "extensions": ["csv", "xlsm", "xlm", "xls"]
+        },
+        {
+            "name": "Presentations",
+            "folder": "Documents/Office/Presentation",
+            "extensions": [
+                "pptx", "pptm", "ppt", "pot", "potx", "potm", "pps", "ppsm",
+                "ppa", "ppam", "eml"
+            ]
+        },
+        {
+            "name": "Apple Documents",
+            "folder": "Documents/Office",
+            "extensions": ["pages", "key", "numbers"]
+        },
+        {
+            "name": "Program Files",
+            "folder": "Others/Program Files",
+            "extensions": ["vsix"]
+        },
+        {
+            "name": "TTF Fonts",
+            "folder": "Fonts/ttf",
+            "extensions": ["ttf"]
+        },
+        {
+            "name": "OTF Fonts",
+            "folder": "Fonts/otf",
+            "extensions": ["otf"]
+        },
+        {
+            "name": "WOFF2 Fonts",
+            "folder": "Fonts/woff2",
+            "extensions": ["woff2"]
+        },
+        {
+            "name": "Torrents",
+            "folder": "Others/Torrents",
+            "extensions": ["torrent"]
+        },
+        {
+            "name": "Configurations",
+            "folder": "Others/Configurations",
+            "extensions": ["ini"]
+        },
+        {
+            "name": "Internet Files",
+            "folder": "Others/Internet Files",
+            "extensions": ["net"]
+        },
+        {
+            "name": "Miscellaneous",
+            "folder": "Others/Unknown",
+            "extensions": ["ai", "eps"]
+        },
+        {
+            "name": "Information",
+            "folder": "Information",
+            "extensions": ["nfo"]
+        }
+    ]
+}
