@@ -7,7 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Folder Prettifier", "src\Ap
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{00A64E0E-E264-4D1C-B699-AACE178084DA}"
 	ProjectSection(SolutionItems) = preProject
-		catalog.json = catalog.json
+		assets\catalogs\v0001.jsonc = assets\catalogs\v0001.jsonc
+		assets\catalogs\versions.jsonc = assets\catalogs\versions.jsonc
 	EndProjectSection
 EndProject
 Global

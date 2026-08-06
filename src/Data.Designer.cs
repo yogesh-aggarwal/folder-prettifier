@@ -89,20 +89,29 @@ namespace FolderPrettifier {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to cat.fpc.
+        ///   Looks up a localized string similar to catalogs.
         /// </summary>
-        internal static string CacheFileName {
+        internal static string CatalogCacheDir {
             get {
-                return ResourceManager.GetString("CacheFileName", resourceCulture);
+                return ResourceManager.GetString("CatalogCacheDir", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/catalog.json.
+        ///   Looks up a localized string similar to https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/assets/catalogs/.
         /// </summary>
         internal static string CatalogUrl {
             get {
                 return ResourceManager.GetString("CatalogUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to versions.jsonc.
+        /// </summary>
+        internal static string VersionsFileName {
+            get {
+                return ResourceManager.GetString("VersionsFileName", resourceCulture);
             }
         }
         

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Diagnostics;
@@ -8,6 +9,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
+using System.Collections.Generic;
 
 namespace FolderPrettifier
 {
@@ -15,7 +17,8 @@ namespace FolderPrettifier
     {
         private static readonly HttpClient _httpClient = new HttpClient();
 
-        dynamic extensions;
+        Dictionary<string, string> _extensions;
+        string _defaultFolder;
         bool _catalogLoaded;
         string currentFolder = "";
 
@@ -78,7 +81,6 @@ namespace FolderPrettifier
                 return false;
             }
         }
-
         private async void FetchCatalog()
         {
             status.Text = "Fetching Catalog...";
@@ -86,79 +88,200 @@ namespace FolderPrettifier
             updateCatalogBtn.Enabled = false;
             progressBar.Value = 0;
 
-            string result = "";
+            Version appVersion = GetAppVersion();
+            string cacheDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "Folder Prettifier", Data.CatalogCacheDir);
+            string versionsCachePath = Path.Combine(cacheDir, Data.VersionsFileName);
 
+            bool online = await CheckInternetConnectionAsync();
             progressBar.Value = 30;
 
-            if (await CheckInternetConnectionAsync())
+            string versionsJson = null;
+            if (online)
             {
-                try
-                {
-                    status.Text = "Checking online...";
-                    using (HttpResponseMessage response = await _httpClient.GetAsync(Data.CatalogUrl))
-                    using (HttpContent content = response.Content)
-                    {
-
-                        progressBar.Value = 50;
-                        status.Text = "Caching latest catalog...";
-                        result = await content.ReadAsStringAsync();
-                        using (StreamWriter sw = File.CreateText(Path.Combine(Path.GetTempPath(), Data.CacheFileName)))
-                        {
-                            sw.WriteLine(result);
-                        }
-                    }
-                }
-                catch
-                {
-                    status.Text = "Failed to fetch online catalog, trying cache...";
-                }
+                status.Text = "Checking online...";
+                versionsJson = await FetchRemoteFileAsync(Data.VersionsFileName, versionsCachePath);
             }
             else
             {
-                try
+                status.Text = "Offline. Using cached catalog...";
+            }
+
+            if (string.IsNullOrEmpty(versionsJson) && File.Exists(versionsCachePath))
+            {
+                versionsJson = File.ReadAllText(versionsCachePath);
+            }
+
+            string catalogFileName = null;
+            if (!string.IsNullOrEmpty(versionsJson))
+            {
+                Dictionary<string, string> index = ParseVersionsIndex(versionsJson);
+                if (index != null && index.Count > 0)
                 {
-                    status.Text = "Reading catalog from cache...";
-                    using (StreamReader sr = File.OpenText(Path.Combine(Path.GetTempPath(), Data.CacheFileName)))
+                    Version best = null;
+                    foreach (KeyValuePair<string, string> entry in index)
                     {
-                        string s = "";
-                        while ((s = sr.ReadLine()) != null)
+                        Version entryVersion;
+                        if (Version.TryParse(entry.Key, out entryVersion) && entryVersion <= appVersion)
                         {
-                            result += s;
+                            if (best == null || entryVersion > best)
+                            {
+                                best = entryVersion;
+                                catalogFileName = entry.Value;
+                            }
                         }
                     }
+
+                    if (catalogFileName == null)
+                    {
+                        RequireUpdate(appVersion);
+                        return;
+                    }
                 }
-                catch
+            }
+
+            Catalog catalog = null;
+            if (!string.IsNullOrEmpty(catalogFileName))
+            {
+                status.Text = "Loading catalog " + catalogFileName + "...";
+                progressBar.Value = 50;
+
+                string catalogCachePath = Path.Combine(cacheDir, catalogFileName);
+                string catalogJson = null;
+                if (online)
                 {
-                    status.Text = "No cached catalog found, using embedded...";
+                    catalogJson = await FetchRemoteFileAsync(catalogFileName, catalogCachePath);
+                }
+                else if (File.Exists(catalogCachePath))
+                {
+                    catalogJson = File.ReadAllText(catalogCachePath);
+                }
+
+                catalog = TryParseCatalog(catalogJson);
+                if (catalog != null && !catalog.IsCompatibleWith(appVersion))
+                {
+                    catalog = null;
                 }
             }
 
-            if (result == "")
+            if (catalog == null)
             {
-                status.Text = "Using basic catalog...";
-                result = Data.BasicCatalog;
+                status.Text = "Using embedded catalog...";
+                catalog = TryParseCatalog(Data.BasicCatalog);
+                if (catalog != null && !catalog.IsCompatibleWith(appVersion))
+                {
+                    catalog = null;
+                }
             }
 
-            try
-            {
-                extensions = JsonConvert.DeserializeObject(result);
-                _catalogLoaded = true;
-            }
-            catch
+            if (catalog == null)
             {
                 status.Text = "No catalog! Can't proceed";
+                updateCatalogBtn.Enabled = true;
                 return;
             }
 
+            _extensions = catalog.BuildExtensionMap();
+            _defaultFolder = catalog.DefaultFolder;
+            _catalogLoaded = true;
+
             startBtn.Enabled = true;
+            updateCatalogBtn.Enabled = true;
 
             progressBar.Value = 100;
 
             await Task.Delay(500);
             status.Text = "Ready";
-            startBtn.Enabled = true;
-            updateCatalogBtn.Enabled = true;
+            progressBar.Value = 0;
+        }
 
+        private static Version GetAppVersion()
+        {
+            Version version;
+            return Version.TryParse(Application.ProductVersion, out version) ? version : new Version(0, 0);
+        }
+
+        private async Task<string> FetchRemoteFileAsync(string fileName, string cachePath)
+        {
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, Data.CatalogUrl + fileName))
+            {
+                if (File.Exists(cachePath))
+                {
+                    request.Headers.IfModifiedSince = File.GetLastWriteTimeUtc(cachePath);
+                }
+
+                try
+                {
+                    using (HttpResponseMessage response = await _httpClient.SendAsync(request))
+                    {
+                        if (response.StatusCode == HttpStatusCode.NotModified)
+                        {
+                            return File.ReadAllText(cachePath);
+                        }
+
+                        if (!response.IsSuccessStatusCode)
+                        {
+                            return null;
+                        }
+
+                        string content = await response.Content.ReadAsStringAsync();
+                        if (string.IsNullOrWhiteSpace(content))
+                        {
+                            return null;
+                        }
+
+                        string dir = Path.GetDirectoryName(cachePath);
+                        if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
+                        {
+                            Directory.CreateDirectory(dir);
+                        }
+                        File.WriteAllText(cachePath, content);
+                        return content;
+                    }
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
+
+        private static Dictionary<string, string> ParseVersionsIndex(string versionsJson)
+        {
+            if (string.IsNullOrEmpty(versionsJson)) return null;
+            try
+            {
+                return JsonConvert.DeserializeObject<Dictionary<string, string>>(versionsJson);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private static Catalog TryParseCatalog(string catalogJson)
+        {
+            if (string.IsNullOrEmpty(catalogJson)) return null;
+            try
+            {
+                return JsonConvert.DeserializeObject<Catalog>(catalogJson);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private void RequireUpdate(Version appVersion)
+        {
+            string message = "Your installed version of Folder Prettifier (" + appVersion + ") is no longer supported by the current catalog system. "
+                + "The catalog used by this application requires a newer version.\n\n"
+                + "Please download and install the latest version from:\n"
+                + "https://github.com/yogesh-aggarwal/folder-prettifier\n\n"
+                + "After updating, please restart the application.";
+            MessageBox.Show(message, "Update Required", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            status.Text = "Update required";
+            updateCatalogBtn.Enabled = true;
             progressBar.Value = 0;
         }
 
@@ -323,29 +446,31 @@ namespace FolderPrettifier
                 {
                     try
                     {
-                        string ext = Path.GetExtension(currentFile).TrimStart('.').ToLower();
-                        if (!string.IsNullOrEmpty(ext) && extensions[ext] != null)
+                        string ext = Path.GetExtension(currentFile).TrimStart('.').ToLowerInvariant();
+                        string catFolderName;
+                        if (!_extensions.TryGetValue(ext, out catFolderName))
                         {
-                            string catFolderName = extensions[ext]["folderName"].ToString();
-                            string catFileName = Path.GetFileName(currentFile);
-                            string destDir = Path.Combine(srcFolder, catFolderName);
-                            Directory.CreateDirectory(destDir);
-
-                            string destPath = Path.Combine(destDir, catFileName);
-                            if (File.Exists(destPath))
-                            {
-                                string nameNoExt = Path.GetFileNameWithoutExtension(catFileName);
-                                string extOnly = Path.GetExtension(catFileName);
-                                int suffix = 1;
-                                do
-                                {
-                                    destPath = Path.Combine(destDir, $"{nameNoExt} ({suffix}){extOnly}");
-                                    suffix++;
-                                } while (File.Exists(destPath));
-                            }
-
-                            File.Move(currentFile, destPath);
+                            catFolderName = _defaultFolder;
                         }
+
+                        string catFileName = Path.GetFileName(currentFile);
+                        string destDir = Path.Combine(srcFolder, catFolderName);
+                        Directory.CreateDirectory(destDir);
+
+                        string destPath = Path.Combine(destDir, catFileName);
+                        if (File.Exists(destPath))
+                        {
+                            string nameNoExt = Path.GetFileNameWithoutExtension(catFileName);
+                            string extOnly = Path.GetExtension(catFileName);
+                            int suffix = 1;
+                            do
+                            {
+                                destPath = Path.Combine(destDir, $"{nameNoExt} ({suffix}){extOnly}");
+                                suffix++;
+                            } while (File.Exists(destPath));
+                        }
+
+                        File.Move(currentFile, destPath);
                     }
                     catch
                     {
