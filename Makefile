@@ -1,7 +1,12 @@
 SHELL := cmd
-.PHONY: build restore build-x86 build-x64 installer portable bump
+.PHONY: dev build restore build-x86 build-x64 installer portable bump
 
 MSBUILD := powershell -NoProfile -ExecutionPolicy Bypass -File scripts/msbuild.ps1
+
+dev: restore
+	@$(MSBUILD) src/App.csproj /p:Configuration=Debug /p:Platform=AnyCPU /t:Build
+	@start "" "src\Build\Debug\x86\Folder Prettifier.exe"
+	@echo Dev build running.
 
 build: restore build-x86 build-x64 installer portable
 	@echo All done.

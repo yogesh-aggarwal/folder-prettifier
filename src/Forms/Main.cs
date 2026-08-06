@@ -258,141 +258,145 @@ namespace FolderPrettifier
             ShowPathError(renameTo);
         }
 
-        private string PrettifyName(string file)
-        {
-            string backPath = Path.GetDirectoryName(file);
-            string fileName = Path.GetFileName(file);
-            string newFileName = fileName;
-
-            if (isCapitalizeName.Checked && newFileName.Length > 0)
-            {
-                newFileName = char.ToUpper(newFileName[0]) + newFileName.Substring(1);
-            }
-            if (isReplaceWord.Checked)
-            {
-                newFileName = newFileName.Replace(replaceWord.Text, withWord.Text);
-            }
-            if (isNameWith.Checked)
-            {
-                int dotIndex = newFileName.LastIndexOf('.');
-                if (dotIndex > 0)
-                {
-                    string namePart = newFileName.Substring(0, dotIndex);
-                    string extPart = newFileName.Substring(dotIndex);
-                    newFileName = nameStartsWith.Text + namePart + nameEndsWith.Text + extPart;
-                }
-                else
-                {
-                    newFileName = nameStartsWith.Text + newFileName + nameEndsWith.Text;
-                }
-            }
-
-            string dest = Path.Combine(backPath, newFileName);
-            File.Move(file, dest);
-            return dest;
-        }
-
-        private void CategorizeFile(string file)
-        {
-            try
-            {
-                string ext = Path.GetExtension(file).TrimStart('.').ToLower();
-                if (string.IsNullOrEmpty(ext) || extensions[ext] == null) return;
-
-                string folderName = extensions[ext]["folderName"].ToString();
-                string fileName = Path.GetFileName(file);
-                string destDir = Path.Combine(location.Text, folderName);
-                Directory.CreateDirectory(destDir);
-
-                string destPath = Path.Combine(destDir, fileName);
-                if (File.Exists(destPath))
-                {
-                    string nameNoExt = Path.GetFileNameWithoutExtension(fileName);
-                    string extOnly = Path.GetExtension(fileName);
-                    int suffix = 1;
-                    do
-                    {
-                        destPath = Path.Combine(destDir, $"{nameNoExt} ({suffix}){extOnly}");
-                        suffix++;
-                    } while (File.Exists(destPath));
-                }
-
-                File.Move(file, destPath);
-            }
-            catch
-            {
-                status.Text = $"Failed to categorize: {Path.GetFileName(file)}";
-            }
-        }
-
-        private void RenameFolder()
-        {
-            string parentDir = Path.GetDirectoryName(location.Text);
-            string newName = Path.Combine(parentDir, renameTo.Text);
-
-            if (location.Text != newName)
-            {
-                if (Directory.Exists(newName))
-                {
-                    DialogResult resut = MessageBox.Show("Folder cannot be renamed as another folder with the new name found. If you proceed, the contents of the new folder will be deleted & files from the current folder will be moved to the new folder!\n\nDo you want to proceed?", "Folder Conflict!", MessageBoxButtons.YesNo);
-                    if (resut == DialogResult.Yes)
-                    {
-                        Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectory(newName,
-                            Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs,
-                            Microsoft.VisualBasic.FileIO.RecycleOption.SendToRecycleBin);
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-
-                Directory.Move(location.Text, newName);
-                location.Text = newName;
-            }
-        }
-
-        private void ProcessFile(string file)
-        {
-            status.Text = file;
-            if (isPrettifyName.Checked)
-            {
-                file = PrettifyName(file);
-            }
-            if (isCategorizeFiles.Checked) CategorizeFile(file);
-        }
-
         private void StartProcess()
         {
-            string folderName = Path.GetFileName(location.Text);
-            string timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-            string backupDir = Path.Combine(Path.GetTempPath(), "FolderPrettifier_Backup", $"{folderName}_{timestamp}");
-            status.Text = "Creating backup...";
-            Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(location.Text, backupDir, true);
-            status.Text = $"Backup saved to {backupDir}";
+            string srcFolder = location.Text;
 
-            string[] files = Directory.GetFiles(location.Text);
-
+            string[] files = Directory.GetFiles(srcFolder);
             int totalFiles = files.Length;
             int processedFiles = 0;
 
+            bool prettifyOn = false, categorizeOn = false;
+            bool capitalizeOn = false, replaceOn = false, nameWithOn = false;
+            string replaceFrom = "", replaceTo = "", namePrefix = "", nameSuffix = "";
+            Invoke(new Action(() =>
+            {
+                prettifyOn = isPrettifyName.Checked;
+                categorizeOn = isCategorizeFiles.Checked;
+                capitalizeOn = isCapitalizeName.Checked;
+                replaceOn = isReplaceWord.Checked;
+                replaceFrom = replaceWord.Text;
+                replaceTo = withWord.Text;
+                nameWithOn = isNameWith.Checked;
+                namePrefix = nameStartsWith.Text;
+                nameSuffix = nameEndsWith.Text;
+            }));
+
             foreach (string file in files)
             {
-                ProcessFile(file);
+                string currentFile = file;
+                Invoke(new Action(() => status.Text = currentFile));
+
+                if (prettifyOn)
+                {
+                    string backPath = Path.GetDirectoryName(currentFile);
+                    string fileName = Path.GetFileName(currentFile);
+                    string newFileName = fileName;
+
+                    if (capitalizeOn && newFileName.Length > 0)
+                        newFileName = char.ToUpper(newFileName[0]) + newFileName.Substring(1);
+
+                    if (replaceOn)
+                        newFileName = newFileName.Replace(replaceFrom, replaceTo);
+
+                    if (nameWithOn)
+                    {
+                        int dotIndex = newFileName.LastIndexOf('.');
+                        if (dotIndex > 0)
+                        {
+                            string namePart = newFileName.Substring(0, dotIndex);
+                            string extPart = newFileName.Substring(dotIndex);
+                            newFileName = namePrefix + namePart + nameSuffix + extPart;
+                        }
+                        else
+                        {
+                            newFileName = namePrefix + newFileName + nameSuffix;
+                        }
+                    }
+
+                    string dest = Path.Combine(backPath, newFileName);
+                    File.Move(currentFile, dest);
+                    currentFile = dest;
+                }
+
+                if (categorizeOn)
+                {
+                    try
+                    {
+                        string ext = Path.GetExtension(currentFile).TrimStart('.').ToLower();
+                        if (!string.IsNullOrEmpty(ext) && extensions[ext] != null)
+                        {
+                            string catFolderName = extensions[ext]["folderName"].ToString();
+                            string catFileName = Path.GetFileName(currentFile);
+                            string destDir = Path.Combine(srcFolder, catFolderName);
+                            Directory.CreateDirectory(destDir);
+
+                            string destPath = Path.Combine(destDir, catFileName);
+                            if (File.Exists(destPath))
+                            {
+                                string nameNoExt = Path.GetFileNameWithoutExtension(catFileName);
+                                string extOnly = Path.GetExtension(catFileName);
+                                int suffix = 1;
+                                do
+                                {
+                                    destPath = Path.Combine(destDir, $"{nameNoExt} ({suffix}){extOnly}");
+                                    suffix++;
+                                } while (File.Exists(destPath));
+                            }
+
+                            File.Move(currentFile, destPath);
+                        }
+                    }
+                    catch
+                    {
+                        Invoke(new Action(() => status.Text = $"Failed to categorize: {Path.GetFileName(currentFile)}"));
+                    }
+                }
+
                 processedFiles++;
-
-                progressBar.Value = totalFiles > 0 ? processedFiles * 100 / totalFiles : 0;
+                int progress = totalFiles > 0 ? processedFiles * 100 / totalFiles : 0;
+                Invoke(new Action(() => progressBar.Value = progress));
             }
 
-            if (renameTo.Text.Length > 0)
+            string renameTarget = "";
+            Invoke(new Action(() => renameTarget = renameTo.Text));
+            if (renameTarget.Length > 0)
             {
-                RenameFolder();
+                string parentDir = Path.GetDirectoryName(srcFolder);
+                string newName = Path.Combine(parentDir, renameTarget);
+
+                if (srcFolder != newName)
+                {
+                    bool userSaidYes = false;
+                    if (Directory.Exists(newName))
+                    {
+                        Invoke(new Action(() =>
+                        {
+                            DialogResult res = MessageBox.Show("Folder cannot be renamed as another folder with the new name found. If you proceed, the contents of the new folder will be deleted & files from the current folder will be moved to the new folder!\n\nDo you want to proceed?", "Folder Conflict!", MessageBoxButtons.YesNo);
+                            userSaidYes = res == DialogResult.Yes;
+                        }));
+                        if (userSaidYes)
+                        {
+                            Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectory(newName,
+                                Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs,
+                                Microsoft.VisualBasic.FileIO.RecycleOption.SendToRecycleBin);
+                        }
+                        else
+                        {
+                            Invoke(new Action(() => status.Text = "Ready"));
+                            return;
+                        }
+                    }
+
+                    Directory.Move(srcFolder, newName);
+                    Invoke(new Action(() => location.Text = newName));
+                }
             }
 
-            status.Text = "Ready";
+            Invoke(new Action(() => status.Text = "Ready"));
         }
 
-        private void StartBtn_Click(object sender, EventArgs e)
+        private async void StartBtn_Click(object sender, EventArgs e)
         {
             if (!_catalogLoaded)
             {
@@ -403,19 +407,26 @@ namespace FolderPrettifier
             DialogResult proceed = MessageBox.Show("Now, several operations will be performed on your folder. During the process, DON'T CLOSE THE APPLICATION in any manner. If you do so, there're high chances of data corruption. It's also recommeded not to work on this folder/subfolders.\n\nDo you want to proceed?", "ATTENTION!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (proceed == DialogResult.Yes)
             {
-                StartProcess();
-
-                if (isOpenFolder.Checked)
+                startBtn.Enabled = false;
+                try
                 {
-                    Process.Start("explorer.exe", location.Text);
+                    await Task.Run(() => StartProcess());
+
+                    if (isOpenFolder.Checked)
+                    {
+                        Process.Start("explorer.exe", location.Text);
+                    }
+
+                    Location_TextChanged(sender, e);
+
+                    MessageBox.Show("All the prettification is done & your folder looks clean & managed now!", "Enjoy!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-                Location_TextChanged(sender, e);
-
-                MessageBox.Show("All the prettification is done & your folder looks clean & managed now!", "Enjoy!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                progressBar.Value = 0;
-            };
+                finally
+                {
+                    startBtn.Enabled = true;
+                    progressBar.Value = 0;
+                }
+            }
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
