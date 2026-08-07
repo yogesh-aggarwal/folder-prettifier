@@ -688,5 +688,129 @@ namespace FolderPrettifier.UiTests
 
             WaitUntil(() => FindAnyWindowByTitlePrefix("Source") != IntPtr.Zero, 15000, "explorer window for the folder");
         }
+
+        [Test]
+        public void RenameConflict_Yes_DeletesConflictingFolderAndRenames()
+        {
+            LaunchApp("a.txt");
+            WaitUntilStartEnabled();
+            ToggleCheckBox("Categorize Files", false);
+
+            string target = Path.Combine(_stageDir, "Target");
+            Directory.CreateDirectory(target);
+            File.WriteAllText(Path.Combine(target, "keep.txt"), "keep");
+
+            var renameTo = _mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("renameTo"));
+            Assert.That(renameTo, Is.Not.Null, "renameTo textbox not found");
+            renameTo.AsTextBox().Text = "Target";
+
+            var startBtn = _mainWindow.FindFirstDescendant(cf => cf.ByName("Start").And(cf.ByControlType(ControlType.Button)));
+            Assert.That(startBtn, Is.Not.Null, "Start button not found");
+            IntPtr startHwnd = (IntPtr)startBtn.Properties.NativeWindowHandle.Value;
+
+            Task click = Task.Run(() => SendMessage(startHwnd, BM_CLICK, IntPtr.Zero, IntPtr.Zero));
+            ClickMessageBox("ATTENTION!", "Yes", 15000);
+            ClickMessageBox("Folder Conflict!", "Yes", 15000);
+            ClickMessageBox("Enjoy!", "OK", 30000);
+            click.Wait(20000);
+
+            Assert.That(Directory.Exists(_tempDir), Is.False, "source folder must be renamed away");
+            Assert.That(File.Exists(Path.Combine(target, "a.txt")), Is.True, "files must move into the target folder. State:\n" + DumpTree(_stageDir));
+            Assert.That(File.Exists(Path.Combine(target, "keep.txt")), Is.False, "conflicting folder must be deleted");
+        }
+
+        [Test]
+        public void RenameConflict_No_AbortsWithoutRenamingOrDeleting()
+        {
+            LaunchApp("a.txt");
+            WaitUntilStartEnabled();
+            ToggleCheckBox("Categorize Files", false);
+
+            string target = Path.Combine(_stageDir, "Target");
+            Directory.CreateDirectory(target);
+            File.WriteAllText(Path.Combine(target, "keep.txt"), "keep");
+
+            var renameTo = _mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("renameTo"));
+            Assert.That(renameTo, Is.Not.Null, "renameTo textbox not found");
+            renameTo.AsTextBox().Text = "Target";
+
+            var startBtn = _mainWindow.FindFirstDescendant(cf => cf.ByName("Start").And(cf.ByControlType(ControlType.Button)));
+            Assert.That(startBtn, Is.Not.Null, "Start button not found");
+            IntPtr startHwnd = (IntPtr)startBtn.Properties.NativeWindowHandle.Value;
+
+            Task click = Task.Run(() => SendMessage(startHwnd, BM_CLICK, IntPtr.Zero, IntPtr.Zero));
+            ClickMessageBox("ATTENTION!", "Yes", 15000);
+            ClickMessageBox("Folder Conflict!", "No", 15000);
+            click.Wait(20000);
+
+            Assert.That(FindWindowByTitle("Enjoy!"), Is.EqualTo(IntPtr.Zero), "Enjoy! must not appear when the rename is declined");
+            Assert.That(Directory.Exists(_tempDir), Is.True, "source folder must be untouched");
+            Assert.That(File.Exists(Path.Combine(_tempDir, "a.txt")), Is.True);
+            Assert.That(File.Exists(Path.Combine(target, "keep.txt")), Is.True, "conflicting folder must be untouched");
+            WaitUntil(() => IsControlEnabled("startBtn"), 10000, "Start button re-enabled");
+        }
+
+        [Test]
+        public void SomeFilesCouldNotBeProcessed_DialogShownForLockedFile()
+        {
+            LaunchApp("ok.txt");
+            WaitUntilStartEnabled();
+            ToggleCheckBox("Categorize Files", true);
+
+            string locked = Path.Combine(_tempDir, "locked.txt");
+            File.WriteAllText(locked, "locked");
+
+            using (FileStream fs = new FileStream(locked, FileMode.Open, FileAccess.Read, FileShare.None))
+            {
+                var startBtn = _mainWindow.FindFirstDescendant(cf => cf.ByName("Start").And(cf.ByControlType(ControlType.Button)));
+                Assert.That(startBtn, Is.Not.Null, "Start button not found");
+                IntPtr startHwnd = (IntPtr)startBtn.Properties.NativeWindowHandle.Value;
+
+                Task click = Task.Run(() => SendMessage(startHwnd, BM_CLICK, IntPtr.Zero, IntPtr.Zero));
+                ClickMessageBox("ATTENTION!", "Yes", 15000);
+                ClickMessageBox("Some files could not be processed", "OK", 30000);
+                ClickMessageBox("Enjoy!", "OK", 30000);
+                click.Wait(20000);
+            }
+
+            Assert.That(File.Exists(locked), Is.True, "locked file must remain in place");
+            Assert.That(File.Exists(Path.Combine(_tempDir, "Documents", "Text", "ok.txt")), Is.True, "other files must still be processed");
+        }
+
+        [Test]
+        public void CheckForUpdates_MenuShowsResultDialogAndReturnsToReady()
+        {
+            LaunchApp();
+            WaitUntilStartEnabled();
+
+            var updateItem = _mainWindow.FindFirstDescendant(cf => cf.ByName("Check for Updates"));
+            Assert.That(updateItem, Is.Not.Null, "Check for Updates menu item not found");
+            try
+            {
+                updateItem.Patterns.Invoke.Pattern.Invoke();
+            }
+            catch
+            {
+                updateItem.Focus();
+                Keyboard.Type(VirtualKeyShort.RETURN);
+            }
+
+            // Non-silent check: a result dialog appears whether or not an update exists.
+            WaitUntil(() =>
+                FindWindowByTitle("Up to date") != IntPtr.Zero ||
+                FindWindowByTitle("Update Available") != IntPtr.Zero, 45000, "update result dialog");
+
+            if (FindWindowByTitle("Update Available") != IntPtr.Zero)
+            {
+                ClickMessageBox("Update Available", "No", 15000);
+            }
+            else
+            {
+                ClickMessageBox("Up to date", "OK", 15000);
+            }
+
+            WaitUntil(() =>
+                _mainWindow.FindFirstDescendant(cf => cf.ByName("Ready")) != null, 15000, "status Ready");
+        }
     }
 }

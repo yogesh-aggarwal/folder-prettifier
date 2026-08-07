@@ -8,10 +8,11 @@ using System.Collections.Generic;
 
 namespace FolderPrettifier
 {
-    public partial class Main : Form, IUpdateUi
+    public partial class Main : Form, IUpdateUi, ICatalogUi
     {
         private readonly RemoteFileFetcher _remoteFetcher = new RemoteFileFetcher();
         private readonly CatalogService _catalogService;
+        private readonly CatalogLoader _catalogLoader;
         private readonly UpdateService _updateService = new UpdateService();
         private readonly UpdateFlow _updateFlow;
 
@@ -38,6 +39,7 @@ namespace FolderPrettifier
                 Data.VersionsFileName,
                 () => Data.BasicCatalog);
 
+            _catalogLoader = new CatalogLoader(_remoteFetcher, _catalogService, GetAppVersion, this);
             _updateFlow = new UpdateFlow(_updateService, this);
 
             startBtn.Enabled = false;
@@ -83,44 +85,19 @@ namespace FolderPrettifier
 
         private async void FetchCatalog()
         {
-            status.Text = "Fetching Catalog...";
-            startBtn.Enabled = false;
-            updateCatalogBtn.Enabled = false;
-            progressBar.Value = 0;
-
-            Version appVersion = GetAppVersion();
-
-            bool online = await _remoteFetcher.CheckAsync(Data.InternetCheckUrl, TimeSpan.FromSeconds(3));
-            progressBar.Value = 30;
-
-            CatalogLoadOutcome outcome = await _catalogService.LoadAsync(appVersion, online, s => status.Text = s);
-
-            if (outcome.UpdateRequired)
+            CatalogLoadResult result = await _catalogLoader.LoadAsync();
+            if (result.UpdateRequired || result.Catalog == null)
             {
-                RequireUpdate(appVersion);
                 return;
             }
 
-            Catalog catalog = outcome.Catalog;
-            if (catalog == null)
-            {
-                status.Text = "No catalog! Can't proceed";
-                updateCatalogBtn.Enabled = true;
-                return;
-            }
-
-            _extensions = catalog.BuildExtensionMap();
-            _defaultFolder = catalog.DefaultFolder;
+            _extensions = result.Catalog.BuildExtensionMap();
+            _defaultFolder = result.Catalog.DefaultFolder;
             _catalogLoaded = true;
 
+            // Enable only after the fields above are set, or a click in between
+            // would hit the "Catalog is still loading" guard.
             startBtn.Enabled = true;
-            updateCatalogBtn.Enabled = true;
-
-            progressBar.Value = 100;
-
-            await Task.Delay(500);
-            status.Text = "Ready";
-            progressBar.Value = 0;
         }
 
         private static Version GetAppVersion()
@@ -129,7 +106,27 @@ namespace FolderPrettifier
             return Version.TryParse(Application.ProductVersion, out version) ? version : new Version(0, 0);
         }
 
-        private void RequireUpdate(Version appVersion)
+        void ICatalogUi.SetStatus(string text)
+        {
+            status.Text = text;
+        }
+
+        void ICatalogUi.SetProgress(int value)
+        {
+            progressBar.Value = value;
+        }
+
+        void ICatalogUi.SetStartEnabled(bool enabled)
+        {
+            startBtn.Enabled = enabled;
+        }
+
+        void ICatalogUi.SetCatalogRefreshEnabled(bool enabled)
+        {
+            updateCatalogBtn.Enabled = enabled;
+        }
+
+        void ICatalogUi.ShowUpdateRequired(Version appVersion)
         {
             string message = "Your installed version of Folder Prettifier (" + appVersion + ") is no longer supported by the current catalog system. "
                 + "The catalog used by this application requires a newer version.\n\n"
