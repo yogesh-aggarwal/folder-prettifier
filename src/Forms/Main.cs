@@ -33,6 +33,8 @@ namespace FolderPrettifier
 
             startBtn.Enabled = false;
 
+            LegacyCacheCleaner.Clean(Path.GetTempPath());
+
             SetCurrentPath();
 
             FetchCatalog();
@@ -155,19 +157,21 @@ namespace FolderPrettifier
 
         private void IsPrettifyName_CheckedChanged(object sender, EventArgs e)
         {
-            isCapitalizeName.Enabled = isPrettifyName.Checked;
+            bool prettifyOn = isPrettifyName.Checked;
 
-            isReplaceWord.Enabled = isPrettifyName.Checked;
-            replaceWordLabel.Enabled = isPrettifyName.Checked && isReplaceWord.Checked;
-            replaceWord.Enabled = isPrettifyName.Checked && isReplaceWord.Checked;
-            withWordLabel.Enabled = isPrettifyName.Checked && isReplaceWord.Checked;
-            withWord.Enabled = isPrettifyName.Checked && isReplaceWord.Checked;
+            isCapitalizeName.Enabled = prettifyOn;
 
-            isNameWith.Enabled = isPrettifyName.Checked;
-            nameStartsWithLabel.Enabled = isPrettifyName.Checked && isNameWith.Checked;
-            nameStartsWith.Enabled = isPrettifyName.Checked && isNameWith.Checked;
-            nameEndsWithLabel.Enabled = isPrettifyName.Checked && isNameWith.Checked;
-            nameEndsWith.Enabled = isPrettifyName.Checked && isNameWith.Checked;
+            isReplaceWord.Enabled = prettifyOn;
+            replaceWordLabel.Enabled = prettifyOn && isReplaceWord.Checked;
+            replaceWord.Enabled = prettifyOn && isReplaceWord.Checked;
+            withWordLabel.Enabled = prettifyOn && isReplaceWord.Checked;
+            withWord.Enabled = prettifyOn && isReplaceWord.Checked;
+
+            isNameWith.Enabled = prettifyOn;
+            nameStartsWithLabel.Enabled = prettifyOn && isNameWith.Checked;
+            nameStartsWith.Enabled = prettifyOn && isNameWith.Checked;
+            nameEndsWithLabel.Enabled = prettifyOn && isNameWith.Checked;
+            nameEndsWith.Enabled = prettifyOn && isNameWith.Checked;
         }
 
         private void IsReplaceWord_CheckedChanged(object sender, EventArgs e)
@@ -225,11 +229,23 @@ namespace FolderPrettifier
             ShowPathError(renameTo);
         }
 
-        private void StartProcess()
+        private bool StartProcess()
         {
             string srcFolder = location.Text;
 
-            string[] files = Directory.GetFiles(srcFolder);
+            string[] files;
+            try
+            {
+                files = Directory.GetFiles(srcFolder);
+            }
+            catch
+            {
+                Invoke(new Action(() =>
+                    MessageBox.Show("The selected folder could not be accessed. It may have been moved or deleted.\n\nNo changes were made.",
+                        "Folder Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)));
+                Invoke(new Action(() => status.Text = "Ready"));
+                return false;
+            }
 
             ProcessingOptions options = new ProcessingOptions();
             Invoke(new Action(() =>
@@ -283,7 +299,7 @@ namespace FolderPrettifier
                     else
                     {
                         Invoke(new Action(() => status.Text = "Ready"));
-                        return;
+                        return false;
                     }
                 }
 
@@ -300,6 +316,7 @@ namespace FolderPrettifier
             }
 
             Invoke(new Action(() => status.Text = "Ready"));
+            return true;
         }
 
         private async void StartBtn_Click(object sender, EventArgs e)
@@ -316,7 +333,11 @@ namespace FolderPrettifier
                 startBtn.Enabled = false;
                 try
                 {
-                    await Task.Run(() => StartProcess());
+                    bool completed = await Task.Run(() => StartProcess());
+                    if (!completed)
+                    {
+                        return;
+                    }
 
                     if (isOpenFolder.Checked)
                     {

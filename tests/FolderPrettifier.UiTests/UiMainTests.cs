@@ -88,11 +88,15 @@ namespace FolderPrettifier.UiTests
         private UIA3Automation _automation;
         private Window _mainWindow;
 
-        private void LaunchApp()
+        private void LaunchApp(params string[] filesToCreate)
         {
             _stageDir = Path.Combine(Path.GetTempPath(), "fp-ui-" + Guid.NewGuid().ToString("N"));
             _tempDir = Path.Combine(_stageDir, "Source");
             Directory.CreateDirectory(_tempDir);
+            foreach (string f in filesToCreate)
+            {
+                CreateFile(f);
+            }
 
             Process process = Process.Start(new ProcessStartInfo(FindExe(), "\"" + _tempDir + "\""));
             _processId = process.Id;
@@ -287,6 +291,43 @@ namespace FolderPrettifier.UiTests
             File.WriteAllText(full, "content");
         }
 
+        private bool IsControlEnabled(string automationId)
+        {
+            var el = _mainWindow.FindFirstDescendant(cf => cf.ByAutomationId(automationId));
+            return el != null && el.Properties.IsEnabled.Value;
+        }
+
+        private string LabelText(string automationId)
+        {
+            var el = _mainWindow.FindFirstDescendant(cf => cf.ByAutomationId(automationId));
+            return el == null ? null : el.Properties.Name.Value;
+        }
+
+        private string GetTextBoxText(string automationId)
+        {
+            var el = _mainWindow.FindFirstDescendant(cf => cf.ByAutomationId(automationId));
+            Assert.That(el, Is.Not.Null, "Textbox not found: " + automationId);
+            IntPtr hwnd = (IntPtr)el.Properties.NativeWindowHandle.Value;
+            StringBuilder sb = new StringBuilder(256);
+            SendMessage(hwnd, WM_GETTEXT, (IntPtr)256, sb);
+            return sb.ToString();
+        }
+
+        private void AssertEnabledState(string automationId, bool expected)
+        {
+            WaitUntil(() =>
+            {
+                try
+                {
+                    return IsControlEnabled(automationId) == expected;
+                }
+                catch
+                {
+                    return false;
+                }
+            }, 5000, "control " + automationId + (expected ? " enabled" : " disabled"));
+        }
+
         private static string DumpTree(string root)
         {
             StringBuilder sb = new StringBuilder();
@@ -389,6 +430,93 @@ namespace FolderPrettifier.UiTests
             StringBuilder actual = new StringBuilder(256);
             SendMessage(tbHwnd, WM_GETTEXT, (IntPtr)256, actual);
             Assert.That(actual.ToString(), Is.EqualTo("ab"), "actual textbox text after sanitize: '" + actual + "'" + " setTextFaulted=" + setText.IsFaulted);
+        }
+
+        [Test]
+        public void CheckboxMatrix_SubOptionsFollowPrettifyToggle()
+        {
+            LaunchApp();
+            WaitUntilStartEnabled();
+
+            AssertEnabledState("isCapitalizeName", false);
+            AssertEnabledState("isReplaceWord", false);
+            AssertEnabledState("isNameWith", false);
+            AssertEnabledState("replaceWord", false);
+            AssertEnabledState("withWord", false);
+            AssertEnabledState("nameStartsWith", false);
+            AssertEnabledState("nameEndsWith", false);
+
+            ToggleCheckBox("Prettify Name", true);
+            AssertEnabledState("isCapitalizeName", true);
+            AssertEnabledState("isReplaceWord", true);
+            AssertEnabledState("isNameWith", true);
+            AssertEnabledState("replaceWord", false);
+            AssertEnabledState("withWord", false);
+            AssertEnabledState("nameStartsWith", false);
+            AssertEnabledState("nameEndsWith", false);
+
+            ToggleCheckBox("Replace Specific Word", true);
+            AssertEnabledState("replaceWord", true);
+            AssertEnabledState("withWord", true);
+            AssertEnabledState("nameStartsWith", false);
+            AssertEnabledState("nameEndsWith", false);
+
+            ToggleCheckBox("Name With", true);
+            AssertEnabledState("nameStartsWith", true);
+            AssertEnabledState("nameEndsWith", true);
+
+            ToggleCheckBox("Prettify Name", false);
+            AssertEnabledState("isCapitalizeName", false);
+            AssertEnabledState("isReplaceWord", false);
+            AssertEnabledState("isNameWith", false);
+            AssertEnabledState("replaceWord", false);
+            AssertEnabledState("withWord", false);
+            AssertEnabledState("nameStartsWith", false);
+            AssertEnabledState("nameEndsWith", false);
+        }
+
+        [Test]
+        public void LocationCount_UpdatesFileCountAndRenameTarget()
+        {
+            LaunchApp("a.txt", "b.txt", "c.txt");
+            string other = Path.Combine(_stageDir, "Other");
+            Directory.CreateDirectory(other);
+            File.WriteAllText(Path.Combine(other, "x.txt"), "x");
+            File.WriteAllText(Path.Combine(other, "y.txt"), "y");
+
+            WaitUntilStartEnabled();
+            WaitUntil(() => LabelText("totalFilesCount") == "3", 10000, "file count shows 3");
+            Assert.That(GetTextBoxText("renameTo"), Is.EqualTo("Source"));
+
+            var location = _mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("location"));
+            Assert.That(location, Is.Not.Null, "location textbox not found");
+            IntPtr locationHwnd = (IntPtr)location.Properties.NativeWindowHandle.Value;
+            SendMessage(locationHwnd, WM_SETTEXT, IntPtr.Zero, other);
+
+            WaitUntil(() => LabelText("totalFilesCount") == "2", 10000, "file count shows 2");
+            Assert.That(GetTextBoxText("renameTo"), Is.EqualTo("Other"));
+        }
+
+        [Test]
+        public void InaccessibleFolder_ShowsErrorAndSkipsEnjoy()
+        {
+            LaunchApp("a.txt");
+            WaitUntilStartEnabled();
+
+            // Delete the folder behind the app's back, then start the run
+            Directory.Delete(_tempDir, true);
+
+            var startBtn = _mainWindow.FindFirstDescendant(cf => cf.ByName("Start").And(cf.ByControlType(ControlType.Button)));
+            Assert.That(startBtn, Is.Not.Null, "Start button not found");
+            IntPtr startHwnd = (IntPtr)startBtn.Properties.NativeWindowHandle.Value;
+
+            Task click = Task.Run(() => SendMessage(startHwnd, BM_CLICK, IntPtr.Zero, IntPtr.Zero));
+            ClickMessageBox("ATTENTION!", "Yes", 15000);
+            ClickMessageBox("Folder Error", "OK", 15000);
+            click.Wait(20000);
+
+            WaitUntil(() => IsControlEnabled("startBtn"), 10000, "Start button re-enabled");
+            Assert.That(FindWindowByTitle("Enjoy!"), Is.EqualTo(IntPtr.Zero), "Enjoy! must not appear when the run aborted");
         }
 
         [Test]
