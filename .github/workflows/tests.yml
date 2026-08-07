@@ -9,8 +9,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
-    name: Tests
+  unit:
+    name: Unit tests
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,3 +21,19 @@ jobs:
 
       - name: Run unit tests
         run: dotnet test tests/FolderPrettifier.Tests/FolderPrettifier.Tests.csproj -c Debug
+
+  ui:
+    name: UI tests
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Build app (Debug AnyCPU)
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File scripts/msbuild.ps1 src/App.csproj /p:Configuration=Debug /p:Platform=AnyCPU /t:Build
+
+      - name: Run UI tests
+        run: dotnet test tests/FolderPrettifier.UiTests/FolderPrettifier.UiTests.csproj -c Debug

@@ -1,5 +1,5 @@
 SHELL := cmd
-.PHONY: dev build restore build-x86 build-x64 installer portable bump test
+.PHONY: dev build restore build-x86 build-x64 installer portable bump test test-ui
 
 MSBUILD := powershell -NoProfile -ExecutionPolicy Bypass -File scripts/msbuild.ps1
 DOTNET := powershell -NoProfile -ExecutionPolicy Bypass -File scripts/dotnet.ps1
@@ -33,6 +33,10 @@ bump:
 
 test:
 	@$(DOTNET) test $(TESTS) -c Debug
+
+test-ui:
+	@$(MSBUILD) src/App.csproj /p:Configuration=Debug /p:Platform=AnyCPU /t:Build
+	@$(DOTNET) test tests\FolderPrettifier.UiTests\FolderPrettifier.UiTests.csproj -c Debug
 
 %:
 	@true
