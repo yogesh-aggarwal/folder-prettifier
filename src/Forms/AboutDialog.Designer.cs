@@ -36,6 +36,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.versionLabel = new System.Windows.Forms.Label();
             this.okButton = new System.Windows.Forms.Button();
             this.feedbackButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -113,6 +114,15 @@
             this.label8.TabIndex = 8;
             this.label8.Text = "Thanks for using it!";
             // 
+            // versionLabel
+            // 
+            this.versionLabel.AutoSize = true;
+            this.versionLabel.Location = new System.Drawing.Point(280, 12);
+            this.versionLabel.Name = "versionLabel";
+            this.versionLabel.Size = new System.Drawing.Size(96, 13);
+            this.versionLabel.TabIndex = 11;
+            this.versionLabel.Text = "Version 2.1.0.0";
+            // 
             // okButton
             // 
             this.okButton.Location = new System.Drawing.Point(206, 185);
@@ -139,6 +149,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 215);
             this.ControlBox = false;
+            this.Controls.Add(this.versionLabel);
             this.Controls.Add(this.feedbackButton);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.label8);
@@ -167,6 +178,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label versionLabel;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button feedbackButton;
     }

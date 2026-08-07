@@ -12,10 +12,12 @@ namespace FolderPrettifier
     {
         private readonly RemoteFileFetcher _remoteFetcher = new RemoteFileFetcher();
         private readonly CatalogService _catalogService;
+        private readonly UpdateService _updateService = new UpdateService();
 
         Dictionary<string, string> _extensions;
         string _defaultFolder;
         bool _catalogLoaded;
+        bool _updateCheckInProgress;
         string currentFolder = "";
 
         public Main(string currentFolder = "")
@@ -36,6 +38,7 @@ namespace FolderPrettifier
             SetCurrentPath();
 
             FetchCatalog();
+            _ = CheckForUpdateAsync(true);
         }
 
         private void SetCurrentPath()
@@ -344,6 +347,172 @@ namespace FolderPrettifier
         private void updateCatalogBtn_Click(object sender, EventArgs e)
         {
             FetchCatalog();
+        }
+
+        private async void checkForUpdatesBtn_Click(object sender, EventArgs e)
+        {
+            await CheckForUpdateAsync(false);
+        }
+
+        private async Task CheckForUpdateAsync(bool silent)
+        {
+            if (_updateCheckInProgress)
+            {
+                return;
+            }
+
+            _updateCheckInProgress = true;
+            checkForUpdatesBtn.Enabled = false;
+
+            status.Text = "Checking for updates...";
+            progressBar.Value = 0;
+
+            UpdateInfo update = null;
+            try
+            {
+                update = await _updateService.CheckForUpdateAsync(GetAppVersion());
+            }
+            finally
+            {
+                _updateCheckInProgress = false;
+            }
+
+            if (update == null)
+            {
+                checkForUpdatesBtn.Enabled = true;
+                status.Text = "Ready";
+                progressBar.Value = 0;
+                if (!silent)
+                {
+                    MessageBox.Show("You're running the latest version of Folder Prettifier.", "Up to date", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                return;
+            }
+
+            if (silent && !ShouldPromptForUpdate())
+            {
+                checkForUpdatesBtn.Enabled = true;
+                status.Text = "Ready";
+                return;
+            }
+
+            string notes = string.IsNullOrWhiteSpace(update.ReleaseNotes) ? "" : "\n\nWhat's new:\n" + update.ReleaseNotes;
+            DialogResult answer = MessageBox.Show(
+                "A new version of Folder Prettifier is available: " + update.Version + "\n" +
+                "Your current version: " + GetAppVersion() + notes +
+                "\n\nDo you want to download and install it now?",
+                "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (answer != DialogResult.Yes)
+            {
+                RememberUpdatePrompt();
+                checkForUpdatesBtn.Enabled = true;
+                status.Text = "Ready";
+                return;
+            }
+
+            await DownloadAndApplyUpdateAsync(update);
+            checkForUpdatesBtn.Enabled = true;
+            status.Text = "Ready";
+        }
+
+        private async Task DownloadAndApplyUpdateAsync(UpdateInfo update)
+        {
+            if (string.IsNullOrEmpty(update.AssetUrl))
+            {
+                MessageBox.Show(
+                    "An update is available but no matching download could be found for this version of Windows.\n\n" +
+                    "Please download the latest version from the release page.",
+                    "Manual Update Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Process.Start(update.ReleasePageUrl);
+                return;
+            }
+
+            if (!UpdateService.CanUpdateInPlace())
+            {
+                DialogResult openPage = MessageBox.Show(
+                    "Folder Prettifier cannot update itself because it is installed in a protected location.\n\n" +
+                    "Please download the latest version manually. Open the release page now?",
+                    "Manual Update Required", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (openPage == DialogResult.Yes)
+                {
+                    Process.Start(update.ReleasePageUrl);
+                }
+                return;
+            }
+
+            string updatesDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "Folder Prettifier", "updates");
+            string destination = Path.Combine(updatesDir, update.AssetName);
+
+            if (!File.Exists(destination))
+            {
+                status.Text = "Downloading update...";
+                progressBar.Value = 0;
+                bool downloaded = await _updateService.DownloadAsync(update, destination,
+                    new Progress<int>(p => progressBar.Value = p));
+                if (!downloaded)
+                {
+                    status.Text = "Update download failed";
+                    MessageBox.Show("Could not download the update. Please try again later.", "Download Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            status.Text = "Applying update...";
+            if (_updateService.ApplyUpdate(destination))
+            {
+                Application.Exit();
+            }
+            else
+            {
+                status.Text = "Ready";
+                MessageBox.Show(
+                    "Could not apply the update automatically. Please download the latest version from the release page.",
+                    "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Process.Start(update.ReleasePageUrl);
+            }
+        }
+
+        private static string UpdatePromptFile
+        {
+            get
+            {
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    "Folder Prettifier", "last-update-prompt.txt");
+            }
+        }
+
+        private static bool ShouldPromptForUpdate()
+        {
+            try
+            {
+                if (!File.Exists(UpdatePromptFile))
+                {
+                    return true;
+                }
+                DateTime lastPrompt;
+                if (!DateTime.TryParse(File.ReadAllText(UpdatePromptFile).Trim(), out lastPrompt))
+                {
+                    return true;
+                }
+                return (DateTime.Now - lastPrompt).TotalDays >= 7;
+            }
+            catch
+            {
+                return true;
+            }
+        }
+
+        private static void RememberUpdatePrompt()
+        {
+            try
+            {
+                File.WriteAllText(UpdatePromptFile, DateTime.Now.ToString("o"));
+            }
+            catch
+            {
+            }
         }
     }
 }

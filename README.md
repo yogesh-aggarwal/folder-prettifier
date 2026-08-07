@@ -11,7 +11,7 @@ Perfect for that Downloads folder you've been ignoring for three years.
 - **Sorts everything** — throws every file into the right folder automatically
 - **Cleans up names** — fixes capitalization, swaps out ugly words, adds prefixes or suffixes
 - **Saves your skin** — makes a backup before touching anything, just in case you change your mind
-- **Keeps itself updated** — grabs the latest sorting rules from the internet when it starts, but works fine offline too
+- **Keeps itself updated** — grabs the latest sorting rules from the internet when it starts (works fine offline too), and updates the app itself when a new version is released (Check for Updates in the menu)
 - **Lives on a USB stick** — one file, nothing else, run it from anywhere
 - **Right-click magic** — right-click any folder and pick **Folder Prettifier** (if you used the installer)
 
