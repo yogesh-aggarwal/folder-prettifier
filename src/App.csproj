@@ -147,6 +147,7 @@
     </Compile>
     <Compile Include="Catalog.cs" />
     <Compile Include="CatalogBaseUrlResolver.cs" />
+    <Compile Include="CommandLine.cs" />
     <Compile Include="CatalogResolver.cs" />
     <Compile Include="CatalogSelector.cs" />
     <Compile Include="CatalogService.cs" />
