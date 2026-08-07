@@ -30,6 +30,15 @@ namespace FolderPrettifier.UiTests
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         private static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
 
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        private static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
+
+        [DllImport("user32.dll")]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr SetFocus(IntPtr hWnd);
+
         [DllImport("user32.dll")]
         private static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
@@ -90,6 +99,21 @@ namespace FolderPrettifier.UiTests
 
         private void LaunchApp(params string[] filesToCreate)
         {
+            LaunchAppInternal(null, filesToCreate);
+        }
+
+        private void LaunchAppWithoutFolderArg()
+        {
+            LaunchAppInternal("", new string[0]);
+        }
+
+        private void LaunchAppWithFolderArg(string folderArg)
+        {
+            LaunchAppInternal("\"" + folderArg + "\"", new string[0]);
+        }
+
+        private void LaunchAppInternal(string folderArg, string[] filesToCreate)
+        {
             _stageDir = Path.Combine(Path.GetTempPath(), "fp-ui-" + Guid.NewGuid().ToString("N"));
             _tempDir = Path.Combine(_stageDir, "Source");
             Directory.CreateDirectory(_tempDir);
@@ -98,7 +122,8 @@ namespace FolderPrettifier.UiTests
                 CreateFile(f);
             }
 
-            Process process = Process.Start(new ProcessStartInfo(FindExe(), "\"" + _tempDir + "\""));
+            string args = folderArg == null ? "\"" + _tempDir + "\"" : folderArg;
+            Process process = Process.Start(new ProcessStartInfo(FindExe(), args));
             _processId = process.Id;
             _automation = new UIA3Automation();
 
@@ -179,6 +204,41 @@ namespace FolderPrettifier.UiTests
                         found = hWnd;
                         return false;
                     }
+                }
+                return true;
+            }, IntPtr.Zero);
+            return found;
+        }
+
+        private IntPtr FindAnyWindowByTitlePrefix(string titlePrefix)
+        {
+            IntPtr found = IntPtr.Zero;
+            EnumWindows((hWnd, lParam) =>
+            {
+                StringBuilder sb = new StringBuilder(256);
+                GetWindowText(hWnd, sb, 256);
+                string title = sb.ToString();
+                if (title == titlePrefix || title.StartsWith(titlePrefix + " - File Explorer"))
+                {
+                    found = hWnd;
+                    return false;
+                }
+                return true;
+            }, IntPtr.Zero);
+            return found;
+        }
+
+        private IntPtr FindAnyWindowByTitleContains(string fragment)
+        {
+            IntPtr found = IntPtr.Zero;
+            EnumWindows((hWnd, lParam) =>
+            {
+                StringBuilder sb = new StringBuilder(256);
+                GetWindowText(hWnd, sb, 256);
+                if (sb.ToString().IndexOf(fragment, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    found = hWnd;
+                    return false;
                 }
                 return true;
             }, IntPtr.Zero);
@@ -558,6 +618,385 @@ namespace FolderPrettifier.UiTests
 
             var startBtn = _mainWindow.FindFirstDescendant(cf => cf.ByName("Start").And(cf.ByControlType(ControlType.Button)));
             Assert.That(startBtn.Properties.IsEnabled.Value, Is.True);
+        }
+
+        [Test]
+        public void SetCurrentPath_NoFolderArg_FallsBackToDownloads()
+        {
+            LaunchAppWithoutFolderArg();
+            WaitUntilStartEnabled();
+
+            string expected = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+            WaitUntil(() =>
+            {
+                try
+                {
+                    return GetTextBoxText("location") == expected;
+                }
+                catch
+                {
+                    return false;
+                }
+            }, 10000, "location shows Downloads folder");
+        }
+
+        [Test]
+        public void SetCurrentPath_InvalidFolderArg_FallsBackToDownloads()
+        {
+            LaunchAppWithFolderArg(@"C:\bad<>path");
+            WaitUntilStartEnabled();
+
+            string expected = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+            WaitUntil(() =>
+            {
+                try
+                {
+                    return GetTextBoxText("location") == expected;
+                }
+                catch
+                {
+                    return false;
+                }
+            }, 10000, "location shows Downloads after invalid folder arg");
+        }
+
+        [Test]
+        public void SetCurrentPath_MissingFolderArg_CreatesDirectory()
+        {
+            string missing = Path.Combine(_stageDir, "Created");
+            LaunchAppWithFolderArg(missing);
+            WaitUntilStartEnabled();
+
+            Assert.That(Directory.Exists(missing), Is.True, "app must create the missing folder");
+            WaitUntil(() =>
+            {
+                try
+                {
+                    return GetTextBoxText("location") == missing;
+                }
+                catch
+                {
+                    return false;
+                }
+            }, 10000, "location shows the created folder");
+        }
+
+        [Test]
+        public void UpdaterArgs_DispatchExitsWithoutShowingWindow()
+        {
+            string target = Path.Combine(Path.GetTempPath(), "fpf-updater-missing", "updater.cmd");
+            using (Process process = Process.Start(new ProcessStartInfo(FindExe(), "--apply-update \"" + target + "\" 2147483647")))
+            {
+                // The updater path never shows a window: the app retries the copy
+                // for ~15s against a nonexistent target dir, then exits.
+                bool exited = process.WaitForExit(30000);
+                Assert.That(exited, Is.True, "app must dispatch updater args and exit without showing a window");
+            }
+        }
+
+        [Test]
+        public void LocationCount_InvalidPath_ResetsCountAndRenameTarget()
+        {
+            LaunchApp("a.txt");
+            WaitUntilStartEnabled();
+            WaitUntil(() => LabelText("totalFilesCount") == "1", 10000, "file count shows 1");
+
+            var location = _mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("location"));
+            Assert.That(location, Is.Not.Null, "location textbox not found");
+            IntPtr locationHwnd = (IntPtr)location.Properties.NativeWindowHandle.Value;
+            SendMessage(locationHwnd, WM_SETTEXT, IntPtr.Zero, "C:\\bad<>path\\x");
+
+            WaitUntil(() =>
+            {
+                try
+                {
+                    return LabelText("totalFilesCount") == "0" && GetTextBoxText("renameTo") == "";
+                }
+                catch
+                {
+                    return false;
+                }
+            }, 10000, "count reset to 0 and rename target cleared");
+        }
+
+        [Test]
+        public void AboutMenu_OpensAndClosesAboutDialog()
+        {
+            LaunchApp();
+            WaitUntilStartEnabled();
+
+            var aboutItem = _mainWindow.FindFirstDescendant(cf => cf.ByName("About"));
+            Assert.That(aboutItem, Is.Not.Null, "About menu item not found");
+            // UIA Invoke blocks while the modal dialog is open, so click the menu
+            // item with the mouse instead.
+            System.Drawing.Rectangle rect = aboutItem.Properties.BoundingRectangle.Value;
+            Mouse.Click(new System.Drawing.Point(rect.X + rect.Width / 2, rect.Y + rect.Height / 2));
+
+            WaitUntil(() => FindWindowByTitle("About Folder Prettifier") != IntPtr.Zero, 15000, "about dialog opened");
+
+            IntPtr aboutHwnd = FindWindowByTitle("About Folder Prettifier");
+            Window aboutWindow = _automation.FromHandle(aboutHwnd).AsWindow();
+            var okayBtn = aboutWindow.FindFirstDescendant(cf => cf.ByName("Okay").And(cf.ByControlType(ControlType.Button)));
+            Assert.That(okayBtn, Is.Not.Null, "Okay button not found in About dialog");
+            okayBtn.Patterns.Invoke.Pattern.Invoke();
+
+            WaitUntil(() => FindWindowByTitle("About Folder Prettifier") == IntPtr.Zero, 5000, "about dialog closed");
+        }
+
+        [Test]
+        public void StartButton_AttentionNo_AbortsWithoutProcessing()
+        {
+            LaunchApp("a.txt");
+            WaitUntilStartEnabled();
+
+            var startBtn = _mainWindow.FindFirstDescendant(cf => cf.ByName("Start").And(cf.ByControlType(ControlType.Button)));
+            Assert.That(startBtn, Is.Not.Null, "Start button not found");
+            IntPtr startHwnd = (IntPtr)startBtn.Properties.NativeWindowHandle.Value;
+
+            Task click = Task.Run(() => SendMessage(startHwnd, BM_CLICK, IntPtr.Zero, IntPtr.Zero));
+            ClickMessageBox("ATTENTION!", "No", 15000);
+            click.Wait(20000);
+
+            Assert.That(FindWindowByTitle("Enjoy!"), Is.EqualTo(IntPtr.Zero), "Enjoy! must not appear when the run is declined");
+            Assert.That(File.Exists(Path.Combine(_tempDir, "a.txt")), Is.True, "files must be untouched");
+            WaitUntil(() => IsControlEnabled("startBtn"), 10000, "Start button enabled");
+        }
+
+        [Test]
+        public void StartButton_OpenFolder_LaunchesExplorerForFolder()
+        {
+            LaunchApp("a.txt");
+            WaitUntilStartEnabled();
+            ToggleCheckBox("Open folder after prettification", true);
+
+            ClickStartAndHandleDialogs();
+
+            WaitUntil(() => FindAnyWindowByTitlePrefix("Source") != IntPtr.Zero, 15000, "explorer window for the folder");
+        }
+
+        [Test]
+        public void RenameConflict_Yes_DeletesConflictingFolderAndRenames()
+        {
+            LaunchApp("a.txt");
+            WaitUntilStartEnabled();
+            ToggleCheckBox("Categorize Files", false);
+
+            string target = Path.Combine(_stageDir, "Target");
+            Directory.CreateDirectory(target);
+            File.WriteAllText(Path.Combine(target, "keep.txt"), "keep");
+
+            var renameTo = _mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("renameTo"));
+            Assert.That(renameTo, Is.Not.Null, "renameTo textbox not found");
+            renameTo.AsTextBox().Text = "Target";
+
+            var startBtn = _mainWindow.FindFirstDescendant(cf => cf.ByName("Start").And(cf.ByControlType(ControlType.Button)));
+            Assert.That(startBtn, Is.Not.Null, "Start button not found");
+            IntPtr startHwnd = (IntPtr)startBtn.Properties.NativeWindowHandle.Value;
+
+            Task click = Task.Run(() => SendMessage(startHwnd, BM_CLICK, IntPtr.Zero, IntPtr.Zero));
+            ClickMessageBox("ATTENTION!", "Yes", 15000);
+            ClickMessageBox("Folder Conflict!", "Yes", 15000);
+            ClickMessageBox("Enjoy!", "OK", 30000);
+            click.Wait(20000);
+
+            Assert.That(Directory.Exists(_tempDir), Is.False, "source folder must be renamed away");
+            Assert.That(File.Exists(Path.Combine(target, "a.txt")), Is.True, "files must move into the target folder. State:\n" + DumpTree(_stageDir));
+            Assert.That(File.Exists(Path.Combine(target, "keep.txt")), Is.False, "conflicting folder must be deleted");
+        }
+
+        [Test]
+        public void RenameConflict_No_AbortsWithoutRenamingOrDeleting()
+        {
+            LaunchApp("a.txt");
+            WaitUntilStartEnabled();
+            ToggleCheckBox("Categorize Files", false);
+
+            string target = Path.Combine(_stageDir, "Target");
+            Directory.CreateDirectory(target);
+            File.WriteAllText(Path.Combine(target, "keep.txt"), "keep");
+
+            var renameTo = _mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("renameTo"));
+            Assert.That(renameTo, Is.Not.Null, "renameTo textbox not found");
+            renameTo.AsTextBox().Text = "Target";
+
+            var startBtn = _mainWindow.FindFirstDescendant(cf => cf.ByName("Start").And(cf.ByControlType(ControlType.Button)));
+            Assert.That(startBtn, Is.Not.Null, "Start button not found");
+            IntPtr startHwnd = (IntPtr)startBtn.Properties.NativeWindowHandle.Value;
+
+            Task click = Task.Run(() => SendMessage(startHwnd, BM_CLICK, IntPtr.Zero, IntPtr.Zero));
+            ClickMessageBox("ATTENTION!", "Yes", 15000);
+            ClickMessageBox("Folder Conflict!", "No", 15000);
+            click.Wait(20000);
+
+            Assert.That(FindWindowByTitle("Enjoy!"), Is.EqualTo(IntPtr.Zero), "Enjoy! must not appear when the rename is declined");
+            Assert.That(Directory.Exists(_tempDir), Is.True, "source folder must be untouched");
+            Assert.That(File.Exists(Path.Combine(_tempDir, "a.txt")), Is.True);
+            Assert.That(File.Exists(Path.Combine(target, "keep.txt")), Is.True, "conflicting folder must be untouched");
+            WaitUntil(() => IsControlEnabled("startBtn"), 10000, "Start button re-enabled");
+        }
+
+        [Test]
+        public void SomeFilesCouldNotBeProcessed_DialogShownForLockedFile()
+        {
+            LaunchApp("ok.txt");
+            WaitUntilStartEnabled();
+            ToggleCheckBox("Categorize Files", true);
+
+            string locked = Path.Combine(_tempDir, "locked.txt");
+            File.WriteAllText(locked, "locked");
+
+            using (FileStream fs = new FileStream(locked, FileMode.Open, FileAccess.Read, FileShare.None))
+            {
+                var startBtn = _mainWindow.FindFirstDescendant(cf => cf.ByName("Start").And(cf.ByControlType(ControlType.Button)));
+                Assert.That(startBtn, Is.Not.Null, "Start button not found");
+                IntPtr startHwnd = (IntPtr)startBtn.Properties.NativeWindowHandle.Value;
+
+                Task click = Task.Run(() => SendMessage(startHwnd, BM_CLICK, IntPtr.Zero, IntPtr.Zero));
+                ClickMessageBox("ATTENTION!", "Yes", 15000);
+                ClickMessageBox("Some files could not be processed", "OK", 30000);
+                ClickMessageBox("Enjoy!", "OK", 30000);
+                click.Wait(20000);
+            }
+
+            Assert.That(File.Exists(locked), Is.True, "locked file must remain in place");
+            Assert.That(File.Exists(Path.Combine(_tempDir, "Documents", "Text", "ok.txt")), Is.True, "other files must still be processed");
+        }
+
+        [Test]
+        public void CheckForUpdates_MenuShowsResultDialogAndReturnsToReady()
+        {
+            LaunchApp();
+            WaitUntilStartEnabled();
+
+            var updateItem = _mainWindow.FindFirstDescendant(cf => cf.ByName("Check for Updates"));
+            Assert.That(updateItem, Is.Not.Null, "Check for Updates menu item not found");
+            try
+            {
+                updateItem.Patterns.Invoke.Pattern.Invoke();
+            }
+            catch
+            {
+                updateItem.Focus();
+                Keyboard.Type(VirtualKeyShort.RETURN);
+            }
+
+            // Non-silent check: a result dialog appears whether or not an update exists.
+            WaitUntil(() =>
+                FindWindowByTitle("Up to date") != IntPtr.Zero ||
+                FindWindowByTitle("Update Available") != IntPtr.Zero, 45000, "update result dialog");
+
+            if (FindWindowByTitle("Update Available") != IntPtr.Zero)
+            {
+                ClickMessageBox("Update Available", "No", 15000);
+            }
+            else
+            {
+                ClickMessageBox("Up to date", "OK", 15000);
+            }
+
+            WaitUntil(() =>
+                _mainWindow.FindFirstDescendant(cf => cf.ByName("Ready")) != null, 15000, "status Ready");
+        }
+
+        [Test]
+        public void ChooseLocation_DialogSelectsFolder()
+        {
+            LaunchApp();
+            WaitUntilStartEnabled();
+
+            string chosen = Path.Combine(_stageDir, "Chosen");
+            Directory.CreateDirectory(chosen);
+
+            var chooseBtn = _mainWindow.FindFirstDescendant(cf => cf.ByName("...").And(cf.ByControlType(ControlType.Button)));
+            Assert.That(chooseBtn, Is.Not.Null, "Choose location button not found");
+            IntPtr chooseHwnd = (IntPtr)chooseBtn.Properties.NativeWindowHandle.Value;
+
+            // ShowDialog blocks the UI thread, so click from a worker thread and
+            // drive the native folder dialog from this thread.
+            Task click = Task.Run(() => SendMessage(chooseHwnd, BM_CLICK, IntPtr.Zero, IntPtr.Zero));
+
+            IntPtr dialog = IntPtr.Zero;
+            Stopwatch sw = Stopwatch.StartNew();
+            while (sw.ElapsedMilliseconds < 15000)
+            {
+                dialog = FindAnyWindowByTitleContains("Browse For Folder");
+                if (dialog != IntPtr.Zero) break;
+                Thread.Sleep(200);
+            }
+            if (dialog == IntPtr.Zero)
+            {
+                click.Wait(5000);
+                Assert.Fail("Folder browser dialog not found. Title dump:\n" + DumpWindowTitles());
+            }
+
+            // The classic SHBrowseForFolder dialog exposes its path box as a
+            // ComboBoxEx32 (no UIA edit). Type the path, press Enter to navigate,
+            // then confirm with IDOK.
+            IntPtr pathCombo = FindWindowEx(dialog, IntPtr.Zero, "ComboBoxEx32", null);
+            if (pathCombo == IntPtr.Zero)
+            {
+                pathCombo = FindWindowEx(dialog, IntPtr.Zero, "Edit", null);
+            }
+            Assert.That(pathCombo, Is.Not.EqualTo(IntPtr.Zero), "folder path control not found in dialog");
+
+            SetForegroundWindow(dialog);
+            SetFocus(pathCombo);
+            SendMessage(pathCombo, WM_SETTEXT, IntPtr.Zero, chosen);
+            Keyboard.Type(VirtualKeyShort.RETURN);
+            Thread.Sleep(1000);
+
+            SendMessage(dialog, WM_COMMAND, (IntPtr)1, IntPtr.Zero);
+
+            click.Wait(20000);
+
+            WaitUntil(() =>
+            {
+                try
+                {
+                    return GetTextBoxText("location") == chosen;
+                }
+                catch
+                {
+                    return false;
+                }
+            }, 10000, "location updated to chosen folder; actual: '" + GetTextBoxText("location") + "'");
+        }
+
+        [Test]
+        public void StartClick_WhileCatalogLoading_ShowsNoDialogAndRecovers()
+        {
+            LaunchApp();
+            _ = _mainWindow; // ensure window is attached
+
+            // Click Start immediately, before the catalog load finishes. The button
+            // is disabled during load, so no dialog may appear.
+            var startBtn = _mainWindow.FindFirstDescendant(cf => cf.ByName("Start").And(cf.ByControlType(ControlType.Button)));
+            Assert.That(startBtn, Is.Not.Null, "Start button not found");
+            IntPtr startHwnd = (IntPtr)startBtn.Properties.NativeWindowHandle.Value;
+
+            Task click = Task.Run(() => SendMessage(startHwnd, BM_CLICK, IntPtr.Zero, IntPtr.Zero));
+            click.Wait(10000);
+
+            Assert.That(FindWindowByTitle("Not Ready"), Is.EqualTo(IntPtr.Zero), "Not Ready dialog must not appear (button is disabled while loading)");
+            Assert.That(FindWindowByTitle("ATTENTION!"), Is.EqualTo(IntPtr.Zero), "ATTENTION! must not appear while catalog loads");
+
+            WaitUntilStartEnabled();
+        }
+
+        private string DumpWindowTitles()
+        {
+            StringBuilder sb = new StringBuilder();
+            EnumWindows((hWnd, lParam) =>
+            {
+                StringBuilder text = new StringBuilder(256);
+                GetWindowText(hWnd, text, 256);
+                if (text.Length > 0)
+                {
+                    sb.AppendLine(text.ToString());
+                }
+                return true;
+            }, IntPtr.Zero);
+            return sb.ToString();
         }
     }
 }

@@ -11,15 +11,12 @@ namespace FolderPrettifier
         [STAThread]
         static void Main(string[] args)
         {
-            string updaterTarget;
-            int updaterPid;
-            if (UpdateService.TryParseUpdaterArgs(args, out updaterTarget, out updaterPid))
+            if (CommandLine.TryDispatchUpdater(args))
             {
-                UpdateService.RunUpdater(updaterTarget, updaterPid);
                 return;
             }
 
-            string folderPath = args.Length == 0 ? "" : args[0];
+            string folderPath = CommandLine.GetCurrentFolder(args);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

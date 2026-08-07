@@ -48,7 +48,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(370, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Folder Prettifier is a software that is meant for making your folder management";
+            this.label1.Text = "Folder Prettifier keeps your folders tidy by renaming files";
             // 
             // label2
             // 
@@ -57,7 +57,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(360, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "work a lot easier. At times our folder get super messy & we don\'t have time to";
+            this.label2.Text = "and sorting them into neat categories automatically.";
             // 
             // label3
             // 
@@ -66,7 +66,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(376, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "manage them properly & perfectly. So, using this kind of softaware helps you out";
+            this.label3.Text = "No more messy downloads or cluttered drives - everything";
             // 
             // label4
             // 
@@ -75,7 +75,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(181, 13);
             this.label4.TabIndex = 3;
-            this.label4.Text = "in saving your time as well as energy.";
+            this.label4.Text = "you need is right where you expect it.";
             // 
             // label5
             // 
@@ -84,7 +84,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(365, 13);
             this.label5.TabIndex = 5;
-            this.label5.Text = "No matter if it looks good or bad to you, you\'re always welcome to provide a ";
+            this.label5.Text = "Your feedback matters! It helps shape future versions and";
             // 
             // label6
             // 
@@ -93,7 +93,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(368, 13);
             this.label6.TabIndex = 6;
-            this.label6.Text = "feedback so that over time this can be improved! Keep in mind that users are";
+            this.label6.Text = "keeps the tool improving over time. If something could be";
             // 
             // label7
             // 
@@ -102,7 +102,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(293, 13);
             this.label7.TabIndex = 7;
-            this.label7.Text = "the only people who makes a softaware really relatable & best!";
+            this.label7.Text = "better, let us know. Every user's voice counts.";
             // 
             // label8
             // 
@@ -112,7 +112,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(117, 13);
             this.label8.TabIndex = 8;
-            this.label8.Text = "Thanks for using it!";
+            this.label8.Text = "Thanks for using Folder Prettifier!";
             // 
             // versionLabel
             // 

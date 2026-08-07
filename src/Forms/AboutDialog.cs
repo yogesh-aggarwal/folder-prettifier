@@ -6,9 +6,12 @@ namespace FolderPrettifier
 {
     public partial class AboutDialog : Form
     {
-        public AboutDialog()
+        private readonly Action<string> _openUrl;
+
+        public AboutDialog(Action<string> openUrl = null)
         {
             InitializeComponent();
+            _openUrl = openUrl ?? (url => Process.Start(new ProcessStartInfo(url)));
             versionLabel.Text = "Version " + Application.ProductVersion;
         }
 
@@ -19,8 +22,7 @@ namespace FolderPrettifier
 
         private void feedbackButton_Click(object sender, EventArgs e)
         {
-            ProcessStartInfo sInfo = new ProcessStartInfo("https://yogeshaggarwal.in");
-            Process.Start(sInfo);
+            _openUrl("https://yogeshaggarwal.in/aka/folder-prettifier-feedback");
         }
     }
 }

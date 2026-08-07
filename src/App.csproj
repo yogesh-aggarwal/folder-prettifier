@@ -147,6 +147,8 @@
     </Compile>
     <Compile Include="Catalog.cs" />
     <Compile Include="CatalogBaseUrlResolver.cs" />
+    <Compile Include="CatalogLoader.cs" />
+    <Compile Include="CommandLine.cs" />
     <Compile Include="CatalogResolver.cs" />
     <Compile Include="CatalogSelector.cs" />
     <Compile Include="CatalogService.cs" />
@@ -157,6 +159,7 @@
     <Compile Include="RemoteFileFetcher.cs" />
     <Compile Include="RenamePlanner.cs" />
     <Compile Include="UpdateService.cs" />
+    <Compile Include="UpdateFlow.cs" />
     <Compile Include="Data.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
