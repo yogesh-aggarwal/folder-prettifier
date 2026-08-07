@@ -9,8 +9,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
-    name: Tests
+  unit:
+    name: Unit tests
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,3 +21,31 @@ jobs:
 
       - name: Run unit tests
         run: dotnet test tests/FolderPrettifier.Tests/FolderPrettifier.Tests.csproj -c Debug
+
+  build:
+    name: Build (Release x86 + x64)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Release x86
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File scripts/msbuild.ps1 src/App.csproj /p:Configuration=Release /p:Platform=x86 "/p:OutputPath=Build\Release\x86" /t:Rebuild
+
+      - name: Build Release x64
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File scripts/msbuild.ps1 src/App.csproj /p:Configuration=Release /p:Platform=x64 "/p:OutputPath=Build\Release\x64" /t:Rebuild
+
+  ui:
+    name: UI tests
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Build app (Debug AnyCPU)
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File scripts/msbuild.ps1 src/App.csproj /p:Configuration=Debug /p:Platform=AnyCPU /t:Build
+
+      - name: Run UI tests
+        run: dotnet test tests/FolderPrettifier.UiTests/FolderPrettifier.UiTests.csproj -c Debug
