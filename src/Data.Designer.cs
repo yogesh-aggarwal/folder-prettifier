@@ -134,6 +134,24 @@ namespace FolderPrettifier {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to https://api.github.com/repos/yogesh-aggarwal/folder-prettifier/releases/latest.
+        /// </summary>
+        internal static string ReleasesApiUrl {
+            get {
+                return ResourceManager.GetString("ReleasesApiUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://github.com/yogesh-aggarwal/folder-prettifier/releases.
+        /// </summary>
+        internal static string ReleasesPageUrl {
+            get {
+                return ResourceManager.GetString("ReleasesPageUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap refresh {

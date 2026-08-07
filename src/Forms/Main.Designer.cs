@@ -58,6 +58,7 @@
             this.isOpenFolder = new System.Windows.Forms.CheckBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.updateCatalogBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkForUpdatesBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.folderOptionsGroup.SuspendLayout();
             this.folderActionsGroup.SuspendLayout();
@@ -350,6 +351,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.updateCatalogBtn,
+            this.checkForUpdatesBtn,
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -363,6 +365,13 @@
             this.updateCatalogBtn.Size = new System.Drawing.Size(101, 20);
             this.updateCatalogBtn.Text = "Update Catalog";
             this.updateCatalogBtn.Click += new System.EventHandler(this.updateCatalogBtn_Click);
+            // 
+            // checkForUpdatesBtn
+            // 
+            this.checkForUpdatesBtn.Name = "checkForUpdatesBtn";
+            this.checkForUpdatesBtn.Size = new System.Drawing.Size(112, 20);
+            this.checkForUpdatesBtn.Text = "Check for Updates";
+            this.checkForUpdatesBtn.Click += new System.EventHandler(this.checkForUpdatesBtn_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -434,6 +443,7 @@
         private System.Windows.Forms.CheckBox isOpenFolder;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem updateCatalogBtn;
+        private System.Windows.Forms.ToolStripMenuItem checkForUpdatesBtn;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }

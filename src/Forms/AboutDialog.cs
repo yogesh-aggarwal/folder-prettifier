@@ -9,6 +9,7 @@ namespace FolderPrettifier
         public AboutDialog()
         {
             InitializeComponent();
+            versionLabel.Text = "Version " + Application.ProductVersion;
         }
 
         private void okButton_Click(object sender, EventArgs e)

@@ -156,6 +156,7 @@
     <Compile Include="LegacyCacheCleaner.cs" />
     <Compile Include="RemoteFileFetcher.cs" />
     <Compile Include="RenamePlanner.cs" />
+    <Compile Include="UpdateService.cs" />
     <Compile Include="Data.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

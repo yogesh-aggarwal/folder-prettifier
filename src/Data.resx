@@ -140,6 +140,14 @@
     <value>https://github.com</value>
     <comment>URL for checking internet</comment>
   </data>
+  <data name="ReleasesApiUrl" xml:space="preserve">
+    <value>https://api.github.com/repos/yogesh-aggarwal/folder-prettifier/releases/latest</value>
+    <comment>GitHub API endpoint for the latest release, used by the update checker.</comment>
+  </data>
+  <data name="ReleasesPageUrl" xml:space="preserve">
+    <value>https://github.com/yogesh-aggarwal/folder-prettifier/releases</value>
+    <comment>GitHub releases page, opened when automatic update is not possible.</comment>
+  </data>
   <data name="BasicCatalog" xml:space="preserve">
     <value>{
     &quot;version&quot;: 1,
