@@ -3,7 +3,8 @@
         "**/.git": true,
         "**/.svn": true,
         "**/obj": true,
-        "packages": true
+        "packages": true,
+        ".vscode": true
     },
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
