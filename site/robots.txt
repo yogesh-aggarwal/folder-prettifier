@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://prettifier.yogeshaggarwal.in/sitemap.xml
