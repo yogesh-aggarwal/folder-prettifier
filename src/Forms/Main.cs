@@ -112,68 +112,39 @@ namespace FolderPrettifier
                 versionsJson = File.ReadAllText(versionsCachePath);
             }
 
-            string catalogFileName = null;
-            if (!string.IsNullOrEmpty(versionsJson))
-            {
-                Dictionary<string, string> index = ParseVersionsIndex(versionsJson);
-                if (index != null && index.Count > 0)
-                {
-                    Version best = null;
-                    foreach (KeyValuePair<string, string> entry in index)
-                    {
-                        Version entryVersion;
-                        if (Version.TryParse(entry.Key, out entryVersion) && entryVersion <= appVersion)
-                        {
-                            if (best == null || entryVersion > best)
-                            {
-                                best = entryVersion;
-                                catalogFileName = entry.Value;
-                            }
-                        }
-                    }
+            CatalogSelection selection = CatalogSelector.Select(versionsJson, appVersion);
 
-                    if (catalogFileName == null)
-                    {
-                        RequireUpdate(appVersion);
-                        return;
-                    }
-                }
-            }
-
-            Catalog catalog = null;
-            if (!string.IsNullOrEmpty(catalogFileName))
+            string catalogJson = null;
+            if (selection.Status == CatalogIndexStatus.Selected)
             {
-                status.Text = "Loading catalog " + catalogFileName + "...";
+                status.Text = "Loading catalog " + selection.FileName + "...";
                 progressBar.Value = 50;
 
-                string catalogCachePath = Path.Combine(cacheDir, catalogFileName);
-                string catalogJson = null;
+                string catalogCachePath = Path.Combine(cacheDir, selection.FileName);
                 if (online)
                 {
-                    catalogJson = await FetchRemoteFileAsync(catalogFileName, catalogCachePath);
+                    catalogJson = await FetchRemoteFileAsync(selection.FileName, catalogCachePath);
                 }
                 else if (File.Exists(catalogCachePath))
                 {
                     catalogJson = File.ReadAllText(catalogCachePath);
                 }
-
-                catalog = TryParseCatalog(catalogJson);
-                if (catalog != null && !catalog.IsCompatibleWith(appVersion))
-                {
-                    catalog = null;
-                }
             }
 
-            if (catalog == null)
+            if (string.IsNullOrEmpty(catalogJson))
             {
                 status.Text = "Using embedded catalog...";
-                catalog = TryParseCatalog(Data.BasicCatalog);
-                if (catalog != null && !catalog.IsCompatibleWith(appVersion))
-                {
-                    catalog = null;
-                }
             }
 
+            CatalogLoadResult result = CatalogResolver.Resolve(appVersion, versionsJson, catalogJson, Data.BasicCatalog);
+
+            if (result.UpdateRequired)
+            {
+                RequireUpdate(appVersion);
+                return;
+            }
+
+            Catalog catalog = result.Catalog;
             if (catalog == null)
             {
                 status.Text = "No catalog! Can't proceed";
@@ -243,32 +214,6 @@ namespace FolderPrettifier
                 {
                     return null;
                 }
-            }
-        }
-
-        private static Dictionary<string, string> ParseVersionsIndex(string versionsJson)
-        {
-            if (string.IsNullOrEmpty(versionsJson)) return null;
-            try
-            {
-                return JsonConvert.DeserializeObject<Dictionary<string, string>>(versionsJson);
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        private static Catalog TryParseCatalog(string catalogJson)
-        {
-            if (string.IsNullOrEmpty(catalogJson)) return null;
-            try
-            {
-                return JsonConvert.DeserializeObject<Catalog>(catalogJson);
-            }
-            catch
-            {
-                return null;
             }
         }
 

@@ -146,6 +146,8 @@
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Catalog.cs" />
+    <Compile Include="CatalogResolver.cs" />
+    <Compile Include="CatalogSelector.cs" />
     <Compile Include="Data.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

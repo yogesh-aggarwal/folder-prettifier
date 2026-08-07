@@ -46,6 +46,8 @@ namespace FolderPrettifier
                     if (category == null || category.Extensions == null) continue;
 
                     string folder = NormalizeFolder(category.Folder);
+                    if (string.IsNullOrEmpty(folder)) continue;
+
                     foreach (string ext in category.Extensions)
                     {
                         if (!string.IsNullOrEmpty(ext))
