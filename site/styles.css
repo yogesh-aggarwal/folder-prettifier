@@ -723,6 +723,22 @@ a:hover {
   margin-bottom: 20px;
 }
 
+.download-alt-row {
+  margin-top: 16px;
+}
+
+.dl-alt-link {
+  font-size: 0.82rem;
+  color: var(--text-subtle);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+.dl-alt-link:hover {
+  color: var(--text-main);
+  opacity: 1;
+}
+
 .dot-sep {
   margin: 0 8px;
 }
