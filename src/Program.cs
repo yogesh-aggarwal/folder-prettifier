@@ -11,13 +11,11 @@ namespace FolderPrettifier
         [STAThread]
         static void Main(string[] args)
         {
-            if (args.Length >= 3 && args[0] == "--apply-update")
+            string updaterTarget;
+            int updaterPid;
+            if (UpdateService.TryParseUpdaterArgs(args, out updaterTarget, out updaterPid))
             {
-                int oldPid;
-                if (int.TryParse(args[2], out oldPid))
-                {
-                    UpdateService.RunUpdater(args[1], oldPid);
-                }
+                UpdateService.RunUpdater(updaterTarget, updaterPid);
                 return;
             }
 

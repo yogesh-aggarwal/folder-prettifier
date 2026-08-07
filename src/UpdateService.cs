@@ -340,6 +340,36 @@ namespace FolderPrettifier
         }
 
         /// <summary>
+        /// Parses the updater-mode command line arguments, as produced by
+        /// BuildUpdaterArguments: --apply-update &lt;target executable&gt; &lt;old process id&gt;.
+        /// Returns true and fills the out parameters when the arguments are valid.
+        /// </summary>
+        public static bool TryParseUpdaterArgs(string[] args, out string targetExe, out int oldPid)
+        {
+            targetExe = null;
+            oldPid = 0;
+
+            if (args == null || args.Length < 3 || args[0] != "--apply-update")
+            {
+                return false;
+            }
+
+            string exe = args[1];
+            if (string.IsNullOrWhiteSpace(exe))
+            {
+                return false;
+            }
+
+            if (!int.TryParse(args[2], out oldPid))
+            {
+                return false;
+            }
+
+            targetExe = exe;
+            return true;
+        }
+
+        /// <summary>
         /// Runs in updater mode (invoked by the new executable with --apply-update):
         /// waits for the old process to exit, replaces the old executable with this
         /// process's own file, then relaunches the app.

@@ -424,6 +424,121 @@ namespace FolderPrettifier.Tests
         }
 
         [Test]
+        public void TryParseUpdaterArgs_ValidArgs_ReturnsTrue()
+        {
+            string targetExe;
+            int oldPid;
+
+            bool result = UpdateService.TryParseUpdaterArgs(
+                new[] { "--apply-update", @"C:\Program Files\Folder Prettifier\Folder Prettifier.exe", "1234" },
+                out targetExe, out oldPid);
+
+            Assert.That(result, Is.True);
+            Assert.That(targetExe, Is.EqualTo(@"C:\Program Files\Folder Prettifier\Folder Prettifier.exe"));
+            Assert.That(oldPid, Is.EqualTo(1234));
+        }
+
+        [Test]
+        public void TryParseUpdaterArgs_FirstArgNotApplyUpdate_ReturnsFalse()
+        {
+            string targetExe;
+            int oldPid;
+
+            bool result = UpdateService.TryParseUpdaterArgs(
+                new[] { @"C:\some folder", "ignored", "ignored" },
+                out targetExe, out oldPid);
+
+            Assert.That(result, Is.False);
+            Assert.That(targetExe, Is.Null);
+            Assert.That(oldPid, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void TryParseUpdaterArgs_TooFewArgs_ReturnsFalse()
+        {
+            string targetExe;
+            int oldPid;
+
+            Assert.That(UpdateService.TryParseUpdaterArgs(new[] { "--apply-update", @"C:\app.exe" }, out targetExe, out oldPid), Is.False);
+            Assert.That(UpdateService.TryParseUpdaterArgs(new[] { "--apply-update" }, out targetExe, out oldPid), Is.False);
+            Assert.That(UpdateService.TryParseUpdaterArgs(new string[0], out targetExe, out oldPid), Is.False);
+            Assert.That(UpdateService.TryParseUpdaterArgs(null, out targetExe, out oldPid), Is.False);
+        }
+
+        [Test]
+        public void TryParseUpdaterArgs_NonNumericPid_ReturnsFalse()
+        {
+            string targetExe;
+            int oldPid;
+
+            bool result = UpdateService.TryParseUpdaterArgs(
+                new[] { "--apply-update", @"C:\app.exe", "abc" },
+                out targetExe, out oldPid);
+
+            Assert.That(result, Is.False);
+        }
+
+        [Test]
+        public void TryParseUpdaterArgs_EmptyTargetPath_ReturnsFalse()
+        {
+            string targetExe;
+            int oldPid;
+
+            Assert.That(UpdateService.TryParseUpdaterArgs(new[] { "--apply-update", "", "123" }, out targetExe, out oldPid), Is.False);
+            Assert.That(UpdateService.TryParseUpdaterArgs(new[] { "--apply-update", "   ", "123" }, out targetExe, out oldPid), Is.False);
+        }
+
+        [Test]
+        public void RoundTrip_BuildThenParse_ReturnsOriginalValues()
+        {
+            string target = @"C:\Program Files\Folder Prettifier\Folder Prettifier.exe";
+            int pid = 424242;
+
+            string argsLine = UpdateService.BuildUpdaterArguments(target, pid);
+            string[] args = CommandLineToArgs(argsLine);
+
+            string parsedTarget;
+            int parsedPid;
+            Assert.That(UpdateService.TryParseUpdaterArgs(args, out parsedTarget, out parsedPid), Is.True);
+            Assert.That(parsedTarget, Is.EqualTo(target));
+            Assert.That(parsedPid, Is.EqualTo(pid));
+        }
+
+        private static string[] CommandLineToArgs(string commandLine)
+        {
+            List<string> result = new List<string>();
+            StringBuilder current = new StringBuilder();
+            bool inQuotes = false;
+
+            foreach (char c in commandLine)
+            {
+                if (c == '"')
+                {
+                    inQuotes = !inQuotes;
+                }
+                else if (c == ' ' && !inQuotes)
+                {
+                    if (current.Length > 0)
+                    {
+                        result.Add(current.ToString());
+                        current.Clear();
+                    }
+                }
+                else
+                {
+                    current.Append(c);
+                }
+            }
+
+            if (current.Length > 0)
+            {
+                result.Add(current.ToString());
+            }
+
+            return result.ToArray();
+        }
+
+        [Test]
         public void RunUpdater_WaitsForOldProcessExit_ThenCopiesAndRelaunches()
         {
             string markerPath = Path.Combine(_tempDir, "marker.txt");
