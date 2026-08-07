@@ -146,12 +146,14 @@
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Catalog.cs" />
+    <Compile Include="CatalogBaseUrlResolver.cs" />
     <Compile Include="CatalogResolver.cs" />
     <Compile Include="CatalogSelector.cs" />
     <Compile Include="CatalogService.cs" />
     <Compile Include="FileCategorizer.cs" />
     <Compile Include="FileNamePrettifier.cs" />
     <Compile Include="FileProcessor.cs" />
+    <Compile Include="LegacyCacheCleaner.cs" />
     <Compile Include="RemoteFileFetcher.cs" />
     <Compile Include="RenamePlanner.cs" />
     <Compile Include="UpdateService.cs" />

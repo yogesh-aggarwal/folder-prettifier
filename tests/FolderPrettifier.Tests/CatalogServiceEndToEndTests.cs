@@ -35,10 +35,15 @@ namespace FolderPrettifier.Tests
             try
             {
                 RemoteFileFetcher fetcher = new RemoteFileFetcher();
+                CatalogBaseUrlResolver resolver = new CatalogBaseUrlResolver(
+                    fetcher,
+                    ResourceString("RepoInfoUrl"),
+                    ResourceString("CatalogRawUrlTemplate"),
+                    Path.Combine(cacheDir, "repo-info.json"));
                 CatalogService service = new CatalogService(
                     fetcher,
                     cacheDir,
-                    ResourceString("CatalogUrl"),
+                    resolver,
                     ResourceString("VersionsFileName"),
                     GetBasicCatalog);
 
