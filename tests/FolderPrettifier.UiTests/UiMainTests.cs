@@ -102,13 +102,26 @@ namespace FolderPrettifier.UiTests
             _processId = process.Id;
             _automation = new UIA3Automation();
 
-            IntPtr hwnd = IntPtr.Zero;
+            // Find the window and build the automation element. UIA can be slow to
+            // attach right after process start on CI runners, so retry instead of
+            // failing on the first ElementFromHandle timeout.
             WaitUntil(() =>
             {
-                hwnd = FindWindowByTitle("Folder Prettifier");
-                return hwnd != IntPtr.Zero;
-            }, 30000, "main window");
-            _mainWindow = _automation.FromHandle(hwnd).AsWindow();
+                IntPtr hwnd = FindWindowByTitle("Folder Prettifier");
+                if (hwnd == IntPtr.Zero)
+                {
+                    return false;
+                }
+                try
+                {
+                    _mainWindow = _automation.FromHandle(hwnd).AsWindow();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }, 30000, "main window automation element");
         }
 
         [TearDown]

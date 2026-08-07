@@ -415,10 +415,13 @@ namespace FolderPrettifier
                 return;
             }
 
-            if (silent && !ShouldPromptForUpdate())
+            if (silent)
             {
+                // Startup check is non-intrusive: only hint in the status bar,
+                // never pop a dialog (which would also block UI automation).
                 checkForUpdatesBtn.Enabled = true;
-                status.Text = "Ready";
+                status.Text = "Update available: " + update.Version + " (Check for Updates menu)";
+                progressBar.Value = 0;
                 return;
             }
 
@@ -431,7 +434,6 @@ namespace FolderPrettifier
 
             if (answer != DialogResult.Yes)
             {
-                RememberUpdatePrompt();
                 checkForUpdatesBtn.Enabled = true;
                 status.Text = "Ready";
                 return;
@@ -497,47 +499,6 @@ namespace FolderPrettifier
                     "Could not apply the update automatically. Please download the latest version from the release page.",
                     "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Process.Start(update.ReleasePageUrl);
-            }
-        }
-
-        private static string UpdatePromptFile
-        {
-            get
-            {
-                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                    "Folder Prettifier", "last-update-prompt.txt");
-            }
-        }
-
-        private static bool ShouldPromptForUpdate()
-        {
-            try
-            {
-                if (!File.Exists(UpdatePromptFile))
-                {
-                    return true;
-                }
-                DateTime lastPrompt;
-                if (!DateTime.TryParse(File.ReadAllText(UpdatePromptFile).Trim(), out lastPrompt))
-                {
-                    return true;
-                }
-                return (DateTime.Now - lastPrompt).TotalDays >= 7;
-            }
-            catch
-            {
-                return true;
-            }
-        }
-
-        private static void RememberUpdatePrompt()
-        {
-            try
-            {
-                File.WriteAllText(UpdatePromptFile, DateTime.Now.ToString("o"));
-            }
-            catch
-            {
             }
         }
     }
