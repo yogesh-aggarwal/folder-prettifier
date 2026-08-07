@@ -17,20 +17,20 @@ namespace FolderPrettifier
     {
         private readonly RemoteFileFetcher _fetcher;
         private readonly string _cacheDir;
-        private readonly string _baseUrl;
+        private readonly CatalogBaseUrlResolver _urlResolver;
         private readonly string _versionsFileName;
         private readonly Func<string> _embeddedProvider;
 
         public CatalogService(
             RemoteFileFetcher fetcher,
             string cacheDir,
-            string baseUrl,
+            CatalogBaseUrlResolver urlResolver,
             string versionsFileName,
             Func<string> embeddedProvider)
         {
             _fetcher = fetcher;
             _cacheDir = cacheDir;
-            _baseUrl = baseUrl;
+            _urlResolver = urlResolver;
             _versionsFileName = versionsFileName;
             _embeddedProvider = embeddedProvider;
         }
@@ -40,10 +40,15 @@ namespace FolderPrettifier
             string versionsCachePath = Path.Combine(_cacheDir, _versionsFileName);
 
             string versionsJson = null;
+            string baseUrl = null;
             if (online)
             {
                 if (onStatus != null) onStatus("Checking online...");
-                versionsJson = await _fetcher.FetchAsync(_baseUrl + _versionsFileName, versionsCachePath);
+                baseUrl = await _urlResolver.ResolveBaseUrlAsync();
+                if (!string.IsNullOrEmpty(baseUrl))
+                {
+                    versionsJson = await _fetcher.FetchAsync(baseUrl + _versionsFileName, versionsCachePath);
+                }
             }
             else
             {
@@ -63,9 +68,9 @@ namespace FolderPrettifier
                 if (onStatus != null) onStatus("Loading catalog " + selection.FileName + "...");
 
                 string catalogCachePath = Path.Combine(_cacheDir, selection.FileName);
-                if (online)
+                if (online && !string.IsNullOrEmpty(baseUrl))
                 {
-                    catalogJson = await _fetcher.FetchAsync(_baseUrl + selection.FileName, catalogCachePath);
+                    catalogJson = await _fetcher.FetchAsync(baseUrl + selection.FileName, catalogCachePath);
                 }
                 else if (File.Exists(catalogCachePath))
                 {

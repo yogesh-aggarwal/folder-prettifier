@@ -98,11 +98,20 @@ namespace FolderPrettifier {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/assets/catalogs/.
+        ///   Looks up a localized string similar to https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/{0}/assets/catalogs/.
         /// </summary>
-        internal static string CatalogUrl {
+        internal static string CatalogRawUrlTemplate {
             get {
-                return ResourceManager.GetString("CatalogUrl", resourceCulture);
+                return ResourceManager.GetString("CatalogRawUrlTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://api.github.com/repos/yogesh-aggarwal/folder-prettifier.
+        /// </summary>
+        internal static string RepoInfoUrl {
+            get {
+                return ResourceManager.GetString("RepoInfoUrl", resourceCulture);
             }
         }
         

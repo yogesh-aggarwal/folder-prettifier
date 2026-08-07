@@ -116,9 +116,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CatalogUrl" xml:space="preserve">
-    <value>https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/master/assets/catalogs/</value>
-    <comment>Base URL from where the latest catalog files will be fetched when internet is available.</comment>
+  <data name="RepoInfoUrl" xml:space="preserve">
+    <value>https://api.github.com/repos/yogesh-aggarwal/folder-prettifier</value>
+    <comment>GitHub API endpoint queried on startup to discover the repository's current default branch (instead of pinning to a specific branch).</comment>
+  </data>
+  <data name="CatalogRawUrlTemplate" xml:space="preserve">
+    <value>https://raw.githubusercontent.com/yogesh-aggarwal/folder-prettifier/{0}/assets/catalogs/</value>
+    <comment>Template for the raw base URL from where the latest catalog files will be fetched. {0} is replaced with the default branch resolved via RepoInfoUrl.</comment>
   </data>
   <data name="VersionsFileName" xml:space="preserve">
     <value>versions.jsonc</value>

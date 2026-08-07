@@ -19,14 +19,19 @@ namespace FolderPrettifier.Tests
 
             public int CallCount { get; private set; }
 
+            public List<string> RequestUrls { get; } = new List<string>();
+
             protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
                 CallCount++;
+                RequestUrls.Add(request.RequestUri.AbsoluteUri);
                 return Responder(request, cancellationToken);
             }
         }
 
-        private const string BaseUrl = "http://test.local/catalogs/";
+        private const string RepoApiUrl = "http://test.local/repos/folder-prettifier";
+        private const string RawBaseUrlTemplate = "http://test.local/raw/{0}/catalogs/";
+        private const string RepoInfoJson = "{ \"default_branch\": \"main\" }";
         private const string VersionsJson = "{ \"2.0.1\": \"v0001.jsonc\" }";
         private static readonly Version App = new Version(2, 1, 0);
 
@@ -50,6 +55,11 @@ namespace FolderPrettifier.Tests
         private void Respond(string fileName, HttpStatusCode status, string content)
         {
             _responses[fileName] = System.Tuple.Create(status, content);
+        }
+
+        private void RespondRepoInfo()
+        {
+            Respond("repos/folder-prettifier", HttpStatusCode.OK, RepoInfoJson);
         }
 
         private void WriteCache(string fileName, string content)
@@ -89,7 +99,9 @@ namespace FolderPrettifier.Tests
                 }
             };
             _fetcher = new RemoteFileFetcher(_handler);
-            _service = new CatalogService(_fetcher, _cacheDir, BaseUrl, "versions.jsonc", () => EmbeddedJson);
+            _service = new CatalogService(_fetcher, _cacheDir,
+                new CatalogBaseUrlResolver(_fetcher, RepoApiUrl, RawBaseUrlTemplate, Path.Combine(_cacheDir, "repo-info.json")),
+                "versions.jsonc", () => EmbeddedJson);
         }
 
         [TearDown]
@@ -104,6 +116,7 @@ namespace FolderPrettifier.Tests
         [Test]
         public async Task LoadAsync_OnlineFresh_LoadsSelectedCatalogAndCaches()
         {
+            RespondRepoInfo();
             Respond("versions.jsonc", HttpStatusCode.OK, VersionsJson);
             Respond("v0001.jsonc", HttpStatusCode.OK, RemoteCatalogJson);
 
@@ -121,6 +134,7 @@ namespace FolderPrettifier.Tests
         public async Task LoadAsync_OnlineVersionsUnchanged_UsesCachedVersions()
         {
             WriteCache("versions.jsonc", VersionsJson);
+            RespondRepoInfo();
             Respond("versions.jsonc", HttpStatusCode.NotModified, null);
             Respond("v0001.jsonc", HttpStatusCode.OK, RemoteCatalogJson);
 
@@ -133,6 +147,7 @@ namespace FolderPrettifier.Tests
         [Test]
         public async Task LoadAsync_OnlineCatalogUnavailable_FallsBackToEmbedded()
         {
+            RespondRepoInfo();
             Respond("versions.jsonc", HttpStatusCode.OK, VersionsJson);
             Respond("v0001.jsonc", HttpStatusCode.NotFound, null);
 
@@ -146,6 +161,7 @@ namespace FolderPrettifier.Tests
         [Test]
         public async Task LoadAsync_OnlineCatalogIncompatible_FallsBackToEmbedded()
         {
+            RespondRepoInfo();
             Respond("versions.jsonc", HttpStatusCode.OK, VersionsJson);
             Respond("v0001.jsonc", HttpStatusCode.OK, RemoteCatalogJson.Replace("2.0.1", "9.9.9"));
 
@@ -183,6 +199,7 @@ namespace FolderPrettifier.Tests
         [Test]
         public async Task LoadAsync_AppOlderThanAllIndexEntries_UpdateRequired_NoEmbeddedFallback()
         {
+            RespondRepoInfo();
             Respond("versions.jsonc", HttpStatusCode.OK, "{ \"2.3.4\": \"v0002.jsonc\" }");
 
             CatalogLoadOutcome outcome = await _service.LoadAsync(new Version(2, 1, 0), true);
@@ -194,6 +211,7 @@ namespace FolderPrettifier.Tests
         [Test]
         public async Task LoadAsync_CorruptVersions_FallsBackToEmbedded()
         {
+            RespondRepoInfo();
             Respond("versions.jsonc", HttpStatusCode.OK, "corrupt !!!");
 
             CatalogLoadOutcome outcome = await _service.LoadAsync(App, true);
@@ -217,6 +235,7 @@ namespace FolderPrettifier.Tests
         [Test]
         public async Task LoadAsync_OnlineFreshStatusMessages()
         {
+            RespondRepoInfo();
             Respond("versions.jsonc", HttpStatusCode.OK, VersionsJson);
             Respond("v0001.jsonc", HttpStatusCode.OK, RemoteCatalogJson);
             List<string> statuses = new List<string>();
@@ -225,6 +244,76 @@ namespace FolderPrettifier.Tests
 
             Assert.That(statuses, Does.Contain("Checking online..."));
             Assert.That(statuses, Does.Contain("Loading catalog v0001.jsonc..."));
+        }
+
+        [Test]
+        public async Task LoadAsync_Online_UsesResolvedDefaultBranchForRawUrls()
+        {
+            RespondRepoInfo();
+            Respond("raw/main/catalogs/versions.jsonc", HttpStatusCode.OK, VersionsJson);
+            Respond("raw/main/catalogs/v0001.jsonc", HttpStatusCode.OK, RemoteCatalogJson);
+
+            CatalogLoadOutcome outcome = await _service.LoadAsync(App, true);
+
+            Assert.That(outcome.Catalog, Is.Not.Null);
+            Assert.That(outcome.Catalog.MinAppVersion, Is.EqualTo("2.0.1"));
+            Assert.That(_handler.RequestUrls, Does.Contain("http://test.local/repos/folder-prettifier"));
+            Assert.That(_handler.RequestUrls, Does.Contain("http://test.local/raw/main/catalogs/versions.jsonc"));
+            Assert.That(_handler.RequestUrls, Does.Contain("http://test.local/raw/main/catalogs/v0001.jsonc"));
+            Assert.That(File.Exists(Path.Combine(_cacheDir, "repo-info.json")), Is.True);
+        }
+
+        [Test]
+        public async Task LoadAsync_OnlineBranchApiDown_UsesCachedRepoInfo()
+        {
+            WriteCache("repo-info.json", RepoInfoJson);
+            Respond("repos/folder-prettifier", HttpStatusCode.InternalServerError, null);
+            Respond("raw/main/catalogs/versions.jsonc", HttpStatusCode.OK, VersionsJson);
+            Respond("raw/main/catalogs/v0001.jsonc", HttpStatusCode.OK, RemoteCatalogJson);
+
+            CatalogLoadOutcome outcome = await _service.LoadAsync(App, true);
+
+            Assert.That(outcome.Catalog, Is.Not.Null);
+            Assert.That(outcome.Catalog.MinAppVersion, Is.EqualTo("2.0.1"));
+            Assert.That(_handler.RequestUrls, Does.Contain("http://test.local/raw/main/catalogs/versions.jsonc"));
+        }
+
+        [Test]
+        public async Task LoadAsync_OnlineBranchApiDown_NoCachedInfo_SkipsOnlineFetch()
+        {
+            WriteCache("versions.jsonc", VersionsJson);
+            WriteCache("v0001.jsonc", RemoteCatalogJson);
+            Respond("repos/folder-prettifier", HttpStatusCode.InternalServerError, null);
+
+            CatalogLoadOutcome outcome = await _service.LoadAsync(App, true);
+
+            Assert.That(_handler.CallCount, Is.EqualTo(1), "Only the repo-info call is attempted; catalog comes from cache");
+            Assert.That(outcome.Catalog, Is.Not.Null);
+            Assert.That(outcome.Catalog.MinAppVersion, Is.EqualTo("2.0.1"));
+        }
+
+        [Test]
+        public async Task LoadAsync_OnlineBranchApiDown_NoCachedInfo_NoCache_FallsBackToEmbedded()
+        {
+            Respond("repos/folder-prettifier", HttpStatusCode.InternalServerError, null);
+
+            CatalogLoadOutcome outcome = await _service.LoadAsync(App, true);
+
+            Assert.That(_handler.CallCount, Is.EqualTo(1));
+            Assert.That(outcome.Catalog, Is.Not.Null);
+            Assert.That(outcome.Catalog.MinAppVersion, Is.EqualTo("2.0.0"));
+        }
+
+        [Test]
+        public async Task LoadAsync_OnlineCorruptRepoInfo_FallsBackToEmbedded()
+        {
+            Respond("repos/folder-prettifier", HttpStatusCode.OK, "corrupt !!!");
+
+            CatalogLoadOutcome outcome = await _service.LoadAsync(App, true);
+
+            Assert.That(outcome.Catalog, Is.Not.Null);
+            Assert.That(outcome.Catalog.MinAppVersion, Is.EqualTo("2.0.0"));
+            Assert.That(_handler.RequestUrls, Does.Not.Contain("http://test.local/raw/"));
         }
     }
 }
