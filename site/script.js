@@ -57,6 +57,9 @@
         var dlVersion = el('dl-version');
         if (dlVersion) dlVersion.textContent = tag + ' • 64-bit';
 
+        var dlVersionHero = el('dl-version-hero');
+        if (dlVersionHero && tag) dlVersionHero.textContent = tag + ' • Single File Portable';
+
         // --- Update meta strip ---
         var dlVersionTag = el('dl-version-tag');
         if (dlVersionTag) {
