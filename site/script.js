@@ -34,31 +34,33 @@
         var tag = release.tag_name || '';                       // e.g. "v2.0.0"
         var assets = release.assets || [];
 
-        // Find 64-bit and 32-bit assets by filename pattern
-        var asset64 = assets.find(function (a) { return /64/i.test(a.name); });
-        var asset32 = assets.find(function (a) { return /32/i.test(a.name); });
-        // Fallback: just pick the first asset if no 64/32 naming
-        if (!asset64 && assets.length) asset64 = assets[0];
-        if (!asset32 && assets.length > 1) asset32 = assets[1];
+        // Find the Setup (installer) asset first, then portable x64/x86
+        var assetSetup = assets.find(function (a) { return /setup/i.test(a.name); });
+        var assetPortable64 = assets.find(function (a) { return /portable.*(x64|64)/i.test(a.name); });
+        var assetPortable32 = assets.find(function (a) { return /portable.*(x86|32)/i.test(a.name); });
+        // Fallback: just pick the first asset if no setup asset exists
+        if (!assetSetup && assets.length) assetSetup = assets[0];
+        if (!assetPortable64 && assets.length > 1) assetPortable64 = assets[1];
+        if (!assetPortable32 && assets.length > 2) assetPortable32 = assets[2];
 
         // Total downloads across all assets
         var totalDownloads = assets.reduce(function (sum, a) {
           return sum + (a.download_count || 0);
         }, 0);
 
-        // --- Update primary download button ---
-        var btn64 = el('btn-download-64');
-        if (btn64 && asset64) {
-          btn64.href = asset64.browser_download_url;
-        } else if (btn64) {
-          btn64.href = release.html_url;
+        // --- Update primary download button (Setup installer) ---
+        var btnSetup = el('btn-download-setup');
+        if (btnSetup && assetSetup) {
+          btnSetup.href = assetSetup.browser_download_url;
+        } else if (btnSetup) {
+          btnSetup.href = release.html_url;
         }
 
         var dlVersion = el('dl-version');
-        if (dlVersion) dlVersion.textContent = tag + ' • 64-bit';
+        if (dlVersion) dlVersion.textContent = tag + ' • Setup Installer';
 
         var dlVersionHero = el('dl-version-hero');
-        if (dlVersionHero && tag) dlVersionHero.textContent = tag + ' • Single File Portable';
+        if (dlVersionHero && tag) dlVersionHero.textContent = tag + ' • Setup Installer';
 
         // --- Update meta strip ---
         var dlVersionTag = el('dl-version-tag');
@@ -67,20 +69,32 @@
         }
 
         var dlSize = el('dl-size');
-        if (dlSize && asset64) dlSize.textContent = fmt(asset64.size);
+        if (dlSize && assetSetup) dlSize.textContent = fmt(assetSetup.size);
 
         var dlCount = el('dl-count');
         if (dlCount && totalDownloads > 0) {
           dlCount.textContent = fmtDownloads(totalDownloads);
         }
 
-        // --- Update 32-bit alt link ---
-        var btn32 = el('btn-download-32');
-        if (btn32 && asset32) {
-          btn32.href = asset32.browser_download_url;
-          btn32.textContent = 'Also available: 32-bit (' + fmt(asset32.size) + ')';
-        } else if (btn32) {
-          btn32.style.display = 'none';
+        // --- Update portable alt links ---
+        var btnPortable64 = el('btn-download-portable-64');
+        if (btnPortable64) {
+          if (assetPortable64) {
+            btnPortable64.href = assetPortable64.browser_download_url;
+            btnPortable64.textContent = 'Portable 64-bit (' + fmt(assetPortable64.size) + ')';
+          } else {
+            btnPortable64.style.display = 'none';
+          }
+        }
+
+        var btnPortable32 = el('btn-download-portable-32');
+        if (btnPortable32) {
+          if (assetPortable32) {
+            btnPortable32.href = assetPortable32.browser_download_url;
+            btnPortable32.textContent = 'Portable 32-bit (' + fmt(assetPortable32.size) + ')';
+          } else {
+            btnPortable32.style.display = 'none';
+          }
         }
       })
       .catch(function () {
@@ -92,13 +106,16 @@
         if (dlVersionTag) dlVersionTag.innerHTML = 'Latest version';
 
         var dlSize = el('dl-size');
-        if (dlSize) dlSize.textContent = 'Standalone .exe';
+        if (dlSize) dlSize.textContent = 'Setup installer';
 
         var dlCount = el('dl-count');
         if (dlCount) dlCount.textContent = '';
 
-        var btn32 = el('btn-download-32');
-        if (btn32) btn32.style.display = 'none';
+        var btnPortable64 = el('btn-download-portable-64');
+        if (btnPortable64) btnPortable64.style.display = 'none';
+
+        var btnPortable32 = el('btn-download-portable-32');
+        if (btnPortable32) btnPortable32.style.display = 'none';
       });
   }
 
