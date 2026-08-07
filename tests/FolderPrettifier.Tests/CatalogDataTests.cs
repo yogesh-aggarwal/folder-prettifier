@@ -124,5 +124,17 @@ namespace FolderPrettifier.Tests
             Assert.That(FileCategorizer.CategoryFor(Path.Combine("x", "unknown.ext"), map, catalog.DefaultFolder),
                 Is.EqualTo(catalog.DefaultFolder));
         }
+
+        [Test]
+        public void SelectedCatalog_NoDuplicateExtensionsAcrossCategories()
+        {
+            Catalog catalog = LoadSelectedCatalog();
+
+            int total = catalog.Categories.Sum(c => c.Extensions.Count);
+            Dictionary<string, string> map = catalog.BuildExtensionMap();
+
+            Assert.That(map.Count, Is.EqualTo(total),
+                "Extensions listed under multiple categories would be silently overwritten (case-insensitive).");
+        }
     }
 }

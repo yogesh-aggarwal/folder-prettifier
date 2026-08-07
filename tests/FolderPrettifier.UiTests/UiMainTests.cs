@@ -99,15 +99,20 @@ namespace FolderPrettifier.UiTests
 
         private void LaunchApp(params string[] filesToCreate)
         {
-            LaunchAppInternal(true, filesToCreate);
+            LaunchAppInternal(null, filesToCreate);
         }
 
         private void LaunchAppWithoutFolderArg()
         {
-            LaunchAppInternal(false, new string[0]);
+            LaunchAppInternal("", new string[0]);
         }
 
-        private void LaunchAppInternal(bool passFolderArg, string[] filesToCreate)
+        private void LaunchAppWithFolderArg(string folderArg)
+        {
+            LaunchAppInternal("\"" + folderArg + "\"", new string[0]);
+        }
+
+        private void LaunchAppInternal(string folderArg, string[] filesToCreate)
         {
             _stageDir = Path.Combine(Path.GetTempPath(), "fp-ui-" + Guid.NewGuid().ToString("N"));
             _tempDir = Path.Combine(_stageDir, "Source");
@@ -117,8 +122,8 @@ namespace FolderPrettifier.UiTests
                 CreateFile(f);
             }
 
-            string folderArg = passFolderArg ? "\"" + _tempDir + "\"" : "";
-            Process process = Process.Start(new ProcessStartInfo(FindExe(), folderArg));
+            string args = folderArg == null ? "\"" + _tempDir + "\"" : folderArg;
+            Process process = Process.Start(new ProcessStartInfo(FindExe(), args));
             _processId = process.Id;
             _automation = new UIA3Automation();
 
@@ -633,6 +638,60 @@ namespace FolderPrettifier.UiTests
                     return false;
                 }
             }, 10000, "location shows Downloads folder");
+        }
+
+        [Test]
+        public void SetCurrentPath_InvalidFolderArg_FallsBackToDownloads()
+        {
+            LaunchAppWithFolderArg(@"C:\bad<>path");
+            WaitUntilStartEnabled();
+
+            string expected = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+            WaitUntil(() =>
+            {
+                try
+                {
+                    return GetTextBoxText("location") == expected;
+                }
+                catch
+                {
+                    return false;
+                }
+            }, 10000, "location shows Downloads after invalid folder arg");
+        }
+
+        [Test]
+        public void SetCurrentPath_MissingFolderArg_CreatesDirectory()
+        {
+            string missing = Path.Combine(_stageDir, "Created");
+            LaunchAppWithFolderArg(missing);
+            WaitUntilStartEnabled();
+
+            Assert.That(Directory.Exists(missing), Is.True, "app must create the missing folder");
+            WaitUntil(() =>
+            {
+                try
+                {
+                    return GetTextBoxText("location") == missing;
+                }
+                catch
+                {
+                    return false;
+                }
+            }, 10000, "location shows the created folder");
+        }
+
+        [Test]
+        public void UpdaterArgs_DispatchExitsWithoutShowingWindow()
+        {
+            string target = Path.Combine(Path.GetTempPath(), "fpf-updater-missing", "updater.cmd");
+            using (Process process = Process.Start(new ProcessStartInfo(FindExe(), "--apply-update \"" + target + "\" 2147483647")))
+            {
+                // The updater path never shows a window: the app retries the copy
+                // for ~15s against a nonexistent target dir, then exits.
+                bool exited = process.WaitForExit(30000);
+                Assert.That(exited, Is.True, "app must dispatch updater args and exit without showing a window");
+            }
         }
 
         [Test]
