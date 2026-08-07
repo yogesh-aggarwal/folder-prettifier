@@ -35,7 +35,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "Create a &desktop shortcut"; GroupDescription: "Additional options:"; Flags: checkedonce
-Name: "contextmenu"; Description: "Add &Folder Prettifier to folder right-click menu"; GroupDescription: "Additional options:"; Flags: checkedonce
+Name: "contextmenu"; Description: "Add &Folder Prettifier to folder right-click menu"; GroupDescription: "Additional options:"; Flags: checkedonce; Checked: yes
 
 [Registry]
 Root: "HKCR"; Subkey: "Directory\shell\FolderPrettifier"; ValueType: string; ValueName: ""; ValueData: "Folder Prettifier"; Flags: uninsdeletekey; Tasks: contextmenu
