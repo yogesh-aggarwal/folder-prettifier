@@ -24,10 +24,15 @@ namespace FolderPrettifier
 
             this.currentFolder = currentFolder;
 
+            string cacheDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "Folder Prettifier", Data.CatalogCacheDir);
+
             _catalogService = new CatalogService(_remoteFetcher,
-                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                    "Folder Prettifier", Data.CatalogCacheDir),
-                Data.CatalogUrl,
+                cacheDir,
+                new CatalogBaseUrlResolver(_remoteFetcher,
+                    Data.RepoInfoUrl,
+                    Data.CatalogRawUrlTemplate,
+                    Path.Combine(cacheDir, "repo-info.json")),
                 Data.VersionsFileName,
                 () => Data.BasicCatalog);
 
