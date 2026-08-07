@@ -19,6 +19,8 @@
 
   <ItemGroup>
     <Compile Include="..\..\src\Catalog.cs" Link="Sources\Catalog.cs" />
+    <Compile Include="..\..\src\Forms\AboutDialog.cs" Link="Sources\AboutDialog.cs" />
+    <Compile Include="..\..\src\Forms\AboutDialog.Designer.cs" Link="Sources\AboutDialog.Designer.cs" />
     <Compile Include="..\..\src\CatalogBaseUrlResolver.cs" Link="Sources\CatalogBaseUrlResolver.cs" />
     <Compile Include="..\..\src\CommandLine.cs" Link="Sources\CommandLine.cs" />
     <Compile Include="..\..\src\CatalogSelector.cs" Link="Sources\CatalogSelector.cs" />
@@ -37,6 +39,8 @@
 
   <ItemGroup>
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
 
   <ItemGroup>
