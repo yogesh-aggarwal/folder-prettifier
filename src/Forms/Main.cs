@@ -1,12 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Windows.Forms;
-using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using System.Collections.Generic;
@@ -15,7 +10,8 @@ namespace FolderPrettifier
 {
     public partial class Main : Form
     {
-        private static readonly HttpClient _httpClient = new HttpClient();
+        private readonly RemoteFileFetcher _remoteFetcher = new RemoteFileFetcher();
+        private readonly CatalogService _catalogService;
 
         Dictionary<string, string> _extensions;
         string _defaultFolder;
@@ -27,6 +23,13 @@ namespace FolderPrettifier
             InitializeComponent();
 
             this.currentFolder = currentFolder;
+
+            _catalogService = new CatalogService(_remoteFetcher,
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    "Folder Prettifier", Data.CatalogCacheDir),
+                Data.CatalogUrl,
+                Data.VersionsFileName,
+                () => Data.BasicCatalog);
 
             startBtn.Enabled = false;
 
@@ -66,21 +69,6 @@ namespace FolderPrettifier
             }
         }
 
-        private async Task<bool> CheckInternetConnectionAsync()
-        {
-            try
-            {
-                using (var cts = new CancellationTokenSource(TimeSpan.FromSeconds(3)))
-                using (var response = await _httpClient.GetAsync(Data.InternetCheckUrl, cts.Token))
-                {
-                    return response.IsSuccessStatusCode;
-                }
-            }
-            catch
-            {
-                return false;
-            }
-        }
         private async void FetchCatalog()
         {
             status.Text = "Fetching Catalog...";
@@ -89,62 +77,19 @@ namespace FolderPrettifier
             progressBar.Value = 0;
 
             Version appVersion = GetAppVersion();
-            string cacheDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                "Folder Prettifier", Data.CatalogCacheDir);
-            string versionsCachePath = Path.Combine(cacheDir, Data.VersionsFileName);
 
-            bool online = await CheckInternetConnectionAsync();
+            bool online = await _remoteFetcher.CheckAsync(Data.InternetCheckUrl, TimeSpan.FromSeconds(3));
             progressBar.Value = 30;
 
-            string versionsJson = null;
-            if (online)
-            {
-                status.Text = "Checking online...";
-                versionsJson = await FetchRemoteFileAsync(Data.VersionsFileName, versionsCachePath);
-            }
-            else
-            {
-                status.Text = "Offline. Using cached catalog...";
-            }
+            CatalogLoadOutcome outcome = await _catalogService.LoadAsync(appVersion, online, s => status.Text = s);
 
-            if (string.IsNullOrEmpty(versionsJson) && File.Exists(versionsCachePath))
-            {
-                versionsJson = File.ReadAllText(versionsCachePath);
-            }
-
-            CatalogSelection selection = CatalogSelector.Select(versionsJson, appVersion);
-
-            string catalogJson = null;
-            if (selection.Status == CatalogIndexStatus.Selected)
-            {
-                status.Text = "Loading catalog " + selection.FileName + "...";
-                progressBar.Value = 50;
-
-                string catalogCachePath = Path.Combine(cacheDir, selection.FileName);
-                if (online)
-                {
-                    catalogJson = await FetchRemoteFileAsync(selection.FileName, catalogCachePath);
-                }
-                else if (File.Exists(catalogCachePath))
-                {
-                    catalogJson = File.ReadAllText(catalogCachePath);
-                }
-            }
-
-            if (string.IsNullOrEmpty(catalogJson))
-            {
-                status.Text = "Using embedded catalog...";
-            }
-
-            CatalogLoadResult result = CatalogResolver.Resolve(appVersion, versionsJson, catalogJson, Data.BasicCatalog);
-
-            if (result.UpdateRequired)
+            if (outcome.UpdateRequired)
             {
                 RequireUpdate(appVersion);
                 return;
             }
 
-            Catalog catalog = result.Catalog;
+            Catalog catalog = outcome.Catalog;
             if (catalog == null)
             {
                 status.Text = "No catalog! Can't proceed";
@@ -170,51 +115,6 @@ namespace FolderPrettifier
         {
             Version version;
             return Version.TryParse(Application.ProductVersion, out version) ? version : new Version(0, 0);
-        }
-
-        private async Task<string> FetchRemoteFileAsync(string fileName, string cachePath)
-        {
-            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, Data.CatalogUrl + fileName))
-            {
-                if (File.Exists(cachePath))
-                {
-                    request.Headers.IfModifiedSince = File.GetLastWriteTimeUtc(cachePath);
-                }
-
-                try
-                {
-                    using (HttpResponseMessage response = await _httpClient.SendAsync(request))
-                    {
-                        if (response.StatusCode == HttpStatusCode.NotModified)
-                        {
-                            return File.ReadAllText(cachePath);
-                        }
-
-                        if (!response.IsSuccessStatusCode)
-                        {
-                            return null;
-                        }
-
-                        string content = await response.Content.ReadAsStringAsync();
-                        if (string.IsNullOrWhiteSpace(content))
-                        {
-                            return null;
-                        }
-
-                        string dir = Path.GetDirectoryName(cachePath);
-                        if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
-                        {
-                            Directory.CreateDirectory(dir);
-                        }
-                        File.WriteAllText(cachePath, content);
-                        return content;
-                    }
-                }
-                catch
-                {
-                    return null;
-                }
-            }
         }
 
         private void RequireUpdate(Version appVersion)
@@ -290,9 +190,8 @@ namespace FolderPrettifier
 
         private void ShowPathError(dynamic element)
         {
-            char[] invalidChars = Path.GetInvalidFileNameChars();
             string original = element.Text;
-            string cleaned = new string(original.Where(c => !invalidChars.Contains(c)).ToArray());
+            string cleaned = FileNamePrettifier.Sanitize(original);
 
             if (cleaned != original)
             {
@@ -331,136 +230,73 @@ namespace FolderPrettifier
             string srcFolder = location.Text;
 
             string[] files = Directory.GetFiles(srcFolder);
+
+            ProcessingOptions options = new ProcessingOptions();
+            Invoke(new Action(() =>
+            {
+                options.PrettifyOn = isPrettifyName.Checked;
+                options.CategorizeOn = isCategorizeFiles.Checked;
+                options.Prettify = new PrettifyOptions
+                {
+                    Capitalize = isCapitalizeName.Checked,
+                    Replace = isReplaceWord.Checked,
+                    ReplaceFrom = replaceWord.Text,
+                    ReplaceTo = withWord.Text,
+                    UseNameWith = isNameWith.Checked,
+                    Prefix = nameStartsWith.Text,
+                    Suffix = nameEndsWith.Text
+                };
+            }));
+
             int totalFiles = files.Length;
             int processedFiles = 0;
 
-            bool prettifyOn = false, categorizeOn = false;
-            bool capitalizeOn = false, replaceOn = false, nameWithOn = false;
-            string replaceFrom = "", replaceTo = "", namePrefix = "", nameSuffix = "";
-            Invoke(new Action(() =>
-            {
-                prettifyOn = isPrettifyName.Checked;
-                categorizeOn = isCategorizeFiles.Checked;
-                capitalizeOn = isCapitalizeName.Checked;
-                replaceOn = isReplaceWord.Checked;
-                replaceFrom = replaceWord.Text;
-                replaceTo = withWord.Text;
-                nameWithOn = isNameWith.Checked;
-                namePrefix = nameStartsWith.Text;
-                nameSuffix = nameEndsWith.Text;
-            }));
-
-            foreach (string file in files)
-            {
-                string currentFile = file;
-                Invoke(new Action(() => status.Text = currentFile));
-
-                if (prettifyOn)
+            FileProcessingResult result = FileProcessor.ProcessFiles(srcFolder, files, options, _extensions, _defaultFolder,
+                file =>
                 {
-                    string backPath = Path.GetDirectoryName(currentFile);
-                    string fileName = Path.GetFileName(currentFile);
-                    string newFileName = fileName;
-
-                    if (capitalizeOn && newFileName.Length > 0)
-                        newFileName = char.ToUpper(newFileName[0]) + newFileName.Substring(1);
-
-                    if (replaceOn)
-                        newFileName = newFileName.Replace(replaceFrom, replaceTo);
-
-                    if (nameWithOn)
-                    {
-                        int dotIndex = newFileName.LastIndexOf('.');
-                        if (dotIndex > 0)
-                        {
-                            string namePart = newFileName.Substring(0, dotIndex);
-                            string extPart = newFileName.Substring(dotIndex);
-                            newFileName = namePrefix + namePart + nameSuffix + extPart;
-                        }
-                        else
-                        {
-                            newFileName = namePrefix + newFileName + nameSuffix;
-                        }
-                    }
-
-                    string dest = Path.Combine(backPath, newFileName);
-                    File.Move(currentFile, dest);
-                    currentFile = dest;
-                }
-
-                if (categorizeOn)
-                {
-                    try
-                    {
-                        string ext = Path.GetExtension(currentFile).TrimStart('.').ToLowerInvariant();
-                        string catFolderName;
-                        if (!_extensions.TryGetValue(ext, out catFolderName))
-                        {
-                            catFolderName = _defaultFolder;
-                        }
-
-                        string catFileName = Path.GetFileName(currentFile);
-                        string destDir = Path.Combine(srcFolder, catFolderName);
-                        Directory.CreateDirectory(destDir);
-
-                        string destPath = Path.Combine(destDir, catFileName);
-                        if (File.Exists(destPath))
-                        {
-                            string nameNoExt = Path.GetFileNameWithoutExtension(catFileName);
-                            string extOnly = Path.GetExtension(catFileName);
-                            int suffix = 1;
-                            do
-                            {
-                                destPath = Path.Combine(destDir, $"{nameNoExt} ({suffix}){extOnly}");
-                                suffix++;
-                            } while (File.Exists(destPath));
-                        }
-
-                        File.Move(currentFile, destPath);
-                    }
-                    catch
-                    {
-                        Invoke(new Action(() => status.Text = $"Failed to categorize: {Path.GetFileName(currentFile)}"));
-                    }
-                }
-
-                processedFiles++;
-                int progress = totalFiles > 0 ? processedFiles * 100 / totalFiles : 0;
-                Invoke(new Action(() => progressBar.Value = progress));
-            }
+                    Invoke(new Action(() => status.Text = file));
+                    processedFiles++;
+                    int progress = totalFiles > 0 ? processedFiles * 100 / totalFiles : 0;
+                    Invoke(new Action(() => progressBar.Value = progress));
+                });
 
             string renameTarget = "";
             Invoke(new Action(() => renameTarget = renameTo.Text));
-            if (renameTarget.Length > 0)
-            {
-                string parentDir = Path.GetDirectoryName(srcFolder);
-                string newName = Path.Combine(parentDir, renameTarget);
 
-                if (srcFolder != newName)
+            RenamePlan plan = RenamePlanner.Plan(srcFolder, renameTarget);
+            if (plan.IsRename)
+            {
+                if (plan.Conflict)
                 {
                     bool userSaidYes = false;
-                    if (Directory.Exists(newName))
+                    Invoke(new Action(() =>
                     {
-                        Invoke(new Action(() =>
-                        {
-                            DialogResult res = MessageBox.Show("Folder cannot be renamed as another folder with the new name found. If you proceed, the contents of the new folder will be deleted & files from the current folder will be moved to the new folder!\n\nDo you want to proceed?", "Folder Conflict!", MessageBoxButtons.YesNo);
-                            userSaidYes = res == DialogResult.Yes;
-                        }));
-                        if (userSaidYes)
-                        {
-                            Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectory(newName,
-                                Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs,
-                                Microsoft.VisualBasic.FileIO.RecycleOption.SendToRecycleBin);
-                        }
-                        else
-                        {
-                            Invoke(new Action(() => status.Text = "Ready"));
-                            return;
-                        }
+                        DialogResult res = MessageBox.Show("Folder cannot be renamed as another folder with the new name found. If you proceed, the contents of the new folder will be deleted & files from the current folder will be moved to the new folder!\n\nDo you want to proceed?", "Folder Conflict!", MessageBoxButtons.YesNo);
+                        userSaidYes = res == DialogResult.Yes;
+                    }));
+                    if (userSaidYes)
+                    {
+                        Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectory(plan.TargetPath,
+                            Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs,
+                            Microsoft.VisualBasic.FileIO.RecycleOption.SendToRecycleBin);
                     }
-
-                    Directory.Move(srcFolder, newName);
-                    Invoke(new Action(() => location.Text = newName));
+                    else
+                    {
+                        Invoke(new Action(() => status.Text = "Ready"));
+                        return;
+                    }
                 }
+
+                if (FileProcessor.ApplyRename(srcFolder, plan))
+                {
+                    Invoke(new Action(() => location.Text = plan.TargetPath));
+                }
+            }
+
+            if (result.Errors.Count > 0)
+            {
+                string message = "The following files could not be processed:\n\n" + string.Join("\n", result.Errors);
+                Invoke(new Action(() => MessageBox.Show(message, "Some files could not be processed", MessageBoxButtons.OK, MessageBoxIcon.Warning)));
             }
 
             Invoke(new Action(() => status.Text = "Ready"));
