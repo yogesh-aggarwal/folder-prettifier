@@ -30,6 +30,15 @@ namespace FolderPrettifier.UiTests
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         private static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
 
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        private static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
+
+        [DllImport("user32.dll")]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr SetFocus(IntPtr hWnd);
+
         [DllImport("user32.dll")]
         private static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
@@ -205,6 +214,23 @@ namespace FolderPrettifier.UiTests
                 GetWindowText(hWnd, sb, 256);
                 string title = sb.ToString();
                 if (title == titlePrefix || title.StartsWith(titlePrefix + " - File Explorer"))
+                {
+                    found = hWnd;
+                    return false;
+                }
+                return true;
+            }, IntPtr.Zero);
+            return found;
+        }
+
+        private IntPtr FindAnyWindowByTitleContains(string fragment)
+        {
+            IntPtr found = IntPtr.Zero;
+            EnumWindows((hWnd, lParam) =>
+            {
+                StringBuilder sb = new StringBuilder(256);
+                GetWindowText(hWnd, sb, 256);
+                if (sb.ToString().IndexOf(fragment, StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     found = hWnd;
                     return false;
@@ -811,6 +837,107 @@ namespace FolderPrettifier.UiTests
 
             WaitUntil(() =>
                 _mainWindow.FindFirstDescendant(cf => cf.ByName("Ready")) != null, 15000, "status Ready");
+        }
+
+        [Test]
+        public void ChooseLocation_DialogSelectsFolder()
+        {
+            LaunchApp();
+            WaitUntilStartEnabled();
+
+            string chosen = Path.Combine(_stageDir, "Chosen");
+            Directory.CreateDirectory(chosen);
+
+            var chooseBtn = _mainWindow.FindFirstDescendant(cf => cf.ByName("...").And(cf.ByControlType(ControlType.Button)));
+            Assert.That(chooseBtn, Is.Not.Null, "Choose location button not found");
+            IntPtr chooseHwnd = (IntPtr)chooseBtn.Properties.NativeWindowHandle.Value;
+
+            // ShowDialog blocks the UI thread, so click from a worker thread and
+            // drive the native folder dialog from this thread.
+            Task click = Task.Run(() => SendMessage(chooseHwnd, BM_CLICK, IntPtr.Zero, IntPtr.Zero));
+
+            IntPtr dialog = IntPtr.Zero;
+            Stopwatch sw = Stopwatch.StartNew();
+            while (sw.ElapsedMilliseconds < 15000)
+            {
+                dialog = FindAnyWindowByTitleContains("Browse For Folder");
+                if (dialog != IntPtr.Zero) break;
+                Thread.Sleep(200);
+            }
+            if (dialog == IntPtr.Zero)
+            {
+                click.Wait(5000);
+                Assert.Fail("Folder browser dialog not found. Title dump:\n" + DumpWindowTitles());
+            }
+
+            // The classic SHBrowseForFolder dialog exposes its path box as a
+            // ComboBoxEx32 (no UIA edit). Type the path, press Enter to navigate,
+            // then confirm with IDOK.
+            IntPtr pathCombo = FindWindowEx(dialog, IntPtr.Zero, "ComboBoxEx32", null);
+            if (pathCombo == IntPtr.Zero)
+            {
+                pathCombo = FindWindowEx(dialog, IntPtr.Zero, "Edit", null);
+            }
+            Assert.That(pathCombo, Is.Not.EqualTo(IntPtr.Zero), "folder path control not found in dialog");
+
+            SetForegroundWindow(dialog);
+            SetFocus(pathCombo);
+            SendMessage(pathCombo, WM_SETTEXT, IntPtr.Zero, chosen);
+            Keyboard.Type(VirtualKeyShort.RETURN);
+            Thread.Sleep(1000);
+
+            SendMessage(dialog, WM_COMMAND, (IntPtr)1, IntPtr.Zero);
+
+            click.Wait(20000);
+
+            WaitUntil(() =>
+            {
+                try
+                {
+                    return GetTextBoxText("location") == chosen;
+                }
+                catch
+                {
+                    return false;
+                }
+            }, 10000, "location updated to chosen folder; actual: '" + GetTextBoxText("location") + "'");
+        }
+
+        [Test]
+        public void StartClick_WhileCatalogLoading_ShowsNoDialogAndRecovers()
+        {
+            LaunchApp();
+            _ = _mainWindow; // ensure window is attached
+
+            // Click Start immediately, before the catalog load finishes. The button
+            // is disabled during load, so no dialog may appear.
+            var startBtn = _mainWindow.FindFirstDescendant(cf => cf.ByName("Start").And(cf.ByControlType(ControlType.Button)));
+            Assert.That(startBtn, Is.Not.Null, "Start button not found");
+            IntPtr startHwnd = (IntPtr)startBtn.Properties.NativeWindowHandle.Value;
+
+            Task click = Task.Run(() => SendMessage(startHwnd, BM_CLICK, IntPtr.Zero, IntPtr.Zero));
+            click.Wait(10000);
+
+            Assert.That(FindWindowByTitle("Not Ready"), Is.EqualTo(IntPtr.Zero), "Not Ready dialog must not appear (button is disabled while loading)");
+            Assert.That(FindWindowByTitle("ATTENTION!"), Is.EqualTo(IntPtr.Zero), "ATTENTION! must not appear while catalog loads");
+
+            WaitUntilStartEnabled();
+        }
+
+        private string DumpWindowTitles()
+        {
+            StringBuilder sb = new StringBuilder();
+            EnumWindows((hWnd, lParam) =>
+            {
+                StringBuilder text = new StringBuilder(256);
+                GetWindowText(hWnd, text, 256);
+                if (text.Length > 0)
+                {
+                    sb.AppendLine(text.ToString());
+                }
+                return true;
+            }, IntPtr.Zero);
+            return sb.ToString();
         }
     }
 }
