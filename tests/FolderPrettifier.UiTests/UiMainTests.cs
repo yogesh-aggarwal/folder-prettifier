@@ -90,6 +90,16 @@ namespace FolderPrettifier.UiTests
 
         private void LaunchApp(params string[] filesToCreate)
         {
+            LaunchAppInternal(true, filesToCreate);
+        }
+
+        private void LaunchAppWithoutFolderArg()
+        {
+            LaunchAppInternal(false, new string[0]);
+        }
+
+        private void LaunchAppInternal(bool passFolderArg, string[] filesToCreate)
+        {
             _stageDir = Path.Combine(Path.GetTempPath(), "fp-ui-" + Guid.NewGuid().ToString("N"));
             _tempDir = Path.Combine(_stageDir, "Source");
             Directory.CreateDirectory(_tempDir);
@@ -98,7 +108,8 @@ namespace FolderPrettifier.UiTests
                 CreateFile(f);
             }
 
-            Process process = Process.Start(new ProcessStartInfo(FindExe(), "\"" + _tempDir + "\""));
+            string folderArg = passFolderArg ? "\"" + _tempDir + "\"" : "";
+            Process process = Process.Start(new ProcessStartInfo(FindExe(), folderArg));
             _processId = process.Id;
             _automation = new UIA3Automation();
 
@@ -179,6 +190,24 @@ namespace FolderPrettifier.UiTests
                         found = hWnd;
                         return false;
                     }
+                }
+                return true;
+            }, IntPtr.Zero);
+            return found;
+        }
+
+        private IntPtr FindAnyWindowByTitlePrefix(string titlePrefix)
+        {
+            IntPtr found = IntPtr.Zero;
+            EnumWindows((hWnd, lParam) =>
+            {
+                StringBuilder sb = new StringBuilder(256);
+                GetWindowText(hWnd, sb, 256);
+                string title = sb.ToString();
+                if (title == titlePrefix || title.StartsWith(titlePrefix + " - File Explorer"))
+                {
+                    found = hWnd;
+                    return false;
                 }
                 return true;
             }, IntPtr.Zero);
@@ -558,6 +587,106 @@ namespace FolderPrettifier.UiTests
 
             var startBtn = _mainWindow.FindFirstDescendant(cf => cf.ByName("Start").And(cf.ByControlType(ControlType.Button)));
             Assert.That(startBtn.Properties.IsEnabled.Value, Is.True);
+        }
+
+        [Test]
+        public void SetCurrentPath_NoFolderArg_FallsBackToDownloads()
+        {
+            LaunchAppWithoutFolderArg();
+            WaitUntilStartEnabled();
+
+            string expected = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+            WaitUntil(() =>
+            {
+                try
+                {
+                    return GetTextBoxText("location") == expected;
+                }
+                catch
+                {
+                    return false;
+                }
+            }, 10000, "location shows Downloads folder");
+        }
+
+        [Test]
+        public void LocationCount_InvalidPath_ResetsCountAndRenameTarget()
+        {
+            LaunchApp("a.txt");
+            WaitUntilStartEnabled();
+            WaitUntil(() => LabelText("totalFilesCount") == "1", 10000, "file count shows 1");
+
+            var location = _mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("location"));
+            Assert.That(location, Is.Not.Null, "location textbox not found");
+            IntPtr locationHwnd = (IntPtr)location.Properties.NativeWindowHandle.Value;
+            SendMessage(locationHwnd, WM_SETTEXT, IntPtr.Zero, "C:\\bad<>path\\x");
+
+            WaitUntil(() =>
+            {
+                try
+                {
+                    return LabelText("totalFilesCount") == "0" && GetTextBoxText("renameTo") == "";
+                }
+                catch
+                {
+                    return false;
+                }
+            }, 10000, "count reset to 0 and rename target cleared");
+        }
+
+        [Test]
+        public void AboutMenu_OpensAndClosesAboutDialog()
+        {
+            LaunchApp();
+            WaitUntilStartEnabled();
+
+            var aboutItem = _mainWindow.FindFirstDescendant(cf => cf.ByName("About"));
+            Assert.That(aboutItem, Is.Not.Null, "About menu item not found");
+            // UIA Invoke blocks while the modal dialog is open, so click the menu
+            // item with the mouse instead.
+            System.Drawing.Rectangle rect = aboutItem.Properties.BoundingRectangle.Value;
+            Mouse.Click(new System.Drawing.Point(rect.X + rect.Width / 2, rect.Y + rect.Height / 2));
+
+            WaitUntil(() => FindWindowByTitle("About Folder Prettifier") != IntPtr.Zero, 15000, "about dialog opened");
+
+            IntPtr aboutHwnd = FindWindowByTitle("About Folder Prettifier");
+            Window aboutWindow = _automation.FromHandle(aboutHwnd).AsWindow();
+            var okayBtn = aboutWindow.FindFirstDescendant(cf => cf.ByName("Okay").And(cf.ByControlType(ControlType.Button)));
+            Assert.That(okayBtn, Is.Not.Null, "Okay button not found in About dialog");
+            okayBtn.Patterns.Invoke.Pattern.Invoke();
+
+            WaitUntil(() => FindWindowByTitle("About Folder Prettifier") == IntPtr.Zero, 5000, "about dialog closed");
+        }
+
+        [Test]
+        public void StartButton_AttentionNo_AbortsWithoutProcessing()
+        {
+            LaunchApp("a.txt");
+            WaitUntilStartEnabled();
+
+            var startBtn = _mainWindow.FindFirstDescendant(cf => cf.ByName("Start").And(cf.ByControlType(ControlType.Button)));
+            Assert.That(startBtn, Is.Not.Null, "Start button not found");
+            IntPtr startHwnd = (IntPtr)startBtn.Properties.NativeWindowHandle.Value;
+
+            Task click = Task.Run(() => SendMessage(startHwnd, BM_CLICK, IntPtr.Zero, IntPtr.Zero));
+            ClickMessageBox("ATTENTION!", "No", 15000);
+            click.Wait(20000);
+
+            Assert.That(FindWindowByTitle("Enjoy!"), Is.EqualTo(IntPtr.Zero), "Enjoy! must not appear when the run is declined");
+            Assert.That(File.Exists(Path.Combine(_tempDir, "a.txt")), Is.True, "files must be untouched");
+            WaitUntil(() => IsControlEnabled("startBtn"), 10000, "Start button enabled");
+        }
+
+        [Test]
+        public void StartButton_OpenFolder_LaunchesExplorerForFolder()
+        {
+            LaunchApp("a.txt");
+            WaitUntilStartEnabled();
+            ToggleCheckBox("Open folder after prettification", true);
+
+            ClickStartAndHandleDialogs();
+
+            WaitUntil(() => FindAnyWindowByTitlePrefix("Source") != IntPtr.Zero, 15000, "explorer window for the folder");
         }
     }
 }

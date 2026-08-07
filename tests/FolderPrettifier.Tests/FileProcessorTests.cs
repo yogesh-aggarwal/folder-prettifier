@@ -177,6 +177,22 @@ namespace FolderPrettifier.Tests
         }
 
         [Test]
+        public void ProcessFiles_Prettify_MissingFile_RecordsErrorAndContinues()
+        {
+            string good = CreateFile("ok.txt");
+            string missing = Path.Combine(_tempDir, "ghost.txt");
+            string[] files = { missing, good };
+
+            FileProcessingResult result = FileProcessor.ProcessFiles(_tempDir, files, PrettifyOnly(), Map(), "Others\\Unknown");
+
+            Assert.That(result.Errors.Count, Is.EqualTo(1));
+            Assert.That(result.Errors[0], Does.StartWith("Failed to prettify"));
+            Assert.That(result.Errors[0], Does.Contain("ghost.txt"));
+            Assert.That(result.Processed, Is.EqualTo(1), "Failed prettify skips the file entirely (continue).");
+            Assert.That(File.Exists(Path.Combine(_tempDir, "Ok.txt")), Is.True);
+        }
+
+        [Test]
         public void ProcessFiles_NoOperations_NoChangesNoErrors()
         {
             string file = CreateFile("a.txt");
