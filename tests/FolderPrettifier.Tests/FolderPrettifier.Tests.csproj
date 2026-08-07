@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Compile Include="..\..\src\Catalog.cs" Link="Sources\Catalog.cs" />
+    <Compile Include="..\..\src\CatalogBaseUrlResolver.cs" Link="Sources\CatalogBaseUrlResolver.cs" />
     <Compile Include="..\..\src\CatalogSelector.cs" Link="Sources\CatalogSelector.cs" />
     <Compile Include="..\..\src\CatalogResolver.cs" Link="Sources\CatalogResolver.cs" />
     <Compile Include="..\..\src\CatalogService.cs" Link="Sources\CatalogService.cs" />

@@ -11,8 +11,8 @@ Folder Prettifier.sln
 │   │   └── AboutDialog.cs          # About / feedback dialog
 │   ├── Data.resx                   # Embedded resources:
 │   │   │                           #   BasicCatalog     — fallback JSON when offline
-│   │   │                           #   CatalogUrl       — GitHub URL for latest catalog
-│   │   │                           #   CacheFileName    — local cache filename (cat.fpc)
+│   │   │                           #   RepoInfoUrl      — GitHub API URL to discover the default branch
+│   │   │                           #   CatalogRawUrlTemplate — raw base URL; {0} = resolved branch
 │   │   │                           #   InternetCheckUrl — URL pinged to test connectivity
 │   │   └── Data.Designer.cs        # Auto-generated accessors for Data.resx
 │   ├── Icons/                      # App icons (icon.ico, icon.png, refresh.ico)
@@ -118,7 +118,7 @@ The EXE embeds `Newtonsoft.Json.dll` via **Costura.Fody** (configured in `FodyWe
 - Forward slashes in `folderName` create nested subfolders.
 - Extensions not present in the catalog go into an `Others` folder.
 
-The catalog is hosted at `https://github.com/yogesh-aggarwal/folder-prettifier/raw/master/catalog.json`. To add or change mappings, edit `catalog.json` at the repository root — the app pulls it dynamically.
+The catalog is hosted in the `assets/catalogs/` directory of the `yogesh-aggarwal/folder-prettifier` repository. On startup the app queries the GitHub API (`RepoInfoUrl`) to discover the repository's current default branch, then builds the raw GitHub URL (`CatalogRawUrlTemplate`, `{0}` = branch) and pulls `versions.jsonc` + the selected catalog from there — no branch is pinned. To add or change mappings, edit `catalog.json` at the repository root — the app pulls it dynamically.
 
 ## Key NuGet packages
 

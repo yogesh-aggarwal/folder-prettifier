@@ -14,6 +14,7 @@ namespace FolderPrettifier
         public RemoteFileFetcher(HttpMessageHandler handler = null)
         {
             _httpClient = handler != null ? new HttpClient(handler) : new HttpClient();
+            _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("FolderPrettifier");
         }
 
         public async Task<string> FetchAsync(string url, string cachePath)
