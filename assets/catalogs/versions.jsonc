@@ -1,0 +1,7 @@
+{
+    // Catalog selection index.
+    // Maps the minimum app version to the catalog file to use.
+    // The app picks the entry with the largest key <= its own version,
+    // e.g. app 2.0.1 up to (but not including) 2.3.4 uses "v0001.jsonc".
+    "2.0.1": "v0001.jsonc"
+}

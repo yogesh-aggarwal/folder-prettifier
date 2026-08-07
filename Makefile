@@ -1,7 +1,9 @@
 SHELL := cmd
-.PHONY: dev build restore build-x86 build-x64 installer portable bump
+.PHONY: dev build restore build-x86 build-x64 installer portable bump test
 
 MSBUILD := powershell -NoProfile -ExecutionPolicy Bypass -File scripts/msbuild.ps1
+DOTNET := powershell -NoProfile -ExecutionPolicy Bypass -File scripts/dotnet.ps1
+TESTS := tests\FolderPrettifier.Tests\FolderPrettifier.Tests.csproj
 
 dev: restore
 	@$(MSBUILD) src/App.csproj /p:Configuration=Debug /p:Platform=AnyCPU /t:Build
@@ -28,6 +30,9 @@ portable:
 
 bump:
 	@powershell -NoProfile -ExecutionPolicy Bypass -File scripts/bump-version.ps1 -NewVersion "$(word 2,$(MAKECMDGOALS))"
+
+test:
+	@$(DOTNET) test $(TESTS) -c Debug
 
 %:
 	@true

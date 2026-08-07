@@ -145,6 +145,15 @@
     <Compile Include="Forms\AboutDialog.Designer.cs">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Catalog.cs" />
+    <Compile Include="CatalogResolver.cs" />
+    <Compile Include="CatalogSelector.cs" />
+    <Compile Include="CatalogService.cs" />
+    <Compile Include="FileCategorizer.cs" />
+    <Compile Include="FileNamePrettifier.cs" />
+    <Compile Include="FileProcessor.cs" />
+    <Compile Include="RemoteFileFetcher.cs" />
+    <Compile Include="RenamePlanner.cs" />
     <Compile Include="Data.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -54,9 +54,6 @@ Source: "..\src\Build\Release\x86\{#MyAppExeName}.config"; DestDir: "{app}"; Fla
 Source: "..\src\Build\Release\x64\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
 Source: "..\src\Build\Release\x64\{#MyAppExeName}.config"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
 
-; Shared files
-Source: "..\catalog.json"; DestDir: "{app}"; Flags: ignoreversion
-
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
