@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Folder Prettifier sweeps through any folder, sorts files into clean categories, and fixes messy names. Free, open source, and offline for Windows." />
+  <meta name="theme-color" content="#12100E" />
+  <title>Folder Prettifier — Your folders, sorted.</title>
+
+  <link rel="icon" href="icon.png" type="image/png" />
+  <link rel="preload" href="fonts/SpaceGrotesk.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/PublicSans.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- Google Fonts: Serif (Newsreader) + Sans (Plus Jakarta Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Minimal Navigation -->
+  <header class="header">
+    <div class="header-container">
+      <a class="brand" href="#top" aria-label="Folder Prettifier Homepage">
+        <img class="brand-icon" src="icon.png" alt="Folder Prettifier" width="32" height="32" />
+        <span class="brand-title">Folder Prettifier</span>
+      </a>
+
+      <nav class="nav" aria-label="Main Navigation">
+        <a href="#overview">Overview</a>
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#download">Download</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- GitHub Icon Link -->
+        <a class="icon-link" href="https://github.com/yogesh-aggarwal/folder-prettifier" target="_blank" rel="noopener"
+          aria-label="View source on GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path
+              d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+            <path d="M9 18c-4.51 2-5-2-7-2" />
+          </svg>
+        </a>
+
+        <a class="btn btn-primary" href="#download">
+          <span>Download for Windows</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Editorial Hero Section -->
+    <section class="hero" id="top">
+      <div class="hero-container">
+
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Free &amp; Open Source Utility for Windows 7+</span>
+        </div>
+
+        <h1 class="hero-headline">
+          Your folders are a mess.<br />
+          <em>We get it.</em>
+        </h1>
+
+        <p class="hero-lead">
+          Folder Prettifier sweeps through any folder, drops every file into the right place — Videos, Documents, Images
+          — and gives everything a clean, readable name. One click.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="#download">
+            <span>Download for Windows</span>
+            <span class="btn-meta">v2.1.0 • Single File Portable</span>
+          </a>
+
+          <a class="btn btn-outline btn-lg" href="https://github.com/yogesh-aggarwal/folder-prettifier" target="_blank"
+            rel="noopener">
+            <span>View Source on GitHub</span>
+          </a>
+        </div>
+
+        <div class="hero-meta-strip">
+          <span class="meta-item">
+            <svg class="meta-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2.5 8.5 6 12 13.5 4"/></svg>
+            No install — single portable .exe
+          </span>
+          <span class="meta-item">
+            <svg class="meta-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2.5 8.5 6 12 13.5 4"/></svg>
+            100% Offline &amp; Private
+          </span>
+          <span class="meta-item">
+            <svg class="meta-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2.5 8.5 6 12 13.5 4"/></svg>
+            Update by choice
+          </span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Redesigned "At a Glance" Section -->
+    <section class="overview-section" id="overview">
+      <div class="container">
+        <div class="at-glance-wrapper">
+
+          <div class="at-glance-header text-center">
+            <span class="section-eyebrow">AT A GLANCE</span>
+            <h2 class="section-title">One click. Total order.</h2>
+            <p class="at-glance-sub">Drop in a messy folder. Folder Prettifier sorts, renames, and categorises every
+              file automatically.</p>
+          </div>
+
+          <!-- Single unified comparison card -->
+          <div class="comparison-card">
+
+            <div class="comparison-columns">
+
+              <!-- Left column: Before -->
+              <div class="col-before">
+                <div class="col-label">
+                  <span class="col-label-dot dot-bad"></span>
+                  <span>Before</span>
+                </div>
+                <ul class="file-rows">
+                  <li class="file-row">
+                    <code class="fr-name bad">party_clip_2026_RAW(2).MOV</code>
+                    <span class="fr-tag">unsorted</span>
+                  </li>
+                  <li class="file-row">
+                    <code class="fr-name bad">FINAL_tax_return_2025_copy(1).pdf</code>
+                    <span class="fr-tag">ugly name</span>
+                  </li>
+                  <li class="file-row">
+                    <code class="fr-name bad">IMG_0912_UNEDITED.HEIC</code>
+                    <span class="fr-tag">cryptic</span>
+                  </li>
+                  <li class="file-row">
+                    <code class="fr-name bad">voice_memo_audio_04.m4a</code>
+                    <span class="fr-tag">no folder</span>
+                  </li>
+                  <li class="file-row">
+                    <code class="fr-name bad">setup_v2.0_installer_win.exe</code>
+                    <span class="fr-tag">mixed in</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Divider -->
+              <div class="col-divider">
+                <div class="divider-line"></div>
+                <div class="divider-badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="5 12 19 12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </div>
+                <div class="divider-line"></div>
+              </div>
+
+              <!-- Right column: After -->
+              <div class="col-after">
+                <div class="col-label">
+                  <span class="col-label-dot dot-good"></span>
+                  <span>After</span>
+                </div>
+                <ul class="file-rows">
+                  <li class="file-row file-row-folder">
+                    <span class="folder-row-label">Videos/</span>
+                    <code class="fr-name good">Party Clip 2026 Raw.mov</code>
+                  </li>
+                  <li class="file-row file-row-folder">
+                    <span class="folder-row-label">Documents/</span>
+                    <code class="fr-name good">Final Tax Return 2025.pdf</code>
+                  </li>
+                  <li class="file-row file-row-folder">
+                    <span class="folder-row-label">Images/</span>
+                    <code class="fr-name good">Img 0912 Unedited.heic</code>
+                  </li>
+                  <li class="file-row file-row-folder">
+                    <span class="folder-row-label">Audio/</span>
+                    <code class="fr-name good">Voice Memo Audio 04.m4a</code>
+                  </li>
+                  <li class="file-row file-row-folder">
+                    <span class="folder-row-label">Installers/</span>
+                    <code class="fr-name good">Setup Installer Win.exe</code>
+                  </li>
+                </ul>
+              </div>
+
+            </div><!-- /.comparison-columns -->
+
+          </div><!-- /.comparison-card -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Essential Features Grid -->
+    <section class="features-section" id="features">
+      <div class="container">
+
+        <div class="section-head">
+          <span class="section-eyebrow">WHAT IT DOES</span>
+          <h2 class="section-title">Designed with care. Focused on essential utility.</h2>
+        </div>
+
+        <div class="grid-features">
+
+          <article class="feature-card">
+            <span class="feature-num">01</span>
+            <h3 class="feature-title">Sorts Everything Automatically</h3>
+            <p class="feature-desc">
+              Drops every file into the right category folder. Videos to Videos, PDFs to Documents, photos to Images —
+              with sensible rules pre-configured out of the box.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <span class="feature-num">02</span>
+            <h3 class="feature-title">Cleans Up Names</h3>
+            <p class="feature-desc">
+              Fixes awkward capitalization, swaps out underscores, strips trailing numbers like <code>(1)</code> or
+              <code>_copy</code>, and applies proper Title Case.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <span class="feature-num">03</span>
+            <h3 class="feature-title">Automatic Undo Backup</h3>
+            <p class="feature-desc">
+              Creates a snapshot before touching anything. Changed your mind? Restore your original layout in a single
+              click, no questions asked.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <span class="feature-num">04</span>
+            <h3 class="feature-title">Lives on a USB Stick</h3>
+            <p class="feature-desc">
+              One portable .exe, zero dependencies. Tuck it on a flash drive and run it from any Windows machine,
+              anywhere.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <span class="feature-num">05</span>
+            <h3 class="feature-title">Right-Click Magic</h3>
+            <p class="feature-desc">
+              Integrates into Windows File Explorer context menu. Right-click any messy folder and pick <strong>Folder
+                Prettifier</strong> for instant cleanup.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <span class="feature-num">06</span>
+            <h3 class="feature-title">Works 100% Offline</h3>
+            <p class="feature-desc">
+              Everything runs locally on your device. No data leaves your machine — optionally fetches updated extension
+              rules when online, but never needs it.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-section" id="how">
+      <div class="container">
+
+        <div class="section-head">
+          <span class="section-eyebrow">GETTING STARTED</span>
+          <h2 class="section-title">Three clicks and the job is done.</h2>
+        </div>
+
+        <ol class="steps-list">
+          <li class="step-item">
+            <div class="step-badge">1</div>
+            <div class="step-body">
+              <h3 class="step-heading">Pick your messy folder</h3>
+              <p class="step-text">
+                Open the app or right-click any folder in Windows File Explorer. Your Downloads folder is usually the
+                obvious first candidate.
+              </p>
+            </div>
+          </li>
+
+          <li class="step-item">
+            <div class="step-badge">2</div>
+            <div class="step-body">
+              <h3 class="step-heading">Tell it what to do</h3>
+              <p class="step-text">
+                Toggle <em>Categorize files</em> or <em>Prettify names</em> on or off. Tweak capitalization rules or
+                rename the whole folder if you're feeling fancy.
+              </p>
+            </div>
+          </li>
+
+          <li class="step-item">
+            <div class="step-badge">3</div>
+            <div class="step-body">
+              <h3 class="step-heading">Hit Process and watch</h3>
+              <p class="step-text">
+                Stand back. Files fly to their proper subfolders and every name becomes clean and readable — instantly.
+              </p>
+            </div>
+          </li>
+        </ol>
+
+      </div>
+    </section>
+
+    <!-- Minimal Direct Download Banner -->
+    <section class="download-section" id="download">
+      <div class="container">
+        <div class="download-box">
+          <span class="box-tag">FREE &amp; OPEN SOURCE</span>
+          <h2 class="box-title">Ready to clean up your folders?</h2>
+          <p class="box-lead">
+            Folder Prettifier is completely free under the MIT License. No trials, no sign-up, no ads.
+          </p>
+
+          <div class="download-cta-row">
+            <a class="btn btn-primary btn-xl" id="btn-download-64"
+              href="https://github.com/yogesh-aggarwal/folder-prettifier/releases/latest" target="_blank"
+              rel="noopener">
+              <span>Download for Windows</span>
+              <span class="btn-meta" id="dl-version">Fetching latest…</span>
+            </a>
+          </div>
+
+          <div class="download-details">
+            <span id="dl-version-tag">—</span>
+            <span class="dot-sep">•</span>
+            <span>Windows 7, 8, 10, 11</span>
+            <span class="dot-sep">•</span>
+            <span id="dl-size">—</span>
+            <span class="dot-sep">•</span>
+            <span id="dl-count">—</span>
+          </div>
+
+          <div class="download-alt-row">
+            <a class="dl-alt-link" id="btn-download-32"
+              href="https://github.com/yogesh-aggarwal/folder-prettifier/releases/latest"
+              target="_blank" rel="noopener">
+              Also available: 32-bit
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Minimal Editorial Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <a class="footer-brand" href="#top">Folder Prettifier</a>
+        <p class="footer-copy">
+          Copyright &copy; 2026 Yogesh Aggarwal. Built as a free Windows utility under the MIT License.
+        </p>
+      </div>
+
+      <div class="footer-right">
+        <a href="https://github.com/yogesh-aggarwal/folder-prettifier" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/yogesh-aggarwal/folder-prettifier/blob/main/LICENSE" target="_blank"
+          rel="noopener">License</a>
+        <a href="https://github.com/yogesh-aggarwal/folder-prettifier/blob/main/PRIVACY.md" target="_blank"
+          rel="noopener">Privacy</a>
+        <a href="https://yogeshaggarwal.in" target="_blank" rel="noopener">Author Website</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
