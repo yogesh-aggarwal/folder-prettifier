@@ -388,6 +388,20 @@ a:hover {
   letter-spacing: 0.01em;
 }
 
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.meta-check {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: var(--clean-text);
+  stroke: var(--clean-text);
+}
+
 /* ---------- AT A GLANCE: COMPARISON CARD ---------- */
 .overview-section {
   padding: 40px 0 80px 0;
