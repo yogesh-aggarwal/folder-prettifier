@@ -460,7 +460,7 @@ namespace FolderPrettifier
             }
 
             status.Text = "Applying update...";
-            if (_updateService.ApplyUpdate(destination))
+            if (_updateService.LaunchUpdater(destination))
             {
                 Application.Exit();
             }

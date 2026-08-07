@@ -3,6 +3,8 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FolderPrettifier
@@ -201,6 +203,11 @@ namespace FolderPrettifier
                                 progress.Report((int)(received * 100 / total));
                             }
                         }
+
+                        if (total > 0 && received != total)
+                        {
+                            throw new IOException("Download size mismatch: expected " + total + " bytes, received " + received);
+                        }
                     }
                 }
 
@@ -212,7 +219,22 @@ namespace FolderPrettifier
             }
             catch
             {
+                TryDeleteFile(destinationPath);
                 return false;
+            }
+        }
+
+        private static void TryDeleteFile(string path)
+        {
+            try
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+            catch
+            {
             }
         }
 
@@ -244,7 +266,15 @@ namespace FolderPrettifier
                 return false;
             }
 
-            string dir = Path.GetDirectoryName(exePath);
+            return CanUpdateInPlaceIn(Path.GetDirectoryName(exePath));
+        }
+
+        /// <summary>
+        /// Returns true when files can be created and deleted inside the given directory
+        /// (i.e. the running executable can be replaced in place there).
+        /// </summary>
+        public static bool CanUpdateInPlaceIn(string dir)
+        {
             if (string.IsNullOrEmpty(dir) || !Directory.Exists(dir))
             {
                 return false;
@@ -264,12 +294,17 @@ namespace FolderPrettifier
         }
 
         /// <summary>
-        /// Replaces the running executable with the downloaded update via a helper
-        /// batch script: the script waits for this process to exit, copies the new
-        /// executable over the old one, and relaunches the app. Returns true when the
+        /// Launches the downloaded update executable in updater mode so it can replace
+        /// this running executable: the updater waits for this process to exit, copies
+        /// itself over this executable, and relaunches the app. Returns true when the
         /// updater was launched; the caller should then exit the application.
+        ///
+        /// The updater mode is invoked by passing --apply-update to the new executable,
+        /// which avoids helper scripts and shell quoting entirely: process arguments
+        /// are passed verbatim, so paths containing spaces or any other characters are
+        /// handled safely.
         /// </summary>
-        public bool ApplyUpdate(string downloadedFilePath)
+        public bool LaunchUpdater(string downloadedFilePath)
         {
             if (string.IsNullOrEmpty(downloadedFilePath) || !File.Exists(downloadedFilePath) || !CanUpdateInPlace())
             {
@@ -280,44 +315,11 @@ namespace FolderPrettifier
             {
                 string targetExe = GetExecutablePath();
                 int pid = Process.GetCurrentProcess().Id;
-                string scriptDir = Path.Combine(Path.GetTempPath(), "FolderPrettifier-Updater-" + Guid.NewGuid().ToString("N"));
-                Directory.CreateDirectory(scriptDir);
-                string scriptPath = Path.Combine(scriptDir, "apply-update.bat");
 
-                string script =
-                    "@echo off\r\n" +
-                    "setlocal\r\n" +
-                    "set tries=0\r\n" +
-                    ":wait\r\n" +
-                    "tasklist /FI \"PID eq " + pid + "\" | findstr \"" + pid + "\" >nul\r\n" +
-                    "if not errorlevel 1 (\r\n" +
-                    "  ping 127.0.0.1 -n 2 >nul\r\n" +
-                    "  goto wait\r\n" +
-                    ")\r\n" +
-                    ":copy\r\n" +
-                    "set /a tries+=1\r\n" +
-                    "copy /y \"" + downloadedFilePath + "\" \"" + targetExe + "\" >nul\r\n" +
-                    "if not errorlevel 1 (\r\n" +
-                    "  start \"\" \"" + targetExe + "\"\r\n" +
-                    "  del \"%~f0\" >nul 2>nul\r\n" +
-                    "  rmdir /s /q \"" + scriptDir + "\" >nul 2>nul\r\n" +
-                    "  exit /b 0\r\n" +
-                    ")\r\n" +
-                    "if %tries% lss 30 (\r\n" +
-                    "  ping 127.0.0.1 -n 2 >nul\r\n" +
-                    "  goto copy\r\n" +
-                    ")\r\n" +
-                    "del \"%~f0\" >nul 2>nul\r\n" +
-                    "rmdir /s /q \"" + scriptDir + "\" >nul 2>nul\r\n" +
-                    "exit /b 1\r\n";
-                File.WriteAllText(scriptPath, script);
-
-                ProcessStartInfo startInfo = new ProcessStartInfo("cmd.exe", "/c \"\"" + scriptPath + "\"\"")
+                ProcessStartInfo startInfo = new ProcessStartInfo(downloadedFilePath, BuildUpdaterArguments(targetExe, pid))
                 {
                     UseShellExecute = false,
-                    CreateNoWindow = true,
-                    WindowStyle = ProcessWindowStyle.Hidden,
-                    WorkingDirectory = Path.GetTempPath()
+                    CreateNoWindow = true
                 };
                 Process.Start(startInfo);
                 return true;
@@ -325,6 +327,78 @@ namespace FolderPrettifier
             catch
             {
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Builds the command-line arguments that put the new executable into updater
+        /// mode: --apply-update &lt;target executable&gt; &lt;current process id&gt;.
+        /// </summary>
+        public static string BuildUpdaterArguments(string targetExe, int currentPid)
+        {
+            return "--apply-update \"" + targetExe + "\" " + currentPid;
+        }
+
+        /// <summary>
+        /// Runs in updater mode (invoked by the new executable with --apply-update):
+        /// waits for the old process to exit, replaces the old executable with this
+        /// process's own file, then relaunches the app.
+        /// </summary>
+        public static void RunUpdater(string targetExe, int oldPid)
+        {
+            RunUpdater(Assembly.GetExecutingAssembly().Location, targetExe, oldPid, 30, 500);
+        }
+
+        /// <summary>
+        /// Core updater routine, exposed for testing.
+        /// </summary>
+        public static void RunUpdater(string updaterExe, string targetExe, int oldPid, int retryCount, int retryDelayMs)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(updaterExe) || !File.Exists(updaterExe) || string.IsNullOrEmpty(targetExe))
+                {
+                    return;
+                }
+
+                Process oldProcess = null;
+                try
+                {
+                    oldProcess = Process.GetProcessById(oldPid);
+                }
+                catch (ArgumentException)
+                {
+                }
+                catch (InvalidOperationException)
+                {
+                }
+
+                if (oldProcess != null)
+                {
+                    oldProcess.WaitForExit(120000);
+                }
+
+                for (int attempt = 0; attempt < retryCount; attempt++)
+                {
+                    try
+                    {
+                        File.Copy(updaterExe, targetExe, true);
+                        break;
+                    }
+                    catch
+                    {
+                        if (attempt == retryCount - 1)
+                        {
+                            return;
+                        }
+                        Thread.Sleep(retryDelayMs);
+                    }
+                }
+
+                Process.Start(new ProcessStartInfo(targetExe) { UseShellExecute = true });
+            }
+            catch
+            {
             }
         }
     }
