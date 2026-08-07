@@ -8,16 +8,16 @@ using System.Collections.Generic;
 
 namespace FolderPrettifier
 {
-    public partial class Main : Form
+    public partial class Main : Form, IUpdateUi
     {
         private readonly RemoteFileFetcher _remoteFetcher = new RemoteFileFetcher();
         private readonly CatalogService _catalogService;
         private readonly UpdateService _updateService = new UpdateService();
+        private readonly UpdateFlow _updateFlow;
 
         Dictionary<string, string> _extensions;
         string _defaultFolder;
         bool _catalogLoaded;
-        bool _updateCheckInProgress;
         string currentFolder = "";
 
         public Main(string currentFolder = "")
@@ -38,6 +38,8 @@ namespace FolderPrettifier
                 Data.VersionsFileName,
                 () => Data.BasicCatalog);
 
+            _updateFlow = new UpdateFlow(_updateService, this);
+
             startBtn.Enabled = false;
 
             LegacyCacheCleaner.Clean(Path.GetTempPath());
@@ -45,7 +47,7 @@ namespace FolderPrettifier
             SetCurrentPath();
 
             FetchCatalog();
-            _ = CheckForUpdateAsync(true);
+            _ = _updateFlow.CheckForUpdateAsync(true, GetAppVersion());
         }
 
         private void SetCurrentPath()
@@ -377,129 +379,47 @@ namespace FolderPrettifier
 
         private async void checkForUpdatesBtn_Click(object sender, EventArgs e)
         {
-            await CheckForUpdateAsync(false);
+            await _updateFlow.CheckForUpdateAsync(false, GetAppVersion());
         }
 
-        private async Task CheckForUpdateAsync(bool silent)
+        void IUpdateUi.SetStatus(string text)
         {
-            if (_updateCheckInProgress)
-            {
-                return;
-            }
-
-            _updateCheckInProgress = true;
-            checkForUpdatesBtn.Enabled = false;
-
-            status.Text = "Checking for updates...";
-            progressBar.Value = 0;
-
-            UpdateInfo update = null;
-            try
-            {
-                update = await _updateService.CheckForUpdateAsync(GetAppVersion());
-            }
-            finally
-            {
-                _updateCheckInProgress = false;
-            }
-
-            if (update == null)
-            {
-                checkForUpdatesBtn.Enabled = true;
-                status.Text = "Ready";
-                progressBar.Value = 0;
-                if (!silent)
-                {
-                    MessageBox.Show("You're running the latest version of Folder Prettifier.", "Up to date", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                return;
-            }
-
-            if (silent)
-            {
-                // Startup check is non-intrusive: only hint in the status bar,
-                // never pop a dialog (which would also block UI automation).
-                checkForUpdatesBtn.Enabled = true;
-                status.Text = "Update available: " + update.Version + " (Check for Updates menu)";
-                progressBar.Value = 0;
-                return;
-            }
-
-            string notes = string.IsNullOrWhiteSpace(update.ReleaseNotes) ? "" : "\n\nWhat's new:\n" + update.ReleaseNotes;
-            DialogResult answer = MessageBox.Show(
-                "A new version of Folder Prettifier is available: " + update.Version + "\n" +
-                "Your current version: " + GetAppVersion() + notes +
-                "\n\nDo you want to download and install it now?",
-                "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (answer != DialogResult.Yes)
-            {
-                checkForUpdatesBtn.Enabled = true;
-                status.Text = "Ready";
-                return;
-            }
-
-            await DownloadAndApplyUpdateAsync(update);
-            checkForUpdatesBtn.Enabled = true;
-            status.Text = "Ready";
+            status.Text = text;
         }
 
-        private async Task DownloadAndApplyUpdateAsync(UpdateInfo update)
+        void IUpdateUi.SetProgress(int value)
         {
-            if (string.IsNullOrEmpty(update.AssetUrl))
-            {
-                MessageBox.Show(
-                    "An update is available but no matching download could be found for this version of Windows.\n\n" +
-                    "Please download the latest version from the release page.",
-                    "Manual Update Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Process.Start(update.ReleasePageUrl);
-                return;
-            }
+            progressBar.Value = value;
+        }
 
-            if (!UpdateService.CanUpdateInPlace())
-            {
-                DialogResult openPage = MessageBox.Show(
-                    "Folder Prettifier cannot update itself because it is installed in a protected location.\n\n" +
-                    "Please download the latest version manually. Open the release page now?",
-                    "Manual Update Required", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (openPage == DialogResult.Yes)
-                {
-                    Process.Start(update.ReleasePageUrl);
-                }
-                return;
-            }
+        void IUpdateUi.SetCheckEnabled(bool enabled)
+        {
+            checkForUpdatesBtn.Enabled = enabled;
+        }
 
-            string updatesDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                "Folder Prettifier", "updates");
-            string destination = Path.Combine(updatesDir, update.AssetName);
+        void IUpdateUi.ShowInfo(string text, string title)
+        {
+            MessageBox.Show(text, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
-            if (!File.Exists(destination))
-            {
-                status.Text = "Downloading update...";
-                progressBar.Value = 0;
-                bool downloaded = await _updateService.DownloadAsync(update, destination,
-                    new Progress<int>(p => progressBar.Value = p));
-                if (!downloaded)
-                {
-                    status.Text = "Update download failed";
-                    MessageBox.Show("Could not download the update. Please try again later.", "Download Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
+        void IUpdateUi.ShowError(string text, string title)
+        {
+            MessageBox.Show(text, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
-            status.Text = "Applying update...";
-            if (_updateService.LaunchUpdater(destination))
-            {
-                Application.Exit();
-            }
-            else
-            {
-                status.Text = "Ready";
-                MessageBox.Show(
-                    "Could not apply the update automatically. Please download the latest version from the release page.",
-                    "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Process.Start(update.ReleasePageUrl);
-            }
+        bool IUpdateUi.Confirm(string text, string title)
+        {
+            return MessageBox.Show(text, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+        }
+
+        void IUpdateUi.OpenUrl(string url)
+        {
+            Process.Start(new ProcessStartInfo(url));
+        }
+
+        void IUpdateUi.Exit()
+        {
+            Application.Exit();
         }
     }
 }

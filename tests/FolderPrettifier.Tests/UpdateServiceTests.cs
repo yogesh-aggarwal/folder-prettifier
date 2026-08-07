@@ -934,7 +934,7 @@ namespace FolderPrettifier.Tests
         }
 
         [Test]
-        public async Task DownloadAsync_MissingDestinationDirectory_ReturnsFalse()
+        public async Task DownloadAsync_MissingDestinationDirectory_CreatesItAndSucceeds()
         {
             FakeHttpMessageHandler handler = new FakeHttpMessageHandler
             {
@@ -949,8 +949,9 @@ namespace FolderPrettifier.Tests
 
             bool result = await service.DownloadAsync(update, dest, null);
 
-            Assert.That(result, Is.False);
-            Assert.That(File.Exists(dest), Is.False);
+            Assert.That(result, Is.True);
+            Assert.That(File.Exists(dest), Is.True);
+            Assert.That(Directory.Exists(Path.GetDirectoryName(dest)), Is.True);
         }
 
         [Test]

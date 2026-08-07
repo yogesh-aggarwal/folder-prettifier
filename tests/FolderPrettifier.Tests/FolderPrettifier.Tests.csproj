@@ -32,6 +32,7 @@
     <Compile Include="..\..\src\RemoteFileFetcher.cs" Link="Sources\RemoteFileFetcher.cs" />
     <Compile Include="..\..\src\RenamePlanner.cs" Link="Sources\RenamePlanner.cs" />
     <Compile Include="..\..\src\UpdateService.cs" Link="Sources\UpdateService.cs" />
+    <Compile Include="..\..\src\UpdateFlow.cs" Link="Sources\UpdateFlow.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -180,6 +180,12 @@ namespace FolderPrettifier
 
             try
             {
+                string dir = Path.GetDirectoryName(destinationPath);
+                if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
+
                 using (HttpResponseMessage response = await _httpClient.GetAsync(update.AssetUrl, HttpCompletionOption.ResponseHeadersRead))
                 {
                     if (!response.IsSuccessStatusCode)
@@ -304,7 +310,7 @@ namespace FolderPrettifier
         /// are passed verbatim, so paths containing spaces or any other characters are
         /// handled safely.
         /// </summary>
-        public bool LaunchUpdater(string downloadedFilePath)
+        public virtual bool LaunchUpdater(string downloadedFilePath)
         {
             if (string.IsNullOrEmpty(downloadedFilePath) || !File.Exists(downloadedFilePath) || !CanUpdateInPlace())
             {
