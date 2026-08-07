@@ -30,15 +30,15 @@ namespace FolderPrettifier.Tests
         }
 
         [Test]
-        public void ContextMenuTask_IsCheckedByDefault()
+        public void ContextMenuTask_IsOptIn()
         {
             string[] lines = ReadSetupScript();
             foreach (string line in lines)
             {
                 if (line.Contains("Name: \"contextmenu\""))
                 {
-                    StringAssert.Contains("Checked: yes", line,
-                        "Context menu task must be checked by default in setup.iss.");
+                    StringAssert.DoesNotContain("Checked: yes", line,
+                        "Context menu task must be opt-in (unchecked by default) in setup.iss.");
                     return;
                 }
             }
