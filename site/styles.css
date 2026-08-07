@@ -11,6 +11,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Public Sans";
   src: url("fonts/PublicSans.woff2") format("woff2");
@@ -18,6 +19,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "JetBrains Mono";
   src: url("fonts/JetBrainsMono.woff2") format("woff2");
@@ -37,29 +39,7 @@
   --radius-md: 14px;
   --radius-lg: 22px;
 
-  /* Default Warm Cream Light Mode */
-  --bg-body: #FAF7F2;
-  --bg-surface: #FFFFFF;
-  --bg-subtle: #F2EDE4;
-
-  --text-main: #1C1917;
-  --text-muted: #57534E;
-  --text-subtle: #78716C;
-
-  --border-light: rgba(28, 25, 23, 0.08);
-  --border-medium: rgba(28, 25, 23, 0.16);
-
-  --accent-color: #B45309;
-  --accent-soft: rgba(180, 83, 9, 0.1);
-  --accent-ink: #FFFFFF;
-
-  --mess-text: #DC2626;
-  --mess-bg: rgba(220, 38, 38, 0.06);
-  --clean-text: #059669;
-  --clean-bg: rgba(5, 150, 105, 0.06);
-}
-
-@media (prefers-color-scheme: dark) {
+  /* Default: DARK (matches most users' system preference; light overrides below) */
   --bg-body: #12100E;
   --bg-surface: #1B1815;
   --bg-subtle: #24211D;
@@ -81,8 +61,32 @@
   --clean-bg: rgba(52, 211, 153, 0.1);
 }
 
+@media (prefers-color-scheme: light) {
+  --bg-body: #FAF7F2;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #F2EDE4;
+
+  --text-main: #1C1917;
+  --text-muted: #57534E;
+  --text-subtle: #78716C;
+
+  --border-light: rgba(28, 25, 23, 0.08);
+  --border-medium: rgba(28, 25, 23, 0.16);
+
+  --accent-color: #B45309;
+  --accent-soft: rgba(180, 83, 9, 0.1);
+  --accent-ink: #FFFFFF;
+
+  --mess-text: #DC2626;
+  --mess-bg: rgba(220, 38, 38, 0.06);
+  --clean-text: #059669;
+  --clean-bg: rgba(5, 150, 105, 0.06);
+}
+
 /* ---------- BASE RESET ---------- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -95,8 +99,8 @@ html {
 
 body {
   font-family: var(--font-sans);
-  font-size: 1.05rem;
-  line-height: 1.65;
+  font-size: 1rem;
+  line-height: 1.7;
   color: var(--text-muted);
   background-color: var(--bg-body);
   transition: background-color 0.2s ease, color 0.2s ease;
@@ -116,21 +120,27 @@ body {
   border-radius: var(--radius-sm);
   transition: top 0.2s ease;
 }
-.skip-link:focus { top: 16px; }
+
+.skip-link:focus {
+  top: 16px;
+}
 
 .container {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 32px;
 }
 
 /* ---------- TYPOGRAPHY ---------- */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-serif);
   color: var(--text-main);
-  line-height: 1.15;
+  line-height: 1.12;
   font-weight: 500;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 em {
@@ -152,11 +162,14 @@ a {
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
+
 a:hover {
   opacity: 0.8;
 }
 
-.text-center { text-align: center; }
+.text-center {
+  text-align: center;
+}
 
 /* ---------- HEADER / NAV ---------- */
 .header {
@@ -208,6 +221,7 @@ a:hover {
   font-size: 0.95rem;
   font-weight: 500;
 }
+
 .nav a:hover {
   color: var(--text-main);
   text-decoration: none;
@@ -232,10 +246,12 @@ a:hover {
   transition: all 0.2s ease;
   flex-shrink: 0;
 }
+
 .icon-link svg {
   width: 20px;
   height: 20px;
 }
+
 .icon-link:hover {
   border-color: var(--text-main);
   color: var(--text-main);
@@ -279,6 +295,7 @@ a:hover {
   background: var(--text-main);
   color: var(--bg-body);
 }
+
 .btn-primary:hover {
   opacity: 0.9;
   transform: translateY(-1px);
@@ -289,6 +306,7 @@ a:hover {
   color: var(--text-main);
   border-color: var(--border-medium);
 }
+
 .btn-outline:hover {
   background: var(--bg-subtle);
   border-color: var(--text-main);
@@ -334,19 +352,19 @@ a:hover {
 }
 
 .hero-headline {
-  font-size: clamp(2.8rem, 6vw, 4.5rem);
-  letter-spacing: -0.02em;
-  margin-bottom: 24px;
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  letter-spacing: -0.03em;
+  margin-bottom: 28px;
   color: var(--text-main);
-  line-height: 1.08;
+  line-height: 1.06;
 }
 
 .hero-lead {
-  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-size: clamp(1rem, 1.1vw, 1.22rem);
   color: var(--text-muted);
-  max-width: 700px;
-  margin: 0 auto 36px auto;
-  line-height: 1.6;
+  max-width: 620px;
+  margin: 0 auto 40px auto;
+  line-height: 1.7;
 }
 
 .hero-actions {
@@ -362,11 +380,12 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: 28px;
   flex-wrap: wrap;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   color: var(--text-subtle);
   font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 /* ---------- AT A GLANCE: COMPARISON CARD ---------- */
@@ -422,8 +441,14 @@ a:hover {
   border-radius: 50%;
   flex-shrink: 0;
 }
-.dot-bad  { background: var(--mess-text); }
-.dot-good { background: var(--clean-text); }
+
+.dot-bad {
+  background: var(--mess-text);
+}
+
+.dot-good {
+  background: var(--clean-text);
+}
 
 .file-rows {
   list-style: none;
@@ -440,6 +465,7 @@ a:hover {
   padding: 11px 0;
   border-bottom: 1px solid var(--border-light);
 }
+
 .file-rows li:last-child {
   border-bottom: none;
 }
@@ -454,9 +480,11 @@ a:hover {
   text-overflow: ellipsis;
   min-width: 0;
 }
+
 .fr-name.bad {
   color: var(--mess-text);
 }
+
 .fr-name.good {
   color: var(--text-main);
 }
@@ -548,7 +576,8 @@ a:hover {
 }
 
 .section-title {
-  font-size: 2.2rem;
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  letter-spacing: -0.02em;
 }
 
 .grid-features {
@@ -564,6 +593,7 @@ a:hover {
   padding: 32px 24px;
   transition: border-color 0.2s ease;
 }
+
 .feature-card:hover {
   border-color: var(--border-medium);
 }
@@ -577,14 +607,15 @@ a:hover {
 }
 
 .feature-title {
-  font-size: 1.3rem;
+  font-size: 1.18rem;
   margin-bottom: 10px;
+  letter-spacing: -0.01em;
 }
 
 .feature-desc {
-  font-size: 0.95rem;
+  font-size: 0.93rem;
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.68;
 }
 
 /* ---------- HOW IT WORKS ---------- */
@@ -620,13 +651,15 @@ a:hover {
 }
 
 .step-heading {
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   margin-bottom: 8px;
+  letter-spacing: -0.01em;
 }
 
 .step-text {
-  font-size: 1rem;
+  font-size: 0.97rem;
   color: var(--text-muted);
+  line-height: 1.7;
 }
 
 /* ---------- DOWNLOAD SECTION ---------- */
@@ -655,8 +688,9 @@ a:hover {
 }
 
 .box-title {
-  font-size: 2.5rem;
+  font-size: clamp(1.9rem, 3.5vw, 2.6rem);
   margin-bottom: 16px;
+  letter-spacing: -0.02em;
 }
 
 .box-lead {
@@ -752,6 +786,7 @@ a:hover {
   color: var(--text-muted);
   font-size: 0.9rem;
 }
+
 .footer-right a:hover {
   color: var(--text-main);
 }
@@ -761,6 +796,7 @@ a:hover {
   .comparison-columns {
     grid-template-columns: 1fr;
   }
+
   .col-divider {
     flex-direction: row;
     width: auto;
@@ -771,14 +807,17 @@ a:hover {
     border-top: 1px solid var(--border-light);
     border-bottom: 1px solid var(--border-light);
   }
+
   .divider-line {
     flex: 1;
     height: 1px;
     width: auto;
   }
+
   .grid-features {
     grid-template-columns: 1fr;
   }
+
   .header-actions .btn {
     display: none;
   }
@@ -788,6 +827,7 @@ a:hover {
   .nav {
     display: none;
   }
+
   .footer-container {
     flex-direction: column;
     align-items: flex-start;
